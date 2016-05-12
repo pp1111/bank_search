@@ -6,12 +6,13 @@
 	<% include partials/templemate/head.ejs %>
 	<meta charset="iso-8859-2">
 	<meta name="Description">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel='stylesheet' href='/stylesheets/search_result.css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href='/icons/search/css/fontello.css' />
 	<link rel="shortcut icon" href="../favicon.ico"> 
-	<link rel="stylesheet" type="text/css" href="stylesheets/default.css" />
-	<link rel="stylesheet" type="text/css" href="stylesheets/component.css" />
+	<!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css" />-->
+	<!--<link rel="stylesheet" type="text/css" href="stylesheets/component.css" />-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/menu.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/search-results.css" />
 	<script src="javascripts/modernizr.custom.js"></script>
 	<title></title>
  </head>
@@ -29,12 +30,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 	<nav>
-		<ul class="navigation">
+		<!--<ul class="navigation">
 			<li> <a href="kalkulator-walut">Kalkulator walut</a> </li>
-		</ul>
+		</ul>-->
 
 		<div id="dl-menu" class="dl-menuwrapper">
-			<button class="dl-trigger">Open Menu</button>
+			<!--<button class="dl-trigger">Open Menu</button>-->
+			<div class="menu-btn">
+				<div class="top-bar"></div>
+				<div class="middle-bar"></div>
+				<div class="bottom-bar"></div>
+			</div>
 			<ul class="dl-menu">
 							<li>
 								<a href="#"><%=categories[0] %></a>
@@ -90,17 +96,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div class="wrapper">
 	  <article class="search">
 	  	<h2><%=check.replace('-',' ')%></h2>
-		 <ul>
+		  <div class="products">
 			 	<%for(var i=0;i<products.length;i++) {%> 
 			 		<% if(products[i].category===check){ %>
-				 		<li><%=products[i].name%> <%=products[i].provider%> <br>
+				 		<div class="single-product">
+							<h4><%=products[i].name%> <%=products[i].provider%></h4>
 				 			<img src ="<%=products[i].logo%>">
+<<<<<<< HEAD
+				 			<!--<div class="info"><%=products[i].description %></div>-->
+							 <p class="info">
+								 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
+							</p>
+							<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
+						</div>
+=======
 				 			<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
 				 		</li>
 				 		<br><br>
+>>>>>>> refs/remotes/origin/master
 				 	<%}%>
 			 	<% } %>
-		 </ul>
+		 </div>
 	  </article>
 	  <aside class="aside aside-1"></aside>
 	  <aside class="aside aside-2"></aside>
@@ -108,7 +124,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</div>
 
 	<footer> <% include partials/templemate/footer.ejs %> </footer>
-
+	<script src="javascripts/jquery-1.11.3.min.js"></script>
+	<script src="javascripts/main.js"></script>
 </body>
 
 </html>
