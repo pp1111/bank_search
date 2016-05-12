@@ -6,7 +6,7 @@ var request = require('request');
 var url = require('url');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
-var decoder = new (require('string_decoder').StringDecoder)('utf-8')
+var iso88592 = require('iso-8859-2');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 var now = new Date();
@@ -1036,7 +1036,6 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
               for(var i in entry.podkategoria[key].produkt){
                  for(var j in entry.podkategoria[key].produkt[i].dostawca){
                   if( i==='0') { console.log('\n') ; }
-                  console.log(parseInt(i)+1, entry.podkategoria[key].$.nazwa);
                     products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
                     products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
                     products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
@@ -1088,7 +1087,7 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
             product_table.push(p);
         }
 
-        console.log(check); 
+        console.log(product_table); 
          
         
 
