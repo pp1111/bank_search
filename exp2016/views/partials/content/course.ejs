@@ -1,0 +1,23 @@
+<select name ="from" class="form-control" id="sel1">
+	<option>PLN</option>
+	<%cash.forEach(function(entry){ %>
+		<%if(selected1 === entry.kod_waluty[0]){%>
+			<option selected value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%>  </option>
+		<%} else{ %>
+			<option value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> </option>
+		<%} %>
+	<% }) %>
+</select>
+
+<button id="change" type="button" class="form-control"> <i class="demo-icon icon-exchange"></i> </button>
+
+<select name ="on" class="form-control" id="sel2">
+	<option>PLN</option>
+	<%cash.forEach(function(entry){ %>
+		<%if(selected2 === entry.kod_waluty[0]){%>
+			<option selected value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> </option>
+		<%} else{ %>
+			<option value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> </option>
+		<%} %>
+	<% }) %>
+</select>

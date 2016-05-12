@@ -1,0 +1,226 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.container {
+    width: 100%;
+    /*margin: 0 5px;*/
+    display: flex;
+    justify-content: space-around;
+    flex-flow: nowrap column;
+}
+.container header {
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 20px;
+}
+
+.container header h2 a {
+    align-self: flex-start;
+    background: linear-gradient(269deg, #c0c0c0, #505050);
+    background: -moz-linear-gradient(#ffffff, #ffffff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    -webkit-animation: gradientAnimation 12s ease infinite;
+    -moz-animation: gradientAnimation 12s ease infinite;
+    -o-animation: gradientAnimation 12s ease infinite;
+    animation: gradientAnimation 12s ease infinite;
+}
+
+.container header h2 a:hover {
+    text-decoration: none;
+}
+
+@-webkit-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-o-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes gradientAnimation { 
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+
+.container header #calc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container header #calc .value,
+.container header #calc .currency,
+.container header #calc .date {
+    display: flex;
+    flex-flow: nowrap row;
+    margin-bottom: 10px;
+}
+
+.container header #calc .date #year {
+    width: 100px;
+}
+.container header #calc .date #month {
+    width: 125px;
+}
+.container header #calc .date #day {
+    width: 100px;
+}
+
+.container header #calc .currency #change {
+    width: 70px;
+    padding: 6px 5px;
+}
+
+.container article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 60px;
+}
+
+.container article #show {
+    margin-bottom: 10px;
+}
+
+.container article #show h3 {
+    color: #c0c0c0;
+    display: flex;
+    flex-flow: nowrap row;
+    align-items: center;
+}
+
+.container article #show h3 svg {
+    display: none;
+}
+
+footer {
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    background-color: #c0c0c0;
+    padding: 15px 0;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer a {
+    margin-right: 15px;
+    color: #000000;
+}
+
+.form-control {
+    border-color: #3399CC;
+}
+
+#hidden {
+    display: none;
+}
+
+
+@media(min-width: 400px) {
+    .container header #calc {
+        width: 360px;
+    }
+    .container article #show h3 svg {
+        display: inline;
+    }
+}
+@media(min-width: 600px) {
+    .container header #calc {
+        width: 460px;
+    }
+}
+@media(min-width: 837px) {
+    .container header {
+        flex-flow: nowrap row;
+        justify-content: flex-start;
+    }
+    
+    .container header h2 {
+        margin-right: 100px;
+    }
+    
+    .container header #calc {
+        flex-flow: wrap row;
+        justify-content: space-around;
+        flex: 1;
+        margin-top: 20px;
+        margin-right: 100px;
+    }
+    
+    .container header #calc .value {
+        order: 1;
+    }
+}
+@media(min-width: 1000px) {
+    .container header #calc .value {
+        order: 0;
+    }
+    .container article {
+        flex-flow: wrap row;
+        margin-top: 20px;
+    }
+    .container article #show {
+        width: 400px;
+    }
+    .container article #show .form-control {
+        height: 220px;
+    }
+}
+
+textarea{
+    resize: none;
+}
+
+#resultarea{
+    background-color: rgb(238, 238, 238);
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    height: 120px;
+    overflow: auto;
+}
+a{
+    color: #808080;
+}
+@media(min-height: 650px) {
+    html, body {
+        height: 100%;
+    }
+    footer {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none   ;
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {-moz-appearance: textfield;}
