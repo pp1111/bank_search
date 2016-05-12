@@ -4,7 +4,7 @@
 
 <head> 
 	<% include partials/templemate/head.ejs %>
-	<meta charset="iso-8859-2">
+	<meta charset="utf-8"/>
 	<meta name="Description">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href='/icons/search/css/fontello.css' />
@@ -45,12 +45,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<li>
 								<a href="#"><%=categories[0] %></a>
 								<ul class="dl-submenu">
-									<% for(var i=0; i<=13; i++){ %>
+									<% for(var i=0; i<=14; i++){ %>
 										<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
 										<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
 										<% if(i===8){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
 										<% if(i===9){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
 										<% if(i===10){ subCategories[i] = "Ksiegarnia" } %>
+										<% if(i===13){ subCategories[i] = "Pozyczki pozabankowe" } %>
 										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 									<% } %>
 								</ul>
@@ -102,18 +103,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				 		<div class="single-product">
 							<h4><%=products[i].name%> <%=products[i].provider%></h4>
 				 			<img src ="<%=products[i].logo%>">
-<<<<<<< HEAD
 				 			<!--<div class="info"><%=products[i].description %></div>-->
 							 <p class="info">
 								 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
 							</p>
 							<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
 						</div>
-=======
-				 			<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
-				 		</li>
-				 		<br><br>
->>>>>>> refs/remotes/origin/master
 				 	<%}%>
 			 	<% } %>
 		 </div>
