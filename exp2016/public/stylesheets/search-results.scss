@@ -1,13 +1,15 @@
 $backgroundColor: #ecf0f1;
 $productColor: #34495e;
 $white: #ffffff;
+$black: #000000;
 $alizarin: #e74c3c;
+$lightBlueLowOp: rgba(52, 152, 219, 1);
 html {
     font-size: 62.5%;
 }
 
 body {
-    background-color: $backgroundColor;
+    background-color: $white;
     .wrapper {
         .search {
             h2 {
@@ -23,40 +25,59 @@ body {
                 flex-wrap: wrap;
                 justify-content: center;
                 .single-product {
-                    background-color: $productColor;
-                    margin: 10px;
-                    margin-bottom: 30px;
+                    border: 1px solid #c0c0c0;
+                    background-color: $white;
+                    //margin: 10px;
+                    //margin-bottom: 30px;
                     width: 300px;
                     position: relative;
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
+                    //border-top-left-radius: 10px;
+                    //border-top-right-radius: 10px;
                     h4 {
                         font-size: 2rem;
                         font-weight: 100;
-                        color: $white;
+                        color: $black;
                         text-align: center;
                     }
                     img {
-                        width: 80%;
-                        margin: 0 10%;
+                        width: 100%;
+                        margin: 0;
                     }
                     button {
                         border: none;
                         width: 100%;
                         position: absolute;
-                        bottom: -30px;
-                        border-bottom-left-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        background-color: $alizarin;
+                        bottom: 0;
+                        //border-bottom-left-radius: 10px;
+                        //border-bottom-right-radius: 10px;
+                        background-color: $white;
                     }
                     .info {
                         margin: 10px 8%;
                         max-height: 150px;
                         overflow-y: auto;
-                        color: $backgroundColor;
+                        color: $black;
                         font-size: 1.5rem;
                         font-weight: 100;
                         text-align: justify;
+                    }
+                    .show-product {
+                        z-index: 99;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: $lightBlueLowOp;
+                        opacity: 0;
+                        -webkit-transition: .4s ease-in-out;
+                        -moz-transition: .4s ease-in-out;
+                        transition: .4s ease-in-out;
+                    }
+                    &:hover {
+                        .show-product {
+                            opacity: 1;
+                        }
                     }
                 }
             }

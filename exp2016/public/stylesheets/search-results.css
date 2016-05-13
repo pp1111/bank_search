@@ -2,7 +2,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  background-color: #ecf0f1; }
+  background-color: #ffffff; }
   body .wrapper .search h2 {
     text-align: center;
     margin-top: 50px; }
@@ -15,36 +15,45 @@ body {
     flex-wrap: wrap;
     justify-content: center; }
     body .wrapper .search .products .single-product {
-      background-color: #34495e;
-      margin: 10px;
-      margin-bottom: 30px;
+      border: 1px solid #c0c0c0;
+      background-color: #ffffff;
       width: 300px;
-      position: relative;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px; }
+      position: relative; }
       body .wrapper .search .products .single-product h4 {
         font-size: 2rem;
         font-weight: 100;
-        color: #ffffff;
+        color: #000000;
         text-align: center; }
       body .wrapper .search .products .single-product img {
-        width: 80%;
-        margin: 0 10%; }
+        width: 100%;
+        margin: 0; }
       body .wrapper .search .products .single-product button {
         border: none;
         width: 100%;
         position: absolute;
-        bottom: -30px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        background-color: #e74c3c; }
+        bottom: 0;
+        background-color: #ffffff; }
       body .wrapper .search .products .single-product .info {
         margin: 10px 8%;
         max-height: 150px;
         overflow-y: auto;
-        color: #ecf0f1;
+        color: #000000;
         font-size: 1.5rem;
         font-weight: 100;
         text-align: justify; }
+      body .wrapper .search .products .single-product .show-product {
+        z-index: 99;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #3498db;
+        opacity: 0;
+        -webkit-transition: .4s ease-in-out;
+        -moz-transition: .4s ease-in-out;
+        transition: .4s ease-in-out; }
+      body .wrapper .search .products .single-product:hover .show-product {
+        opacity: 1; }
 
 /*# sourceMappingURL=search-results.css.map */

@@ -101,13 +101,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			 	<%for(var i=0;i<products.length;i++) {%> 
 			 		<% if(products[i].category===check){ %>
 				 		<div class="single-product">
+							<img src ="<%=products[i].logo%>">
 							<h4><%=products[i].name%> <%=products[i].provider%></h4>
-				 			<img src ="<%=products[i].logo%>">
 				 			<!--<div class="info"><%=products[i].description %></div>-->
 							 <p class="info">
 								 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
 							</p>
 							<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
+							<div class="show-product"></div>
 						</div>
 				 	<%}%>
 			 	<% } %>
