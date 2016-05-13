@@ -73,6 +73,25 @@ body {
                         -webkit-transition: .4s ease-in-out;
                         -moz-transition: .4s ease-in-out;
                         transition: .4s ease-in-out;
+                        button {
+                            position: absolute;
+                            bottom: 30px;
+                            width: 50%;
+                            margin: 0 25%;
+                            border-radius: 20px;
+                            padding: 10px 5px;
+                            background-color: transparent;
+                            border: 2px solid $white;
+                            color: $white;
+                            font-weight: 200;
+                            -webkit-transition: .2s ease-in-out;
+                            -moz-transition: .2s ease-in-out;
+                            transition: .2s ease-in-out;
+                            &:hover {
+                                background-color: $white;
+                                color: $lightBlueLowOp;
+                            }
+                        }
                     }
                     &:hover {
                         .show-product {

@@ -3,7 +3,7 @@ html {
   html body nav {
     position: absolute;
     z-index: 999;
-    background-color: #ffffff;
+    background-color: #3498db;
     width: 100%;
     top: 0; }
     html body nav ul {

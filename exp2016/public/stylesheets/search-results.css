@@ -53,6 +53,23 @@ body {
         -webkit-transition: .4s ease-in-out;
         -moz-transition: .4s ease-in-out;
         transition: .4s ease-in-out; }
+        body .wrapper .search .products .single-product .show-product button {
+          position: absolute;
+          bottom: 30px;
+          width: 50%;
+          margin: 0 25%;
+          border-radius: 20px;
+          padding: 10px 5px;
+          background-color: transparent;
+          border: 2px solid #ffffff;
+          color: #ffffff;
+          font-weight: 200;
+          -webkit-transition: .2s ease-in-out;
+          -moz-transition: .2s ease-in-out;
+          transition: .2s ease-in-out; }
+          body .wrapper .search .products .single-product .show-product button:hover {
+            background-color: #ffffff;
+            color: #3498db; }
       body .wrapper .search .products .single-product:hover .show-product {
         opacity: 1; }
 

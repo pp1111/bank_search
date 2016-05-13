@@ -2,6 +2,7 @@ $white: #ffffff;
 $black: #000000;
 $secondaryColor: #ecf0f1;
 $asbestos: #7f8c8d;
+$lightBlueLowOp: rgba(52, 152, 219, 1);
 @mixin flexbox {
     display: -webkit-box;
     display: -moz-box;
@@ -16,7 +17,7 @@ html {
         nav {
             position: absolute;
             z-index: 999;
-            background-color: $white;
+            background-color: $lightBlueLowOp;
             width: 100%;
             top: 0;
             ul {
