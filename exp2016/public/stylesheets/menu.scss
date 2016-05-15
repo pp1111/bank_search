@@ -4,7 +4,7 @@ $secondaryColor: #ecf0f1;
 $asbestos: #7f8c8d;
 $lightBlueLowOp: rgba(52, 152, 219, 1);
 $menuColorText: #f0f7fc;
-@mixin flexbox {
+@mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -16,58 +16,108 @@ $menuColorText: #f0f7fc;
     -moz-transition: $time ease-in-out;
     transition: $time ease-in-out;
 }
+@mixin placeholder($color) {
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $color;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        color: $color;
+    }
+}
 
 html {
     font-size: 62.5%;
     body {
         nav {
-            position: absolute;
+            position: fixed;
             z-index: 999;
             background-color: $lightBlueLowOp;
             width: 100%;
             top: 0;
-            padding: 5px 0;
+            
             ul {
                 list-style-type: none;
                 padding: 0;
                 text-align: center;
             }
             .dl-menuwrapper {
-                .menu-btn {
-                    width: 40px;
-                    padding: 5px;
-                    .top-bar,
-                    .middle-bar,
-                    .bottom-bar {
-                        width: 90%;
-                        height: 2px;
-                        background-color: $menuColorText;
-                        margin: 4px auto;
-                        @include transition(.6s);
+                .navbar {
+                    width: 100%;
+                    @include flexbox(row, nowrap);
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0;
+                    border: none;
+                    .menu-btn {
+                        width: 40px;
+                        padding: 5px;
+                        margin-right: auto;
+                        .top-bar,
+                        .middle-bar,
+                        .bottom-bar {
+                            width: 90%;
+                            height: 2px;
+                            background-color: $menuColorText;
+                            margin: 4px auto;
+                            @include transition(.6s);
+                        }
+                        .top-bar-close {
+                            transform: translateY(6px) rotate(405deg);
+                        }
+                        .middle-bar-close {
+                            width: 0;
+                        }
+                        .bottom-bar-close {
+                            transform: translateY(-6px) rotate(-405deg);
+                        }
+                        .top-bar-arrow {
+                            width: 50%;
+                            transform: translateX(-2px) translateY(1px) rotate(135deg);
+                            @include transition(.2s);
+                        }
+                        .middle-bar-arrow {
+                            width: 90%;
+                            transform: translateX(8px);
+                            @include transition(.2s);
+                        }
+                        .bottom-bar-arrow {
+                            width: 50%;
+                            transform: translateX(-2px) translateY(-1px) rotate(-135deg);
+                            @include transition(.3s);
+                        }
                     }
-                    .top-bar-close {
-                        transform: translateY(6px) rotate(405deg);
-                    }
-                    .middle-bar-close {
-                        width: 0;
-                    }
-                    .bottom-bar-close {
-                        transform: translateY(-6px) rotate(-405deg);
-                    }
-                    .top-bar-arrow {
-                        width: 50%;
-                        transform: translateX(-2px) translateY(1px) rotate(135deg);
-                        @include transition(.2s);
-                    }
-                    .middle-bar-arrow {
-                        width: 90%;
-                        transform: translateX(8px);
-                        @include transition(.2s);
-                    }
-                    .bottom-bar-arrow {
-                        width: 50%;
-                        transform: translateX(-2px) translateY(-1px) rotate(-135deg);
-                        @include transition(.3s);
+                    .search {
+                        padding: 5px;
+                        @include flexbox(row, nowrap);
+                        align-items: center;
+                        height: 30px;
+                        margin-right: 5px;
+                        form {
+                            height: 100%;
+                            margin-right: 5px;
+                            display: none;
+                            input {
+                                height: 100%;
+                                background-color: #0F85D1;
+                                border: none;
+                                color: #000000;
+                                &:focus {
+                                    outline: none;
+                                    color: $menuColorText;
+                                }
+                            }
+                            @include placeholder(rgba(240,247,252,0.7));
+                        }
+                        &.search-clicked {
+                            background-color: #0F85D1;
+                            border: 1px solid #0665A2;
+                        }
                     }
                 }
                 .dl-menu {

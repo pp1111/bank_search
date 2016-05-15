@@ -3,11 +3,22 @@ html {
 
 body {
   background-color: #ffffff; }
-  body .wrapper .search h2 {
+  body .wrapper .dimness {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9; }
+    body .wrapper .dimness.dimness-visible {
+      display: block;
+      background-color: #000000;
+      opacity: 0.7; }
+  body .wrapper .search-result h2 {
     text-align: center;
     margin: 0;
-    margin-top: 50px; }
-  body .wrapper .search .products {
+    margin-top: 80px; }
+  body .wrapper .search-result .products {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -16,26 +27,29 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px; }
-    body .wrapper .search .products .single-product {
+    body .wrapper .search-result .products .single-product {
       border: 1px solid #c0c0c0;
       background-color: #ffffff;
       width: 300px;
       position: relative; }
-      body .wrapper .search .products .single-product h4 {
-        font-size: 2rem;
-        font-weight: 100;
-        color: #000000;
-        text-align: center; }
-      body .wrapper .search .products .single-product img {
-        width: 100%;
-        margin: 0; }
-      body .wrapper .search .products .single-product button {
+      body .wrapper .search-result .products .single-product .product-header {
+        background: #ecf0f1; }
+        body .wrapper .search-result .products .single-product .product-header h4 {
+          font-size: 2rem;
+          font-weight: 100;
+          color: #0665A2;
+          text-align: left; }
+        body .wrapper .search-result .products .single-product .product-header img {
+          width: 60%;
+          margin-right: 10px;
+          float: left; }
+      body .wrapper .search-result .products .single-product button {
         border: none;
         width: 100%;
         position: absolute;
         bottom: 0;
         background-color: #ffffff; }
-      body .wrapper .search .products .single-product .info {
+      body .wrapper .search-result .products .single-product .info {
         margin: 10px 8%;
         max-height: 150px;
         overflow-y: auto;
@@ -43,7 +57,7 @@ body {
         font-size: 1.5rem;
         font-weight: 100;
         text-align: justify; }
-      body .wrapper .search .products .single-product .show-product {
+      body .wrapper .search-result .products .single-product .show-product {
         z-index: 99;
         position: absolute;
         top: 0;
@@ -55,7 +69,7 @@ body {
         -webkit-transition: .4s ease-in-out;
         -moz-transition: .4s ease-in-out;
         transition: .4s ease-in-out; }
-        body .wrapper .search .products .single-product .show-product button {
+        body .wrapper .search-result .products .single-product .show-product button {
           position: absolute;
           bottom: 30px;
           width: 50%;
@@ -69,10 +83,10 @@ body {
           -webkit-transition: .2s ease-in-out;
           -moz-transition: .2s ease-in-out;
           transition: .2s ease-in-out; }
-          body .wrapper .search .products .single-product .show-product button:hover {
+          body .wrapper .search-result .products .single-product .show-product button:hover {
             background-color: #ffffff;
             color: #3498db; }
-      body .wrapper .search .products .single-product:hover .show-product {
+      body .wrapper .search-result .products .single-product:hover .show-product {
         opacity: 1; }
 
 /*# sourceMappingURL=search-results.css.map */

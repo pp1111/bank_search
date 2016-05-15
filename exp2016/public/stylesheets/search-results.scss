@@ -4,6 +4,16 @@ $white: #ffffff;
 $black: #000000;
 $alizarin: #e74c3c;
 $lightBlueLowOp: rgba(52, 152, 219, 1);
+
+@mixin flexbox ($direction, $wrap) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: $direction $wrap;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -11,11 +21,24 @@ html {
 body {
     background-color: $white;
     .wrapper {
-        .search {
+        .dimness {
+            display: none;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+            &.dimness-visible {
+                display: block;
+                background-color: $black;
+                opacity: 0.7;
+            }
+        }
+        .search-result {
             h2 {
                 text-align: center;
                 margin: 0;
-                margin-top: 50px;
+                margin-top: 80px;
             }
             .products {
                 display: -webkit-box;
@@ -35,15 +58,20 @@ body {
                     position: relative;
                     //border-top-left-radius: 10px;
                     //border-top-right-radius: 10px;
-                    h4 {
-                        font-size: 2rem;
-                        font-weight: 100;
-                        color: $black;
-                        text-align: center;
-                    }
-                    img {
-                        width: 100%;
-                        margin: 0;
+                    .product-header {
+                        //@include flexbox(row, nowrap);
+                        background: #ecf0f1;
+                        h4 {
+                            font-size: 2rem;
+                            font-weight: 100;
+                            color: #0665A2;
+                            text-align: left;
+                        }
+                        img {
+                            width: 60%;
+                            margin-right: 10px;
+                            float: left;
+                        }
                     }
                     button {
                         border: none;
