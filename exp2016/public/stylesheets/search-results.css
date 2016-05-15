@@ -5,6 +5,7 @@ body {
   background-color: #ffffff; }
   body .wrapper .search h2 {
     text-align: center;
+    margin: 0;
     margin-top: 50px; }
   body .wrapper .search .products {
     display: -webkit-box;
@@ -13,7 +14,8 @@ body {
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; }
+    justify-content: center;
+    margin-top: 30px; }
     body .wrapper .search .products .single-product {
       border: 1px solid #c0c0c0;
       background-color: #ffffff;

@@ -3,12 +3,18 @@ $black: #000000;
 $secondaryColor: #ecf0f1;
 $asbestos: #7f8c8d;
 $lightBlueLowOp: rgba(52, 152, 219, 1);
+$menuColorText: #f0f7fc;
 @mixin flexbox {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+}
+@mixin transition($time) {
+    -webkit-transition: $time ease-in-out;
+    -moz-transition: $time ease-in-out;
+    transition: $time ease-in-out;
 }
 
 html {
@@ -20,6 +26,7 @@ html {
             background-color: $lightBlueLowOp;
             width: 100%;
             top: 0;
+            padding: 5px 0;
             ul {
                 list-style-type: none;
                 padding: 0;
@@ -34,11 +41,9 @@ html {
                     .bottom-bar {
                         width: 90%;
                         height: 2px;
-                        background-color: $black;
+                        background-color: $menuColorText;
                         margin: 4px auto;
-                        -webkit-transition: .7s ease-in-out;
-                        -moz-transition: .7s ease-in-out;
-                        transition: .7s ease-in-out;
+                        @include transition(.6s);
                     }
                     .top-bar-close {
                         transform: translateY(6px) rotate(405deg);
@@ -49,6 +54,21 @@ html {
                     .bottom-bar-close {
                         transform: translateY(-6px) rotate(-405deg);
                     }
+                    .top-bar-arrow {
+                        width: 50%;
+                        transform: translateX(-2px) translateY(1px) rotate(135deg);
+                        @include transition(.2s);
+                    }
+                    .middle-bar-arrow {
+                        width: 90%;
+                        transform: translateX(8px);
+                        @include transition(.2s);
+                    }
+                    .bottom-bar-arrow {
+                        width: 50%;
+                        transform: translateX(-2px) translateY(-1px) rotate(-135deg);
+                        @include transition(.3s);
+                    }
                 }
                 .dl-menu {
                     display: none;
@@ -57,6 +77,9 @@ html {
                     li {
                         padding: 5px 0;
                         border-bottom: 1px solid $secondaryColor;
+                        a {
+                            color: $menuColorText;
+                        }
                     }
                     .dl-submenu {
                         display: none;

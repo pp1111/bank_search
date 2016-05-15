@@ -5,7 +5,8 @@ html {
     z-index: 999;
     background-color: #3498db;
     width: 100%;
-    top: 0; }
+    top: 0;
+    padding: 5px 0; }
     html body nav ul {
       list-style-type: none;
       padding: 0;
@@ -18,17 +19,35 @@ html {
       html body nav .dl-menuwrapper .menu-btn .bottom-bar {
         width: 90%;
         height: 2px;
-        background-color: #000000;
+        background-color: #f0f7fc;
         margin: 4px auto;
-        -webkit-transition: .7s ease-in-out;
-        -moz-transition: .7s ease-in-out;
-        transition: .7s ease-in-out; }
+        -webkit-transition: 0.6s ease-in-out;
+        -moz-transition: 0.6s ease-in-out;
+        transition: 0.6s ease-in-out; }
       html body nav .dl-menuwrapper .menu-btn .top-bar-close {
         transform: translateY(6px) rotate(405deg); }
       html body nav .dl-menuwrapper .menu-btn .middle-bar-close {
         width: 0; }
       html body nav .dl-menuwrapper .menu-btn .bottom-bar-close {
         transform: translateY(-6px) rotate(-405deg); }
+      html body nav .dl-menuwrapper .menu-btn .top-bar-arrow {
+        width: 50%;
+        transform: translateX(-2px) translateY(1px) rotate(135deg);
+        -webkit-transition: 0.2s ease-in-out;
+        -moz-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out; }
+      html body nav .dl-menuwrapper .menu-btn .middle-bar-arrow {
+        width: 90%;
+        transform: translateX(8px);
+        -webkit-transition: 0.2s ease-in-out;
+        -moz-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out; }
+      html body nav .dl-menuwrapper .menu-btn .bottom-bar-arrow {
+        width: 50%;
+        transform: translateX(-2px) translateY(-1px) rotate(-135deg);
+        -webkit-transition: 0.3s ease-in-out;
+        -moz-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out; }
     html body nav .dl-menuwrapper .dl-menu {
       display: none;
       margin: 0;
@@ -36,6 +55,8 @@ html {
       html body nav .dl-menuwrapper .dl-menu li {
         padding: 5px 0;
         border-bottom: 1px solid #ecf0f1; }
+        html body nav .dl-menuwrapper .dl-menu li a {
+          color: #f0f7fc; }
       html body nav .dl-menuwrapper .dl-menu .dl-submenu {
         display: none; }
 
