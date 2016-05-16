@@ -2,7 +2,7 @@ html {
   font-size: 62.5%; }
   html body nav {
     position: fixed;
-    z-index: 999;
+    z-index: 9999;
     background-color: #3498db;
     width: 100%;
     top: 0; }
