@@ -27,7 +27,10 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: $white;
+    line-height: 1.43;
     .wrapper {
         .dimness {
             opacity: 0;
@@ -50,6 +53,8 @@ body {
                 text-align: center;
                 margin: 0;
                 margin-top: 80px;
+                font-size: 3rem;
+                font-weight: 500;
             }
             .products {
                 @include flexbox(row, wrap);
@@ -75,6 +80,7 @@ body {
                             color: #0665A2;
                             text-align: center;
                             margin-top: 15px;
+                            margin-bottom: 10px;
                         }
                         .img-wrapper {
                             margin-top: 10px;
@@ -110,6 +116,9 @@ body {
                             &:hover {
                                 text-decoration: underline;
                             }
+                        }
+                        .hide {
+                            display: none;
                         }
                     }
                     .show-product {
