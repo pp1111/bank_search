@@ -15,6 +15,8 @@ $(document).ready(function(){
     closeSubMenu();
     clickSearch();
     closeNav();
+    hideProductInfoText();
+    toggleMoreProductInfo();
 });
 
 function menuBtnChange() {
@@ -43,7 +45,7 @@ function openMenu() {
 }
 function openSubMenu() {
     menuCategory.click(function(){
-        submenu.hide('fast');
+        submenu.hide();
         $('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
         $(this).show();
         $(this).find(submenu).slideDown();
@@ -83,5 +85,29 @@ function closeNav() {
         topBar.removeClass('top-bar-close');
         middleBar.removeClass('middle-bar-close');
         bottomBar.removeClass('bottom-bar-close');
+    });
+}
+
+function hideProductInfoText() {
+    var element = $('.single-product>.info');
+    var characterLimit = 300;
+    var str = element.html();
+    var lessStr = str.substr(0,characterLimit);
+    str = lessStr + ' <div class="more-btn">Więcej...</div>' + '<span class="hide">' + str.substr(characterLimit,str.length) + '</span>';
+    element.html(str);
+}
+
+function toggleMoreProductInfo() {
+    var moreBtn = $('.single-product .info .more-btn');
+    var closeBtn = $('.show-product .close-btn');
+    moreBtn.click(function() {
+        if(!$('.show-product').hasClass('active')) {
+            $('.show-product').addClass('active');
+        }
+    });
+    closeBtn.click(function(){
+        if($('.show-product').hasClass('active')) {
+            $('.show-product').removeClass('active');
+        }
     });
 }

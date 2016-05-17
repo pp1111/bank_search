@@ -103,16 +103,18 @@ html {
       margin: 0;
       box-shadow: 0 6px 4px -4px #707070; }
       html body nav .dl-menuwrapper .dl-menu li {
-        padding: 5px 0;
-        border-bottom: 1px solid #ecf0f1;
         -webkit-transition: 0.2s ease-in-out;
         -moz-transition: 0.2s ease-in-out;
         transition: 0.2s ease-in-out; }
         html body nav .dl-menuwrapper .dl-menu li a {
+          padding: 5px 0;
+          border-bottom: 1px solid #0f85d1;
+          display: block;
+          text-decoration: none;
           color: #f0f7fc; }
       html body nav .dl-menuwrapper .dl-menu .category {
         background-color: #0665a2;
-        font-size: 2rem;
+        font-size: 1.7rem;
         font-weight: 100; }
         html body nav .dl-menuwrapper .dl-menu .category:hover {
           background-color: #0f85d1; }

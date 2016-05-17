@@ -129,16 +129,18 @@ html {
                     margin: 0;
                     box-shadow: 0 6px 4px -4px #707070;
                     li {
-                        padding: 5px 0;
-                        border-bottom: 1px solid $secondaryColor;
                         @include transition(.2s);
                         a {
+                            padding: 5px 0;
+                            border-bottom: 1px solid $darkerBlue;
+                            display: block;
+                            text-decoration: none;
                             color: $menuColorText;
                         }
                     }
                     .category {
                         background-color: $darkBlue;
-                        font-size: 2rem;
+                        font-size: 1.7rem;
                         font-weight: 100;
                         &:hover {
                             background-color: $darkerBlue;
