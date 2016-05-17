@@ -6,6 +6,8 @@ $mainBlue: rgba(52, 152, 219, 1);
 $darkerBlue: rgba(15, 133, 209, 1);
 $darkBlue: rgba(6, 101, 162, 1);
 $menuColorText: #f0f7fc;
+$yellow: #FFC930;
+$brighterYellow: #FFD459;
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
     display: -moz-box;
@@ -36,6 +38,7 @@ $menuColorText: #f0f7fc;
 html {
     font-size: 62.5%;
     body {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         nav {
             max-height: 100%;
             overflow-y: auto;
@@ -61,7 +64,7 @@ html {
                     .menu-btn {
                         width: 40px;
                         padding: 5px;
-                        margin-right: auto;
+                        //margin-right: auto;
                         .top-bar,
                         .middle-bar,
                         .bottom-bar {
@@ -96,6 +99,9 @@ html {
                             @include transition(.3s);
                         }
                     }
+                    .amoney-link {
+                        color: $menuColorText;
+                    }
                     .search {
                         padding: 5px;
                         @include flexbox(row, nowrap);
@@ -128,24 +134,50 @@ html {
                     display: none;
                     margin: 0;
                     box-shadow: 0 6px 4px -4px #707070;
+                    font-weight: 100;
                     li {
-                        padding: 5px 0;
-                        border-bottom: 1px solid $secondaryColor;
                         @include transition(.2s);
                         a {
+                            @include transition(.2s);
+                            padding: 5px 0;
+                            border-bottom: 1px solid $darkerBlue;
+                            display: block;
+                            text-decoration: none;
                             color: $menuColorText;
                         }
                     }
+                    .kalkulator-walut {
+                        a {
+                            display: block;
+                            background-color: $yellow;
+                            font-size: 1.7rem;
+                            color: $darkBlue;
+                            &:hover {
+                                background-color: $brighterYellow;
+                                color: $mainBlue;
+                            }
+                        }
+                    }
                     .category {
-                        background-color: $darkBlue;
-                        font-size: 2rem;
-                        font-weight: 100;
+                        a {
+                            background-color: $darkBlue;
+                            font-size: 1.7rem;
+                        
                         &:hover {
                             background-color: $darkerBlue;
                         }
+                    }
                         li {
-                            background-color: $mainBlue;
-                            font-size: 1.3rem;
+                            a {
+                                background-color: $mainBlue;
+                                font-size: 1.3rem;
+                                display: block;
+                                @include transition(.2s);
+                                &:hover {
+                                    background-color: $menuColorText;
+                                    color: $mainBlue;
+                                }
+                            }
                         }
                     }
                     .dl-submenu {
