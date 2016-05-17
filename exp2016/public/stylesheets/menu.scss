@@ -146,8 +146,19 @@ html {
                             background-color: $darkerBlue;
                         }
                         li {
-                            background-color: $mainBlue;
-                            font-size: 1.3rem;
+                            &:hover {
+                                
+                            }
+                            a {
+                                background-color: $mainBlue;
+                                font-size: 1.3rem;
+                                display: block;
+                                @include transition(.2s);
+                                &:hover {
+                                    background-color: $menuColorText;
+                                    color: $mainBlue;
+                                }
+                            }
                         }
                     }
                     .dl-submenu {

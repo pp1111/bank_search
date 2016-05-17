@@ -3,7 +3,7 @@ var topBar = $('.top-bar');
 var middleBar = $('.middle-bar');
 var bottomBar = $('.bottom-bar');
 var menu = $('.dl-menu');
-var menuCategory = $('.dl-menu .category');
+var menuCategory = $('.dl-menu>.category');
 var submenu = $('.dl-submenu');
 var searchIcon = $('.search svg');
 var search = $('.search');
@@ -45,10 +45,10 @@ function openMenu() {
 }
 function openSubMenu() {
     menuCategory.click(function(){
-        submenu.hide();
-        $('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
-        $(this).show();
-        $(this).find(submenu).slideDown();
+        //submenu.slideUp();
+        //$('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
+        //$(this).show();
+        $(this).find(submenu).slideToggle();
         topBar.addClass('top-bar-arrow');
         middleBar.addClass('middle-bar-arrow');
         bottomBar.addClass('bottom-bar-arrow');
@@ -81,10 +81,14 @@ function closeNav() {
         search.removeClass('search-clicked');
         $('.search form').hide();
         dimness.removeClass('dimness-visible');
-        menu.hide();
+        menu.slideUp();
+        submenu.slideUp();
         topBar.removeClass('top-bar-close');
         middleBar.removeClass('middle-bar-close');
         bottomBar.removeClass('bottom-bar-close');
+        topBar.removeClass('top-bar-arrow');
+        middleBar.removeClass('middle-bar-arrow');
+        bottomBar.removeClass('bottom-bar-arrow');
     });
 }
 
