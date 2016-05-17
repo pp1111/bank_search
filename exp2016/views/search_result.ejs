@@ -54,46 +54,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</div>
 			</div>
 			<ul class="dl-menu">
-							<li class="category">
-								<a href="#"><%=categories[0] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=0; i<=14; i++){ %>
-										<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
-										<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
-										<% if(i===8){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
-										<% if(i===9){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
-										<% if(i===10){ subCategories[i] = "Ksiegarnia" } %>
-										<% if(i===13){ subCategories[i] = "Pozyczki pozabankowe" } %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[1] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=15; i<=20; i++){ %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[2] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=21; i<=24; i++){ %>
-										<% if(i===21){ subCategories[i] = "Ubezpieczenia na zycie" } %>
-										<% if(i===22){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[3]%></a>
-								<ul class="dl-submenu">
-									<% for(var i=25; i<=28; i++){ %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
+				<li class="category">
+					<a href="#"><%=categories[0] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=0; i<=14; i++){ %>
+							<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
+							<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
+							<% if(i===8){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
+							<% if(i===9){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
+							<% if(i===10){ subCategories[i] = "Ksiegarnia" } %>
+							<% if(i===13){ subCategories[i] = "Pozyczki pozabankowe" } %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[1] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=15; i<=20; i++){ %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[2] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=21; i<=24; i++){ %>
+							<% if(i===21){ subCategories[i] = "Ubezpieczenia na zycie" } %>
+							<% if(i===22){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[3]%></a>
+					<ul class="dl-submenu">
+						<% for(var i=25; i<=28; i++){ %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -115,16 +115,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			 		<% if(products[i].category===check){ %>
 				 		<div class="single-product">
 							<div class="product-header">
-								<img src ="<%=products[i].logo%>">
+								<div class="img-wrapper">
+									<img src ="<%=products[i].logo%>">
+								</div>
 								<h4><%=products[i].name%> <%=products[i].provider%></h4>
 							</div>
 				 			<!--<div class="info"><%=products[i].description %></div>-->
 							 <p class="info">
 								 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
 							</p>
-							<div class="show-product">
+							<!--<div class="show-product">
 								<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
-							</div>
+							</div>-->
 						</div>
 				 	<%}%>
 			 	<% } %>

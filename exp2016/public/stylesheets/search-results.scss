@@ -3,7 +3,7 @@ $productColor: #34495e;
 $white: #ffffff;
 $black: #000000;
 $alizarin: #e74c3c;
-$lightBlueLowOp: rgba(52, 152, 219, 1);
+$showProductColor: rgba(102, 108, 232, 1);
 
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
@@ -42,36 +42,34 @@ body {
                 margin-top: 80px;
             }
             .products {
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                flex-wrap: wrap;
+                @include flexbox(row, wrap);
                 justify-content: center;
                 margin-top: 30px;
                 .single-product {
                     border: 1px solid #c0c0c0;
                     background-color: $white;
-                    //margin: 10px;
-                    //margin-bottom: 30px;
+                    margin: 5px;
                     width: 300px;
                     position: relative;
-                    //border-top-left-radius: 10px;
-                    //border-top-right-radius: 10px;
+                    border-radius: 10px;
                     .product-header {
-                        //@include flexbox(row, nowrap);
+                        @include flexbox(column, nowrap);
+                        align-items: center;
                         background: #ecf0f1;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
                         h4 {
                             font-size: 2rem;
                             font-weight: 100;
                             color: #0665A2;
-                            text-align: left;
+                            text-align: center;
                         }
-                        img {
-                            width: 60%;
+                        .img-wrapper {
+                            margin-top: 10px;
                             margin-right: 10px;
-                            float: left;
+                            img {
+                                //width: 100%;
+                            }
                         }
                     }
                     button {
@@ -99,7 +97,7 @@ body {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: $lightBlueLowOp;
+                        background-color: $showProductColor;
                         opacity: 0;
                         -webkit-transition: .4s ease-in-out;
                         -moz-transition: .4s ease-in-out;
@@ -120,7 +118,7 @@ body {
                             transition: .2s ease-in-out;
                             &:hover {
                                 background-color: $white;
-                                color: $lightBlueLowOp;
+                                color: $showProductColor;
                             }
                         }
                     }

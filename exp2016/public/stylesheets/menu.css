@@ -104,9 +104,21 @@ html {
       box-shadow: 0 6px 4px -4px #707070; }
       html body nav .dl-menuwrapper .dl-menu li {
         padding: 5px 0;
-        border-bottom: 1px solid #ecf0f1; }
+        border-bottom: 1px solid #ecf0f1;
+        -webkit-transition: 0.2s ease-in-out;
+        -moz-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out; }
         html body nav .dl-menuwrapper .dl-menu li a {
           color: #f0f7fc; }
+      html body nav .dl-menuwrapper .dl-menu .category {
+        background-color: #0665a2;
+        font-size: 2rem;
+        font-weight: 100; }
+        html body nav .dl-menuwrapper .dl-menu .category:hover {
+          background-color: #0f85d1; }
+        html body nav .dl-menuwrapper .dl-menu .category li {
+          background-color: #3498db;
+          font-size: 1.3rem; }
       html body nav .dl-menuwrapper .dl-menu .dl-submenu {
         display: none; }
 

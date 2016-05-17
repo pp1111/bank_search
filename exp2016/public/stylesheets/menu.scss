@@ -1,8 +1,10 @@
 $white: #ffffff;
 $black: #000000;
 $secondaryColor: #ecf0f1;
-$asbestos: #7f8c8d;
-$lightBlueLowOp: rgba(52, 152, 219, 1);
+$grey: #7f8c8d;
+$mainBlue: rgba(52, 152, 219, 1);
+$darkerBlue: rgba(15, 133, 209, 1);
+$darkBlue: rgba(6, 101, 162, 1);
 $menuColorText: #f0f7fc;
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
@@ -39,7 +41,7 @@ html {
             overflow-y: auto;
             position: fixed;
             z-index: 9999;
-            background-color: $lightBlueLowOp;
+            background-color: $mainBlue;
             width: 100%;
             top: 0;
             
@@ -129,8 +131,21 @@ html {
                     li {
                         padding: 5px 0;
                         border-bottom: 1px solid $secondaryColor;
+                        @include transition(.2s);
                         a {
                             color: $menuColorText;
+                        }
+                    }
+                    .category {
+                        background-color: $darkBlue;
+                        font-size: 2rem;
+                        font-weight: 100;
+                        &:hover {
+                            background-color: $darkerBlue;
+                        }
+                        li {
+                            background-color: $mainBlue;
+                            font-size: 1.3rem;
                         }
                     }
                     .dl-submenu {

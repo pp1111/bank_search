@@ -25,25 +25,35 @@ body {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
     margin-top: 30px; }
     body .wrapper .search-result .products .single-product {
       border: 1px solid #c0c0c0;
       background-color: #ffffff;
+      margin: 5px;
       width: 300px;
-      position: relative; }
+      position: relative;
+      border-radius: 10px; }
       body .wrapper .search-result .products .single-product .product-header {
-        background: #ecf0f1; }
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        background: #ecf0f1;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px; }
         body .wrapper .search-result .products .single-product .product-header h4 {
           font-size: 2rem;
           font-weight: 100;
           color: #0665A2;
-          text-align: left; }
-        body .wrapper .search-result .products .single-product .product-header img {
-          width: 60%;
-          margin-right: 10px;
-          float: left; }
+          text-align: center; }
+        body .wrapper .search-result .products .single-product .product-header .img-wrapper {
+          margin-top: 10px;
+          margin-right: 10px; }
       body .wrapper .search-result .products .single-product button {
         border: none;
         width: 100%;
@@ -65,7 +75,7 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #3498db;
+        background-color: #666ce8;
         opacity: 0;
         -webkit-transition: .4s ease-in-out;
         -moz-transition: .4s ease-in-out;
@@ -86,7 +96,7 @@ body {
           transition: .2s ease-in-out; }
           body .wrapper .search-result .products .single-product .show-product button:hover {
             background-color: #ffffff;
-            color: #3498db; }
+            color: #666ce8; }
       body .wrapper .search-result .products .single-product:hover .show-product {
         opacity: 1; }
 
