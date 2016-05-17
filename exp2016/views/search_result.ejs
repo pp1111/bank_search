@@ -36,52 +36,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		<div id="dl-menu" class="dl-menuwrapper">
 			<!--<button class="dl-trigger">Open Menu</button>-->
-			<div class="menu-btn">
-				<div class="top-bar"></div>
-				<div class="middle-bar"></div>
-				<div class="bottom-bar"></div>
+			<div class="navbar">
+				<div class="menu-btn">
+					<div class="top-bar"></div>
+					<div class="middle-bar"></div>
+					<div class="bottom-bar"></div>
+				</div>
+				<div class="search">
+					<form action="">
+						<input type="text" name="search" placeholder="Szukaj">
+					</form>
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" viewBox="0 0 410.587 410.588" style="enable-background:new 0 0 410.587 410.588;" xml:space="preserve">
+						<g>
+							<path d="M410.587,371.351l-50.044-50.044l-39.866-39.866c20.505-28.842,32.685-63.996,32.685-102.009   c0-97.424-79.263-176.687-176.684-176.687C79.251,2.745,0,82.008,0,179.432c0,97.423,79.251,176.675,176.678,176.675   c40.698,0,78.116-13.963,108.01-37.167l68.508,68.508c0.841,0.841,1.784,1.509,2.705,2.207l18.194,18.188L410.587,371.351z    M176.689,314.548c-74.503-0.006-135.111-60.622-135.111-135.111c0-74.5,60.614-135.108,135.111-135.108   c74.498,0,135.108,60.608,135.108,135.108c0,30.998-10.59,59.507-28.218,82.333c-5.833,7.537-12.374,14.49-19.642,20.654   C240.374,302.409,209.94,314.548,176.689,314.548z" fill="#f0f7fc"/>
+						</g>
+					</svg>
+				</div>
 			</div>
 			<ul class="dl-menu">
-							<li class="category">
-								<a href="#"><%=categories[0] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=0; i<=14; i++){ %>
-										<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
-										<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
-										<% if(i===8){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
-										<% if(i===9){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
-										<% if(i===10){ subCategories[i] = "Ksiegarnia" } %>
-										<% if(i===13){ subCategories[i] = "Pozyczki pozabankowe" } %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[1] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=15; i<=20; i++){ %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[2] %></a>
-								<ul class="dl-submenu">
-									<% for(var i=21; i<=24; i++){ %>
-										<% if(i===21){ subCategories[i] = "Ubezpieczenia na zycie" } %>
-										<% if(i===22){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
-							<li class="category">
-								<a href="#"><%=categories[3]%></a>
-								<ul class="dl-submenu">
-									<% for(var i=25; i<=28; i++){ %>
-										<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-									<% } %>
-								</ul>
-							</li>
+				<li class="category">
+					<a href="#"><%=categories[0] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=0; i<=14; i++){ %>
+							<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
+							<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
+							<% if(i===8){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
+							<% if(i===9){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
+							<% if(i===10){ subCategories[i] = "Ksiegarnia" } %>
+							<% if(i===13){ subCategories[i] = "Pozyczki pozabankowe" } %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[1] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=15; i<=20; i++){ %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[2] %></a>
+					<ul class="dl-submenu">
+						<% for(var i=21; i<=24; i++){ %>
+							<% if(i===21){ subCategories[i] = "Ubezpieczenia na zycie" } %>
+							<% if(i===22){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
+				<li class="category">
+					<a href="#"><%=categories[3]%></a>
+					<ul class="dl-submenu">
+						<% for(var i=25; i<=28; i++){ %>
+							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
+						<% } %>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -95,29 +107,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			});
 		</script>
 	<div class="wrapper">
-	  <article class="search">
-	  	<h2><%=check.replace('-',' ')%></h2>
-		  <div class="products">
+		<div class="dimness"></div>
+	  	<article class="search-result">
+	  		<h2><%=check.replace('-',' ')%></h2>
+		  	<div class="products">
 			 	<%for(var i=0;i<products.length;i++) {%> 
 			 		<% if(products[i].category===check){ %>
 				 		<div class="single-product">
-							<img src ="<%=products[i].logo%>">
-							<h4><%=products[i].name%> <%=products[i].provider%></h4>
+							<div class="product-header">
+								<div class="img-wrapper">
+									<img src ="<%=products[i].logo%>">
+								</div>
+								<h4><%=products[i].name%> <%=products[i].provider%></h4>
+							</div>
 				 			<!--<div class="info"><%=products[i].description %></div>-->
 							 <p class="info">
 								 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
 							</p>
-							<div class="show-product">
+							<!--<div class="show-product">
 								<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
-							</div>
+							</div>-->
 						</div>
 				 	<%}%>
 			 	<% } %>
-		 </div>
-	  </article>
-	  <aside class="aside aside-1"></aside>
-	  <aside class="aside aside-2"></aside>
-	  <footer class="footer">Footer</footer>
+		 	</div>
+	  	</article>
+	  	<aside class="aside aside-1"></aside>
+	  	<aside class="aside aside-2"></aside>
+	  	<footer class="footer">Footer</footer>
 	</div>
 
 	<footer> <% include partials/templemate/footer.ejs %> </footer>
