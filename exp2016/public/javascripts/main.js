@@ -45,7 +45,7 @@ function openMenu() {
 }
 function openSubMenu() {
     menuCategory.click(function(){
-        //submenu.slideUp();
+        $(this).find(submenu).addClass('it-must-be-open');
         //$('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
         //$(this).show();
         $(this).find(submenu).slideToggle();
@@ -61,7 +61,6 @@ function closeSubMenu() {
             topBar.removeClass('top-bar-arrow');
             middleBar.removeClass('middle-bar-arrow');
             bottomBar.removeClass('bottom-bar-arrow');
-            $('.dl-menu>li').show();
         }
     });
 }
