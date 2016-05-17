@@ -35,6 +35,8 @@ html {
     font-size: 62.5%;
     body {
         nav {
+            max-height: 100%;
+            overflow-y: auto;
             position: fixed;
             z-index: 9999;
             background-color: $lightBlueLowOp;

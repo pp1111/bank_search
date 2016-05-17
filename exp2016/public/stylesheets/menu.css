@@ -1,6 +1,8 @@
 html {
   font-size: 62.5%; }
   html body nav {
+    max-height: 100%;
+    overflow-y: auto;
     position: fixed;
     z-index: 9999;
     background-color: #3498db;

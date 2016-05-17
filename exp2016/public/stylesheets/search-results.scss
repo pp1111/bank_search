@@ -23,12 +23,10 @@ body {
     .wrapper {
         .dimness {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
-            top: 0;
-            right: 0;
-            left: 0;
+            height: 100%;
             bottom: 0;
             z-index: 100;
             &.dimness-visible {

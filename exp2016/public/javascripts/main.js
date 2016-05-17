@@ -46,7 +46,7 @@ function openSubMenu() {
         submenu.hide('fast');
         $('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
         $(this).show();
-        $(this).find(submenu).show();
+        $(this).find(submenu).slideDown();
         topBar.addClass('top-bar-arrow');
         middleBar.addClass('middle-bar-arrow');
         bottomBar.addClass('bottom-bar-arrow');
@@ -55,7 +55,7 @@ function openSubMenu() {
 function closeSubMenu() {
     menuBtn.click(function(){
         if(topBar.hasClass('top-bar-arrow')) {
-            submenu.hide();
+            submenu.slideUp();
             topBar.removeClass('top-bar-arrow');
             middleBar.removeClass('middle-bar-arrow');
             bottomBar.removeClass('bottom-bar-arrow');
