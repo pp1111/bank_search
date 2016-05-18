@@ -14,13 +14,15 @@ body {
     height: 100%;
     bottom: 0;
     z-index: 100;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     -webkit-transition: 0.3s ease-in-out;
     -moz-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out; }
     body .wrapper .dimness.dimness-visible {
       background-color: #000000;
       display: block;
+      visibility: visible;
       opacity: 0.7; }
   body .wrapper .search-result h2 {
     text-align: center;
@@ -38,12 +40,11 @@ body {
     justify-content: center;
     margin-top: 30px; }
     body .wrapper .search-result .products .single-product {
-      border: 1px solid #c0c0c0;
+      box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
       background-color: #ffffff;
-      margin: 5px;
+      margin: 10px;
       width: 300px;
-      position: relative;
-      border-radius: 10px; }
+      position: relative; }
       body .wrapper .search-result .products .single-product .product-header {
         display: -webkit-box;
         display: -moz-box;
@@ -53,16 +54,13 @@ body {
         flex-flow: column nowrap;
         align-items: center;
         background: #ecf0f1;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
         min-height: 110px; }
         body .wrapper .search-result .products .single-product .product-header h4 {
           font-size: 2rem;
           font-weight: 100;
           color: #0665A2;
           text-align: center;
-          margin-top: 15px;
-          margin-bottom: 10px; }
+          margin: 15px 15px 10px 15px; }
         body .wrapper .search-result .products .single-product .product-header .img-wrapper {
           margin-top: 10px;
           margin-right: 10px; }
@@ -97,10 +95,9 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #85c4ed;
+        background-color: rgba(0, 0, 0, 0.7);
         visibility: hidden;
         opacity: 0;
-        border-radius: 10px;
         -webkit-transition: 0.5s ease-in-out;
         -moz-transition: 0.5s ease-in-out;
         transition: 0.5s ease-in-out; }
@@ -141,7 +138,7 @@ body {
           transition: 0.2s ease-in-out; }
           body .wrapper .search-result .products .single-product .show-product button:hover {
             background-color: #ffffff;
-            color: #85c4ed; }
+            color: #0665a2; }
         body .wrapper .search-result .products .single-product .show-product.active {
           visibility: visible;
           opacity: 1; }

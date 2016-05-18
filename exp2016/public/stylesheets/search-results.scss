@@ -39,11 +39,13 @@ body {
             height: 100%;
             bottom: 0;
             z-index: 100;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
             @include transition(.3s);
             &.dimness-visible {
                 background-color: $black;
                 display: block;
+                visibility: visible;
                 opacity: 0.7;
             }
         }
@@ -60,26 +62,27 @@ body {
                 justify-content: center;
                 margin-top: 30px;
                 .single-product {
-                    border: 1px solid #c0c0c0;
+                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+                    //border: 1px solid #c0c0c0;
                     background-color: $white;
-                    margin: 5px;
+                    margin: 10px;
                     width: 300px;
                     position: relative;
-                    border-radius: 10px;
+                    //border-radius: 10px;
                     .product-header {
                         @include flexbox(column, nowrap);
                         align-items: center;
                         background: #ecf0f1;
-                        border-top-left-radius: 10px;
-                        border-top-right-radius: 10px;
+                        //border-top-left-radius: 10px;
+                        //border-top-right-radius: 10px;
                         min-height: 110px;
+                        
                         h4 {
                             font-size: 2rem;
                             font-weight: 100;
                             color: #0665A2;
                             text-align: center;
-                            margin-top: 15px;
-                            margin-bottom: 10px;
+                            margin: 15px 15px 10px 15px;
                         }
                         .img-wrapper {
                             margin-top: 10px;
@@ -127,10 +130,11 @@ body {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: $lightBlue;
+                        //background-color: $lightBlue;
+                        background-color: rgba(0, 0, 0, .7);
                         visibility: hidden;
                         opacity: 0;
-                        border-radius: 10px;
+                        //border-radius: 10px;
                         @include transition(.5s);
                         h4 {
                             font-size: 2rem;
@@ -172,7 +176,7 @@ body {
                             @include transition(.2s);
                             &:hover {
                                 background-color: $white;
-                                color: $lightBlue;
+                                color: $darkBlue;
                             }
                         }
                         &.active {
