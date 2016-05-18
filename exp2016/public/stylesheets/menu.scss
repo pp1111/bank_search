@@ -14,6 +14,8 @@ $brighterYellow: #FFD459;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
 }
 @mixin transition($time) {
     -webkit-transition: $time ease-in-out;
@@ -45,6 +47,8 @@ html {
     font-size: 62.5%;
     body {
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0;
+        padding: 0;
         nav {
             max-height: 100%;
             overflow-y: auto;
@@ -68,6 +72,7 @@ html {
                     align-items: center;
                     margin: 0;
                     border: none;
+                    color: $menuColorText;
                     .menu-btn {
                         width: 40px;
                         padding: 5px;
@@ -107,10 +112,25 @@ html {
                         }
                     }
                     .amoney-link {
-                        color: $menuColorText;
+                        
                         text-decoration: none;
                         font-size: 2rem;
                         font-family: 'Roboto', sans-serif;
+                        color: $menuColorText;
+                    }
+                    h5 {
+                        margin-right: 10px;
+                        a {
+                            color: $menuColorText;
+                            font-weight: 200;
+                            font-size: 1.8rem;
+                            text-decoration: none;
+                            display: block;
+                            letter-spacing: .1px;
+                            &:hover {
+                                
+                            }
+                        }
                     }
                     .search {
                         padding: 5px;

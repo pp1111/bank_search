@@ -1,12 +1,11 @@
 $backgroundColor: #ecf0f1;
-$productColor: #34495e;
 $white: #ffffff;
 $black: #000000;
 $alizarin: #e74c3c;
-$showProductColor: rgba(102, 108, 232, 1);
 $mainBlue: rgba(52, 152, 219, 1);
 $darkerBlue: rgba(15, 133, 209, 1);
 $darkBlue: rgba(6, 101, 162, 1);
+$lightBlue: rgba(133, 196, 237, 1);
 
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
@@ -128,9 +127,18 @@ body {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: $showProductColor;
-                        display: none;
+                        background-color: $lightBlue;
+                        visibility: hidden;
+                        opacity: 0;
                         border-radius: 10px;
+                        @include transition(.5s);
+                        h4 {
+                            font-size: 2rem;
+                            font-weight: 100;
+                            color: $white;
+                            text-align: center;
+                            margin: 15px 30px 10px 30px;
+                        }
                         .close-btn {
                             position: absolute;
                             top: 10px;
@@ -161,16 +169,15 @@ body {
                             border: 2px solid $white;
                             color: $white;
                             font-weight: 200;
-                            -webkit-transition: .2s ease-in-out;
-                            -moz-transition: .2s ease-in-out;
-                            transition: .2s ease-in-out;
+                            @include transition(.2s);
                             &:hover {
                                 background-color: $white;
-                                color: $showProductColor;
+                                color: $lightBlue;
                             }
                         }
                         &.active {
-                            display: block;
+                            visibility: visible;
+                            opacity: 1;
                         }
                     }
                 }

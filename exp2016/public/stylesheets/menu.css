@@ -7,7 +7,9 @@
 html {
   font-size: 62.5%; }
   html body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0;
+    padding: 0; }
     html body nav {
       max-height: 100%;
       overflow-y: auto;
@@ -28,10 +30,13 @@ html {
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
         margin: 0;
-        border: none; }
+        border: none;
+        color: #f0f7fc; }
         html body nav .dl-menuwrapper .navbar .menu-btn {
           width: 40px;
           padding: 5px; }
@@ -70,10 +75,19 @@ html {
             -moz-transition: 0.3s ease-in-out;
             transition: 0.3s ease-in-out; }
         html body nav .dl-menuwrapper .navbar .amoney-link {
-          color: #f0f7fc;
           text-decoration: none;
           font-size: 2rem;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Roboto', sans-serif;
+          color: #f0f7fc; }
+        html body nav .dl-menuwrapper .navbar h5 {
+          margin-right: 10px; }
+          html body nav .dl-menuwrapper .navbar h5 a {
+            color: #f0f7fc;
+            font-weight: 200;
+            font-size: 1.8rem;
+            text-decoration: none;
+            display: block;
+            letter-spacing: .1px; }
         html body nav .dl-menuwrapper .navbar .search {
           padding: 5px;
           display: -webkit-box;
@@ -81,6 +95,8 @@ html {
           display: -ms-flexbox;
           display: -webkit-flex;
           display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
           align-items: center;
           height: 30px;
           margin-right: 5px; }
