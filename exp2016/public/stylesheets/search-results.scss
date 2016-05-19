@@ -1,12 +1,11 @@
 $backgroundColor: #ecf0f1;
-$productColor: #34495e;
 $white: #ffffff;
 $black: #000000;
 $alizarin: #e74c3c;
-$showProductColor: rgba(102, 108, 232, 1);
 $mainBlue: rgba(52, 152, 219, 1);
 $darkerBlue: rgba(15, 133, 209, 1);
 $darkBlue: rgba(6, 101, 162, 1);
+$lightBlue: rgba(133, 196, 237, 1);
 
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
@@ -27,7 +26,10 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: $white;
+    line-height: 1.43;
     .wrapper {
         .dimness {
             opacity: 0;
@@ -37,11 +39,13 @@ body {
             height: 100%;
             bottom: 0;
             z-index: 100;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
             @include transition(.3s);
             &.dimness-visible {
                 background-color: $black;
                 display: block;
+                visibility: visible;
                 opacity: 0.7;
             }
         }
@@ -50,31 +54,35 @@ body {
                 text-align: center;
                 margin: 0;
                 margin-top: 80px;
+                font-size: 3rem;
+                font-weight: 500;
             }
             .products {
                 @include flexbox(row, wrap);
                 justify-content: center;
                 margin-top: 30px;
                 .single-product {
-                    border: 1px solid #c0c0c0;
+                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+                    //border: 1px solid #c0c0c0;
                     background-color: $white;
-                    margin: 5px;
+                    margin: 10px;
                     width: 300px;
                     position: relative;
-                    border-radius: 10px;
+                    //border-radius: 10px;
                     .product-header {
                         @include flexbox(column, nowrap);
                         align-items: center;
                         background: #ecf0f1;
-                        border-top-left-radius: 10px;
-                        border-top-right-radius: 10px;
+                        //border-top-left-radius: 10px;
+                        //border-top-right-radius: 10px;
                         min-height: 110px;
+                        
                         h4 {
                             font-size: 2rem;
                             font-weight: 100;
                             color: #0665A2;
                             text-align: center;
-                            margin-top: 15px;
+                            margin: 15px 15px 10px 15px;
                         }
                         .img-wrapper {
                             margin-top: 10px;
@@ -111,6 +119,9 @@ body {
                                 text-decoration: underline;
                             }
                         }
+                        .hide {
+                            display: none;
+                        }
                     }
                     .show-product {
                         z-index: 99;
@@ -119,9 +130,19 @@ body {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: $showProductColor;
-                        display: none;
-                        border-radius: 10px;
+                        //background-color: $lightBlue;
+                        background-color: rgba(0, 0, 0, .7);
+                        visibility: hidden;
+                        opacity: 0;
+                        //border-radius: 10px;
+                        @include transition(.5s);
+                        h4 {
+                            font-size: 2rem;
+                            font-weight: 100;
+                            color: $white;
+                            text-align: center;
+                            margin: 15px 30px 10px 30px;
+                        }
                         .close-btn {
                             position: absolute;
                             top: 10px;
@@ -152,16 +173,15 @@ body {
                             border: 2px solid $white;
                             color: $white;
                             font-weight: 200;
-                            -webkit-transition: .2s ease-in-out;
-                            -moz-transition: .2s ease-in-out;
-                            transition: .2s ease-in-out;
+                            @include transition(.2s);
                             &:hover {
                                 background-color: $white;
-                                color: $showProductColor;
+                                color: $darkBlue;
                             }
                         }
                         &.active {
-                            display: block;
+                            visibility: visible;
+                            opacity: 1;
                         }
                     }
                 }
