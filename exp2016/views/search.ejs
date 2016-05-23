@@ -47,13 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<a href="#"><%=categories[0] %></a>
 					<ul class="dl-submenu">
 						<% for(var i=0; i<=13; i++){ %>
-							<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
-							<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
-							<% if(i===8){ subCategories[i] = "Konta oszczednosciowe" } %>
-							<% if(i===9){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
-							<% if(i===10){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
-							<% if(i===11){ subCategories[i] = "Ksiegarnia" } %>
-							<% if(i===14){ subCategories[i] = "Pozyczki pozabankowe" } %>
+							
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -70,8 +64,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<a href="#"><%=categories[2] %></a>
 					<ul class="dl-submenu">
 						<% for(var i=21; i<=24; i++){ %>
-							<% if(i===22){ subCategories[i] = "Ubezpieczenia na zycie" } %>
-							<% if(i===23){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>

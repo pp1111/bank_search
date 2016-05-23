@@ -10,7 +10,6 @@
 	<link rel="shortcut icon" href="../favicon.ico"> 
 	<link rel="stylesheet" type="text/css" href="stylesheets/menu.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/search-results.css" />
-	<script src="javascripts/modernizr.custom.js"></script>
 	<title></title>
  </head>
 
@@ -56,14 +55,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="category">
 					<a href="#"><%=categories[0] %></a>
 					<ul class="dl-submenu">
-						<% for(var i=0; i<=14; i++){ %>
-							<% if(i===3){ subCategories[i] = "Kredyty gotowkowe" } %>
-							<% if(i===5){ subCategories[i] = "Konta mlodziezowe" } %>
-							<% if(i===8){ subCategories[i] = "Konta oszczednosciowe" } %>
-							<% if(i===9){ subCategories[i] = "Pozyczki spolecznosciowe" } %>
-							<% if(i===10){ subCategories[i] = "Doradztwo ds nieruchomosci" } %>
-							<% if(i===11){ subCategories[i] = "Ksiegarnia" } %>
-							<% if(i===14){ subCategories[i] = "Pozyczki pozabankowe" } %>
+						<% for(var i=0; i<=13; i++){ %>
+							
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -80,8 +73,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<a href="#"><%=categories[2] %></a>
 					<ul class="dl-submenu">
 						<% for(var i=21; i<=24; i++){ %>
-							<% if(i===22){ subCategories[i] = "Ubezpieczenia na zycie" } %>
-							<% if(i===23){ subCategories[i] = "Ubezpieczenia majatkowe" } %>
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -114,9 +105,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								</div>
 								<h4><%=products[j].name%> <%=products[j].provider%></h4>
 							</div>
-				 			<!--<div class="info"><%=products[i].description %></div>-->
-							 <p class="info">
-						
+							 <p>
+								<%=products[j].description%>
 							</p>
 							<div class="show-product">
 								<<div class="close-btn">

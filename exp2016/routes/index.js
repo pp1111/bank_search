@@ -7,7 +7,25 @@ var url = require('url');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-var utf8 = require('utf8');
+
+var iconv = require('iconv');
+
+function toUTF8(body) {
+  // convert from iso-8859-1 to utf-8
+  var ic = new iconv.Iconv('iso-8859-2', 'utf-8');
+  var buf = ic.convert(body);
+
+  return buf.toString('utf-8');
+}
+
+function asciiOff(body) {
+  // convert from iso-8859-1 to utf-8
+  var ic = new iconv.Iconv('UTF-8', 'ASCII//TRANSLIT');
+  var buf = ic.convert(body);
+
+  buf = buf.toString().replace(/'/g,"");
+  return buf.toString('utf-8');
+}
 
 var now = new Date();
 var currentYear = now.getFullYear();   
@@ -40,9 +58,10 @@ router.get('/',function(req,res){
   var xml = '';
 
     response.on('data',function(chunk){
-      xml+=chunk;
+      xml+=toUTF8(chunk);
     });
     response.on('end',function(){
+
 
       parseString(xml, function(err,result){
         for(var key in result.oferta.kategoria){
@@ -51,7 +70,7 @@ router.get('/',function(req,res){
 
         result.oferta.kategoria.forEach(function(entry){
             for(var key in entry.podkategoria){
-              subCategories_name.push(entry.podkategoria[key].$.nazwa);
+              subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
             }
         });
 
@@ -59,12 +78,12 @@ router.get('/',function(req,res){
            for(var key in entry.podkategoria){
               for(var i in entry.podkategoria[key].produkt){
                 products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
-              }
-             
+              }     
             }
         })
 
-        
+        console.log(subCategories_name);
+
           res.render('search',{
            categories: categories_name,
            subCategories: subCategories_name,
@@ -110,7 +129,7 @@ router.post('/',function(req,res){
 
   var xml = '';
     response.on('data',function(chunk){
-      xml+=chunk;
+      xml+=toUTF8(chunk);
     });
     response.on('end',function(){
 
@@ -121,16 +140,15 @@ router.post('/',function(req,res){
 
         result.oferta.kategoria.forEach(function(entry){
             for(var key in entry.podkategoria){
-              subCategories_name.push(entry.podkategoria[key].$.nazwa);
+             subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
             }
         });
 
         result.oferta.kategoria.forEach(function(entry){
            for(var key in entry.podkategoria){
               for(var i in entry.podkategoria[key].produkt){
-                products_subcategory.push(entry.podkategoria[key].$.nazwa);
+                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
                  for(var j in entry.podkategoria[key].produkt[i].dostawca){
-                  if( i==='0') { console.log('\n') ; }
                     products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
                     products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
                     products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
@@ -141,6 +159,15 @@ router.post('/',function(req,res){
                  }
                   for(var j in entry.podkategoria[key].produkt[i].opis){
                     var temp = entry.podkategoria[key].produkt[i].opis.toString();
+                    temp = temp.replace(/<li>/g,"");
+                    temp = temp.replace(/<\/li>/g,"");
+                    temp = temp.replace(/<ul>/g,"");
+                    temp = temp.replace(/<\/ul>/g,"");
+                    temp = temp.replace(/\r\n/g,"");
+                    temp = temp.replace(/<\/small>/g,"");
+                    temp = temp.replace(/<\/p>/g,"");
+                    temp = temp.replace(/<small>/g,"");
+                    temp = temp.replace(/<p>/g,"");
                     products_description.push(temp);
                  }
 
@@ -154,6 +181,7 @@ router.post('/',function(req,res){
         }
 
 
+
         if(/kar.*/.exec(search)){
           check.push('Karty kredytowe');
         }
@@ -165,7 +193,7 @@ router.post('/',function(req,res){
 
         else if(/kre.*/.exec(search)){
           check.push('Kredyty mieszkaniowe');
-          check.push('Kretydy gotowkowe');
+          check.push('Kredyty gotowkowe');
           check.push('Kredyty konsolidacyjne');
           check.push('Kredyty odnawialne');
           check.push('Kredyty dla firm');
@@ -1160,7 +1188,7 @@ router.get(/^\/przelicznik\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(
     });
 });
                   
-router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
+router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
 
   var categories_name = [];
   var subCategories_name = [];
@@ -1191,7 +1219,7 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
 
   var xml = '';
     response.on('data',function(chunk){
-      xml+=chunk;
+        xml+=toUTF8(chunk);
     });
     response.on('end',function(){
 
@@ -1202,14 +1230,14 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
 
         result.oferta.kategoria.forEach(function(entry){
             for(var key in entry.podkategoria){
-              subCategories_name.push(entry.podkategoria[key].$.nazwa);
+              subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
             }
         });
 
         result.oferta.kategoria.forEach(function(entry){
            for(var key in entry.podkategoria){
               for(var i in entry.podkategoria[key].produkt){
-                products_subcategory.push(entry.podkategoria[key].$.nazwa);
+                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
                  for(var j in entry.podkategoria[key].produkt[i].dostawca){
                   if( i==='0') { console.log('\n') ; }
                     products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
@@ -1222,6 +1250,15 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
                  }
                   for(var j in entry.podkategoria[key].produkt[i].opis){
                     var temp = entry.podkategoria[key].produkt[i].opis.toString();
+                    temp = temp.replace(/<li>/g,"");
+                    temp = temp.replace(/<\/li>/g,"");
+                    temp = temp.replace(/<ul>/g,"");
+                    temp = temp.replace(/<\/ul>/g,"");
+                    temp = temp.replace(/\r\n/g,"");
+                    temp = temp.replace(/<\/small>/g,"");
+                    temp = temp.replace(/<\/p>/g,"");
+                    temp = temp.replace(/<small>/g,"");
+                    temp = temp.replace(/<p>/g,"");
                     products_description.push(temp);
                  }
 
@@ -1234,7 +1271,8 @@ router.get(/^\/((\w+)\-*(\w*)\-*(\w*))$/, function(req,res){
             product_table.push(p);
         }
 
-        console.log(check[0]);
+  
+        console.log(product_table);
 
           res.render('search_result',{
                categories: categories_name,
