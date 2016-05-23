@@ -163,7 +163,7 @@ router.post('/',function(req,res){
                     temp = temp.replace(/<\/li>/g,"");
                     temp = temp.replace(/<ul>/g,"");
                     temp = temp.replace(/<\/ul>/g,"");
-                    temp = temp.replace(/\r\n/g,"");
+                    // temp = temp.replace(/\r\n/g,"");
                     temp = temp.replace(/<\/small>/g,"");
                     temp = temp.replace(/<\/p>/g,"");
                     temp = temp.replace(/<small>/g,"");
@@ -1254,7 +1254,7 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
                     temp = temp.replace(/<\/li>/g,"");
                     temp = temp.replace(/<ul>/g,"");
                     temp = temp.replace(/<\/ul>/g,"");
-                    temp = temp.replace(/\r\n/g,"");
+                    // temp = temp.replace(/\r\n/g,"");
                     temp = temp.replace(/<\/small>/g,"");
                     temp = temp.replace(/<\/p>/g,"");
                     temp = temp.replace(/<small>/g,"");
