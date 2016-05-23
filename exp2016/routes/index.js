@@ -97,7 +97,7 @@ router.get('/',function(req,res){
 
 });
 
-router.post('/',function(req,res){
+router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
   var categories_name = [];
   var subCategories_name = [];
