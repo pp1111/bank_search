@@ -3,13 +3,14 @@
 <html lang="pl">
 
 <head> 
-	<% include partials/templemate/head.ejs %>
 	<meta charset="utf-8"/>
 	<meta name="Description" content="<%=description%>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel='stylesheet' href='/stylesheets/converter.css' />	
 	<link rel="stylesheet" href='/icons/calc/css/fontello.css' />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	<title><%=title%></title>
+
  </head>
 
 <body>
@@ -42,7 +43,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<% include partials/content/result.ejs %>
 	</div>
 	<footer> <a href ="/">aMoney</a> <% include partials/templemate/footer.ejs %> </footer>
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="/javascripts/red.js"></script>
 </body>
 
 </html>

@@ -103,6 +103,7 @@ html {
           flex-direction: row;
           flex-wrap: nowrap;
           align-items: center;
+          justify-content: space-between;
           height: 30px;
           margin-right: 5px; }
           @media (min-width: 425px) {
@@ -111,6 +112,7 @@ html {
               border: 1px solid #0665A2; } }
           html body nav .dl-menuwrapper .navbar .search form {
             height: 100%;
+            width: 70%;
             margin-right: 5px;
             display: none; }
             @media (min-width: 425px) {
@@ -120,6 +122,7 @@ html {
               html body nav .dl-menuwrapper .navbar .search form {
                 width: 250px; } }
             html body nav .dl-menuwrapper .navbar .search form input {
+              width: 100%;
               height: 100%;
               background-color: #0F85D1;
               border: none;
@@ -139,6 +142,18 @@ html {
             html body nav .dl-menuwrapper .navbar .search form :-moz-placeholder {
               /* Firefox 18- */
               color: rgba(240, 247, 252, 0.7); }
+          @media (min-width: 425px) {
+            html body nav .dl-menuwrapper .navbar .search .svg-not-btn {
+              display: none; } }
+          @media (max-width: 424px) {
+            html body nav .dl-menuwrapper .navbar .search .svg-btn {
+              display: none; } }
+          html body nav .dl-menuwrapper .navbar .search button {
+            background-color: transparent;
+            border: none;
+            padding: 0; }
+            html body nav .dl-menuwrapper .navbar .search button:focus {
+              outline: none; }
           html body nav .dl-menuwrapper .navbar .search.search-clicked {
             background-color: #0F85D1;
             border: 1px solid #0665A2; }
