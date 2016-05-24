@@ -74,11 +74,16 @@ html {
             -webkit-transition: 0.3s ease-in-out;
             -moz-transition: 0.3s ease-in-out;
             transition: 0.3s ease-in-out; }
-        html body nav .dl-menuwrapper .navbar .amoney-link {
+        html body nav .dl-menuwrapper .navbar .amoney-link a {
           text-decoration: none;
           font-size: 2rem;
           font-family: 'Roboto', sans-serif;
           color: #f0f7fc; }
+        @media (min-width: 425px) {
+          html body nav .dl-menuwrapper .navbar .amoney-link {
+            display: block;
+            flex-grow: 2;
+            margin-left: 10px; } }
         html body nav .dl-menuwrapper .navbar h5 {
           margin-right: 10px; }
           html body nav .dl-menuwrapper .navbar h5 a {
@@ -100,10 +105,20 @@ html {
           align-items: center;
           height: 30px;
           margin-right: 5px; }
+          @media (min-width: 425px) {
+            html body nav .dl-menuwrapper .navbar .search {
+              background-color: #0F85D1;
+              border: 1px solid #0665A2; } }
           html body nav .dl-menuwrapper .navbar .search form {
             height: 100%;
             margin-right: 5px;
             display: none; }
+            @media (min-width: 425px) {
+              html body nav .dl-menuwrapper .navbar .search form {
+                display: block; } }
+            @media (min-width: 768px) {
+              html body nav .dl-menuwrapper .navbar .search form {
+                width: 250px; } }
             html body nav .dl-menuwrapper .navbar .search form input {
               height: 100%;
               background-color: #0F85D1;

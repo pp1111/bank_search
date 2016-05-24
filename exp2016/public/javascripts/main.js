@@ -38,8 +38,10 @@ function openMenu() {
                 menu.slideUp();
                 dimness.removeClass('dimness-visible');
             }
-            search.removeClass('search-clicked');
-            $('nav .search form').hide();
+            if( $(window).width() < 425) {
+                search.removeClass('search-clicked');
+                $('nav .search form').hide();
+            }
         }
     });
 }

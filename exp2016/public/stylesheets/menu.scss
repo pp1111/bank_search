@@ -112,11 +112,17 @@ html {
                         }
                     }
                     .amoney-link {
-                        
-                        text-decoration: none;
-                        font-size: 2rem;
-                        font-family: 'Roboto', sans-serif;
-                        color: $menuColorText;
+                        a {
+                            text-decoration: none;
+                            font-size: 2rem;
+                            font-family: 'Roboto', sans-serif;
+                            color: $menuColorText;
+                        }
+                        @media(min-width: 425px) {
+                            display: block;
+                            flex-grow: 2;
+                            margin-left: 10px;
+                        }
                     }
                     h5 {
                         margin-right: 10px;
@@ -138,10 +144,20 @@ html {
                         align-items: center;
                         height: 30px;
                         margin-right: 5px;
+                        @media(min-width: 425px) {
+                            background-color: #0F85D1;
+                            border: 1px solid #0665A2;
+                        }
                         form {
                             height: 100%;
                             margin-right: 5px;
                             display: none;
+                            @media(min-width: 425px) {
+                                display: block;
+                            }
+                            @media(min-width: 768px) {
+                                width: 250px;
+                            }
                             input {
                                 height: 100%;
                                 background-color: #0F85D1;

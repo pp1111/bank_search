@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<div class="middle-bar"></div>
 					<div class="bottom-bar"></div>
 				</div>
-				<a href="/" class="amoney-link">aMoney</a>
+				<div class="amoney-link"><a href="/">aMoney</a></div>
 				<div class="search">
 					<form action="">
 						<input type="text" name="search" placeholder="Szukaj">
@@ -122,10 +122,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<div class="bar top-bar"></div>
 									<div class="bar bottom-bar"></div>
 								</div>
-								<!--<h4><%=products[i].name%> <%=products[i].provider%></h4>
+								<!--<h4><%=products[i].name%> <%=products[i].provider%></h4>-->
 								<p class="info">
-								 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae mi erat. Sed eu nisi sed leo pulvinar consectetur vel vitae massa. Nulla sed aliquam erat. In congue erat eu lacus convallis, quis suscipit risus molestie. Proin scelerisque ipsum dolor, eget malesuada sapien malesuada eu. Aliquam egestas massa urna, sit amet posuere dui lobortis sed. Mauris sit amet luctus lorem. Proin non tellus maximus, tincidunt quam id, sollicitudin quam. Curabitur porttitor scelerisque ipsum, sed consectetur mauris gravida volutpat.
-								</p>-->
+								 	<%=products[i].description %>
+								</p>
 								<button onclick='window.location="<%=products[i].application%>"'>Zloż wniosek</button>
 							</div>
 						</div>
@@ -135,7 +135,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	  	</article>
 	  	<aside class="aside aside-1"></aside>
 	  	<aside class="aside aside-2"></aside>
-	  	<footer class="footer">Footer</footer>
 	</div>
 
 	<footer> <% include partials/templemate/footer.ejs %> </footer>
