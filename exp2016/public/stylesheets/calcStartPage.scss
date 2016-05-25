@@ -5,6 +5,7 @@ $mainBlue: rgba(52, 152, 219, 1);
 $lightestBlue: #f0f7fc;
 $lightBlue: rgba(133, 196, 237, 1);
 $black: #000000;
+$white: #ffffff;
 
 @mixin flexbox($direction, $wrap) {
     display: -webkit-box;
@@ -60,7 +61,7 @@ html {
                 }
             }
             position: absolute;
-            top: 35%;
+            top: 25%;
             width: 100%;
             @media (min-width: 1024px) {
                 top: 25%;
@@ -72,8 +73,12 @@ html {
                 h1 {
                     color: $darkBlue;
                     font-size: 4.5rem;
+                    text-align: center;
                     font-weight: 100;
                     margin: 0;
+                    @media (min-width: 425px) {
+                        font-size: 6rem;
+                    }
                     @media (min-width: 768px) {
                         font-size: 8rem;
                         margin-bottom: 10px;
@@ -118,6 +123,59 @@ html {
                             @media (min-width: 768px) {
                                 padding: 10px 15px;
                             }
+                        }
+                    }
+                    select {
+                        border: 0 !important;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance:none;
+                        background: $white url(../images/arrow-down.png) no-repeat 90% center;
+                        background-size: 10px;
+                        width: 100px;
+                        text-indent: 0.01px;
+                        text-overflow: "";
+                        color: $darkBlue;
+                        border-radius: 15px;
+                        padding: 5px;
+                        box-shadow: 0 0 3px rgba(000,000,000, 0.5);
+                        border-radius: 0;
+                        height: 100%;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .values {
+                        @include flexbox(column, nowrap);
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: 30px;
+                        .course {
+                            height: 30px;
+                            button {
+                                border: none;
+                                border-radius: 0;
+                                height: 100%;
+                                background-color: $white;
+                            }
+                            select {
+                                width: 60px;
+                            }
+                        }
+                        .date {
+                            height: 30px;
+                            margin-top: 10px;
+                            #year,
+                            #day{
+                                width: 50px;
+                            }
+                            @media(min-width: 768px) {
+                                margin-top: 0;
+                            }
+                        }
+                        @media(min-width: 768px) {
+                            flex-direction: row;
+                            justify-content: space-around;
                         }
                     }
                 }
