@@ -82,7 +82,7 @@ body {
           background-color: #ffffff; }
         body .wrapper .search-result .products .single-product .info {
           margin: 10px 8%;
-          max-height: 200px;
+          max-height: 250px;
           overflow-y: auto;
           color: #000000;
           font-size: 1.5rem;
