@@ -5,7 +5,7 @@ html {
     height: 100%; }
     html body .wrapper {
       position: absolute;
-      top: 35%;
+      top: 25%;
       width: 100%; }
       html body .wrapper .dimness {
         opacity: 0;
@@ -41,8 +41,12 @@ html {
         html body .wrapper header h1 {
           color: #0665a2;
           font-size: 4.5rem;
+          text-align: center;
           font-weight: 100;
           margin: 0; }
+          @media (min-width: 425px) {
+            html body .wrapper header h1 {
+              font-size: 6rem; } }
           @media (min-width: 768px) {
             html body .wrapper header h1 {
               font-size: 8rem;
@@ -99,6 +103,57 @@ html {
             @media (min-width: 768px) {
               html body .wrapper header #calc .value button {
                 padding: 10px 15px; } }
+        html body .wrapper header #calc select {
+          border: 0 !important;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: #ffffff url(../images/arrow-down.png) no-repeat 90% center;
+          background-size: 10px;
+          width: 100px;
+          text-indent: 0.01px;
+          text-overflow: "";
+          color: #0665a2;
+          border-radius: 15px;
+          padding: 5px;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+          border-radius: 0;
+          height: 100%; }
+          html body .wrapper header #calc select:focus {
+            outline: none; }
+        html body .wrapper header #calc .values {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 30px; }
+          html body .wrapper header #calc .values .course {
+            height: 30px; }
+            html body .wrapper header #calc .values .course button {
+              border: none;
+              border-radius: 0;
+              height: 100%;
+              background-color: #ffffff; }
+            html body .wrapper header #calc .values .course select {
+              width: 60px; }
+          html body .wrapper header #calc .values .date {
+            height: 30px;
+            margin-top: 10px; }
+            html body .wrapper header #calc .values .date #year,
+            html body .wrapper header #calc .values .date #day {
+              width: 50px; }
+            @media (min-width: 768px) {
+              html body .wrapper header #calc .values .date {
+                margin-top: 0; } }
+          @media (min-width: 768px) {
+            html body .wrapper header #calc .values {
+              flex-direction: row;
+              justify-content: space-around; } }
     html body footer {
       width: 100%;
       background-color: #0665a2;

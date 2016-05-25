@@ -74,16 +74,18 @@ html {
             -webkit-transition: 0.3s ease-in-out;
             -moz-transition: 0.3s ease-in-out;
             transition: 0.3s ease-in-out; }
-        html body nav .dl-menuwrapper .navbar .amoney-link a {
-          text-decoration: none;
-          font-size: 2rem;
-          font-family: 'Roboto', sans-serif;
-          color: #f0f7fc; }
-        @media (min-width: 425px) {
-          html body nav .dl-menuwrapper .navbar .amoney-link {
-            display: block;
-            flex-grow: 2;
-            margin-left: 10px; } }
+        html body nav .dl-menuwrapper .navbar .amoney-link {
+          margin-left: 10px; }
+          html body nav .dl-menuwrapper .navbar .amoney-link a {
+            text-decoration: none;
+            font-size: 2rem;
+            font-family: 'Roboto', sans-serif;
+            color: #f0f7fc; }
+          @media (min-width: 425px) {
+            html body nav .dl-menuwrapper .navbar .amoney-link {
+              display: block;
+              flex-grow: 2;
+              margin-left: 10px; } }
         html body nav .dl-menuwrapper .navbar h5 {
           margin-right: 10px; }
           html body nav .dl-menuwrapper .navbar h5 a {
