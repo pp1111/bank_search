@@ -6,10 +6,9 @@
 <head> 
 	<title><%=title%></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel='stylesheet' href='/stylesheets/main.css' />
-	<link rel="stylesheet" href='/icons/calc/css/fontello.css' />
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
- </head>
+	<link rel="stylesheet" href='/icons/calc/css/fontello.css' /> </head>
+	<link rel="stylesheet" href="stylesheets/menu.css">
+	<link rel="stylesheet" href="stylesheets/calcStartPage.css">
 <body>
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
@@ -21,30 +20,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
 
-<nav>
-		<ul class="navigation">
-			<li> <a href="/">aMoney</a> </li>
-		</ul>
-</nav>
-
-	<div class="container">
-		
-
-		<div class= "row" id ="row1">
-			<h1>Kalkulator Walut</h1>
-		</div>
-		<div class="row" id="row2">
-			<form id="calc" onsubmit="return false">
-				<div class ="row" id="course">
-			<% include partials/content/course.ejs %>
+	<nav>
+		<div id="dl-menu" class="dl-menuwrapper">
+			<div class="navbar">
+				<div class="amoney-link"><a href="/">aMoney</a></div>
 			</div>
-			<div class="row" id="date">
+		</div>
+	</nav>
+
+	<div class="wrapper">
+		<header>
+		<h1>Kalkulator Walut</h1>
+		<form id="calc" onsubmit="return false">
+			<div class="value">
+				<% include partials/content/text_input.ejs %>
+			</div>
+			<div class ="course">
+				<% include partials/content/course.ejs %>
+			</div>
+			<div class="date">
 				<% include partials/content/date.ejs %>
 			</div>
-			<br>
-				<% include partials/content/text_input.ejs %>
-			</form>	
-		</div>
+		</form>	
+		</header>
 	</div>
 
 	<footer> <% include partials/templemate/footer.ejs %> </footer>

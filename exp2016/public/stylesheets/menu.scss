@@ -54,10 +54,9 @@ html {
             overflow-y: auto;
             position: fixed;
             z-index: 9999;
-            background-color: $mainBlue;
+            //background-color: $mainBlue;
             width: 100%;
             top: 0;
-            
             ul {
                 list-style-type: none;
                 padding: 0;
@@ -65,6 +64,7 @@ html {
             }
             .dl-menuwrapper {
                 .navbar {
+                    background-color: $mainBlue;
                     width: 100%;
                     height: 50px;
                     @include flexbox(row, nowrap);
@@ -112,11 +112,17 @@ html {
                         }
                     }
                     .amoney-link {
-                        
-                        text-decoration: none;
-                        font-size: 2rem;
-                        font-family: 'Roboto', sans-serif;
-                        color: $menuColorText;
+                        a {
+                            text-decoration: none;
+                            font-size: 2rem;
+                            font-family: 'Roboto', sans-serif;
+                            color: $menuColorText;
+                        }
+                        @media(min-width: 425px) {
+                            display: block;
+                            flex-grow: 2;
+                            margin-left: 10px;
+                        }
                     }
                     h5 {
                         margin-right: 10px;
@@ -136,13 +142,26 @@ html {
                         padding: 5px;
                         @include flexbox(row, nowrap);
                         align-items: center;
+                        justify-content: space-between;
                         height: 30px;
                         margin-right: 5px;
+                        @media(min-width: 425px) {
+                            background-color: #0F85D1;
+                            border: 1px solid #0665A2;
+                        }
                         form {
                             height: 100%;
+                            width: 70%;
                             margin-right: 5px;
                             display: none;
+                            @media(min-width: 425px) {
+                                display: block;
+                            }
+                            @media(min-width: 768px) {
+                                width: 250px;
+                            }
                             input {
+                                width: 100%;
                                 height: 100%;
                                 background-color: #0F85D1;
                                 border: none;
@@ -153,6 +172,24 @@ html {
                                 }
                             }
                             @include placeholder(rgba(240,247,252,0.7));
+                        }
+                        .svg-not-btn {
+                            @media(min-width: 425px) {
+                                display: none;
+                            }
+                        }
+                        .svg-btn {
+                            @media(max-width: 424px) {
+                                display: none;
+                            }
+                        }
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            padding: 0;
+                            &:focus {
+                                outline: none;
+                            }
                         }
                         &.search-clicked {
                             background-color: #0F85D1;
@@ -165,6 +202,9 @@ html {
                     margin: 0;
                     box-shadow: 0 6px 4px -4px #707070;
                     font-weight: 100;
+                    @media(min-width: 768px) {
+                        width: 200px;
+                    }
                     li {
                         @include transition(.2s);
                         a {
