@@ -35,53 +35,67 @@ $white: #ffffff;
         color: $color;
     }
 }
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
 
 html {
+    font-size: 62.5%;
     height: 100%;
-    body {
-        position: relative;
-        height: 100%;
-        .wrapper {
-            position: absolute;
-            top: 25%;
-            width: 100%;
-            @media (min-width: 1024px) {
-                top: 25%;
-            }
-            header {
-                @include flexbox(column, nowrap);
-                align-items: center;
-                margin: 0 30px;
-                h1 {
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    line-height: 1.43;
+    height: 100%;
+    .wrapper {
+        margin-top: 30px;
+        min-height: 90%;
+        //margin-bottom: -60px;
+        &:after {
+            content: "";
+            display: block;
+        }
+        @media(min-width: 1024px) {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        @media(min-width: 1800px) {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+        header {
+            margin-top: 60px;
+            h2 {
+                font-size: 2.7rem;
+                font-weight: 100;
+                text-align: center;
+                margin-bottom: 10px;
+                a {
+                    text-decoration: none;
                     color: $darkBlue;
-                    font-size: 4.5rem;
-                    text-align: center;
-                    font-weight: 100;
-                    margin: 0;
-                    @media (min-width: 425px) {
-                        font-size: 6rem;
-                    }
-                    @media (min-width: 768px) {
-                        font-size: 8rem;
-                        margin-bottom: 10px;
-                    }
-                    @media (min-width: 1024px) {
-                        font-size: 10rem;
-                    }
                 }
-                #calc {
+            }
+            #calc {
+                background-color: $white;
+                box-shadow: 0 0 3px rgba(000,000,000, 0.5);
+                width: 85%;
+                margin: 0 auto;
+                padding: 20px;
+                @media(min-width: 768px) {
+                    display: none;
+                }
                     .value {
                         @include flexbox(row, nowrap);
                         justify-content: space-between;
-                        border: 1px solid $darkBlue;
-                        margin-top: 15px;
+                        box-shadow: 0 0 1px rgba(000,000,000, 0.5);
                         width: 100%;
-                        @media(min-width: 425px) {
-                            width: 380px;
-                        }
-                        @media (min-width: 768px) {
-                            width: 450px;
-                        }
                         input,
                         button {
                             border: none;
@@ -120,7 +134,7 @@ html {
                         color: $darkBlue;
                         border-radius: 15px;
                         padding: 5px;
-                        box-shadow: 0 0 3px rgba(000,000,000, 0.5);
+                        box-shadow: 0 0 1px rgba(000,000,000, 0.5);
                         border-radius: 0;
                         height: 100%;
                         &:focus {
@@ -131,7 +145,7 @@ html {
                         @include flexbox(column, nowrap);
                         justify-content: space-between;
                         align-items: center;
-                        margin-top: 30px;
+                        margin-top: 10px;
                         .course {
                             height: 30px;
                             button {
@@ -161,20 +175,75 @@ html {
                         }
                     }
                 }
+        }
+    }
+    .result {
+        @include flexbox(column, nowrap);
+        background-color: $lightestBlue;
+        margin-top: 20px;
+        text-align: center;
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: $darkBlue;
+        }
+        #show {
+            #resultarea {
+                font-size: 1.2rem;
+                padding-bottom: 10px;
+                //border-bottom: 1px solid $darkBlue;
+                box-shadow: 0 4px 10px -2px rgba(0,0,0,0.5);
+                p {
+                    
+                }
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                    li {
+                        color: $black;
+                        &:nth-child(2) {
+                            margin-bottom: 15px;
+                        }
+                        a {
+                            background-color: $lightBlue;
+                            padding: 5px;
+                            color: $white;
+                            text-decoration: none;
+                            border: 1px solid $mainBlue;
+                        }
+                    }
+                }
+            }
+            #courseTable {
+                max-height: 100px;
+                overflow-y: auto;
+                background-color: $white;
+                width: 70%;
+                margin: 0 auto 10px auto;
+                font-size: 1.1rem;
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
             }
         }
-        footer {
-            width: 100%;
-            background-color: $darkBlue;
-            text-align: right;
-            padding: 10px;
-            position: absolute;
-            bottom: 0;
-            a {
-                font-size: 1.3rem;
-                color: $menuColorText;
-                text-decoration: none;
-            }
+        #hidden {
+            display: none;
+        }
+    }
+    footer {
+        height: 10%;
+        background-color: $darkBlue;
+        text-align: right;
+        margin-top: 20px;
+        width: 100%;
+        @include flexbox(column, nowrap);
+        justify-content: center;
+        a {
+            font-size: 1.3rem;
+            color: $menuColorText;
+            text-decoration: none;
+            margin-right: 10px;
         }
     }
 }
