@@ -16,131 +16,156 @@ body {
   line-height: 1.43;
   height: 100%; }
   body .wrapper {
-    margin-top: 30px;
-    min-height: 90%; }
+    min-height: 93%;
+    /*@media(min-width: 1024px) {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    @media(min-width: 1800px) {
+        margin-left: 200px;
+        margin-right: 200px;
+    }*/ }
     body .wrapper:after {
       content: "";
       display: block; }
-    @media (min-width: 1024px) {
-      body .wrapper {
-        margin-left: 100px;
-        margin-right: 100px; } }
-    @media (min-width: 1800px) {
-      body .wrapper {
-        margin-left: 200px;
-        margin-right: 200px; } }
-    body .wrapper header {
-      margin-top: 60px; }
-      body .wrapper header h2 {
-        font-size: 2.7rem;
-        font-weight: 100;
-        text-align: center;
-        margin-bottom: 10px; }
-        body .wrapper header h2 a {
-          text-decoration: none;
-          color: #0665a2; }
-      body .wrapper header #calc {
-        background-color: #ffffff;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-        width: 85%;
-        margin: 0 auto;
-        padding: 20px; }
-        @media (min-width: 768px) {
-          body .wrapper header #calc {
-            display: none; } }
-        body .wrapper header #calc .value {
+    body .wrapper h2 {
+      font-size: 2.7rem;
+      font-weight: 100;
+      text-align: center;
+      margin-bottom: 10px;
+      margin-top: 50px; }
+      @media (min-width: 768px) {
+        body .wrapper h2 {
+          margin-bottom: 30px;
+          font-size: 4rem; } }
+      @media (min-width: 1024px) {
+        body .wrapper h2 {
+          margin-bottom: 50px;
+          font-size: 6rem; } }
+      body .wrapper h2 a {
+        text-decoration: none;
+        color: #0665a2; }
+    @media (min-width: 768px) {
+      body .wrapper .results {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: flex-start; } }
+    body .wrapper .results #calc {
+      background-color: #ffffff;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      width: 85%;
+      margin: 0 auto;
+      padding: 20px; }
+      @media (min-width: 768px) {
+        body .wrapper .results #calc {
+          width: 40%;
+          margin: 0;
+          margin-right: 10px; } }
+      body .wrapper .results #calc .value {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+        width: 100%; }
+        body .wrapper .results #calc .value input,
+        body .wrapper .results #calc .value button {
+          border: none; }
+          body .wrapper .results #calc .value input:focus,
+          body .wrapper .results #calc .value button:focus {
+            outline: none; }
+        body .wrapper .results #calc .value input[type="number"] {
+          width: 100%;
+          margin: 0 5px;
+          font-size: 1.4rem; }
+          body .wrapper .results #calc .value input[type="number"] ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #000000; }
+          body .wrapper .results #calc .value input[type="number"] ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #000000; }
+          body .wrapper .results #calc .value input[type="number"] :-ms-input-placeholder {
+            /* IE 10+ */
+            color: #000000; }
+          body .wrapper .results #calc .value input[type="number"] :-moz-placeholder {
+            /* Firefox 18- */
+            color: #000000; }
+        body .wrapper .results #calc .value button {
+          background-color: #3498db;
+          color: #f0f7fc;
+          padding: 5px 10px; }
+          body .wrapper .results #calc .value button svg {
+            width: 25px; }
+      body .wrapper .results #calc select {
+        border: 0 !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #ffffff url(../images/arrow-down.png) no-repeat 90% center;
+        background-size: 10px;
+        width: 100px;
+        text-indent: 0.01px;
+        text-overflow: "";
+        color: #0665a2;
+        border-radius: 15px;
+        padding: 5px;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+        border-radius: 0;
+        height: 100%;
+        margin: 0 2px 0 2px; }
+        body .wrapper .results #calc select:focus {
+          outline: none; }
+      body .wrapper .results #calc .values {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px; }
+        body .wrapper .results #calc .values .course, body .wrapper .results #calc .values .date {
           display: -webkit-box;
           display: -moz-box;
           display: -ms-flexbox;
           display: -webkit-flex;
           display: flex;
           flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-          width: 100%; }
-          body .wrapper header #calc .value input,
-          body .wrapper header #calc .value button {
-            border: none; }
-            body .wrapper header #calc .value input:focus,
-            body .wrapper header #calc .value button:focus {
-              outline: none; }
-          body .wrapper header #calc .value input[type="number"] {
-            width: 100%;
-            margin: 0 5px;
-            font-size: 1.4rem; }
-            body .wrapper header #calc .value input[type="number"] ::-webkit-input-placeholder {
-              /* Chrome/Opera/Safari */
-              color: #000000; }
-            body .wrapper header #calc .value input[type="number"] ::-moz-placeholder {
-              /* Firefox 19+ */
-              color: #000000; }
-            body .wrapper header #calc .value input[type="number"] :-ms-input-placeholder {
-              /* IE 10+ */
-              color: #000000; }
-            body .wrapper header #calc .value input[type="number"] :-moz-placeholder {
-              /* Firefox 18- */
-              color: #000000; }
-          body .wrapper header #calc .value button {
-            background-color: #3498db;
-            color: #f0f7fc;
-            padding: 5px 10px; }
-            body .wrapper header #calc .value button svg {
-              width: 25px; }
-            @media (min-width: 768px) {
-              body .wrapper header #calc .value button {
-                padding: 10px 15px; } }
-        body .wrapper header #calc select {
-          border: 0 !important;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          background: #ffffff url(../images/arrow-down.png) no-repeat 90% center;
-          background-size: 10px;
-          width: 100px;
-          text-indent: 0.01px;
-          text-overflow: "";
-          color: #0665a2;
-          border-radius: 15px;
-          padding: 5px;
-          box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-          border-radius: 0;
-          height: 100%; }
-          body .wrapper header #calc select:focus {
-            outline: none; }
-        body .wrapper header #calc .values {
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex;
-          flex-direction: column;
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          align-items: center;
+          flex-wrap: nowrap; }
+        body .wrapper .results #calc .values .course {
+          height: 30px; }
+          body .wrapper .results #calc .values .course button {
+            border: none;
+            border-radius: 0;
+            height: 100%;
+            background-color: #ffffff; }
+          body .wrapper .results #calc .values .course select {
+            width: 60px; }
+        body .wrapper .results #calc .values .date {
+          height: 30px;
           margin-top: 10px; }
-          body .wrapper header #calc .values .course {
-            height: 30px; }
-            body .wrapper header #calc .values .course button {
-              border: none;
-              border-radius: 0;
-              height: 100%;
-              background-color: #ffffff; }
-            body .wrapper header #calc .values .course select {
-              width: 60px; }
-          body .wrapper header #calc .values .date {
-            height: 30px;
-            margin-top: 10px; }
-            body .wrapper header #calc .values .date #year,
-            body .wrapper header #calc .values .date #day {
-              width: 50px; }
-            @media (min-width: 768px) {
-              body .wrapper header #calc .values .date {
-                margin-top: 0; } }
-          @media (min-width: 768px) {
-            body .wrapper header #calc .values {
-              flex-direction: row;
-              justify-content: space-around; } }
+          @media (min-width: 1024px) {
+            body .wrapper .results #calc .values .date {
+              margin-top: 0; } }
+          body .wrapper .results #calc .values .date #year,
+          body .wrapper .results #calc .values .date #day {
+            width: 50px; }
+        @media (min-width: 1024px) {
+          body .wrapper .results #calc .values {
+            flex-direction: row;
+            justify-content: space-around; } }
   body .result {
     display: -webkit-box;
     display: -moz-box;
@@ -152,6 +177,11 @@ body {
     background-color: #f0f7fc;
     margin-top: 20px;
     text-align: center; }
+    @media (min-width: 768px) {
+      body .result {
+        width: 40%;
+        margin: 0;
+        margin-left: 10px; } }
     body .result h3 {
       font-size: 1.6rem;
       font-weight: 300;
@@ -160,6 +190,11 @@ body {
       font-size: 1.2rem;
       padding-bottom: 10px;
       box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5); }
+      @media (min-width: 768px) {
+        body .result #show #resultarea {
+          box-shadow: none; } }
+      body .result #show #resultarea p {
+        padding: 0 20px; }
       body .result #show #resultarea ul {
         list-style-type: none;
         padding: 0; }
@@ -178,7 +213,7 @@ body {
       overflow-y: auto;
       background-color: #ffffff;
       width: 70%;
-      margin: 0 auto 10px auto;
+      margin: 0 auto 16px auto;
       font-size: 1.1rem; }
       body .result #show #courseTable ul {
         list-style-type: none;
@@ -186,7 +221,7 @@ body {
     body .result #hidden {
       display: none; }
   body footer {
-    height: 10%;
+    height: 7%;
     background-color: #0665a2;
     text-align: right;
     margin-top: 20px;
@@ -199,6 +234,9 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center; }
+    @media (min-width: 768px) {
+      body footer {
+        margin-top: 0; } }
     body footer a {
       font-size: 1.3rem;
       color: #f0f7fc;
