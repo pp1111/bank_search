@@ -9,6 +9,9 @@ var searchIconBtn = $('nav .search .svg-btn');
 var search = $('nav .search');
 var dimness = $('.dimness');
 var searchIconNotBtn = $('nav .search .svg-not-btn');
+var valueBtn = $('.value button');
+var valueInput = $('.value input');
+
 
 $(document).ready(function(){
     openMenu();
@@ -18,6 +21,7 @@ $(document).ready(function(){
     closeNav();
     //hideProductInfoText();
     toggleMoreProductInfo();
+    disableCalcButton();
 });
 
 function menuBtnChange() {
@@ -134,4 +138,14 @@ function toggleMoreProductInfo() {
             $('.show-product').removeClass('active');
         }
     });
+}
+
+function disableCalcButton() {
+    valueBtn.attr('disabled',true);
+    valueInput.keyup(function(){
+        if($(this).val().length !=0)
+            valueBtn.attr('disabled', false);            
+        else
+            valueBtn.attr('disabled',true);
+    })
 }
