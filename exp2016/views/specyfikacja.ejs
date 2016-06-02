@@ -1,0 +1,142 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!DOCTYPE HTML>
+
+<html lang="pl">
+
+<head> 
+	<meta charset="utf-8"/>
+	<meta name="Description">
+
+	<title></title>
+ </head>
+
+<body>
+
+	
+	<div class="wrapper">
+		<h1>Super wyszukiwarka finansowa</h1>
+		<article>
+			<ul>
+				<h2>Opis ogółny</h2>
+				Aplikacja składa się z dwóch części: wyszukiwarki finansowej oraz kalkulatora walut nbp.
+
+				<h2>Opis ogólny wyszukiwarka</h2>
+				<li>
+					Ta część aplikacji służy do wyszukiwania produktów finansowych lub odpowiednich kategorii. 
+				</li>
+				<li>
+					Strona dedykowana jest dla ludzi zainteresowanych swoimi finansami,inwestycjami,firmą lub chcących coś ubezpieczyć.
+				</li>
+				<h2>Opis ogólny kalkulator</h2>
+				<li>
+					Ta część programu służy do przeliczania wartości średniej walut zgodnie z kursami nbp . Można przeliczyć aktualne kursy oraz wcześniejsze
+				</li>
+				<li>
+					Program dedykowany jest dla ludzi pracujących w księgowości, podróżujących, ludzi śledzący wartości walut na giełdzie, konsumentów zagranicznych rynków,pracowników międzynarodowych firm oraz tych które mają do czynienia z przewalutowaniem.
+				</li>
+			</ul>
+			<ul>
+				<h2>Opis funkcjonalności wyszukiwarki</h2>
+				<li>
+					Na stronie głównej po środku znajduje się pole tekstowe z przyciskiem dzięki któremu można wyszukać odpowiednie kategorie lub produkty. Nad nimi widnieje logo. Na samej górze w pasku nawigacyjnym po lewej stronie widnieje rozwijane menu z wszystkimi kategoriami a z prawej strony przejście do kalkulatora walut, który opiszę później.
+				</li>
+				<li>
+					Po wyszukaniu lub wybraniu z menu produktu przez użytkownika na stronie pojawiają się kafelki. W kafelku możemy zobaczyć logo firmy, nazwę oraz tytuł produktu i krótki opis. Po najechaniu na kafelek pojawiają się 2 przyciski: złóż wniosek oraz szczegóły. 
+				</li>
+				<h2>Opis funkcjonalności kalkulatora</h2>
+				<li>
+					Obsługa programu jest bardzo prosta, na stronie głównej na pierwszym planie znajduje się pole tekstowe w którym należy wpisać kwotę oraz przycisk oblicz. Poniżej znajdują się pola wyboru z kodami walut oraz datą.
+				</li>
+				<li>
+					Na stronie wynikowej pojawiają się 2 tabele, na jednej znajduję się wynik przewalutowania z komunikatem, na drugiej wszystkie średnie kursy walut ze wskazanej daty. 
+				</li>
+			</ul>
+			<ul>
+				<h2>Format danych i struktura plików</h2>
+				<li>
+					Serwerowa strona aplikacji opiera się na technologii node.js a konkretnie na frameworku express. W głównym katalogu znajdują się poszczególne foldery dzielące program na moduły, dzięki czemu struktura programu skutecznie oddziela logikę od widoku.
+				</li>
+				<li>
+					Struktura katalogów:
+				</li>
+				<li>
+					Dane wejściowe wyszukiwarki finansowej zaciągane są z feeda bankiera. Przy każdym wyszukania wysyłane jest żadanie do strony bankiera aby uzyskać odpowiednie dane.
+					Dane wejściowe potrzebne do przeliczania kursów zaciągane są bezpośrednio ze strony Nbp. Za każdym razem gdy użytkownik przyciśnie oblicz wysyłane jest żądanie do strony banku aby uzyskać odpowiednie wartości kursów z podanej daty.
+				</li>
+				<li>
+					Dane wyjściowe wyświetlane są na stronie wynikowej po wykonaniu algorytmu przeliczającego.
+				</li>
+			</ul>
+			<ul>
+				<h2>Algorytm wyszukiwania przez wyszukiwarke</h2>
+				<li>
+					Jeśli użytkownik wpisze 1 wyraz, to szukamy jego wystąpienia z feeda i jeżeli dany wyraz jest to pokazujemy produkt.
+				</li>
+				<li>
+					 Jeśli użytkownik wpisze 2 wyrazy, tu szukamy wystąpienia obu, jeśli nie ma szukamy wystąpienia pierwszego wpisanego, jeśli nie ma pierwszego szukamy wystąpienia drugiego pojedyńczego wyrazu
+				</li>
+				<li>
+					 Jeśli użytkownik wpisze 3 wyrazy, to szukamy wystąpienia pierwszych dwóch, jeśli nie ma szukamy wystąpienia pierwszego wpisanego, jeśli nie ma pierwszego szukamy wystąpienia drugiego pojedyńczego wyrazu
+				</li>
+				<li>
+					 Jeśli użytkownik wpisze 4 wyrazy to szukamy wystąpienia pierwszych dwóch, jeśli nie am szukamy wystąpienia pierwszego wpisanego, jeśli nie ma pierwszego szukamy wystąpienia drugiego pojedyńczego wyrazu
+				</li>
+				<h2>Hierarchia elementów feeda,odnoście wyszukania i podpowiedzi</h2>
+				<li>
+					dostawca nazwa="mBank" ; wyszukujemy wszystkie produkty z dostawcą "mBank" ; podpowiadamy produkty z dostawcą "mBank"
+				</li>
+				<li>
+					"pełna obsługa karty przez Internet" ; wyszukujemy wszystkie produkty z danym wyrazem  ; również podpowiadamy produkty z tymi wyrazami
+				</li>
+				<li>
+					kategoria nazwa="Finanse osobiste" ; wyszukujemy wszystkie produkty z finansów osobistych ; podpowiadamy wszystkie podkategorie
+				</li>
+				<li>
+					podkategoria nazwa="Karty kredytowe" ; wyszukujemy wszystkie produkty z danej podkategorii ; podpowiadamy inne produkty z tej kategorii
+				</li>
+				<li>
+					produkt nazwa="Karta kredytowa" id="80" ; wyszukujemy dany produkt ; podpowiadamy inne z tej kategorii, w której jest produkt
+				</li>
+
+				<h2>Scenariusz działania kalkulatora</h2>
+				<li>
+					Program podzielony jest na stronę główną projektu oraz stronę wynikową. Na stronie głównej znajdują się tylko kontrolki potrzebne do przeliczenia, do strony wynikowej dochodzą jeszcze 2 tabele z wynikiem przeliczenia oraz wszystkimi kursami.
+				</li>
+				<li>
+					W pierwszej tabeli wypisywane są również różne komunikaty, dla sytuacji gdy dane wejściowe nie zostaną podane lub zostaną źle wybrane. 
+					<ul>
+						<li>
+							Gdy użytkownik nie poda kwoty wyświetlana jest wartość przeliczenia z kwotą ustawioną na jeden oraz informacja o braku wpisania kwoty i miejscu gdzie należy ją wpisać
+						</li>
+						<li>
+							Gdy użytkownik nie poda daty wyświetlana jest wartość przeliczenia dla aktualnej daty oraz informacja o tym że data nie została wybrana
+						</li>
+						<li>
+							Gdy użytkownik nie poda i kwoty i daty wyświetlana jest wartość przeliczenia z kwotą ustawioną na 1 i aktualną datą wraz z informacją.
+						</li>
+						<li>
+							Gdy wybrana data wyprzedza teraźniejszą datę, wyświetlana jest wartość przeliczenia dla aktualnego stanu kursu
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul>
+				<h2>Testowanie</h2>
+				<li>
+					Program został przetestowany ręcznie 
+				</li>
+			</ul>
+		</article>
+	</div>
+
+	<footer></footer>
+
+</body>
+
+</html>
+</body>
+</html>
