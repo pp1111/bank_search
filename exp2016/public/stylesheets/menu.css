@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@font-face {
+  font-family: "Helvetica Neue Thin";
+  src: url(/fonts/helveticaneue/HelveticaNeue.ttf); }
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -7,7 +10,8 @@
 html {
   font-size: 62.5%; }
   html body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-family: "Helvetica Neue","Helvetica Neue Thin",Helvetica,Arial,sans-serif;
     margin: 0;
     padding: 0; }
     html body nav {
@@ -97,15 +101,6 @@ html {
             letter-spacing: .1px; }
         html body nav .dl-menuwrapper .navbar .search {
           padding: 5px;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: space-between;
           height: 30px;
           margin-right: 5px; }
           @media (min-width: 425px) {
@@ -119,7 +114,13 @@ html {
             display: none; }
             @media (min-width: 425px) {
               html body nav .dl-menuwrapper .navbar .search form {
-                display: block; } }
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap; } }
             @media (min-width: 768px) {
               html body nav .dl-menuwrapper .navbar .search form {
                 width: 250px; } }
@@ -144,16 +145,17 @@ html {
             html body nav .dl-menuwrapper .navbar .search form :-moz-placeholder {
               /* Firefox 18- */
               color: rgba(240, 247, 252, 0.7); }
-          @media (min-width: 425px) {
+          @media (min-width: 768px) {
             html body nav .dl-menuwrapper .navbar .search .svg-not-btn {
               display: none; } }
-          @media (max-width: 424px) {
+          @media (max-width: 767px) {
             html body nav .dl-menuwrapper .navbar .search .svg-btn {
               display: none; } }
           html body nav .dl-menuwrapper .navbar .search button {
             background-color: transparent;
             border: none;
-            padding: 0; }
+            padding: 0;
+            margin: 0 !important; }
             html body nav .dl-menuwrapper .navbar .search button:focus {
               outline: none; }
           html body nav .dl-menuwrapper .navbar .search.search-clicked {

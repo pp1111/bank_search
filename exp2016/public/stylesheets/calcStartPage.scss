@@ -70,6 +70,7 @@ html {
                     }
                 }
                 #calc {
+                    margin-bottom: 50px;
                     .value {
                         @include flexbox(row, nowrap);
                         justify-content: space-between;
@@ -85,6 +86,7 @@ html {
                         input,
                         button {
                             border: none;
+                            margin: 0 !important;
                             &:focus {
                                 outline: none;
                             }
@@ -168,7 +170,7 @@ html {
             background-color: $darkBlue;
             text-align: right;
             padding: 10px;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             a {
                 font-size: 1.3rem;

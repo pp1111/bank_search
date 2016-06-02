@@ -27,7 +27,7 @@ $(document).ready(function(){
 
   document.getElementById("focusedInput").onkeypress = function(){
     if (event.keyCode == 13){
-         $( "red" ).click();
+         $( "#red" ).click();
       }
   }
 

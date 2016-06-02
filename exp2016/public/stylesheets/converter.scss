@@ -192,6 +192,9 @@ body {
                 }
             }
         }
+        #hidden {
+            display: none;
+        }
     }
     .result {
         @include flexbox(column, nowrap);

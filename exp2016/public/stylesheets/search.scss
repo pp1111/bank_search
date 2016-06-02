@@ -34,6 +34,10 @@ $black: #000000;
         color: $color;
     }
 }
+@font-face {
+    font-family: "Helvetica Neue Thin";
+    src: url(/fonts/helveticaneue/HelveticaNeueThin.ttf);
+}
 
 html {
     height: 100%;
@@ -62,7 +66,7 @@ html {
             position: absolute;
             top: 35%;
             width: 100%;
-            @media (min-width: 1024px) {
+            @media (min-width: 768px) {
                 top: 25%;
             }
             header {
@@ -97,6 +101,7 @@ html {
                     input,
                     button {
                         border: none;
+                        margin: 0 !important;
                         &:focus {
                             outline: none;
                         }
@@ -126,7 +131,7 @@ html {
             background-color: $darkBlue;
             text-align: right;
             padding: 10px;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             a {
                 font-size: 1.3rem;

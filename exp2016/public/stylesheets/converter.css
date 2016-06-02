@@ -166,6 +166,8 @@ body {
           body .wrapper .results #calc .values {
             flex-direction: row;
             justify-content: space-around; } }
+    body .wrapper #hidden {
+      display: none; }
   body .result {
     display: -webkit-box;
     display: -moz-box;
