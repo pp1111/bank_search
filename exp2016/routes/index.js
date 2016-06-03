@@ -97,6 +97,50 @@ router.get('/',function(req,res){
 
 });
 
+router.get('/specyfikacja',function(req,res){
+  res.render('specyfikacja');
+});
+
+router.get('/kontakt', function(req,res){
+    res.render('contact');
+});
+
+router.post('/kontakt', function (req, res) {
+  var mailOpts;
+  //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
+
+  var transporter = nodemailer.createTransport((smtpTransport({
+    host : "Smtp.gmail.com",
+    secureConnection : false,
+    port: 587,
+    auth: {
+        user: 'piatekpatryk2@gmail.com',
+        pass: '9984149a'
+    }
+})));
+
+  //Mail options
+  mailOpts = {
+      from: req.body.email, //grab form data from the request body object
+      to: 'piatekpatryk2@gmail.com',
+      subject: 'Kalkulator walut wiadomość',
+      text: req.body.message + " " + req.body.email
+  };
+
+  console.log(req.body.name);
+  console.log(req.body.email);
+  console.log(req.body.message);
+
+  transporter.sendMail(mailOpts, function (error, response) {
+    if(error){
+      res.send('error');
+    }
+    else{
+        res.render('contact');
+    }
+  });
+
+});
 router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
   var categories_name = [];
@@ -578,133 +622,6 @@ router.get(/^\/przelicznik\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\
     });
   });
 
-router.get('/about', function(req,res){
-  res.send("Strona w budowie");
-});
-
-router.get('/contact', function(req,res){
-     var request = http.get("http://www.nbp.pl/kursy/xml/a025z100205.xml", function(response) { 
-      var xml = ''; 
-
-        response.on('data', function(chunk) { 
-           xml += chunk; 
-         });
-
-        response.on('end', function() {
-             parseString(xml, function (err, result) {
-                        
-                  res.render('calcMain',{
-                    title: "AMoney Nowe Oblicze Finansów",
-                    description: "AMoney to zaawansowany kalkulator finansowy, który opiera się na danych Narodowego Banku Polskiego. Sprawdź co oferuje.",
-                    amount: "",
-                    year: currentYear, 
-                    month: currentMonth,
-                    day: currentDay,
-                    cash: result.tabela_kursow.pozycja, 
-                    selected1:"",
-                    selected2:"",
-                    amount: "",
-                    year: "",
-                    month: "",
-                    day: "",
-                    wynik: "",
-                    date: "",
-                    result_text: "",
-                    result: "",
-                    resultday: "",
-                    resultmonth: "",
-                    result1: "hidden",
-                    result2: "hidden",
-                    contact: "contactResult",
-                    draw1 : '',
-                    draw2 : '',
-                    rand_amount : '',
-                    rand_year : '',
-                    rand_month : '',
-                    rand_day : ''
-                  });
-             });
-        });
-    });
-});
-
-
-
-router.post('/contact', function (req, res) {
-  var mailOpts;
-  //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
-
-  var transporter = nodemailer.createTransport((smtpTransport({
-    host : "Smtp.gmail.com",
-    secureConnection : false,
-    port: 587,
-    auth: {
-        user: 'piatekpatryk2@gmail.com',
-        pass: '9984149a'
-    }
-})));
-
-  //Mail options
-  mailOpts = {
-      from: req.body.email, //grab form data from the request body object
-      to: 'piatekpatryk2@gmail.com',
-      subject: 'Kalkulator walut wiadomość',
-      text: req.body.message + " " + req.body.email
-  };
-
-  console.log(req.body.name);
-  console.log(req.body.email);
-  console.log(req.body.message);
-
-  transporter.sendMail(mailOpts, function (error, response) {
-    if(error){
-
-    }
-    else{
-        var request = http.get("http://www.nbp.pl/kursy/xml/a025z100205.xml", function(response) { 
-        var xml = ''; 
-
-          response.on('data', function(chunk) { 
-             xml += chunk; 
-           });
-
-          response.on('end', function() {
-               parseString(xml, function (err, result) {
-                          
-                    res.render('calcMain',{
-                      title: "AMoney Nowe Oblicze Finansów",
-                      description: "AMoney to zaawansowany kalkulator finansowy, który opiera się na danych Narodowego Banku Polskiego. Sprawdź co oferuje.",
-                      amount: "",
-                      year: currentYear, 
-                      month: currentMonth,
-                      day: currentDay,
-                      cash: result.tabela_kursow.pozycja, 
-                      selected1:"",
-                      selected2:"",
-                      amount: "",
-                      wynik: "",
-                      date: "",
-                      result_text: '',
-                      result: "Wiadomość wysłana, dziękuje !",
-                      resultday: "",
-                      resultmonth: "",
-                      result1: "hidden",
-                      result2: "hidden",
-                      contact: "contactResult",
-                      draw1 : '',
-                      draw2 : '',
-                      rand_amount : '',
-                      rand_year : '',
-                      rand_month : '',
-                      rand_day : ''
-                    });
-               });
-          });
-      });
-    }
-  });
-
-});
 
 router.get(/^\/przelicznik\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , function(req,res) {
 
@@ -1239,7 +1156,6 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
               for(var i in entry.podkategoria[key].produkt){
                 products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
                  for(var j in entry.podkategoria[key].produkt[i].dostawca){
-                  if( i==='0') { console.log('\n') ; }
                     products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
                     products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
                     products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
@@ -1272,7 +1188,7 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
         }
 
   
-        console.log(product_table);
+        // console.log(product_table);
 
           res.render('search_result',{
                categories: categories_name,
@@ -1295,4 +1211,3 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
 
 
 module.exports = router;
-
