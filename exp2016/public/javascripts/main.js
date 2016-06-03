@@ -55,12 +55,18 @@ function openMenu() {
 function openSubMenu() {
     menuCategory.click(function(){
         $(this).find(submenu).addClass('it-must-be-open');
-        //$('.dl-menu>li').hide(); //do poprawy (kliknięcie w otwartą kategorię zamyka ją)
-        //$(this).show();
-        $(this).find(submenu).slideToggle();
-        topBar.addClass('top-bar-arrow');
-        middleBar.addClass('middle-bar-arrow');
-        bottomBar.addClass('bottom-bar-arrow');
+        if($(this).find(submenu).is(':visible')) {
+            $(this).find(submenu).slideUp();
+            topBar.removeClass('top-bar-arrow');
+            middleBar.removeClass('middle-bar-arrow');
+            bottomBar.removeClass('bottom-bar-arrow');
+        }
+        else {
+            $(this).find(submenu).slideDown();
+            topBar.addClass('top-bar-arrow');
+            middleBar.addClass('middle-bar-arrow');
+            bottomBar.addClass('bottom-bar-arrow');
+        }
     });
 }
 function closeSubMenu() {
