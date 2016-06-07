@@ -9,6 +9,7 @@ html {
   height: 100%; }
 
 body {
+  -webkit-font-smoothing: subpixel-antialiased;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   margin: 0;
   padding: 0;
@@ -80,32 +81,34 @@ body {
         width: 100%; }
         body .wrapper .results #calc .value input,
         body .wrapper .results #calc .value button {
-          border: none; }
+          border: none;
+          margin: 0 !important; }
           body .wrapper .results #calc .value input:focus,
           body .wrapper .results #calc .value button:focus {
             outline: none; }
         body .wrapper .results #calc .value input[type="number"] {
           width: 100%;
           margin: 0 5px;
+          padding-left: 10px;
           font-size: 1.4rem; }
-          body .wrapper .results #calc .value input[type="number"] ::-webkit-input-placeholder {
-            /* Chrome/Opera/Safari */
-            color: #000000; }
-          body .wrapper .results #calc .value input[type="number"] ::-moz-placeholder {
-            /* Firefox 19+ */
-            color: #000000; }
-          body .wrapper .results #calc .value input[type="number"] :-ms-input-placeholder {
-            /* IE 10+ */
-            color: #000000; }
-          body .wrapper .results #calc .value input[type="number"] :-moz-placeholder {
-            /* Firefox 18- */
-            color: #000000; }
         body .wrapper .results #calc .value button {
           background-color: #3498db;
           color: #f0f7fc;
-          padding: 5px 10px; }
+          padding: 5px 10px;
+          cursor: pointer;
+          -webkit-transition: 0.2s ease-in-out;
+          -moz-transition: 0.2s ease-in-out;
+          transition: 0.2s ease-in-out; }
           body .wrapper .results #calc .value button svg {
-            width: 25px; }
+            fill: #f0f7fc;
+            width: 25px;
+            -webkit-transition: 0.2s ease-in-out;
+            -moz-transition: 0.2s ease-in-out;
+            transition: 0.2s ease-in-out; }
+          body .wrapper .results #calc .value button:hover {
+            background-color: #f0f7fc; }
+            body .wrapper .results #calc .value button:hover svg {
+              fill: #3498db; }
       body .wrapper .results #calc select {
         border: 0 !important;
         -webkit-appearance: none;
@@ -223,7 +226,7 @@ body {
     body .result #hidden {
       display: none; }
   body footer {
-    height: 7%;
+    height: 50px;
     background-color: #0665a2;
     text-align: right;
     margin-top: 20px;

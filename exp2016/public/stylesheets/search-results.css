@@ -3,6 +3,7 @@ html {
   height: 100%; }
 
 body {
+  -webkit-font-smoothing: subpixel-antialiased;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
@@ -80,7 +81,8 @@ body {
           width: 100%;
           position: absolute;
           bottom: 0;
-          background-color: #ffffff; }
+          background-color: #ffffff;
+          cursor: pointer; }
         body .wrapper .search-result .products .single-product .info {
           margin: 10px 8%;
           max-height: 250px;
@@ -155,7 +157,7 @@ body {
         margin-left: 200px;
         margin-right: 200px; } }
   body footer {
-    height: 10%;
+    height: 50px;
     background-color: #0665a2;
     text-align: right;
     margin-top: 20px;

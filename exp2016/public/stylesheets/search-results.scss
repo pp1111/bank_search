@@ -28,6 +28,7 @@ html {
 }
 
 body {
+    -webkit-font-smoothing: subpixel-antialiased;
     margin: 0;
     padding: 0;
     background-color: $white;
@@ -113,6 +114,7 @@ body {
                         //border-bottom-left-radius: 10px;
                         //border-bottom-right-radius: 10px;
                         background-color: $white;
+                        cursor: pointer;
                     }
                     .info {
                         margin: 10px 8%;
@@ -200,7 +202,7 @@ body {
         }
     }
     footer {
-        height: 10%;
+        height: 50px;
         background-color: $darkBlue;
         text-align: right;
         margin-top: 20px;

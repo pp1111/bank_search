@@ -4,6 +4,7 @@
 html {
   height: 100%; }
   html body {
+    -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
     height: 100%; }
     html body .wrapper {
@@ -98,19 +99,41 @@ html {
           html body .wrapper header .search button {
             background-color: #3498db;
             color: #f0f7fc;
-            padding: 5px 15px; }
+            padding: 5px 10px;
+            border-left: 1px solid #0665a2;
+            cursor: pointer;
+            -webkit-transition: 0.2s ease-in-out;
+            -moz-transition: 0.2s ease-in-out;
+            transition: 0.2s ease-in-out; }
             html body .wrapper header .search button svg {
-              width: 25px; }
+              fill: #f0f7fc;
+              width: 25px;
+              -webkit-transition: 0.2s ease-in-out;
+              -moz-transition: 0.2s ease-in-out;
+              transition: 0.2s ease-in-out; }
             @media (min-width: 768px) {
               html body .wrapper header .search button {
                 padding: 10px 15px; } }
+            html body .wrapper header .search button:hover {
+              background-color: #f0f7fc; }
+              html body .wrapper header .search button:hover svg {
+                fill: #3498db; }
     html body footer {
       width: 100%;
+      height: 50px;
       background-color: #0665a2;
       text-align: right;
       padding: 10px;
       position: fixed;
-      bottom: 0; }
+      bottom: 0;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center; }
       html body footer a {
         font-size: 1.3rem;
         color: #f0f7fc;

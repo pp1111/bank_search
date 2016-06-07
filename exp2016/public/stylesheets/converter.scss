@@ -48,6 +48,7 @@ html {
 }
 
 body {
+    -webkit-font-smoothing: subpixel-antialiased;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: 0;
     padding: 0;
@@ -114,6 +115,7 @@ body {
                     input,
                     button {
                         border: none;
+                        margin: 0 !important;
                         &:focus {
                             outline: none;
                         }
@@ -121,15 +123,26 @@ body {
                     input[type="number"] {
                         width: 100%;
                         margin: 0 5px;
+                        padding-left: 10px;
                         font-size: 1.4rem;
-                        @include placeholder(#000000); //coś nie działa
+                        //@include placeholder(#000000); //coś nie działa
                     }
                     button {
                         background-color: $mainBlue;
                         color: $lightestBlue;
                         padding: 5px 10px;
+                        cursor: pointer;
+                        @include transition(.2s);
                         svg {
+                            fill: $menuColorText;
                             width: 25px;
+                            @include transition(.2s);
+                        }
+                        &:hover {
+                            background-color: $menuColorText;
+                            svg {
+                                fill: $mainBlue;
+                            }
                         }
                     }
                 }
@@ -259,7 +272,7 @@ body {
         }
     }
     footer {
-        height: 7%;
+        height: 50px;
         background-color: $darkBlue;
         text-align: right;
         margin-top: 20px;

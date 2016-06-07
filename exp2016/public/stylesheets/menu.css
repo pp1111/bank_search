@@ -175,7 +175,8 @@ html {
             background-color: transparent;
             border: none;
             padding: 0;
-            margin: 0 !important; }
+            margin: 0 !important;
+            cursor: pointer; }
             html body nav .dl-menuwrapper .navbar .search button:focus {
               outline: none; }
           html body nav .dl-menuwrapper .navbar .search.search-clicked {

@@ -42,6 +42,7 @@ $black: #000000;
 html {
     height: 100%;
     body {
+        -webkit-font-smoothing: subpixel-antialiased;
         position: relative;
         height: 100%;
         .wrapper {
@@ -105,6 +106,7 @@ html {
                         &:focus {
                             outline: none;
                         }
+                        
                     }
                     input[type="text"] {
                         width: 100%;
@@ -116,12 +118,23 @@ html {
                     button {
                         background-color: $mainBlue;
                         color: $lightestBlue;
-                        padding: 5px 15px;
+                        padding: 5px 10px;
+                        border-left: 1px solid $darkBlue;
+                        cursor: pointer;
+                        @include transition(.2s);
                         svg {
+                            fill: $menuColorText;
                             width: 25px;
+                            @include transition(.2s);
                         }
-                        @media (min-width: 768px) {
+                        @media(min-width: 768px) {
                             padding: 10px 15px;
+                        }
+                        &:hover {
+                            background-color: $menuColorText;
+                            svg {
+                                fill: $mainBlue;
+                            }
                         }
                     }
                 }
@@ -129,11 +142,14 @@ html {
         }
         footer {
             width: 100%;
+            height: 50px;
             background-color: $darkBlue;
             text-align: right;
             padding: 10px;
             position: fixed;
             bottom: 0;
+            @include flexbox(column, nowrap);
+            justify-content: center;
             a {
                 font-size: 1.3rem;
                 color: $menuColorText;
