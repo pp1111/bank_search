@@ -45,7 +45,8 @@ function openMenu() {
             }
             if( $(window).width() < 425) {
                 search.removeClass('search-clicked');
-                $('nav .search form').hide();
+                //$('nav .search form').hide();
+                $('nav .search form').removeClass('form-active');
                 searchIconBtn.hide();
                 searchIconNotBtn.show();
             }
@@ -84,7 +85,8 @@ function clickSearch() {
     searchIconNotBtn.click(function() {
         search.addClass('search-clicked');
         dimness.addClass('dimness-visible');
-        $('nav .search form').show();
+        //$('nav .search form').show();
+        $('nav .search form').addClass('form-active');
         $('input[name="search"]').focus();
         menu.hide();
         topBar.addClass('top-bar-close');
@@ -105,7 +107,8 @@ function closeNav() {
     dimness.click(function() {
         if( $(window).width() < 425) {
             search.removeClass('search-clicked');
-            $('nav .search form').hide();
+            //$('nav .search form').hide();
+            $('nav .search form').removeClass('form-active');
             searchIconBtn.hide();
             searchIconNotBtn.show();
         }

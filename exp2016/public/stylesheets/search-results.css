@@ -51,6 +51,7 @@ body {
       margin-top: 30px; }
       body .wrapper .search-result .products .single-product {
         box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+        min-height: 270px;
         background-color: #ffffff;
         margin: 10px;
         width: 300px;

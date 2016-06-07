@@ -106,7 +106,19 @@ html {
           @media (min-width: 425px) {
             html body nav .dl-menuwrapper .navbar .search {
               background-color: #0F85D1;
-              border: 1px solid #0665A2; } }
+              border: 1px solid #0665A2;
+              width: 200px;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -webkit-flex;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              justify-content: space-between; } }
+          @media (min-width: 768px) {
+            html body nav .dl-menuwrapper .navbar .search {
+              width: 250px; } }
           html body nav .dl-menuwrapper .navbar .search form {
             height: 100%;
             width: 70%;
@@ -120,10 +132,18 @@ html {
                 display: -webkit-flex;
                 display: flex;
                 flex-direction: row;
-                flex-wrap: nowrap; } }
-            @media (min-width: 768px) {
-              html body nav .dl-menuwrapper .navbar .search form {
-                width: 250px; } }
+                flex-wrap: nowrap;
+                width: 100%; } }
+            html body nav .dl-menuwrapper .navbar .search form.form-active {
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -webkit-flex;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              justify-content: space-between;
+              width: 100%; }
             html body nav .dl-menuwrapper .navbar .search form input {
               width: 100%;
               height: 100%;
@@ -145,10 +165,10 @@ html {
             html body nav .dl-menuwrapper .navbar .search form :-moz-placeholder {
               /* Firefox 18- */
               color: rgba(240, 247, 252, 0.7); }
-          @media (min-width: 768px) {
+          @media (min-width: 425px) {
             html body nav .dl-menuwrapper .navbar .search .svg-not-btn {
               display: none; } }
-          @media (max-width: 767px) {
+          @media (max-width: 424px) {
             html body nav .dl-menuwrapper .navbar .search .svg-btn {
               display: none; } }
           html body nav .dl-menuwrapper .navbar .search button {

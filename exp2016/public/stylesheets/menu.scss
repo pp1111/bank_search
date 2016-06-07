@@ -152,6 +152,12 @@ html {
                         @media(min-width: 425px) {
                             background-color: #0F85D1;
                             border: 1px solid #0665A2;
+                            width: 200px;
+                            @include flexbox(row, nowrap);
+                            justify-content: space-between;
+                        }
+                        @media(min-width: 768px) {
+                            width: 250px;
                         }
                         form {
                             height: 100%;
@@ -160,9 +166,12 @@ html {
                             display: none;
                             @media(min-width: 425px) {
                                 @include flexbox(row, nowrap);
+                                width: 100%;
                             }
-                            @media(min-width: 768px) {
-                                width: 250px;
+                            &.form-active {
+                                @include flexbox(row, nowrap);
+                                justify-content: space-between;
+                                width: 100%;
                             }
                             input {
                                 width: 100%;
@@ -178,12 +187,12 @@ html {
                             @include placeholder(rgba(240,247,252,0.7));
                         }
                         .svg-not-btn {
-                            @media(min-width: 768px) {
+                            @media(min-width: 425px) {
                                 display: none;
                             }
                         }
                         .svg-btn {
-                            @media(max-width: 767px) {
+                            @media(max-width: 424px) {
                                 display: none;
                             }
                         }
