@@ -181,9 +181,11 @@ body {
                             margin: 0 30%;
                         }
                     }
-                    &:hover .show-product {
-                        visibility: visible;
-                        opacity: 1;
+                    &:hover {
+                        .show-product {
+                            visibility: visible;
+                            opacity: 1;
+                        }
                     }
                 }
             }
