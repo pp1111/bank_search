@@ -182,7 +182,8 @@ body {
                         }
                     }
                     &:hover {
-                        .show-product {
+                        .show-product,
+                        .show-product.hover {
                             visibility: visible;
                             opacity: 1;
                         }

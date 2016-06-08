@@ -22,7 +22,23 @@ $(document).ready(function(){
     //hideProductInfoText();
     toggleMoreProductInfo();
     disableCalcButton();
+    productHover();
 });
+
+function productHover() {
+    $('.single-product').on('touchend', function (e) {
+    'use strict'; //satisfy code inspectors
+    var link = $('.show-product');
+    if (link.hasClass('hover')) {
+        link.removeClass('hover');
+    } else {
+        link.addClass('hover');
+        $('.single-product').not(this).removeClass('hover');
+        e.preventDefault();
+        return false; //extra, and to make sure the function has consistent return points
+    }
+});
+}
 
 function menuBtnChange() {
     topBar.toggleClass('top-bar-close');

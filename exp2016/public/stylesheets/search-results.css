@@ -142,7 +142,8 @@ body {
             bottom: 30px;
             width: 40%;
             margin: 0 30%; }
-        body .wrapper .search-result .products .single-product:hover .show-product {
+        body .wrapper .search-result .products .single-product:hover .show-product,
+        body .wrapper .search-result .products .single-product:hover .show-product.hover {
           visibility: visible;
           opacity: 1; }
     body .wrapper:after {
