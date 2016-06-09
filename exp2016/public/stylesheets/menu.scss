@@ -37,6 +37,10 @@ $brighterYellow: #FFD459;
     }
 }
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@font-face {
+    font-family: "Helvetica Neue Thin";
+    src: url(/fonts/helveticaneue/HelveticaNeue.ttf);
+}
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -46,7 +50,8 @@ $brighterYellow: #FFD459;
 html {
     font-size: 62.5%;
     body {
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: subpixel-antialiased;
+        font-family: "Helvetica Neue","Helvetica Neue Thin",Helvetica,Arial,sans-serif;
         margin: 0;
         padding: 0;
         nav {
@@ -141,14 +146,18 @@ html {
                     }
                     .search {
                         padding: 5px;
-                        @include flexbox(row, nowrap);
-                        align-items: center;
-                        justify-content: space-between;
+                        
                         height: 30px;
                         margin-right: 5px;
                         @media(min-width: 425px) {
                             background-color: #0F85D1;
                             border: 1px solid #0665A2;
+                            width: 200px;
+                            @include flexbox(row, nowrap);
+                            justify-content: space-between;
+                        }
+                        @media(min-width: 768px) {
+                            width: 250px;
                         }
                         form {
                             height: 100%;
@@ -156,10 +165,13 @@ html {
                             margin-right: 5px;
                             display: none;
                             @media(min-width: 425px) {
-                                display: block;
+                                @include flexbox(row, nowrap);
+                                width: 100%;
                             }
-                            @media(min-width: 768px) {
-                                width: 250px;
+                            &.form-active {
+                                @include flexbox(row, nowrap);
+                                justify-content: space-between;
+                                width: 100%;
                             }
                             input {
                                 width: 100%;
@@ -188,6 +200,8 @@ html {
                             background-color: transparent;
                             border: none;
                             padding: 0;
+                            margin: 0 !important;
+                            cursor: pointer;
                             &:focus {
                                 outline: none;
                             }
