@@ -141,6 +141,7 @@ router.post('/kontakt', function (req, res) {
   });
 
 });
+
 router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
   var categories_name = [];
@@ -219,7 +220,7 @@ router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
             }
         })
         
-        for(var i=0;i<products_name.length;i++){
+        for(var i=0;i<=products_name.length;i++){
             var p = new Produkt(i,products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
             product_table.push(p);
         }
@@ -1182,7 +1183,7 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
             }
         })
         
-        for(var i=0;i<products_name.length;i++){
+        for(var i=0;i<=products_name.length;i++){
             var p = new Produkt(i,products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
             product_table.push(p);
         }
