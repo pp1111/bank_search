@@ -82,7 +82,7 @@ body {
                 font-size: 4rem;
             }
             @media(min-width: 1024px) {
-                margin-bottom: 50px;
+                margin-top: 70px;
                 font-size: 6rem;
             }
             a {
@@ -91,11 +91,7 @@ body {
             }
         }
         .results {
-            @media(min-width: 768px) {
-                @include flexbox(row, nowrap);
-                justify-content: center;
-                align-items: flex-start;
-            }
+            
             #calc {
                 background-color: $white;
                 box-shadow: 0 0 3px rgba(000,000,000, 0.5);
@@ -104,8 +100,8 @@ body {
                 padding: 20px;
                 @media(min-width: 768px) {
                     width: 40%;
-                    margin: 0;
-                    margin-right: 10px;
+                    margin: 0 auto;
+                    margin-bottom: 10px;
                 }
                 .value {
                     @include flexbox(row, nowrap);
@@ -216,8 +212,7 @@ body {
         text-align: center;
         @media(min-width: 768px) {
             width: 40%;
-            margin: 0;
-            margin-left: 10px;
+            margin: 0 auto;
         }
         h3 {
             font-size: 1.6rem;
