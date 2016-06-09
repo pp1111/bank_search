@@ -16,11 +16,12 @@ html {
     padding: 0; }
     html body nav {
       max-height: 100%;
-      overflow-y: auto;
       position: fixed;
       z-index: 9999;
       width: 100%;
       top: 0; }
+      html body nav.nav-open {
+        overflow-y: auto; }
       html body nav ul {
         list-style-type: none;
         padding: 0;
