@@ -56,12 +56,14 @@ html {
         padding: 0;
         nav {
             max-height: 100%;
-            overflow-y: auto;
             position: fixed;
             z-index: 9999;
             //background-color: $mainBlue;
             width: 100%;
             top: 0;
+            &.nav-open {
+                overflow-y: auto;
+            }
             ul {
                 list-style-type: none;
                 padding: 0;

@@ -52,11 +52,13 @@ function openMenu() {
             if(!topBar.hasClass('top-bar-close')) {
                 menuBtnChange();
                 menu.slideDown();
+                $('nav').addClass('nav-open');
                 dimness.addClass('dimness-visible');
             }
             else {
                 menuBtnChange();
                 menu.slideUp();
+                $('nav').removeClass('nav-open');
                 dimness.removeClass('dimness-visible');
             }
             if( $(window).width() < 425) {
