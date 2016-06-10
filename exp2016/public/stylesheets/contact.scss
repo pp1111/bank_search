@@ -80,6 +80,7 @@ body {
                 border: 1px solid $darkBlue;
                 margin-top: 15px;
                 height: 30px;
+                padding-left: 5px;
                 input {
                     width: 100%;
                     border: none;
@@ -94,9 +95,11 @@ body {
                 border: 1px solid $darkBlue;
                 margin-top: 15px;
                 textarea {
+                    padding: 5px;
                     width: 100%;
                     border: none;
                     resize: none;
+                    font-family: "Helvetica Neue",'Roboto',Helvetica,Arial,sans-serif;
                 }
                 button {
                     width: 100%;
