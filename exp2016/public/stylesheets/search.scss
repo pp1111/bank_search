@@ -34,10 +34,6 @@ $black: #000000;
         color: $color;
     }
 }
-@font-face {
-    font-family: "Helvetica Neue Thin";
-    src: url(/fonts/helveticaneue/HelveticaNeueThin.ttf);
-}
 
 html {
     height: 100%;
@@ -79,6 +75,7 @@ html {
                     font-size: 4.5rem;
                     font-weight: 100;
                     margin: 0;
+                    letter-spacing: -3px;
                     @media (min-width: 768px) {
                         font-size: 8rem;
                         margin-bottom: 10px;

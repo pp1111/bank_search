@@ -1,7 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-@font-face {
-  font-family: "Helvetica Neue Thin";
-  src: url(/fonts/helveticaneue/HelveticaNeue.ttf); }
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100);
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -11,7 +8,7 @@ html {
   font-size: 62.5%; }
   html body {
     -webkit-font-smoothing: subpixel-antialiased;
-    font-family: "Helvetica Neue","Helvetica Neue Thin",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue",'Roboto',Helvetica,Arial,sans-serif;
     margin: 0;
     padding: 0; }
     html body nav {
@@ -85,6 +82,7 @@ html {
             text-decoration: none;
             font-size: 2rem;
             font-family: 'Roboto', sans-serif;
+            font-weight: 300;
             color: #f0f7fc; }
           @media (min-width: 425px) {
             html body nav .dl-menuwrapper .navbar .amoney-link {
@@ -95,7 +93,7 @@ html {
           margin-right: 10px; }
           html body nav .dl-menuwrapper .navbar h5 a {
             color: #f0f7fc;
-            font-weight: 200;
+            font-weight: 300;
             font-size: 1.8rem;
             text-decoration: none;
             display: block;
@@ -215,15 +213,21 @@ html {
         html body nav .dl-menuwrapper .dl-menu .category a {
           background-color: #0665a2;
           font-size: 1.7rem; }
+          @media (min-width: 768px) {
+            html body nav .dl-menuwrapper .dl-menu .category a {
+              font-size: 1.8rem; } }
           html body nav .dl-menuwrapper .dl-menu .category a:hover {
             background-color: #0f85d1; }
         html body nav .dl-menuwrapper .dl-menu .category li a {
           background-color: #3498db;
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           display: block;
           -webkit-transition: 0.2s ease-in-out;
           -moz-transition: 0.2s ease-in-out;
           transition: 0.2s ease-in-out; }
+          @media (min-width: 768px) {
+            html body nav .dl-menuwrapper .dl-menu .category li a {
+              font-size: 1.5rem; } }
           html body nav .dl-menuwrapper .dl-menu .category li a:hover {
             background-color: #f0f7fc;
             color: #3498db; }

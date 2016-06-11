@@ -54,7 +54,7 @@ body {
       padding: 20px; }
       @media (min-width: 768px) {
         body .wrapper .results #calc {
-          width: 40%;
+          width: 50%;
           margin: 0 auto;
           margin-bottom: 10px; } }
       body .wrapper .results #calc .value {
@@ -173,19 +173,23 @@ body {
     text-align: center; }
     @media (min-width: 768px) {
       body .result {
-        width: 40%;
+        width: 50%;
         margin: 0 auto; } }
     body .result h3 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 300;
       color: #0665a2; }
     body .result #show #resultarea {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       padding-bottom: 10px;
+      font-weight: 400;
       box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5); }
       @media (min-width: 768px) {
         body .result #show #resultarea {
           box-shadow: none; } }
+      @media (min-width: 1024px) {
+        body .result #show #resultarea {
+          margin: 0 50px; } }
       body .result #show #resultarea p {
         padding: 0 20px; }
       body .result #show #resultarea ul {
@@ -207,7 +211,11 @@ body {
       background-color: #ffffff;
       width: 70%;
       margin: 0 auto 16px auto;
-      font-size: 1.1rem; }
+      font-size: 1.15rem;
+      font-weight: 400; }
+      @media (min-width: 768px) {
+        body .result #show #courseTable {
+          font-size: 1.3rem; } }
       body .result #show #courseTable ul {
         list-style-type: none;
         padding: 0; }

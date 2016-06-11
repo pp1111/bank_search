@@ -36,22 +36,20 @@ $brighterYellow: #FFD459;
         color: $color;
     }
 }
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-@font-face {
-    font-family: "Helvetica Neue Thin";
-    src: url(/fonts/helveticaneue/HelveticaNeue.ttf);
-}
+
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100);
+
 html {
     font-size: 62.5%;
     body {
         -webkit-font-smoothing: subpixel-antialiased;
-        font-family: "Helvetica Neue","Helvetica Neue Thin",Helvetica,Arial,sans-serif;
+        font-family: "Helvetica Neue",'Roboto',Helvetica,Arial,sans-serif;
         margin: 0;
         padding: 0;
         nav {
@@ -124,6 +122,7 @@ html {
                             text-decoration: none;
                             font-size: 2rem;
                             font-family: 'Roboto', sans-serif;
+                            font-weight: 300;
                             color: $menuColorText;
                         }
                         @media(min-width: 425px) {
@@ -136,7 +135,7 @@ html {
                         margin-right: 10px;
                         a {
                             color: $menuColorText;
-                            font-weight: 200;
+                            font-weight: 300;
                             font-size: 1.8rem;
                             text-decoration: none;
                             display: block;
@@ -249,6 +248,9 @@ html {
                         a {
                             background-color: $darkBlue;
                             font-size: 1.7rem;
+                            @media(min-width: 768px) {
+                                font-size: 1.8rem;
+                            }
                         
                         &:hover {
                             background-color: $darkerBlue;
@@ -257,9 +259,12 @@ html {
                         li {
                             a {
                                 background-color: $mainBlue;
-                                font-size: 1.3rem;
+                                font-size: 1.4rem;
                                 display: block;
                                 @include transition(.2s);
+                                @media(min-width: 768px) {
+                                    font-size: 1.5rem;
+                                }
                                 &:hover {
                                     background-color: $menuColorText;
                                     color: $mainBlue;
