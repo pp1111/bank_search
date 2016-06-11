@@ -46,76 +46,83 @@ function asciiOff(body) {
 
 
 MongoClient.connect('mongodb://localhost:27017/products', function(err, db) {
+
+var col =  db.collection("productsList");
+
+	assert.equal(null, err);
 	console.log("connected to db");
 
 	var request = http.get("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/",function(response){
-		 var xml = '';
-    response.on('data',function(chunk){
-      xml+=toUTF8(chunk);
-    });
-    response.on('end',function(){
+		var xml = '';
+    	response.on('data',function(chunk){
+        	xml+=toUTF8(chunk);
+    	});
+    	response.on('end',function(){
 
-      parseString(xml, function(err,result){
-        for(var key in result.oferta.kategoria){
-         categories_name.push(result.oferta.kategoria[key].$.nazwa);
-        }
+        	parseString(xml, function(err,result){
 
-        result.oferta.kategoria.forEach(function(entry){
-            for(var key in entry.podkategoria){
-             subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
-            }
-        });
+		        for(var key in result.oferta.kategoria){
+		         categories_name.push(result.oferta.kategoria[key].$.nazwa);
+		        }
 
-        result.oferta.kategoria.forEach(function(entry){
-           for(var key in entry.podkategoria){
-              for(var i in entry.podkategoria[key].produkt){
-                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
-                 for(var j in entry.podkategoria[key].produkt[i].dostawca){
-                    products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
-                    products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
-                    products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].linki){
-                    products_prez.push(entry.podkategoria[key].produkt[i].linki[j].$.prezentacja);
-                    products_application.push("http://uki222.systempartnerski.pl" + entry.podkategoria[key].produkt[i].linki[j].$.wniosek);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].opis){
-                    var temp = entry.podkategoria[key].produkt[i].opis.toString();
-                    temp = temp.replace(/<li>/g,"");
-                    temp = temp.replace(/<\/li>/g,"");
-                    temp = temp.replace(/<ul>/g,"");
-                    temp = temp.replace(/<\/ul>/g,"");
-                    // temp = temp.replace(/\r\n/g,"");
-                    temp = temp.replace(/<\/small>/g,"");
-                    temp = temp.replace(/<\/p>/g,"");
-                    temp = temp.replace(/<small>/g,"");
-                    temp = temp.replace(/<p>/g,"");
-                    products_description.push(temp);
-                 }
-              }
-            }
-        });
+		        result.oferta.kategoria.forEach(function(entry){
+		            for(var key in entry.podkategoria){
+		             subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
+		            }
+		        });
+
+	        result.oferta.kategoria.forEach(function(entry){
+	           for(var key in entry.podkategoria){
+	              for(var i in entry.podkategoria[key].produkt){
+	                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
+	                 for(var j in entry.podkategoria[key].produkt[i].dostawca){
+	                    products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
+	                    products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
+	                    products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
+	                 }
+	                  for(var j in entry.podkategoria[key].produkt[i].linki){
+	                    products_prez.push(entry.podkategoria[key].produkt[i].linki[j].$.prezentacja);
+	                    products_application.push("http://uki222.systempartnerski.pl" + entry.podkategoria[key].produkt[i].linki[j].$.wniosek);
+	                 }
+	                  for(var j in entry.podkategoria[key].produkt[i].opis){
+	                    var temp = entry.podkategoria[key].produkt[i].opis.toString();
+	                    temp = temp.replace(/<li>/g,"");
+	                    temp = temp.replace(/<\/li>/g,"");
+	                    temp = temp.replace(/<ul>/g,"");
+	                    temp = temp.replace(/<\/ul>/g,"");
+	                    // temp = temp.replace(/\r\n/g,"");
+	                    temp = temp.replace(/<\/small>/g,"");
+	                    temp = temp.replace(/<\/p>/g,"");
+	                    temp = temp.replace(/<small>/g,"");
+	                    temp = temp.replace(/<p>/g,"");
+	                    products_description.push(temp);
+	                 }
+	              }
+	            }
+	        });
         
-        for(var i=0;i<products_name.length;i++){
-            var p = new Produkt(products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
-            product_table.push(p);
-        }
+	        for(var i=0;i<products_name.length;i++){
+	            var p = new Produkt(products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
+	            product_table.push(p);
+	        }
 
-       
-       for(var i=0;i<products_name.length;i++){
-	        db.collection("productsList").updateOne(
-		        	{product_table},
-		        	{product_table},
-		        	{upsert: true},
-		        	function(result){
-		        		console.log("upsert", i , "file");
-		        	}
-	        	);
-    	}
+        
+	       col.insertMany(product_table,function(err,r){
+	       		 assert.equal(null, err);
+	     		 console.log("inserted documents: " ,r.insertedCount);
+	       });
 
-        db.close(function(){
-       		console.log("Drop database connection");
-        });
+	       col.find({"category" : "Karty kredytowe"}).limit(2).toArray(function(err, docs) {
+	       		console.log(docs);
+		    });
+
+
+	     	db.close(function(){
+	       		console.log("Drop database connection");
+	        });
+	       var query = {};
+
+     
 
       });
     });
