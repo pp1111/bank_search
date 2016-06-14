@@ -98,6 +98,7 @@ html {
                             margin: 0 5px;
                             padding-left: 10px;
                             font-size: 1.4rem;
+                            -webkit-box-shadow: 0 0 0px 1000px $white inset;
                             //@include placeholder($mainBlue); //coś nie działa
                         }
                         button {

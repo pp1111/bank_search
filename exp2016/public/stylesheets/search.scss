@@ -5,6 +5,7 @@ $mainBlue: rgba(52, 152, 219, 1);
 $lightestBlue: #f0f7fc;
 $lightBlue: rgba(133, 196, 237, 1);
 $black: #000000;
+$white: #ffffff;
 
 @mixin flexbox($direction, $wrap) {
     display: -webkit-box;
@@ -110,6 +111,7 @@ html {
                         margin: 0 5px;
                         padding-left: 10px;
                         font-size: 1.4rem;
+                        -webkit-box-shadow: 0 0 0px 1000px $white inset;
                         @include placeholder(#000000); //coś nie działa
                     }
                     button {

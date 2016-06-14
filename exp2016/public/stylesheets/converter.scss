@@ -90,8 +90,7 @@ body {
                 color: $darkBlue;
             }
         }
-        .results {
-            
+        .results {       
             #calc {
                 background-color: $white;
                 box-shadow: 0 0 3px rgba(000,000,000, 0.5);
@@ -121,6 +120,7 @@ body {
                         margin: 0 5px;
                         padding-left: 10px;
                         font-size: 1.4rem;
+                        -webkit-box-shadow: 0 0 0px 1000px $white inset;
                         //@include placeholder(#000000); //coś nie działa
                     }
                     button {
