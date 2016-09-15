@@ -1,0 +1,199 @@
+$darkerBlue: rgba(15, 133, 209, 1);
+$darkBlue: rgba(6, 101, 162, 1);
+$menuColorText: #f0f7fc;
+$mainBlue: rgba(52, 152, 219, 1);
+$lightestBlue: #f0f7fc;
+$lightBlue: rgba(133, 196, 237, 1);
+$black: #000000;
+$white: #ffffff;
+
+@mixin flexbox($direction, $wrap) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+@mixin transition($time) {
+    -webkit-transition: $time ease-in-out;
+    -moz-transition: $time ease-in-out;
+    transition: $time ease-in-out;
+}
+@mixin placeholder($color) {
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $color;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        color: $color;
+    }
+}
+
+html {
+    height: 100%;
+    body {
+        -webkit-font-smoothing: subpixel-antialiased;
+        position: relative;
+        height: 100%;
+        .wrapper {
+            position: absolute;
+            top: 25%;
+            width: 100%;
+            @media (min-width: 1024px) {
+                top: 25%;
+            }
+            header {
+                @include flexbox(column, nowrap);
+                align-items: center;
+                margin: 0 30px;
+                h1 {
+                    color: $darkBlue;
+                    font-size: 4.5rem;
+                    text-align: center;
+                    font-weight: 100;
+                    margin: 0;
+                    letter-spacing: -3px;
+                    @media (min-width: 425px) {
+                        font-size: 6rem;
+                    }
+                    @media (min-width: 768px) {
+                        font-size: 8rem;
+                        margin-bottom: 10px;
+                    }
+                    @media (min-width: 1024px) {
+                        font-size: 10rem;
+                    }
+                }
+                #calc {
+                    margin-bottom: 50px;
+                    .value {
+                        @include flexbox(row, nowrap);
+                        justify-content: space-between;
+                        border: 1px solid $darkBlue;
+                        margin-top: 15px;
+                        width: 250px;
+                        @media(min-width: 425px) {
+                            width: 380px;
+                        }
+                        @media (min-width: 768px) {
+                            width: 450px;
+                        }
+                        input,
+                        button {
+                            border: none;
+                            margin: 0 !important;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                        input[type="number"] {
+                            width: 100%;
+                            margin: 0 5px;
+                            padding-left: 10px;
+                            font-size: 1.4rem;
+                            //@include placeholder($mainBlue); //coś nie działa
+                        }
+                        button {
+                            background-color: $mainBlue;
+                            color: $lightestBlue;
+                            padding: 5px 10px;
+                            border-left: 1px solid $darkBlue;
+                            cursor: pointer;
+                            @include transition(.2s);
+                            svg {
+                                fill: $menuColorText;
+                                width: 25px;
+                                @include transition(.2s);
+                            }
+                            @media(min-width: 768px) {
+                                padding: 10px 15px;
+                            }
+                            &:hover {
+                                background-color: $menuColorText;
+                                svg {
+                                    fill: $mainBlue;
+                                }
+                            }
+                        }
+                    }
+                    select {
+                        border: 0 !important;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance:none;
+                        background: $white url(../images/arrow-down.png) no-repeat 90% center;
+                        background-size: 10px;
+                        width: 100px;
+                        text-indent: 0.01px;
+                        text-overflow: "";
+                        color: $darkBlue;
+                        border-radius: 15px;
+                        padding: 5px;
+                        box-shadow: 0 0 3px rgba(000,000,000, 0.5);
+                        border-radius: 0;
+                        height: 100%;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .values {
+                        @include flexbox(column, nowrap);
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: 30px;
+                        .course {
+                            height: 30px;
+                            button {
+                                border: none;
+                                border-radius: 0;
+                                height: 100%;
+                                background-color: $white;
+                            }
+                            select {
+                                width: 60px;
+                            }
+                        }
+                        .date {
+                            height: 30px;
+                            margin-top: 10px;
+                            #year,
+                            #day{
+                                width: 50px;
+                            }
+                            @media(min-width: 768px) {
+                                margin-top: 0;
+                            }
+                        }
+                        @media(min-width: 768px) {
+                            flex-direction: row;
+                            justify-content: space-around;
+                        }
+                    }
+                }
+            }
+        }
+        footer {
+            width: 100%;
+            height: 50px;
+            background-color: $darkBlue;
+            text-align: right;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            @include flexbox(column, nowrap);
+            justify-content: center;
+            a {
+                font-size: 1.3rem;
+                color: $menuColorText;
+                text-decoration: none;
+            }
+        }
+    }
+}

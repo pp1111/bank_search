@@ -1,0 +1,221 @@
+html {
+    font-size: 62.5%;
+}
+
+.navigation {
+  list-style: none;
+  margin: 0; 
+  
+  background: deepskyblue;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navigation a:hover {
+  background: #33CCFF;
+}
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  
+  .navigation a { 
+    text-align: center; 
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+  }
+
+  
+  .navigation li:last-of-type a {
+        border-bottom: none;
+  }
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container #row {
+    align-self: flex-end;
+}
+
+#row #contact {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #000000;
+}
+
+#row1 {
+    margin-bottom: 20px;
+}
+
+#row1 h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+    font-size: 5rem;
+    background: linear-gradient(269deg, #c0c0c0, #505050);
+    background: -moz-linear-gradient(#ffffff, #ffffff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    -webkit-animation: gradientAnimation 12s ease infinite;
+    -moz-animation: gradientAnimation 12s ease infinite;
+    -o-animation: gradientAnimation 12s ease infinite;
+    animation: gradientAnimation 12s ease infinite;
+}
+
+@-webkit-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-o-keyframes gradientAnimation {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes gradientAnimation { 
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+
+#row2 {
+    margin-bottom: 50px;
+}
+
+#row2 #calc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#row2 #calc #focusedInput {
+    width: 260px;
+}
+
+#row2 #calc #red {
+    width: 80px;
+    margin-top: 20px;
+}
+
+.form-control {
+    border-color: #3399CC;
+}
+
+#row {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+}
+
+
+.container #course{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+}
+
+.container #date{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+}
+
+.container select {
+    width: 100px;
+}
+
+#month {
+    width: 125px;
+}
+
+#day {
+    width: 100px;
+}
+
+#change{
+    width: 50px;
+}
+
+@media(min-width: 700px) {
+    #row1 h1 {
+        top: 15%;
+        font-size: 6rem;
+    }
+    #row #contact {
+        right: 70px;
+    }
+}
+
+@media(min-height: 450px) {
+    html, body, .container{
+        height: 100%;
+    }
+}
+
+@media(min-width: 1200px) {
+    #row #contact {
+        right: 15px;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {-moz-appearance: textfield;}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #c0c0c0;
+    padding: 15px 0;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer a {
+    margin-right: 15px;
+    color: #000000;
+}
