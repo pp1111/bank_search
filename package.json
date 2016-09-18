@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
@@ -9,6 +10,7 @@
     "mongodb": "^2.2.10",
     "morgan": "^1.7.0",
     "nodemailer": "^2.6.0",
+    "promised-mongo": "^1.2.0",
     "request": "^2.74.0",
     "xml2js": "^0.4.17"
   }

@@ -16,57 +16,36 @@ function product (c,s,n,p,l,pr,a,d) {
 
 const productList = [];
 
-MongoClient.connect('mongodb://localhost:27017/products').then( db => {
-	console.log('connected to db');
-	var collection = db.collection("productsList");
+module.exports = function productList () {
+	MongoClient.connect('mongodb://localhost:27017/products').then( db => {
+		console.log('connected to db');
+		var collection = db.collection("productsList");
 
-	getContent("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/").then( xml => {
-		parseString(xml, (err,result) => {
-			result.oferta.kategoria.forEach( kategoria => {
-				kategoria.podkategoria.forEach( podkategoria => {
-					podkategoria.produkt.forEach( produkt => {
-						p = new product(
-							kategoria.$.nazwa,
-							asciiOff(podkategoria.$.nazwa),
-							produkt.$.nazwa,
-							produkt.dostawca[0].$.nazwa,
-							produkt.dostawca[0].$['logo-male'],
-							produkt.linki[0].$.prezentacja,
-							`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
-							produkt.opis[0]
-						)
-						productList.push(p)
+		getContent("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/").then( xml => {
+			parseString(xml, (err,result) => {
+				result.oferta.kategoria.forEach( kategoria => {
+					kategoria.podkategoria.forEach( podkategoria => {
+						podkategoria.produkt.forEach( produkt => {
+							p = new product(
+								kategoria.$.nazwa,
+								asciiOff(podkategoria.$.nazwa),
+								produkt.$.nazwa,
+								produkt.dostawca[0].$.nazwa,
+								produkt.dostawca[0].$['logo-male'],
+								produkt.linki[0].$.prezentacja,
+								`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
+								produkt.opis[0]
+							)
+							productList.push(p)
+						})
 					})
 				})
 			})
+		}).then( () => {
+			return products;
 		})
-	}).then( () => {
-		productList.push({application: 'jestem nowym wnioskiem'})
-		console.log(productList.length);
-		collection.update(
-				{application: 'a'},
-				{
-					category: product.category,
-					subcategory: product.subcategory,
-					application: 'a',
-					provider: product.provider,
-					logo: product.logo,
-					prez: product.prez,
-					application: product.application,
-					description: product.description
-				},
-				{ 
-					upsert: true, 
-					multi: true	
-				}
-			)
-		productList.forEach( product => {
-			console.log(product.application)
-		})
-		
 	})
-})
-
+}
 const getContent = function(url) {
   	return new Promise((resolve, reject) => {
     	const lib = url.startsWith('https') ? require('https') : require('http');

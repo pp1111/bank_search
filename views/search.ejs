@@ -44,36 +44,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 			<ul class="dl-menu">
 				<li class="category">
-					<a href="#"><%=categories[0] %></a>
+					<a href="#"><%=product%></a>
 					<ul class="dl-submenu">
-						<% for(var i=0; i<=13; i++){ %>
-							
-							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-						<% } %>
+
 					</ul>
 				</li>
 				<li class="category">
-					<a href="#"><%=categories[1] %></a>
+					<a href="#"></a>
 					<ul class="dl-submenu">
-						<% for(var i=15; i<=21; i++){ %>
-							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-						<% } %>
+
 					</ul>
 				</li>
 				<li class="category">
-					<a href="#"><%=categories[2] %></a>
+					<a href="#"></a>
 					<ul class="dl-submenu">
-						<% for(var i=22; i<=25; i++){ %>
-							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-						<% } %>
+
 					</ul>
 				</li>
 				<li class="category">
-					<a href="#"><%=categories[3]%></a>
+					<a href="#"></a>
 					<ul class="dl-submenu">
-						<% for(var i=26; i<=29; i++){ %>
-							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
-						<% } %>
+
 					</ul>
 				</li>
 			</ul>
@@ -83,7 +74,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div class="wrapper">
 		<div class="dimness"></div>
 		<header>
-			<p><%=komunikat%></p>
 			<h1>aMoney</h1>
 			<form class="search" method="post">
 				<input id="searcharea" type="text" name = search class="form-control" placeholder="Wyszukaj produkt..."/>
@@ -100,9 +90,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<footer><% include partials/templemate/footer.ejs %></footer>
 	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
-    <script src="javascripts/typeahead.js"> </script>
-	<script src="javascripts/main.js"></script>
+    <script src="/javascripts/typeahead.js"> </script>
+	<script src="/javascripts/main.js"></script>
 	<script src="/javascripts/red.js"></script>
 </body>
 
-</html>
+</html

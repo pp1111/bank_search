@@ -19,8 +19,7 @@ $(document).ready(function () {
             });
         },
         select: function (event, ui) {
-
+            $("#search").click();
         }
     });
-
 });

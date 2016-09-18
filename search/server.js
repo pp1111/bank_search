@@ -1,7 +1,7 @@
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var autocomplete = require('../lib/autocomplete');
+var autocomplete = require('./lib/autocomplete');
 
 
 var app = express();

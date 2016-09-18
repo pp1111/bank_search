@@ -1,35 +1,84 @@
-var MongoClient = require('mongodb').MongoClient,
+const MongoClient = require('mongodb').MongoClient,
     http = require('http'),
     iconv = require('iconv'),
     parseString = require('xml2js').parseString;
 
- var categories_name = [];
- var subCategories_name = [];
- var products_subcategory = [];
- var products_name = [];
- var products_logo = [];
- var products_provider = [];
- var products_prez = [];
- var products_application = [];
- var products_description = [];
+function product (c,s,n,p,l,pr,a,d,ld,al,u) {
+	this.category = c;
+	this.subcategory = s;
+	this.name = n;
+	this.provider = p;
+	this.logo = l;
+	this.prez = pr;
+	this.application = a;
+	this.description = d;
+	this.longDescription = ld;
+	this.alive = al;
+	this.updated = u;
+}
 
- var check = [];
+const productList = [];
 
- function Produkt(b,c,d,e,f,g,h){
-    this.category = b;
-    this.name = c;
-    this.provider = d;
-    this.logo = e;
-    this.prez = f;
-    this.application = g;
-    this.description = h;
- }
+MongoClient.connect('mongodb://localhost:27017/products').then( db => {
+	console.log('connected to db');
+	var collection = db.collection("productsList");
 
- function toUTF8(body) {
+	collection.drop( () => {
+		console.log('Collection cleaned')
+	});
+
+	getContent("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/").then( xml => {
+		parseString(xml, (err,result) => {
+			result.oferta.kategoria.forEach( kategoria => {
+				kategoria.podkategoria.forEach( podkategoria => {
+					podkategoria.produkt.forEach( produkt => {
+						p = new product(
+							kategoria.$.nazwa,
+							asciiOff(podkategoria.$.nazwa),
+							produkt.$.nazwa,
+							produkt.dostawca[0].$.nazwa,
+							produkt.dostawca[0].$['logo-male'],
+							produkt.linki[0].$.prezentacja,
+							`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
+							produkt.opis[0],
+							"long desc",
+							true,
+							false
+						)
+						productList.push(p)
+					})
+				})
+			})
+		})
+	}).then( () => {
+		collection.insert(productList, () => {
+			console.log('Collection updated')
+			console.log(productList.length);
+			db.close( () => { console.log('Database closed')});
+		});
+	})
+})
+
+const getContent = function(url) {
+  	return new Promise((resolve, reject) => {
+    	const lib = url.startsWith('https') ? require('https') : require('http');
+    	const request = lib.get(url, (response) => {
+	      	if (response.statusCode < 200 || response.statusCode > 299) {
+	        	reject(new Error('Failed to load page, status code: ' + response.statusCode));
+	        }
+		      let body = '';
+		      response.on('data', (chunk) => body += toUTF8(chunk));
+		      response.on('end', () => resolve(body));
+	    });
+	    request.on('error', (err) => reject(err))
+    })
+};
+
+function toUTF8(body) {
   // convert from iso-8859-1 to utf-8
   var ic = new iconv.Iconv('iso-8859-2', 'utf-8');
   var buf = ic.convert(body);
-  
+
   return buf.toString('utf-8');
 }
 
@@ -41,95 +90,3 @@ function asciiOff(body) {
   buf = buf.toString().replace(/'/g,"");
   return buf.toString('utf-8');
 }
-  var product_table = [];
-
-
-MongoClient.connect('mongodb://localhost:27017/products', function(err, db) {
-
-var col =  db.collection("productsList");
-
-	console.log("connected to db");
-
-	var request = http.get("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/",function(response){
-		var xml = '';
-    	response.on('data',function(chunk){
-        	xml+=toUTF8(chunk);
-    	});
-    	response.on('end',function(){
-
-        	parseString(xml, function(err,result){
-
-		        for(var key in result.oferta.kategoria){
-		         categories_name.push(result.oferta.kategoria[key].$.nazwa);
-		        }
-
-		        result.oferta.kategoria.forEach(function(entry){
-		            for(var key in entry.podkategoria){
-		             subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
-		            }
-		        });
-
-	        result.oferta.kategoria.forEach(function(entry){
-	           for(var key in entry.podkategoria){
-	              for(var i in entry.podkategoria[key].produkt){
-	                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
-	                 for(var j in entry.podkategoria[key].produkt[i].dostawca){
-	                    products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
-	                    products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
-	                    products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
-	                 }
-	                  for(var j in entry.podkategoria[key].produkt[i].linki){
-	                    products_prez.push(entry.podkategoria[key].produkt[i].linki[j].$.prezentacja);
-	                    products_application.push("http://uki222.systempartnerski.pl" + entry.podkategoria[key].produkt[i].linki[j].$.wniosek);
-	                 }
-	                  for(var j in entry.podkategoria[key].produkt[i].opis){
-	                    var temp = entry.podkategoria[key].produkt[i].opis.toString();
-	                    temp = temp.replace(/<li>/g,"");
-	                    temp = temp.replace(/<\/li>/g,"");
-	                    temp = temp.replace(/<ul>/g,"");
-	                    temp = temp.replace(/<\/ul>/g,"");
-	                    // temp = temp.replace(/\r\n/g,"");
-	                    temp = temp.replace(/<\/small>/g,"");
-	                    temp = temp.replace(/<\/p>/g,"");
-	                    temp = temp.replace(/<small>/g,"");
-	                    temp = temp.replace(/<p>/g,"");
-	                    products_description.push(temp);
-	                 }
-	              }
-	            }
-	        });
-        
-	        for(var i=0;i<products_name.length;i++){
-	            var p = new Produkt(products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
-	            product_table.push(p);
-	            product_table.push({name: "newproduct"});
-	        }
-
-	        
-
-	 		product_table.forEach( product => {
-	 			col.update(
-	 				{ name : product.name },
-	 				{	
-	 					category : product.category,
-	 					name : product.name,
-	 					provider : product.provider,
-	 					logo : product.logo,
-	 					prez : product.prez,
-	 					application : product.application,
-						description : product.description
-	 				},
-	 				{ upsert: true }
-	 			)
-	 		});
-
-
-	     	db.close(function(){
-	       		console.log("Drop database connection");
-	        });
-     
-
-      });
-    });
-  });
-});
