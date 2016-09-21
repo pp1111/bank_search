@@ -13,6 +13,8 @@ var MongoClient = require('mongodb').MongoClient;
 
 var comongo = require('co-mongo');
 var co = require('co');
+var foreach = require('generator-foreach')
+var Promise = require("bluebird");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -35,21 +37,43 @@ function asciiOff(body) {
   return buf.toString('utf-8');
 }
 
-function* getProducts(db) {
-        let products = yield db.collection('productsList').find({});
-        console.log(products);
-}
-
 router.get('/', function (req,res){
-    let products;
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
         let products =  yield collection.find().toArray();
-        return products;
-    }).then( products => {
-        res.render('search', { product: products })
-    });
+        let categories = [...new Set(products.map(product => product.category))];
+        let subcategories = [...new Set(products.map(product => product.subcategory))];
+        let names = [...new Set(products.map(product => product.name))];
+
+        let categoriesMap = {};
+        let subCategoriesMap = {};
+        yield Promise.each(categories, co.wrap(function*(category) {
+            categoriesMap[category] = yield collection.find({category: category}).toArray();
+        }));
+
+        yield Promise.each(subcategories, co.wrap(function*(subcategory) {
+            subCategoriesMap[subcategory] = yield collection.find({subcategory: subcategory}).toArray();
+        }));
+
+        categories.forEach( category => {
+            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+        })
+
+        subcategories.forEach( subcategory => {
+            subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
+        })
+        
+        console.log(categoriesMap['Finanse osobiste']);
+        res.render('search', {
+            product: products,
+            categoriesDictionary: categories,
+            subcategoriesDictionary: subcategories,
+            categoriesMap: categoriesMap,
+            subcategoriesMap: subCategoriesMap,
+        })
+
+    })
 });
 
 router.get('/specyfikacja',function(req,res){

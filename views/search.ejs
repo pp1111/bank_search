@@ -43,30 +43,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<h5><a href="kalkulator-walut">Kalkulator walut</a></h5>
 			</div>
 			<ul class="dl-menu">
-				<li class="category">
-					<a href="#"><%=product%></a>
-					<ul class="dl-submenu">
-
-					</ul>
-				</li>
-				<li class="category">
-					<a href="#"></a>
-					<ul class="dl-submenu">
-
-					</ul>
-				</li>
-				<li class="category">
-					<a href="#"></a>
-					<ul class="dl-submenu">
-
-					</ul>
-				</li>
-				<li class="category">
-					<a href="#"></a>
-					<ul class="dl-submenu">
-
-					</ul>
-				</li>
+				<% categoriesDictionary.forEach( category => { %> 	 	
+					<li class="category">
+					<a href="#"><%=category%></a>
+					<% categoriesMap[category].forEach( subcategory => { %>
+						<ul class="dl-submenu">
+							<li>
+								<a href="#"><%=subcategory%></a>
+							</li>
+						</ul>
+					<% }) %>
+				<% }) %>
 			</ul>
 		</div>
 	</nav>
