@@ -6,11 +6,6 @@ var http = require('http');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
-var MongoClient = require('mongodb').MongoClient
-  , Server = require('mongodb').Server;
-
-var MongoClient = require('mongodb').MongoClient;
-
 var comongo = require('co-mongo');
 var co = require('co');
 var foreach = require('generator-foreach')
@@ -64,7 +59,6 @@ router.get('/', function (req,res){
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
         
-        console.log(categoriesMap['Finanse osobiste']);
         res.render('search', {
             product: products,
             categoriesDictionary: categories,
