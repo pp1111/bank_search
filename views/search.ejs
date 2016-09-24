@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<% categoriesMap[category].forEach( subcategory => { %>
 						<ul class="dl-submenu">
 							<li>
-								<a href="#"><%=subcategory%></a>
+								<a href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
 							</li>
 						</ul>
 					<% }) %>

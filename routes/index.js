@@ -66,7 +66,6 @@ router.get('/', function (req,res){
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
         })
-
     })
 });
 
@@ -117,285 +116,153 @@ router.post('/kontakt', function (req, res) {
 
 router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
-  var categories_name = [];
-  var subCategories_name = [];
-  var products_subcategory = [];
-  var products_name = [];
-  var products_logo = [];
-  var products_provider = [];
-  var products_prez = [];
-  var products_application = [];
-  var products_description = [];
+co(function *() {
+        let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
+        let collection = yield db.collection('productsList');   
+        const products =  yield collection.find().toArray();
+        const categories = [...new Set(products.map(product => product.category))];
+        const subcategories = [...new Set(products.map(product => product.subcategory))];
+        const names = [...new Set(products.map(product => product.name))];
+        let check = [];
 
-  var search = req.body.search.toString().toLowerCase();
-  var check = [];
+        const search = req.body.search;
 
-  function Produkt(a,b,c,d,e,f,g,h){
-    this.id = a;
-    this.category = b;
-    this.name = c;
-    this.provider = d;
-    this.logo = e;
-    this.prez = f;
-    this.application = g;
-    this.description = h;
-  }
+        let categoriesMap = {};
+        let subCategoriesMap = {};
+        yield Promise.each(categories, co.wrap(function*(category) {
+            categoriesMap[category] = yield collection.find({category: category}).toArray();
+        }));
 
-  var product_table = [];
+        yield Promise.each(subcategories, co.wrap(function*(subcategory) {
+            subCategoriesMap[subcategory] = yield collection.find({subcategory: subcategory}).toArray();
+        }));
 
-  var request = http.get("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/",function(response){
-
-  var xml = '';
-    response.on('data',function(chunk){
-      xml+=toUTF8(chunk);
-    });
-    response.on('end',function(){
-
-      parseString(xml, function(err,result){
-        for(var key in result.oferta.kategoria){
-         categories_name.push(result.oferta.kategoria[key].$.nazwa);
-        }
-
-        result.oferta.kategoria.forEach(function(entry){
-            for(var key in entry.podkategoria){
-             subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
-            }
-        });
-
-        result.oferta.kategoria.forEach(function(entry){
-           for(var key in entry.podkategoria){
-              for(var i in entry.podkategoria[key].produkt){
-                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
-                 for(var j in entry.podkategoria[key].produkt[i].dostawca){
-                    products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
-                    products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
-                    products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].linki){
-                    products_prez.push(entry.podkategoria[key].produkt[i].linki[j].$.prezentacja);
-                    products_application.push("http://uki222.systempartnerski.pl" + entry.podkategoria[key].produkt[i].linki[j].$.wniosek);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].opis){
-                    var temp = entry.podkategoria[key].produkt[i].opis.toString();
-                    temp = temp.replace(/<li>/g,"");
-                    temp = temp.replace(/<\/li>/g,"");
-                    temp = temp.replace(/<ul>/g,"");
-                    temp = temp.replace(/<\/ul>/g,"");
-                    // temp = temp.replace(/\r\n/g,"");
-                    temp = temp.replace(/<\/small>/g,"");
-                    temp = temp.replace(/<\/p>/g,"");
-                    temp = temp.replace(/<small>/g,"");
-                    temp = temp.replace(/<p>/g,"");
-                    products_description.push(temp);
-                 }
-
-              }
-            }
+        categories.forEach( category => {
+            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
         })
-        
-        for(var i=0;i<=products_name.length;i++){
-            var p = new Produkt(i,products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
-            product_table.push(p);
-        }
 
-        if(/kar.*/.exec(search.to)){
-          check.push('Karty kredytowe');
-        }
+        subcategories.forEach( subcategory => {
+            subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
+        })
 
-        else if(/kon.*/.exec(search)){
-          check.push('Konta osobiste');
-          check.push('Konta mlodziezowe');
-        }
 
-        else if(/kre.*/.exec(search)){
-          check.push('Kredyty mieszkaniowe');
-          check.push('Kredyty gotowkowe');
-          check.push('Kredyty konsolidacyjne');
-          check.push('Kredyty odnawialne');
-          check.push('Kredyty dla firm');
-        }
-        else if(/dor.*/.exec(search)){
-          check.push('Doradztwo ds nieruchomosci');
-        }
+    if(/kar.*/.exec(search)){
+        check.push('Karty kredytowe');
+    }
 
-        else if(/ksie.*/.exec(search)){
-          check.push('ksiegarnia');
-        }
-        else if(/zwrot.*/.exec(search)){
-          check.push('Zwrot podatku');
-        }
-        else if(/pro.*/.exec(search)){
-          check.push('Programy niefinansowe');
-        }
+    else if(/kon.*/.exec(search)){
+        check.push('Konta osobiste');
+        check.push('Konta mlodziezowe');
+    }
 
-        else if(/inf.*/.exec(search)){
-          check.push('Informacja kredytowa');
-        }
+    else if(/kre.*/.exec(search)){
+        check.push('Kredyty mieszkaniowe');
+        check.push('Kredyty gotowkowe');
+        check.push('Kredyty konsolidacyjne');
+        check.push('Kredyty odnawialne');
+        check.push('Kredyty dla firm');
+    }
+    else if(/dor.*/.exec(search)){
+        check.push('Doradztwo ds nieruchomosci');
+    }
 
-        else if(/fun.*/.exec(search)){
-          check.push('Fundusze inwestycyjne');
-        }
-        else if(/lok.*/.exec(search)){
-          check.push('Lokaty');
-        }
-        else if(/ra.*/.exec(search)){
-          check.push('Rachunki inwestycyjne');
-          check.push('Rachunki firmowe');
-        }
-        else if(/ike.*/.exec(search)){
-          check.push('IKE');
-        }
-        else if(/inw.*/.exec(search)){
-          check.push('Inwestycje alternatywne');
-        } 
-        else if(/wal.*/.exec(search)){
-          check.push('Waluty');
-        } 
-        else if(/ube.*/.exec(search)){
-          check.push('Ubezpieczenia na zycie');
-          check.push('Ubezpieczenia majatkowe');
-          check.push('Ubezpieczenia komunikacyjne');
-          check.push('Ubezpieczenia turystyczne');
-        }
-        else if(/lea.*/.exec(search)){
-          check.push('Leasing');
-        } 
-        else if(/wal.*/.exec(search)){
-          check.push('Waluty');
-        } 
+    else if(/ksie.*/.exec(search)){
+        check.push('ksiegarnia');
+    }
+    else if(/zwrot.*/.exec(search)){
+        check.push('Zwrot podatku');
+    }
+    else if(/pro.*/.exec(search)){
+        check.push('Programy niefinansowe');
+    }
 
-        else{
-          check = null;
-          res.render('search',{
-             categories: categories_name,
-             subCategories: subCategories_name,
-             products: products_name,
-             komunikat: 'Brak wyników wyszukania'
-          });
-        }
+    else if(/inf.*/.exec(search)){
+        check.push('Informacja kredytowa');
+    }
 
-        if(check!==null){
-          res.render('search_result',{
-               categories: categories_name,
-               subCategories: subCategories_name,
-               productName: products_name,
-               productProvider: products_provider,
-               productLogo: products_logo,
-               productApplication: products_application,
-               productPrez: products_prez,
-               products: product_table,
-               check: check
-          });
-        }
+    else if(/fun.*/.exec(search)){
+        check.push('Fundusze inwestycyjne');
+    }
+    else if(/lok.*/.exec(search)){
+        check.push('Lokaty');
+    }
+    else if(/ra.*/.exec(search)){
+        check.push('Rachunki inwestycyjne');
+        check.push('Rachunki firmowe');
+    }
+    else if(/ike.*/.exec(search)){
+        check.push('IKE');
+    }
+    else if(/inw.*/.exec(search)){
+        check.push('Inwestycje alternatywne');
+    } 
+    else if(/wal.*/.exec(search)){
+        check.push('Waluty');
+    } 
+    else if(/ube.*/.exec(search)){
+        check.push('Ubezpieczenia na zycie');
+        check.push('Ubezpieczenia majatkowe');
+        check.push('Ubezpieczenia komunikacyjne');
+        check.push('Ubezpieczenia turystyczne');
+    }
+    else if(/lea.*/.exec(search)){
+        check.push('Leasing');
+    } 
+    else if(/wal.*/.exec(search)){
+        check.push('Waluty');
+    } 
 
-      });
-    });
-
-  });
+    res.render('search_result', {
+            products: products,
+            categoriesDictionary: categories,
+            subcategoriesDictionary: subcategories,
+            categoriesMap: categoriesMap,
+            subcategoriesMap: subCategoriesMap,
+            check: check,
+        })
+    })
 });
 
                   
 router.get('/finanse/:category', function(req,res){
+    co(function *() {
+        let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
+        let collection = yield db.collection('productsList');   
+        let products =  yield collection.find().toArray();
+        let categories = [...new Set(products.map(product => product.category))];
+        let subcategories = [...new Set(products.map(product => product.subcategory))];
+        let names = [...new Set(products.map(product => product.name))];
+        let check = [];
 
-  var categories_name = [];
-  var subCategories_name = [];
-  var products_subcategory = [];
-  var products_name = [];
-  var products_logo = [];
-  var products_provider = [];
-  var products_prez = [];
-  var products_application = [];
-  var products_description = [];
-  var check = [];
+        let categoriesMap = {};
+        let subCategoriesMap = {};
+        yield Promise.each(categories, co.wrap(function*(category) {
+            categoriesMap[category] = yield collection.find({category: category}).toArray();
+        }));
 
-  console.log(req.params.category);
-  check.push(req.params.category.replace(/-/g, ' '));
+        yield Promise.each(subcategories, co.wrap(function*(subcategory) {
+            subCategoriesMap[subcategory] = yield collection.find({subcategory: subcategory}).toArray();
+        }));
 
-  function Produkt(a,b,c,d,e,f,g,h){
-    this.id = a;
-    this.category = b;
-    this.name = c;
-    this.provider = d;
-    this.logo = e;
-    this.prez = f;
-    this.application = g;
-    this.description = h;
-  }
+        categories.forEach( category => {
+            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+        })
 
-  var product_table = [];
-
-  var request = http.get("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/",function(response){
-
-  var xml = '';
-    response.on('data',function(chunk){
-        xml+=toUTF8(chunk);
-    });
-    response.on('end',function(){
-
-      parseString(xml, function(err,result){
-        for(var key in result.oferta.kategoria){
-         categories_name.push(result.oferta.kategoria[key].$.nazwa);
-        }
-
-        result.oferta.kategoria.forEach(function(entry){
-            for(var key in entry.podkategoria){
-              subCategories_name.push(asciiOff(entry.podkategoria[key].$.nazwa));
-            }
-        });
-
-        result.oferta.kategoria.forEach(function(entry){
-           for(var key in entry.podkategoria){
-              for(var i in entry.podkategoria[key].produkt){
-                products_subcategory.push(asciiOff(entry.podkategoria[key].$.nazwa));
-                 for(var j in entry.podkategoria[key].produkt[i].dostawca){
-                    products_name.push(entry.podkategoria[key].produkt[i].$.nazwa);
-                    products_provider.push(entry.podkategoria[key].produkt[i].dostawca[j].$.nazwa);
-                    products_logo.push(entry.podkategoria[key].produkt[i].dostawca[j].$['logo-male']);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].linki){
-                    products_prez.push(entry.podkategoria[key].produkt[i].linki[j].$.prezentacja);
-                    products_application.push("http://uki222.systempartnerski.pl" + entry.podkategoria[key].produkt[i].linki[j].$.wniosek);
-                 }
-                  for(var j in entry.podkategoria[key].produkt[i].opis){
-                    var temp = entry.podkategoria[key].produkt[i].opis.toString();
-                    temp = temp.replace(/<li>/g,"");
-                    temp = temp.replace(/<\/li>/g,"");
-                    temp = temp.replace(/<ul>/g,"");
-                    temp = temp.replace(/<\/ul>/g,"");
-                    // temp = temp.replace(/\r\n/g,"");
-                    temp = temp.replace(/<\/small>/g,"");
-                    temp = temp.replace(/<\/p>/g,"");
-                    temp = temp.replace(/<small>/g,"");
-                    temp = temp.replace(/<p>/g,"");
-                    products_description.push(temp);
-                 }
-
-              }
-            }
+        subcategories.forEach( subcategory => {
+            subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
         
-        for(var i=0;i<products_name.length;i++){
-            var p = new Produkt(i,products_subcategory[i].replace(/-/g, ' '),products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
-            product_table.push(p);
-        }
+        check.push(req.params.category.replace(/-/g, ' '));
 
-          res.render('search_result',{
-               categories: categories_name,
-               subCategories: subCategories_name,
-               productName: products_name,
-               productProvider: products_provider,
-               productLogo: products_logo,
-               productApplication: products_application,
-               productPrez: products_prez,
-               products: product_table,
-               check: check
-          });
-
-      });
-    });
-
-  });
-
+        res.render('search_result', {
+            products: products,
+            categoriesDictionary: categories,
+            subcategoriesDictionary: subcategories,
+            categoriesMap: categoriesMap,
+            subcategoriesMap: subCategoriesMap,
+            check: check,
+        })
+    })
 });
 
 

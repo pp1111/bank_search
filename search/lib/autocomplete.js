@@ -20,10 +20,17 @@ db.open(function(err, db) {
 
 
 exports.find = function(req, res) {
-var b=req.params.search;
-db.collection('productsList', (err, collection) => {
-    collection.find({name: new RegExp(b,'i')}).limit(5).toArray( (err, items) => {
+var b = req.params.search;
+    db.collection('productsList', (err, collection) => {
+        collection.find({
+            name: new RegExp(b,'i'),
+        }).limit(5).toArray( (err, items) => {
+            res.jsonp(items);
+        });
+        collection.find({
+            description: new RegExp(b,'i'),
+        }).limit(5).toArray( (err, items) => {
             res.jsonp(items);
         });
     });
-};
+};  
