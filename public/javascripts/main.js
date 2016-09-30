@@ -23,6 +23,7 @@ $(document).ready(function(){
     toggleMoreProductInfo();
     disableCalcButton();
     productHover();
+    learnMore();
 });
 
 function productHover() {
@@ -175,4 +176,17 @@ function disableCalcButton() {
         else
             valueBtn.attr('disabled',true);
     })
+}
+
+function learnMore() {
+    var learnMoreBtn = $('.single-product .read-more');
+    learnMoreBtn.click(function() {
+        /*$(this).parents('.single-product').animate({
+            width: 800,
+            height: 600
+        });*/
+        $(this).parents('.single-product').addClass('learn-more');
+        dimness.addClass('dimness-visible');
+        $(this).parents('.show-product').hide();
+    });
 }
