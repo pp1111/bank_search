@@ -146,6 +146,8 @@ html {
                         }
                     }
                     .search {
+                        padding: 5px;
+                        
                         height: 30px;
                         margin-right: 5px;
                         @media(min-width: 425px) {
@@ -173,13 +175,11 @@ html {
                                 width: 100%;
                             }
                             input {
-                                -webkit-box-shadow: 0 0 0px 1000px #0F85D1 inset;
-                                padding-left: 5px;
                                 width: 100%;
                                 height: 100%;
+                                background-color: #0F85D1;
                                 border: none;
-                                -webkit-text-fill-color: $menuColorText;
-                                color: $black;
+                                color: #000000;
                                 &:focus {
                                     outline: none;
                                     color: $menuColorText;

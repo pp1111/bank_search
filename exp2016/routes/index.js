@@ -6,6 +6,7 @@ var request = require('request');
 var url = require('url');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 var iconv = require('iconv');
@@ -48,10 +49,9 @@ function rand( min, max ){
 
 
 router.get('/',function(req,res){
-
-  var categories_name = [];
-  var subCategories_name = [];
-  var products_name = [];
+    var categories_name = [];
+    var subCategories_name = [];
+    var products_name = [];
 
   var request = http.get("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/",function(response){
 
@@ -81,8 +81,6 @@ router.get('/',function(req,res){
               }     
             }
         })
-
-        console.log(subCategories_name);
 
           res.render('search',{
            categories: categories_name,
@@ -141,6 +139,7 @@ router.post('/kontakt', function (req, res) {
   });
 
 });
+
 router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
   var categories_name = [];
@@ -153,7 +152,7 @@ router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
   var products_application = [];
   var products_description = [];
 
-  var search = req.body.search.toString();
+  var search = req.body.search.toString().toLowerCase();
   var check = [];
 
   function Produkt(a,b,c,d,e,f,g,h){
@@ -219,14 +218,15 @@ router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
             }
         })
         
-        for(var i=0;i<products_name.length;i++){
+        for(var i=0;i<=products_name.length;i++){
             var p = new Produkt(i,products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
             product_table.push(p);
         }
 
 
+       
 
-        if(/kar.*/.exec(search)){
+        if(/kar.*/.exec(search.to)){
           check.push('Karty kredytowe');
         }
 
@@ -1117,6 +1117,7 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
   var products_application = [];
   var products_description = [];
   var check = [];
+
   check.push(req.params[0].replace(/-/g, ' '));
 
   function Produkt(a,b,c,d,e,f,g,h){
@@ -1183,12 +1184,9 @@ router.get(/^\/((\w+)\-*(\w*)\.*\-*(\w*))$/, function(req,res){
         })
         
         for(var i=0;i<products_name.length;i++){
-            var p = new Produkt(i,products_subcategory[i],products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
+            var p = new Produkt(i,products_subcategory[i].replace(/-/g, ' '),products_name[i],products_provider[i],products_logo[i],products_prez[i],products_application[i],products_description[i]);
             product_table.push(p);
         }
-
-  
-        // console.log(product_table);
 
           res.render('search_result',{
                categories: categories_name,

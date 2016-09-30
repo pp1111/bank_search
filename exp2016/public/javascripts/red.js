@@ -31,6 +31,10 @@ $(document).ready(function(){
       }
   }
 
+  document.getElementById("searcharea").onclick = function(){
+    window.location.href = "/search?" + search.searcharea.value
+  }
+
   var enter = function(){
     var url = "/przelicznik/" + calc.year.value +"-" + calc.month.value + "-" +calc.day.value + "/" + calc.from.value + "-na-" + calc.on.value + "-" + calc.focusedInput.value + "-" + calc.from.value + "-ile-to-" + calc.on.value;
     window.location.href = url;

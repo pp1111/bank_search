@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" href="../favicon.ico"> 
 	<link rel="stylesheet" type="text/css" href="stylesheets/menu.css">
 	<link rel='stylesheet' href='/stylesheets/search.css' />
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.css" />
 	<title></title>
  </head>
 
@@ -55,7 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="category">
 					<a href="#"><%=categories[1] %></a>
 					<ul class="dl-submenu">
-						<% for(var i=15; i<=20; i++){ %>
+						<% for(var i=15; i<=21; i++){ %>
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -63,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="category">
 					<a href="#"><%=categories[2] %></a>
 					<ul class="dl-submenu">
-						<% for(var i=21; i<=24; i++){ %>
+						<% for(var i=22; i<=25; i++){ %>
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -71,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="category">
 					<a href="#"><%=categories[3]%></a>
 					<ul class="dl-submenu">
-						<% for(var i=25; i<=28; i++){ %>
+						<% for(var i=26; i<=29; i++){ %>
 							<li><a href="/<%=subCategories[i].replace(/ /g, '-')%>"><%=subCategories[i]%></a> </li>
 						<% } %>
 					</ul>
@@ -98,7 +98,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		</header>
 	</div>
 	<footer><% include partials/templemate/footer.ejs %></footer>
-	<script src="/javascripts/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script src="javascripts/typeahead.js"> </script>
 	<script src="javascripts/main.js"></script>
 	<script src="/javascripts/red.js"></script>
 </body>
