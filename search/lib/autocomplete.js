@@ -27,10 +27,5 @@ var b = req.params.search;
         }).limit(5).toArray( (err, items) => {
             res.jsonp(items);
         });
-        collection.find({
-            description: new RegExp(b,'i'),
-        }).limit(5).toArray( (err, items) => {
-            res.jsonp(items);
-        });
     });
 };  
