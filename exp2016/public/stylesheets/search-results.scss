@@ -84,6 +84,13 @@ body {
                     width: 300px;
                     position: relative;
                     //border-radius: 10px;
+                    &.learn-more {
+                        width: 80%;
+                        height: 80%;
+                        position: absolute;
+                        z-index: 999;
+                        @include transition(.7s);
+                    }
                     .product-header {
                         @include flexbox(column, nowrap);
                         align-items: center;
