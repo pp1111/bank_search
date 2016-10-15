@@ -8,6 +8,8 @@ var routes = require('./routes/index');
 var calcRoute = require('./routes/calcRoute');
 var parseString = require('xml2js').parseString;
 
+const arf = require('./lib/arf');
+
 // var users = require('./routes/users');
 
 var app = express();
@@ -25,10 +27,13 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/ping', function (req, res) { return arf.response(res, { pong: {} }); });
+
 app.use('/', routes);
 app.use('/kalkulator-walut', calcRoute);
 app.use('/przelicznik', calcRoute);
 
+app.get('/ping', function (req, res) { return arf.response(res, { pong: {} }); });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

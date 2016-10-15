@@ -2,9 +2,13 @@
   "dependencies": {
     "async": "^2.0.1",
     "body-parser": "^1.15.2",
+    "co": "^4.6.0",
+    "co-mongo": "0.0.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
+    "emailjs": "^0.3.16",
     "express": "^4.14.0",
+    "generator-foreach": "^0.1.0",
     "iconv": "^2.2.1",
     "less-middleware": "^2.2.0",
     "lodash": "^4.16.4",

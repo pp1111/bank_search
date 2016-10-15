@@ -21,6 +21,6 @@
         "port": 5006
     },
     "pingEndpoints": [
-        "http://amoney.pl"
+        "http://localhost:3000/ping"
     ]
 }

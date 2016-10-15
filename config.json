@@ -1,0 +1,12 @@
+{
+	"email" : {
+		"host": "Smtp.gmail.com",
+		"secureConnection": "false",
+		"port": 587,
+		"auth": {
+			"user": "piatekpatryk2@gmail.com",
+			"pass": "9984149a"
+		},
+
+	}
+}
