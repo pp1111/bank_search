@@ -13,6 +13,10 @@ var Promise = require("bluebird");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
+const getContent = require('../lib/getContent');
+
+var array = require('lodash/array');
+
 var iconv = require('iconv');
 
 function toUTF8(body) {
@@ -66,7 +70,7 @@ router.get('/', function (req,res){
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
         })
-    })
+    }).catch(err => console.log(err))
 });
 
 router.get('/specyfikacja',function(req,res){
@@ -114,20 +118,18 @@ router.post('/kontakt', function (req, res) {
 
 });
 
-router.post(/^\/((\w*)\-*(\w*)\.*\-*(\w*))$/,function(req,res){
 
+router.get('/finanse', function(req,res){
 co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
-        const products =  yield collection.find().toArray();
-        const categories = [...new Set(products.map(product => product.category))];
-        const subcategories = [...new Set(products.map(product => product.subcategory))];
-        const names = [...new Set(products.map(product => product.name))];
+        let products =  yield collection.find().toArray();
+        let categories = [...new Set(products.map(product => product.category))];
+        let subcategories = [...new Set(products.map(product => product.subcategory))];
+        let names = [...new Set(products.map(product => product.name))];
         let check = [];
 
-        const search = req.body.search;
-
-        let categoriesMap = {};
+        let categoriesMap = {}; 
         let subCategoriesMap = {};
         yield Promise.each(categories, co.wrap(function*(category) {
             categoriesMap[category] = yield collection.find({category: category}).toArray();
@@ -144,86 +146,32 @@ co(function *() {
         subcategories.forEach( subcategory => {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
+        
+        query = req.query.q.replace(/ /g,"_");
+        var result = yield getContent('http://localhost:4000/search/data?q=' + query);
+        result = JSON.parse(result);
 
+        result.response.docs.forEach( product => {
+            product.name = product.name.replace(/_/g, ' ');
+        })
 
-    if(/kar.*/.exec(search)){
-        check.push('Karty kredytowe');
-    }
+        let searchedSubcategories = [...new Set(result.response.docs.map(product => product.subcategory))];
 
-    else if(/kon.*/.exec(search)){
-        check.push('Konta osobiste');
-        check.push('Konta mlodziezowe');
-    }
+        searchedSubcategories.forEach( subcategory => {
+            check.push(subcategory);
+        })
 
-    else if(/kre.*/.exec(search)){
-        check.push('Kredyty mieszkaniowe');
-        check.push('Kredyty gotowkowe');
-        check.push('Kredyty konsolidacyjne');
-        check.push('Kredyty odnawialne');
-        check.push('Kredyty dla firm');
-    }
-    else if(/dor.*/.exec(search)){
-        check.push('Doradztwo ds nieruchomosci');
-    }
-
-    else if(/ksie.*/.exec(search)){
-        check.push('ksiegarnia');
-    }
-    else if(/zwrot.*/.exec(search)){
-        check.push('Zwrot podatku');
-    }
-    else if(/pro.*/.exec(search)){
-        check.push('Programy niefinansowe');
-    }
-
-    else if(/inf.*/.exec(search)){
-        check.push('Informacja kredytowa');
-    }
-
-    else if(/fun.*/.exec(search)){
-        check.push('Fundusze inwestycyjne');
-    }
-    else if(/lok.*/.exec(search)){
-        check.push('Lokaty');
-    }
-    else if(/ra.*/.exec(search)){
-        check.push('Rachunki inwestycyjne');
-        check.push('Rachunki firmowe');
-    }
-    else if(/ike.*/.exec(search)){
-        check.push('IKE');
-    }
-    else if(/inw.*/.exec(search)){
-        check.push('Inwestycje alternatywne');
-    } 
-    else if(/wal.*/.exec(search)){
-        check.push('Waluty');
-    } 
-    else if(/ube.*/.exec(search)){
-        check.push('Ubezpieczenia na zycie');
-        check.push('Ubezpieczenia majatkowe');
-        check.push('Ubezpieczenia komunikacyjne');
-        check.push('Ubezpieczenia turystyczne');
-    }
-    else if(/lea.*/.exec(search)){
-        check.push('Leasing');
-    } 
-    else if(/wal.*/.exec(search)){
-        check.push('Waluty');
-    } 
-
-    res.render('search_result', {
-            products: products,
+        res.render('search_result', {
+            products: result.response.docs,
             categoriesDictionary: categories,
             subcategoriesDictionary: subcategories,
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
             check: check,
         })
-    })
+    }).catch(err => console.log(err))
 });
-
-                  
+    
 router.get('/finanse/:category', function(req,res){
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
@@ -262,7 +210,7 @@ router.get('/finanse/:category', function(req,res){
             subcategoriesMap: subCategoriesMap,
             check: check,
         })
-    })
+    }).catch(err => console.log(err))
 });
 
 

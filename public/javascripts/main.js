@@ -28,17 +28,17 @@ $(document).ready(function(){
 
 function productHover() {
     $('.single-product').on('touchend', function (e) {
-    'use strict'; //satisfy code inspectors
-    var link = $('.show-product');
-    if (link.hasClass('hover')) {
-        link.removeClass('hover');
-    } else {
-        link.addClass('hover');
-        $('.single-product').not(this).removeClass('hover');
-        e.preventDefault();
-        return false; //extra, and to make sure the function has consistent return points
-    }
-});
+        'use strict'; //satisfy code inspectors
+        var link = $('.show-product');
+        if (link.hasClass('hover')) {
+            link.removeClass('hover');
+        } else {
+            link.addClass('hover');
+            $('.single-product').not(this).removeClass('hover');
+            e.preventDefault();
+            return false; //extra, and to make sure the function has consistent return points
+        }
+    });
 }
 
 function menuBtnChange() {
@@ -102,6 +102,7 @@ function closeSubMenu() {
 
 function clickSearch() {
     searchIconNotBtn.click(function() {
+        $(window).attr('location','http://www.example.com')
         search.addClass('search-clicked');
         dimness.addClass('dimness-visible');
         //$('nav .search form').show();

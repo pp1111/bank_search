@@ -31,8 +31,8 @@ $(document).ready(function(){
       }
   }
 
-  document.getElementById("searcharea").onclick = function(){
-    window.location.href = "/search?" + search.searcharea.value
+  document.getElementById("search").onclick = function(){
+    window.location.href = "/search";
   }
 
   var enter = function(){
