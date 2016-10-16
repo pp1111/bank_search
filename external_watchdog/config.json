@@ -3,7 +3,7 @@
         "enabled": false,
         "to": "piatekpatryk2@gmail.com",
         "from": "piatekpatryk2@gmail.com",
-        "host": "smtp.office365.com",
+        "host": "smtp.gmail.com",
         "port": 587,
         "username": "piatekpatryk2@gmail.com",
         "password": "9984149a",

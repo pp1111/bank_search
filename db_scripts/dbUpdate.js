@@ -3,7 +3,8 @@ const MongoClient = require('mongodb').MongoClient,
     iconv = require('iconv'),
     parseString = require('xml2js').parseString;
 
-function product (c,s,n,p,l,pr,a,d,ld,al,u) {
+function product (i,c,s,n,p,l,pr,a,d,ld,al,u) {
+	this.id = i;
 	this.category = c;
 	this.subcategory = s;
 	this.name = n;
@@ -33,6 +34,7 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 				kategoria.podkategoria.forEach( podkategoria => {
 					podkategoria.produkt.forEach( produkt => {
 						p = new product(
+							produkt.$.id,
 							kategoria.$.nazwa,
 							asciiOff(podkategoria.$.nazwa),
 							produkt.$.nazwa,
@@ -40,7 +42,7 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 							produkt.dostawca[0].$['logo-male'],
 							produkt.linki[0].$.prezentacja,
 							`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
-							produkt.opis[0],
+							produkt.opis[0],	
 							"long desc",
 							true,
 							false

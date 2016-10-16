@@ -1,12 +1,12 @@
 {
-	"email" : {
-		"host": "Smtp.gmail.com",
-		"secureConnection": "false",
-		"port": 587,
-		"auth": {
-			"user": "piatekpatryk2@gmail.com",
-			"pass": "9984149a"
-		},
-
+	"email": {
+	    "enabled": true,
+	    "to": "piatekpatryk2@gmail.com",
+	    "from": "piatekpatryk2@gmail.com",
+	    "host": "smtp.gmail.com",
+	    "port": 587,
+	    "username": "piatekpatryk2@gmail.com",
+	    "password": "9984149a",
+	    "timeout": 30000
 	}
 }

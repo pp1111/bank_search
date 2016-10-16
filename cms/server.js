@@ -13,6 +13,22 @@ app.use( (req,res,next) => {
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 	next();
 })
+
+app.use(function(req, res, next) {
+    var auth; 
+    if (req.headers.authorization) {
+      auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
+    }
+
+    if (!auth || auth[0] !== 'user' || auth[1] !== 'Real2121') {
+        res.statusCode = 401;
+        res.setHeader('WWW-Authenticate', 'Basic realm="MyRealmName"');
+        res.end('Unauthorized');
+    } else {
+        next();
+    }
+});
+
 app.get('/', function(req, res) {
     res.sendfile('./views/cms.html');
 });
