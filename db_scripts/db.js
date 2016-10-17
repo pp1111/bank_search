@@ -1,3 +1,5 @@
+''
+
 var comongo = require('co-mongo');
 var co = require('co');
 var foreach = require('generator-foreach')
@@ -10,7 +12,7 @@ const getContent = require('../lib/getContent');
 
 const ascii = require('../lib/ascii');
 
-function product (i,c,s,n,p,l,pr,a,d,al,u) {
+function product (i,c,s,n,p,l,pr,a,d,al) {
 	this.id = i;
 	this.category = c;
 	this.subcategory = s;
@@ -21,7 +23,6 @@ function product (i,c,s,n,p,l,pr,a,d,al,u) {
 	this.application = a;
 	this.description = d;
 	this.alive = al;
-	this.updated = u;
 }
 
 co(function *() {
@@ -46,18 +47,12 @@ co(function *() {
 					produkt.linki[0].$.prezentacja,
 					`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
 					produkt.opis[0],	
-					true,
-					false
+					true
 				)
 				productList.push(p)
 			})
 		})
 	})
-	productList.push(
-		{
-			id: 10000000
-		}	
-	)
 	
 	for (var i=0; i<productList.length; i++) {
 		yield collection.update(
@@ -89,12 +84,13 @@ co(function *() {
 				{ id: updatedProductList[i].id },
 				{
 					$set: {
-						longDescription: 'long desc'
+						longDescription: 'long desc',
+						updated: false,
 					}	
 				}
 			)
 		}
 	}
 
-	yield db.close();
+	yield db.close( () => console.log('Db updated'));
 }).catch(err => console.log(err))

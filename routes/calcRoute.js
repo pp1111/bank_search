@@ -4,8 +4,6 @@ var parseString = require('xml2js').parseString;
 var http = require('http');
 var request = require('request');
 var url = require('url');
-var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
 
 var now = new Date();
 var currentYear = now.getFullYear();   
