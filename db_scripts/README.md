@@ -1,0 +1,1 @@
+run cron.sh script with /your/project/path

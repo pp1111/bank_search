@@ -32,7 +32,7 @@ co(function *() {
 	let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
 	let collection = yield db.collection('productsList');
 
-	let content = yield getContent("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/");
+	let content = yield getContent("http://api.systempartnerski.pl/2.0/xml/yU8P2f9BtaN8V8OKj58/", true);
 	let parsedContent = yield convert.xmlDataToJSON(content);
 	parsedContent.oferta.kategoria.forEach( kategoria => {
 		kategoria.podkategoria.forEach( podkategoria => {
@@ -92,5 +92,5 @@ co(function *() {
 		}
 	}
 
-	yield db.close( () => console.log('Db updated'));
+	yield db.close( () => console.log('Db updated at: ', new Date()));
 }).catch(err => console.log(err))

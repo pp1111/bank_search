@@ -14,6 +14,6 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 			solrClient.update([item]);
 		})
 
-		db.close( () => console.log('Solr updated'));	
+		db.close( () => console.log('Solr updated at: ', new Date()));	
 	});
 })

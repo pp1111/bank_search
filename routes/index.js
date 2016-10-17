@@ -97,7 +97,7 @@ co(function *() {
         })
         
         query = req.query.q.replace(/ /g,"_");
-        var result = yield getContent('http://localhost:4000/search/data?q=' + query);
+        var result = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         result = JSON.parse(result);
 
         result.response.docs.forEach( product => {
