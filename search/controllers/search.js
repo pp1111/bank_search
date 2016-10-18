@@ -22,7 +22,6 @@ module.exports = () => {
 let search = {
     get: (req, res, next) => q.async(function* () {
         let query = ascii.asciiOff(req.query.q);
-        console.log(query);
         let result = yield getContent('http://localhost:8983/solr/core0/select?wt=json&indent=on&q=value:' + query, false);
         result = JSON.parse(result);
         return arf.response(res, result, 200);  
