@@ -10,6 +10,8 @@ $(document).ready(function () {
                 }
             }).done((data) =>{
                 res($.map(data, (item) =>{
+                    item.term = item.term.replace(/<b>/g, "");
+                    item.term = item.term.replace(/<\/b>/g, "")
                     return {
                         value: item.term.replace(/_/g," ")
                     };

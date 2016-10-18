@@ -9,8 +9,9 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 	let collection = db.collection("productsList");
 
 	collection.find({}).toArray( (err,items) => {
-		items.forEach(item => {
-			item.name = item.name.replace(/ /g,"_")
+		items.forEach(item => {	
+			item.value = `${item.name} ${item.provider}`;
+			item.value = item.value.replace(/ /g,"_")
 			solrClient.update([item]);
 		})
 
