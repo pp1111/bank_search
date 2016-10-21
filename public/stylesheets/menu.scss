@@ -69,7 +69,7 @@ html {
             }
             .dl-menuwrapper {
                 .navbar {
-                    background-color: $mainBlue;
+                    background-color: rgba(255, 255, 255, .5);
                     width: 100%;
                     height: 50px;
                     @include flexbox(row, nowrap);
@@ -86,23 +86,24 @@ html {
                         .middle-bar,
                         .bottom-bar {
                             width: 90%;
-                            height: 2px;
-                            background-color: $menuColorText;
+                            border-radius: 5px;
+                            height: 4px;
+                            background-color: #4183d7;
                             margin: 4px auto;
                             @include transition(.6s);
                         }
                         .top-bar-close {
-                            transform: translateY(6px) rotate(405deg);
+                            transform: translateY(8px) rotate(405deg);
                         }
                         .middle-bar-close {
                             width: 0;
                         }
                         .bottom-bar-close {
-                            transform: translateY(-6px) rotate(-405deg);
+                            transform: translateY(-8px) rotate(-405deg);
                         }
                         .top-bar-arrow {
                             width: 50%;
-                            transform: translateX(-2px) translateY(1px) rotate(135deg);
+                            transform: translateX(-2px) translateY(4px) rotate(135deg);
                             @include transition(.2s);
                         }
                         .middle-bar-arrow {
@@ -112,7 +113,7 @@ html {
                         }
                         .bottom-bar-arrow {
                             width: 50%;
-                            transform: translateX(-2px) translateY(-1px) rotate(-135deg);
+                            transform: translateX(-2px) translateY(-4px) rotate(-135deg);
                             @include transition(.3s);
                         }
                     }
@@ -134,7 +135,7 @@ html {
                     h5 {
                         margin-right: 10px;
                         a {
-                            color: $menuColorText;
+                            color: #4183d7;
                             font-weight: 300;
                             font-size: 1.8rem;
                             text-decoration: none;

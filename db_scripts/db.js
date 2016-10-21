@@ -1,4 +1,4 @@
-''
+'use strict';
 
 var comongo = require('co-mongo');
 var co = require('co');
@@ -37,7 +37,7 @@ co(function *() {
 	parsedContent.oferta.kategoria.forEach( kategoria => {
 		kategoria.podkategoria.forEach( podkategoria => {
 			podkategoria.produkt.forEach( produkt => {
-				p = new product(
+				let p = new product(
 					produkt.$.id,
 					kategoria.$.nazwa,
 					podkategoria.$.nazwa,

@@ -36,12 +36,25 @@ $white: #ffffff;
     }
 }
 
+@font-face {
+    font-family: somaticRounded;
+    src: url(/fonts/Somatic-Rounded.otf);
+}
+
 html {
     height: 100%;
     body {
         -webkit-font-smoothing: subpixel-antialiased;
         position: relative;
         height: 100%;
+        background: rgba(44,169,237,1);
+        background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
+        background: -webkit-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
         .wrapper {
             .dimness {
                 opacity: 0;
@@ -71,26 +84,73 @@ html {
                 @include flexbox(column, nowrap);
                 align-items: center;
                 margin: 0 30px;
-                h1 {
-                    color: $darkBlue;
-                    font-size: 4.5rem;
-                    font-weight: 100;
-                    margin: 0;
-                    letter-spacing: -3px;
-                    @media (min-width: 768px) {
-                        font-size: 8rem;
-                        margin-bottom: 10px;
+                .logo {
+                    position: relative;
+                    width: 300px;
+                    text-align: center;
+                    h1, p {
+                        color: #fefefe;
+                        font-weight: 100;
+                        font-family: somaticRounded, sans-serif;
                     }
-                    @media (min-width: 1024px) {
-                        font-size: 10rem;
+                    h1 {
+                        margin-top: 0;
+                        font-size: 7rem;
+                        @media (min-width: 768px) {
+                            font-size: 8rem;
+                            margin-bottom: 10px;
+                        }
+                        @media (min-width: 1024px) {
+                            font-size: 12rem;
+                        }
+                    }
+                    p {
+                        font-size: 1.17rem;
+                        position: absolute;
+                        bottom: 30px;
+                        left: 85px;
+                        letter-spacing: 1.2px;
+                    }
+                    img {
+                        position: absolute;
+                    }
+                    .left-dot {
+                        left: 10px;
+                        bottom: 52px;
+                        width: 9px 
+                    }
+                    .left-bottom-dot {
+                        left: 75px;
+                        bottom: 20px;
+                        width: 13.5px;
+                    }
+                    .right-dot {
+                        right: 12px;
+                        top: 15px;
+                        width: 10.5px;
+                    }
+                    .right-bottom-dot {
+                        right: 12px;
+                        bottom: 50px;
+                        width: 8px;
+                    }
+                    .left-arrow {
+                        left: 18px;
+                        bottom: 8px;
+                        width: 25px;
+                    }
+                    .right-arrow {
+                        right: -5px;
+                        bottom: 35px;
+                        width: 17px;
                     }
                 }
                 .search {
                     @include flexbox(row, nowrap);
                     justify-content: space-between;
-                    border: 1px solid $darkBlue;
                     margin-top: 15px;
                     width: 100%;
+                    border-radius: 20px;
                     @media(min-width: 425px) {
                         width: 380px;
                     }
@@ -113,17 +173,21 @@ html {
                         font-size: 1.4rem;
                         -webkit-box-shadow: 0 0 0px 1000px $white inset;
                         @include placeholder(#000000); //coś nie działa
+                        border-bottom-left-radius: 4.7px;
+                        border-top-left-radius: 4.7px;
                     }
                     button {
-                        background-color: $mainBlue;
+                        background-color: $white;
                         color: $lightestBlue;
                         padding: 5px 10px;
-                        border-left: 1px solid $darkBlue;
                         cursor: pointer;
                         @include transition(.2s);
+                        border-bottom-right-radius: 4.7px;
+                        border-top-right-radius: 4.7px;
                         svg {
-                            fill: $menuColorText;
-                            width: 25px;
+                            fill: #4183d7;
+                            width: 20px;
+                            transform: rotateY(180deg);
                             @include transition(.2s);
                         }
                         @media(min-width: 768px) {
