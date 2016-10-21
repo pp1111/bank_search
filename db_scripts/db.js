@@ -1,3 +1,5 @@
+'use strict';
+
 var comongo = require('co-mongo');
 var co = require('co');
 var foreach = require('generator-foreach')
@@ -36,7 +38,7 @@ co(function *() {
 	parsedContent.oferta.kategoria.forEach( kategoria => {
 		kategoria.podkategoria.forEach( podkategoria => {
 			podkategoria.produkt.forEach( produkt => {
-				p = new product(
+				let p = new product(
 					produkt.$.id,
 					kategoria.$.nazwa,
 					podkategoria.$.nazwa,
@@ -53,11 +55,6 @@ co(function *() {
 			})
 		})
 	})
-	productList.push(
-		{
-			id: 10000000
-		}	
-	)
 	
 	for (var i=0; i<productList.length; i++) {
 		yield collection.update(
