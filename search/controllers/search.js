@@ -30,7 +30,6 @@ let search = {
         let result = yield getContent('http://localhost:8983/solr/core0/suggesthandler?rows=5&wt=json&indent=on&q=' + req.query.q, false);
         result = JSON.parse(result);
         let suggestions = result.suggest.mySuggester[req.query.q].suggestions
-        res.set({ 'content-type': 'application/json; charset=utf-8' })
         res.jsonp(suggestions);
     })().catch(next).done(),
 }

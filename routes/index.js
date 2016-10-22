@@ -69,7 +69,7 @@ router.post('/kontakt', function (req, res) {
 
 
 router.get('/finanse', function(req,res){
-co(function *() {
+    co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
         let products =  yield collection.find().toArray();
@@ -117,6 +117,50 @@ co(function *() {
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
             check: check,
+        })
+    }).catch(err => console.log(err))
+});
+
+router.get('/finanse/produkt/:productId', function(req,res){
+    co(function *() {
+        let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
+        let collection = yield db.collection('productsList');
+        let products =  yield collection.find().toArray();
+        let categories = [...new Set(products.map(product => product.category))];
+        let subcategories = [...new Set(products.map(product => product.subcategory))];
+        let names = [...new Set(products.map(product => product.name))];
+        let check = [];
+
+        let categoriesMap = {};
+        let subCategoriesMap = {};
+        yield Promise.each(categories, co.wrap(function*(category) {
+            categoriesMap[category] = yield collection.find({category: category}).toArray();
+        }));
+
+        yield Promise.each(subcategories, co.wrap(function*(subcategory) {
+            subCategoriesMap[subcategory] = yield collection.find({subcategory: subcategory}).toArray();
+        }));
+
+        categories.forEach( category => {
+            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+        })
+
+        subcategories.forEach( subcategory => {
+            subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
+        })
+
+        let selectedProduct = yield collection.find({id : req.params.productId}).toArray();
+        let query = `${selectedProduct[0].name}`.replace(/ /g,"_");
+        let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
+        suggestions = JSON.parse(suggestions);
+        suggestions = suggestions.response.docs.slice(1,4);
+        res.render('selected_product', {
+            product: selectedProduct[0],
+            suggestedProducts: suggestions,
+            categoriesDictionary: categories,
+            subcategoriesDictionary: subcategories,
+            categoriesMap: categoriesMap,
+            subcategoriesMap: subCategoriesMap,
         })
     }).catch(err => console.log(err))
 });
