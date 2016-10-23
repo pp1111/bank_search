@@ -3,10 +3,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var http = require('http');
 var routes = require('./routes/index');
 var calcRoute = require('./routes/calcRoute');
-var parseString = require('xml2js').parseString;
 
 const arf = require('./lib/arf');
 
@@ -26,8 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/ping', function (req, res) { return arf.response(res, { pong: {} }); });
 
 app.use('/', routes);
 app.use('/kalkulator-walut', calcRoute);
@@ -65,8 +61,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 
 module.exports = app;

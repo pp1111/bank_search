@@ -1,23 +1,24 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const url = require('url');
 
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
-var comongo = require('co-mongo');
-var co = require('co');
-var foreach = require('generator-foreach')
-var Promise = require("bluebird");
+const comongo = require('co-mongo');
+const co = require('co');
+const foreach = require('generator-foreach')
+const Promise = require("bluebird");
 
 const getContent = require('../lib/getContent');
 
-var array = require('lodash/array');
+const array = require('lodash/array');
 
 const Mailer = require('./../lib/mailer')
 const mailerConfig = Mailer.getMailerConfig(config.email);
 const mailer = new Mailer(mailerConfig);
 
-router.get('/', function (req,res){
+router.get('/', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
@@ -54,11 +55,11 @@ router.get('/', function (req,res){
     }).catch(err => console.log(err))
 });
 
-router.get('/specyfikacja',function(req,res){
+router.get('/specyfikacja',function (req, res) {
   res.render('specyfikacja');
 });
 
-router.get('/kontakt', function(req,res){
+router.get('/kontakt', function (req, res) {
     res.render('contact');
 });
 
@@ -68,7 +69,7 @@ router.post('/kontakt', function (req, res) {
 });
 
 
-router.get('/finanse', function(req,res){
+router.get('/finanse', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
@@ -121,7 +122,7 @@ router.get('/finanse', function(req,res){
     }).catch(err => console.log(err))
 });
 
-router.get('/finanse/produkt/:productId', function(req,res){
+router.get('/finanse/produkt/:productId', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');
@@ -154,6 +155,7 @@ router.get('/finanse/produkt/:productId', function(req,res){
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
         suggestions = suggestions.response.docs.slice(1,4);
+
         res.render('selected_product', {
             product: selectedProduct[0],
             suggestedProducts: suggestions,
@@ -162,10 +164,11 @@ router.get('/finanse/produkt/:productId', function(req,res){
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
         })
+
     }).catch(err => console.log(err))
 });
     
-router.get('/finanse/:category', function(req,res){
+router.get('/finanse/:category', function (req, res){
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   

@@ -21,7 +21,11 @@ module.exports = () => {
  
 let search = {
     get: (req, res, next) => q.async(function* () {
-        let query = ascii.asciiOff(req.query.q);
+        let query = req.query.q;
+        query = ascii.toUTF8(query); // encode
+        query = escapeRegExp(query); // escape brackets
+        query = escape(query); // escape special chars
+        console.log(query);
         let result = yield getContent('http://localhost:8983/solr/core0/select?wt=json&indent=on&q=value:' + query, false);
         result = JSON.parse(result);
         return arf.response(res, result, 200);  
@@ -32,4 +36,8 @@ let search = {
         let suggestions = result.suggest.mySuggester[req.query.q].suggestions
         res.jsonp(suggestions);
     })().catch(next).done(),
+}
+
+function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
