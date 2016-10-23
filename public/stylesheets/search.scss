@@ -88,6 +88,12 @@ html {
                     position: relative;
                     width: 300px;
                     text-align: center;
+                    @media(min-width: 768px) {
+                        margin-bottom: 50px;
+                    }
+                    @media(min-width: 1024px) {
+                        width: 450px;
+                    }
                     h1, p {
                         color: #fefefe;
                         font-weight: 100;
@@ -110,6 +116,16 @@ html {
                         bottom: 30px;
                         left: 85px;
                         letter-spacing: 1.2px;
+                        @media (min-width: 768px) {
+                            bottom: 5px;
+                            left: 85px;
+                            margin-bottom: 0;
+                            font-size: 1.3rem;
+                        }
+                        @media (min-width: 1024px) {
+                            left: 130px;
+                            font-size: 2rem;
+                        }
                     }
                     img {
                         position: absolute;
@@ -117,32 +133,77 @@ html {
                     .left-dot {
                         left: 10px;
                         bottom: 52px;
-                        width: 9px 
+                        width: 9px;
+                        @media (min-width: 768px) {
+                            bottom: 20px;
+                            left: -5px;
+                        }
+                        @media (min-width: 1024px) {
+                            width: 15px;
+                        }
                     }
                     .left-bottom-dot {
                         left: 75px;
                         bottom: 20px;
                         width: 13.5px;
+                        @media (min-width: 768px) {
+                            left: 75px;
+                            bottom: -15px;
+                        }
+                        @media (min-width: 1024px) {
+                            left: 110px;
+                            bottom: -29px;
+                            width: 23px;
+                        }
                     }
                     .right-dot {
                         right: 12px;
                         top: 15px;
                         width: 10.5px;
+                        @media (min-width: 768px) {
+                            top: 20px;
+                            right: -5px;
+                        }
+                        @media (min-width: 1024px) {
+                            top: 40px;
+                            width: 18px;
+                        }
                     }
                     .right-bottom-dot {
                         right: 12px;
                         bottom: 50px;
                         width: 8px;
+                        @media (min-width: 768px) {
+                            bottom: 15px;
+                            right: -2.5px;
+                        }
+                        @media (min-width: 1024px) {
+                            width: 14px;
+                        }
                     }
                     .left-arrow {
                         left: 18px;
                         bottom: 8px;
                         width: 25px;
+                        @media (min-width: 768px) {
+                            left: 0px;
+                            bottom: -25px;
+                        }
+                        @media (min-width: 1024px) {
+                            
+                        }
                     }
                     .right-arrow {
                         right: -5px;
                         bottom: 35px;
                         width: 17px;
+                        @media (min-width: 768px) {
+                            right: -30px;
+                            bottom: 0;
+                        }
+                        @media (min-width: 1024px) {
+                            
+                        }
                     }
                 }
                 .search {
@@ -155,7 +216,10 @@ html {
                         width: 380px;
                     }
                     @media (min-width: 768px) {
-                        width: 450px;
+                        width: 470px;
+                    }
+                    @media(min-width: 1024px) {
+                        width: 660px;
                     }
                     input,
                     button {
@@ -173,31 +237,34 @@ html {
                         font-size: 1.4rem;
                         -webkit-box-shadow: 0 0 0px 1000px $white inset;
                         @include placeholder(#000000); //coś nie działa
-                        border-bottom-left-radius: 4.7px;
-                        border-top-left-radius: 4.7px;
+                        border-bottom-left-radius: 8px;
+                        border-top-left-radius: 8px;
                     }
                     button {
                         background-color: $white;
                         color: $lightestBlue;
-                        padding: 5px 10px;
+                        padding: 0px 10px;
                         cursor: pointer;
                         @include transition(.2s);
-                        border-bottom-right-radius: 4.7px;
-                        border-top-right-radius: 4.7px;
+                        border-bottom-right-radius: 8px;
+                        border-top-right-radius: 8px;
+                        height: 35px;
                         svg {
                             fill: #4183d7;
-                            width: 20px;
+                            width: 25px;
                             transform: rotateY(180deg);
                             @include transition(.2s);
+                            @media(min-width: 768px) {
+                                padding: 2px;
+                                height: 35px;
+                                width: 35px;
+                            }
                         }
                         @media(min-width: 768px) {
-                            padding: 10px 15px;
+                            height: 40px;
                         }
-                        &:hover {
-                            background-color: $menuColorText;
-                            svg {
-                                fill: $mainBlue;
-                            }
+                        @media(min-width: 1024px) {
+                            height: 45px;
                         }
                     }
                 }

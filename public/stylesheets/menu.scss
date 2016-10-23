@@ -61,6 +61,7 @@ html {
             top: 0;
             &.nav-open {
                 overflow-y: auto;
+                background-color: rgba(255, 255, 255, 1);
             }
             ul {
                 list-style-type: none;
@@ -81,6 +82,7 @@ html {
                     .menu-btn {
                         width: 40px;
                         padding: 5px;
+                        cursor: pointer;
                         //margin-right: auto;
                         .top-bar,
                         .middle-bar,
@@ -141,9 +143,6 @@ html {
                             text-decoration: none;
                             display: block;
                             letter-spacing: .1px;
-                            &:hover {
-                                
-                            }
                         }
                     }
                     .search {

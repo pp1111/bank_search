@@ -18,7 +18,8 @@ html {
       width: 100%;
       top: 0; }
       html body nav.nav-open {
-        overflow-y: auto; }
+        overflow-y: auto;
+        background-color: white; }
       html body nav ul {
         list-style-type: none;
         padding: 0;
@@ -41,7 +42,8 @@ html {
         color: #f0f7fc; }
         html body nav .dl-menuwrapper .navbar .menu-btn {
           width: 40px;
-          padding: 5px; }
+          padding: 5px;
+          cursor: pointer; }
           html body nav .dl-menuwrapper .navbar .menu-btn .top-bar,
           html body nav .dl-menuwrapper .navbar .menu-btn .middle-bar,
           html body nav .dl-menuwrapper .navbar .menu-btn .bottom-bar {
