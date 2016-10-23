@@ -54,6 +54,12 @@ html {
           position: relative;
           width: 300px;
           text-align: center; }
+          @media (min-width: 768px) {
+            html body .wrapper header .logo {
+              margin-bottom: 50px; } }
+          @media (min-width: 1024px) {
+            html body .wrapper header .logo {
+              width: 450px; } }
           html body .wrapper header .logo h1, html body .wrapper header .logo p {
             color: #fefefe;
             font-weight: 100;
@@ -74,32 +80,81 @@ html {
             bottom: 30px;
             left: 85px;
             letter-spacing: 1.2px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo p {
+                bottom: 5px;
+                left: 85px;
+                margin-bottom: 0;
+                font-size: 1.3rem; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo p {
+                left: 130px;
+                font-size: 2rem; } }
           html body .wrapper header .logo img {
             position: absolute; }
           html body .wrapper header .logo .left-dot {
             left: 10px;
             bottom: 52px;
             width: 9px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-dot {
+                bottom: 20px;
+                left: -5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .left-dot {
+                width: 15px; } }
           html body .wrapper header .logo .left-bottom-dot {
             left: 75px;
             bottom: 20px;
             width: 13.5px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-bottom-dot {
+                left: 75px;
+                bottom: -15px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .left-bottom-dot {
+                left: 110px;
+                bottom: -29px;
+                width: 23px; } }
           html body .wrapper header .logo .right-dot {
             right: 12px;
             top: 15px;
             width: 10.5px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-dot {
+                top: 20px;
+                right: -5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .right-dot {
+                top: 40px;
+                width: 18px; } }
           html body .wrapper header .logo .right-bottom-dot {
             right: 12px;
             bottom: 50px;
             width: 8px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-bottom-dot {
+                bottom: 15px;
+                right: -2.5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .right-bottom-dot {
+                width: 14px; } }
           html body .wrapper header .logo .left-arrow {
             left: 18px;
             bottom: 8px;
             width: 25px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-arrow {
+                left: 0px;
+                bottom: -25px; } }
           html body .wrapper header .logo .right-arrow {
             right: -5px;
             bottom: 35px;
             width: 17px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-arrow {
+                right: -30px;
+                bottom: 0; } }
         html body .wrapper header .search {
           display: -webkit-box;
           display: -moz-box;
@@ -117,7 +172,10 @@ html {
               width: 380px; } }
           @media (min-width: 768px) {
             html body .wrapper header .search {
-              width: 450px; } }
+              width: 470px; } }
+          @media (min-width: 1024px) {
+            html body .wrapper header .search {
+              width: 660px; } }
           html body .wrapper header .search input,
           html body .wrapper header .search button {
             border: none;
@@ -131,8 +189,8 @@ html {
             padding-left: 10px;
             font-size: 1.4rem;
             -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
-            border-bottom-left-radius: 4.7px;
-            border-top-left-radius: 4.7px; }
+            border-bottom-left-radius: 8px;
+            border-top-left-radius: 8px; }
             html body .wrapper header .search input[type="text"] ::-webkit-input-placeholder {
               /* Chrome/Opera/Safari */
               color: #000000; }
@@ -148,27 +206,32 @@ html {
           html body .wrapper header .search button {
             background-color: #ffffff;
             color: #f0f7fc;
-            padding: 5px 10px;
+            padding: 0px 10px;
             cursor: pointer;
             -webkit-transition: 0.2s ease-in-out;
             -moz-transition: 0.2s ease-in-out;
             transition: 0.2s ease-in-out;
-            border-bottom-right-radius: 4.7px;
-            border-top-right-radius: 4.7px; }
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+            height: 35px; }
             html body .wrapper header .search button svg {
               fill: #4183d7;
-              width: 20px;
+              width: 25px;
               transform: rotateY(180deg);
               -webkit-transition: 0.2s ease-in-out;
               -moz-transition: 0.2s ease-in-out;
               transition: 0.2s ease-in-out; }
+              @media (min-width: 768px) {
+                html body .wrapper header .search button svg {
+                  padding: 2px;
+                  height: 35px;
+                  width: 35px; } }
             @media (min-width: 768px) {
               html body .wrapper header .search button {
-                padding: 10px 15px; } }
-            html body .wrapper header .search button:hover {
-              background-color: #f0f7fc; }
-              html body .wrapper header .search button:hover svg {
-                fill: #3498db; }
+                height: 40px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .search button {
+                height: 45px; } }
     html body footer {
       width: 100%;
       height: 50px;
