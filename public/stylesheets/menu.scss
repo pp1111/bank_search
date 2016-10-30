@@ -61,9 +61,8 @@ html {
             height: 100%;
             position: fixed;
             z-index: 9999;
-            //background-color: $mainBlue;
-            width: 100%;
             top: 0;
+            font-family: 'somaticRounded', sans-serif;
             &.nav-open {
                 overflow-y: auto;
             }
@@ -72,7 +71,7 @@ html {
                 padding: 0;
                 text-align: center;
             }
-            .dl-menuwrapper {
+            /*.dl-menuwrapper {
                 height: 100%;
                 .navbar {
                     background-color: rgba(255, 255, 255, .5);
@@ -217,87 +216,116 @@ html {
                             border: 1px solid #0665A2;
                         }
                     }
+                }*/
+                .dl-menu-header {
+                    position: absolute;
+                    top: 4%;
+                    left: 40px;
+                    @include flexbox(row, nowrap);
+                    align-items: center;
+                    z-index: 9999;
+                    .menu-btn {
+                        width: 61px;
+                        height: 61px;
+                        background-color: rgba(244, 251, 254, .90);
+                        border-radius: 100%;
+                        @include flexbox(column, nowrap);
+                        justify-content: center;
+                        align-items: center;
+                        @include transition(.4s);
+                        &.menu-btn-open {
+                            background-color: #3d81da;
+                        }
+                        .bar {
+                            border-radius: 1px;
+                            width: 25px;
+                            height: 5px;
+                            background-color: #2ca9ed;
+                            @include transition(.4s);
+                            &.bar-open {
+                                background-color: #f4fbfe;
+                            }
+                        }
+                        .middle-bar {
+                            width: 0;
+                        }
+                        .top-bar-close {
+                            transform: translateY(5px) rotateZ(45deg);
+                        }
+                        .middle-bar-close {
+                            width: 0;
+                        }
+                        .bottom-bar-close {
+                            transform: translateY(-5px) rotateZ(135deg);
+                        }
+                        .top-bar-arrow {
+                        width: 15px;
+                        transform: translateX(-8px) translateY(1px) rotate(135deg);
+                        @include transition(.4s);
+                        }
+                        .middle-bar-arrow {
+                            width: 25px;
+                            transform: translateX(0px);
+                            @include transition(.4s);
+                        }
+                        .bottom-bar-arrow {
+                            width: 15px;
+                            transform: translateX(-8px) translateY(-1px) rotate(-135deg);
+                            @include transition(.2s);
+                        }
+                    }
+                    h3 {
+                        margin: 0;
+                        margin-left: 25px;
+                        margin-bottom: 6px;
+                        font-size: 2.8rem;
+                        font-weight: 100;
+                        color: #3d81da;
+                        display: none;
+                    }
                 }
                 .dl-menu-container {
                     width: 50%;
                     height: 100%;
+                    left: -50%;
                     position: fixed;
                     top: 0;
                     margin: 0;
-                    background-color: #f4fbfe;
+                    background-color: rgba(244, 251, 254, .90);
                     border-radius: 40px;
-                    font-family: 'somaticRounded', sans-serif;
                     &.category-open {
                         width: 100%;
-                    }
-                    .dl-menu-header {
-                        position: absolute;
-                        top: 4%;
-                        left: 40px;
-                        @include flexbox(row, nowrap);
-                        align-items: center;
-                        .close-btn {
-                            width: 61px;
-                            height: 61px;
-                            background-color: #3d81da;
-                            border-radius: 100%;
-                            @include flexbox(row, nowrap);
-                            justify-content: center;
-                            align-items: center;
-                            .bar {
-                                width: 20px;
-                                height: 5px;
-                                background-color: #f4fbfe;
-                            }
-                            .top-bar {
-                                transform: translateX(10px) rotateZ(45deg);
-                            }
-                            .middle-bar {
-                                width: 0;
-                            }
-                            .bottom-bar {
-                                transform: translateX(-10px) rotateZ(-45deg);
-                            }
-                            .top-bar-arrow {
-                            width: 50%;
-                            transform: translateX(-2px) translateY(4px) rotate(135deg);
-                            @include transition(.2s);
-                            }
-                            .middle-bar-arrow {
-                                width: 90%;
-                                transform: translateX(8px);
-                                @include transition(.2s);
-                            }
-                            .bottom-bar-arrow {
-                                width: 50%;
-                                transform: translateX(-2px) translateY(-4px) rotate(-135deg);
-                                @include transition(.3s);
-                            }
-                        }
-                        h3 {
-                            margin: 0;
-                            margin-left: 25px;
-                            margin-bottom: 6px;
-                            font-size: 2.8rem;
-                            font-weight: 100;
-                            color: #3d81da;
-                        }
                     }
                     .dl-menu {
                         margin-top: 160px !important;
                         text-align: left;
                         @include flexbox(column, nowrap);
                         justify-content: space-around;
-                        margin-left: 80px;
+                        margin-left: 60px;
+                        @media(min-width: 1024px) {
+                            margin-left: 70px;
+                        }
+                        @media(min-width: 1300px) {
+                            margin-left: 80px;
+                        }
                         li {
                             margin-top: 40px;
                             &:first-child {
                                 margin-top: 0;
                             }
                             a {
-                                font-size: 6rem;
+                                font-size: 4rem;
                                 color: #77c9f6;
                                 text-decoration: none;
+                                @media(min-width: 768px) {
+                                    font-size: 3.7rem;
+                                }
+                                @media(min-width: 1024px) {
+                                    font-size: 5rem;
+                                }
+                                @media(min-width: 1300px) {
+                                    font-size: 6rem;
+                                }
                             }
                             &:hover {
                                 a {
@@ -334,13 +362,18 @@ html {
                         }
                     }
                     .line {
-                        display: none;
+                        //display: none;
                         height: 80%;
+                        transform: rotateX(90deg);
                         width: 2px;
                         background-color: #84caf1;
                         position: absolute;
                         left: 50%;
                         top: 70px;
+                        @include transition(.4s);
+                        &.open {
+                            transform: rotateX(0deg);
+                        }
                     }
                 }
                 /*.dl-menu {
@@ -407,6 +440,6 @@ html {
                     }
                 }*/
             }
-        }
+        
     }
 }
