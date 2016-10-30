@@ -3,7 +3,7 @@ const router = express.Router();
 const url = require('url');
 
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('../config.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 const comongo = require('co-mongo');
 const co = require('co');
@@ -13,6 +13,7 @@ const Promise = require("bluebird");
 const getContent = require('../lib/getContent');
 
 const array = require('lodash/array');
+const ascii = require('../lib/ascii');
 
 const Mailer = require('./../lib/mailer')
 const mailerConfig = Mailer.getMailerConfig(config.email);
@@ -97,7 +98,9 @@ router.get('/finanse', function (req, res) {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
         
-        query = req.query.q.replace(/ /g,"_");
+        query = req.query.q.replace(/ /g,"-");
+        query = decodeURIComponent(query);
+
         var result = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         result = JSON.parse(result);
 
@@ -122,7 +125,7 @@ router.get('/finanse', function (req, res) {
     }).catch(err => console.log(err))
 });
 
-router.get('/finanse/produkt/:productId', function (req, res) {
+router.get('/finanse/produkt/:productValue', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');
@@ -150,11 +153,14 @@ router.get('/finanse/produkt/:productId', function (req, res) {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
 
-        let selectedProduct = yield collection.find({id : req.params.productId}).toArray();
-        let query = `${selectedProduct[0].name}`.replace(/ /g,"_");
+        console.log(req.params.productValue);
+        let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
+        let query = `${selectedProduct[0].name}`.replace(/ /g,"-");
+        query = escape(query);
+
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
-        suggestions = suggestions.response.docs.slice(1,4);
+        suggestions = suggestions.response.docs.slice(1,10);
 
         res.render('selected_product', {
             product: selectedProduct[0],
@@ -196,7 +202,7 @@ router.get('/finanse/:category', function (req, res){
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
         
-        check.push(req.params.category.replace(/-/g, ' '));
+        check.push(req.params.category);
 
         res.render('search_result', {
             products: products,

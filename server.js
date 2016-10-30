@@ -25,6 +25,17 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next){
+
+    var oldRender = res.render;
+    res.render = function(){
+        res.header('Content-Type', 'text/html');
+        oldRender.apply(this, arguments);
+    };
+
+    next();
+});
+
 app.use('/', routes);
 app.use('/kalkulator-walut', calcRoute);
 app.use('/przelicznik', calcRoute);

@@ -12,17 +12,19 @@ const getContent = require('../lib/getContent');
 
 const ascii = require('../lib/ascii');
 
-function product (i,c,s,n,p,l,pr,a,d,al) {
+function product (i,c,s,n,p,v,l,pr,a,d,al,m) {
 	this.id = i;
 	this.category = c;
 	this.subcategory = s;
 	this.name = n;
 	this.provider = p;
+	this.value = v;
 	this.logo = l;
 	this.prez = pr;
 	this.application = a;
 	this.description = d;
 	this.alive = al;
+	this.meta = m;
 }
 
 co(function *() {
@@ -37,17 +39,26 @@ co(function *() {
 	parsedContent.oferta.kategoria.forEach( kategoria => {
 		kategoria.podkategoria.forEach( podkategoria => {
 			podkategoria.produkt.forEach( produkt => {
+				let value = `${produkt.$.nazwa} ${produkt.dostawca[0].$.nazwa}`
+				value = value.replace(/ /g,"-")
+			    value = value.replace(/---/g,"-")
 				let p = new product(
 					produkt.$.id,
 					kategoria.$.nazwa,
 					podkategoria.$.nazwa,
 					produkt.$.nazwa,
 					produkt.dostawca[0].$.nazwa,
+					value,
 					produkt.dostawca[0].$['logo-male'],
 					produkt.linki[0].$.prezentacja,
 					`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
 					produkt.opis[0],	
-					true
+					true,
+					{
+						title: "",
+						description: "",
+						alt: ""
+					}
 				)
 				productList.push(p)
 			})
@@ -63,12 +74,14 @@ co(function *() {
 					subcategory: productList[i].subcategory,
 					name: productList[i].name,
 					provider: productList[i].provider,
+					value: productList[i].value,
 					logo: productList[i].logo,
 					prez: productList[i].prez,
 					application: productList[i].application,
 					description: productList[i].description,
 					alive: productList[i].alive,
-					updated: productList[i].updated
+					updated: productList[i].updated,
+					meta: productList[i].meta
 				}
 			},
 			{

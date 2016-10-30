@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	  		<h2><%=check%></h2>
 		  	<div class="products">
 			 	<% products.forEach(product => { %> 
-			 		<% if(product.subcategory===check){ %>
+			 		<% if(product.subcategory===check || product.subcategory=='e-Sklepy'){ %>
 				 		<div class="single-product">
 							<div class="product-header">
 								<div class="img-wrapper">
@@ -90,11 +90,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								<h4><%=product.name%> <%=product.provider%></h4>
 							</div>
 							 <p class="info">
-								<%=product.description%>
+								<%-product.description%>
 							</p>
 							<div class="show-product">
 								<h4><%=product.name%> <%=product.provider%></h4>
-								<button class="read-more" onclick='window.location="/finanse/produkt/<%=product.id%>"'>Dowiedz się więcej</button>
+								<button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
 								<button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
 							</div>
 						</div>
