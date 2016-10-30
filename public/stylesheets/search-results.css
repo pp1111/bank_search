@@ -65,7 +65,6 @@ body {
           -webkit-transition: 0.7s ease-in-out;
           -moz-transition: 0.7s ease-in-out;
           transition: 0.7s ease-in-out; }
-
         body .wrapper .search-result .products .single-product .product-header {
           display: -webkit-box;
           display: -moz-box;

@@ -38,19 +38,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<!--<a href="/" class="amoney-link">aMoney</a>-->
 				<h5><a href="kalkulator-walut">Kalkulator walut</a></h5>
 			</div>
-			<ul class="dl-menu">
-				<% categoriesDictionary.forEach( category => { %> 	 	
-					<li class="category">
-					<a href="#"><%=category%></a>
-					<% categoriesMap[category].forEach( subcategory => { %>
-						<ul class="dl-submenu">
-							<li>
-								<a href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
-							</li>
-						</ul>
+			<div class="dl-menu-container">
+				<div class="dl-menu-header">
+					<div class="close-btn">
+						<div class="bar top-bar"></div>
+						<div class="bar middle-bar"></div>
+						<div class="bar bottom-bar"></div>
+					</div>
+					<h3>menu</h3>
+				</div>
+				<ul class="dl-menu">
+					<% categoriesDictionary.forEach( category => { %> 	 	
+						<li class="category">
+						<a href="#"><%=category%></a>
+							<ul class="dl-submenu">
+								<% categoriesMap[category].forEach( subcategory => { %>
+								<li>
+									<a href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
+								</li>
+								<% }) %>
+							</ul>
 					<% }) %>
-				<% }) %>
-			</ul>
+				</ul>
+				<div class="line"></div>
+			</div>
 		</div>
 	</nav>
 	
