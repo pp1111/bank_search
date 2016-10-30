@@ -3,7 +3,7 @@ const router = express.Router();
 const url = require('url');
 
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('../config.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 const comongo = require('co-mongo');
 const co = require('co');
