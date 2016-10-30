@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://localhost:4000/search/suggestions?q=" + req.term.replace(/ /g,"_"),
+                url: "http://localhost:4000/search/suggestions?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {
@@ -13,7 +13,7 @@ $(document).ready(function () {
                     item.term = item.term.replace(/<b>/g, "");
                     item.term = item.term.replace(/<\/b>/g, "")
                     return {
-                        value: item.term.replace(/_/g," ")
+                        value: item.term.replace(/-/g," ")
                     };
                 }));
             }).fail(function (data) {
@@ -21,8 +21,7 @@ $(document).ready(function () {
             });
         },
         select: (event, ui) => {
-            $('#searcharea').val(ui.item.label);
-            $('#search').click();
+            window.location.href = "/finanse/produkt/" + decodeURIComponent(ui.item.label.replace(/ /g,"-"));
         }
     }); 
 });
