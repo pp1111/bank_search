@@ -79,13 +79,14 @@ body {
                 button {
                     position: fixed;
                     bottom: 10px;
-                    background: #cee9fb;
-                    -webkit-box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.28);
-                    -moz-box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.28);
-                    box-shadow: 0px 0px 21px 1px rgba(0,0,0,0.28);
+                    background-color: #3d81da;
+                    color: #ffffff;
+                    -webkit-box-shadow: 0px 10px 1px 1px rgba(0,0,0,0.28);
+                    -moz-box-shadow: 0px 10px 1px 1px rgba(0,0,0,0.28);
+                    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.28);
                     &:hover {
-                        background-color: #3d81da;
-                        color: #ffffff;
+                        background-color: #cee9fb;
+                        color: #3d81da;
                     }
                 }
             }
@@ -135,6 +136,14 @@ body {
                                 &:hover {
                                     background-color: #3d81da;
                                     color: #ffffff;
+                                }
+                                &.apply-now {
+                                    background-color: #3d81da;
+                                    color: #ffffff;
+                                    &:hover {
+                                        background-color: transparent;
+                                        color: #3d81da;
+                                    }
                                 }
                                 &.read-more {
                                     margin-bottom: 16px;
