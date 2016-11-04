@@ -25,7 +25,8 @@ body {
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
-      flex-flow: row nowrap; }
+      flex-flow: row nowrap;
+      justify-content: space-around; }
       body .wrapper .search-result button {
         height: 50px;
         width: 150px;
@@ -43,6 +44,7 @@ body {
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 20px;
         margin-left: 10px;
+        margin-bottom: 30px;
         padding: 24px;
         position: relative;
         font-family: latoRegular, sans-serif;
@@ -85,7 +87,7 @@ body {
           height: 230px;
           background-color: rgba(255, 255, 255, 0.8);
           margin: 0 10px 30px 10px;
-          width: 475px;
+          max-width: 475px;
           position: relative; }
           body .wrapper .search-result .products .single-product.active::after {
             width: 100%;
