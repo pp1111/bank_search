@@ -2,8 +2,7 @@
   font-family: latoRegular;
   src: url(/fonts/Lato-Regulat.ttf); }
 html {
-  font-size: 62.5%;
-  height: 100%; }
+  font-size: 62.5%; }
 
 body {
   -webkit-font-smoothing: subpixel-antialiased;
@@ -103,7 +102,10 @@ body {
           border-radius: 40px;
           font-size: 1.4rem;
           color: #3d81da;
-          cursor: pointer; }
+          cursor: pointer;
+          -webkit-transition: 0.3s ease-in-out;
+          -moz-transition: 0.3s ease-in-out;
+          transition: 0.3s ease-in-out; }
           body .wrapper .search-result .products .single-product .buttons-container button:hover {
             background-color: #3d81da;
             color: #ffffff; }
