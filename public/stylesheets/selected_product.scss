@@ -1,0 +1,165 @@
+@mixin flexbox ($direction, $wrap) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+@mixin transition($time) {
+    -webkit-transition: $time ease-in-out;
+    -moz-transition: $time ease-in-out;
+    transition: $time ease-in-out;
+}
+body {
+    position: relative;
+    height: 100%;
+    background: rgba(44,169,237,1);
+    background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
+    background: -webkit-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+    .wrapper {
+        height: 100%;
+        .search-result {
+            height: 100%;
+            @include flexbox(row, nowrap);
+            .whole-product {
+                width: 70%;
+            }
+            .products {
+                display: block;
+                height: 100%;
+                overflow-y: auto; 
+                margin-top: 30px;
+                .single-product {
+                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+                    min-height: 270px;
+                    background-color: #ffffff;
+                    margin: 10px;
+                    width: 300px;
+                    position: relative;
+                    &.active {
+                        &::after {
+                            content: '';
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: 999;
+                            background-color: rgba(45, 130, 120, .8); 
+                        }
+                    }
+                    .product-header {
+                        @include flexbox(column, nowrap);
+                        align-items: center;
+                        background: #ecf0f1;
+                        min-height: 110px;
+                        
+                        h4 {
+                            font-size: 2rem;
+                            font-weight: 100;
+                            color: #0665A2;
+                            text-align: center;
+                            margin: 15px 15px 10px 15px;
+                        }
+                        .img-wrapper {
+                            margin-top: 10px;
+                            margin-right: 10px;
+                            img {
+                                //width: 100%;
+                            }
+                        }
+                    }
+                    button {
+                        border: none;
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        //border-bottom-left-radius: 10px;
+                        //border-bottom-right-radius: 10px;
+                        background-color: #ffffff;
+                        cursor: pointer;
+                    }
+                    .info {
+                        margin: 10px 8%;
+                        max-height: 250px;
+                        overflow-y: auto;
+                        color: #000000;
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        text-align: justify;
+                        .more-btn {
+                            font-weight: 200;
+                            font-size: 1.6rem;
+                            //color: $darkerBlue;
+                            display: inline;
+                            cursor: pointer;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                        .hide {
+                            display: none;
+                        }
+                    }
+                    .show-product {
+                        z-index: 99;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, .8);
+                        visibility: hidden;
+                        opacity: 0;
+                        @include transition(.5s);
+                        h4 {
+                            font-size: 2.4rem;
+                            font-weight: 100;
+                            color: #ffffff;
+                            text-align: center;
+                            margin: 25px 30px 10px 30px;
+                        }
+                        button {
+                            position: absolute;
+                            border-radius: 20px;
+                            padding: 10px 5px;
+                            background-color: transparent;
+                            border: 2px solid #ffffff;
+                            color: #ffffff;
+                            font-weight: 200;
+                            @include transition(.2s);
+                            &:hover {
+                                background-color: #ffffff;
+                                //color: $darkBlue;
+                            }
+                        }
+                        .read-more {
+                            bottom: 80px;
+                            width: 50%;
+                            margin: 0 25%;
+                        }
+                        .apply-now {
+                            bottom: 30px;
+                            width: 40%;
+                            margin: 0 30%;
+                        }
+                    }
+                    &:hover {
+                        .show-product,
+                        .show-product.hover {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

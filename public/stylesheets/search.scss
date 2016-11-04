@@ -234,6 +234,9 @@ html {
                         @include placeholder(#000000); //coś nie działa
                         border-bottom-left-radius: 8px;
                         border-top-left-radius: 8px;
+                        &.ui-menu-open {
+                            border-bottom-left-radius: 0;
+                        }
                     }
                     button {
                         background-color: $white;
@@ -244,6 +247,9 @@ html {
                         border-bottom-right-radius: 8px;
                         border-top-right-radius: 8px;
                         height: 35px;
+                        &.ui-menu-open {
+                            border-bottom-right-radius: 0;
+                        }
                         svg {
                             fill: #4183d7;
                             width: 25px;

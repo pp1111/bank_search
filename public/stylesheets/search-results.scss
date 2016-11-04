@@ -8,6 +8,11 @@ $darkBlue: rgba(6, 101, 162, 1);
 $lightBlue: rgba(133, 196, 237, 1);
 $menuColorText: #f0f7fc;
 
+@font-face {
+    font-family: latoRegular;
+    src: url(/fonts/Lato-Regulat.ttf);
+}
+
 @mixin flexbox ($direction, $wrap) {
     display: -webkit-box;
     display: -moz-box;
@@ -29,32 +34,15 @@ html {
 
 body {
     -webkit-font-smoothing: subpixel-antialiased;
-    margin: 0;
-    padding: 0;
-    background-color: $white;
-    line-height: 1.43;
-    height: 100%;
+    background: rgba(44,169,237,1);
+    background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
+    background: -webkit-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
     .wrapper {
-        min-height: 90%;
-        //margin-bottom: -60px;
-        .dimness {
-            opacity: 0;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            @include transition(.3s);
-            &.dimness-visible {
-                background-color: $black;
-                display: block;
-                visibility: visible;
-                opacity: 0.7;
-            }
-        }
         .search-result {
             h2 {
                 text-align: center;
@@ -62,7 +50,9 @@ body {
                 margin-top: 80px;
                 font-size: 3rem;
                 font-weight: 100;
-                //letter-spacing: -3px;
+                font-family: latoRegular, sans-serif;
+                font-weight: 800;
+                color: $white;
                 @media(min-width: 375px) {
                     font-size: 4rem;
                 }
@@ -71,161 +61,82 @@ body {
                 }
             }
             .products {
-                @include flexbox(row, wrap);
-                justify-content: center;
-                //align-items: flex-start;
+                @include flexbox(column, nowrap);
                 margin-top: 30px;
+                width: 80%;
+                margin: 0 auto;
                 .single-product {
-                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
-                    min-height: 270px;
-                    //border: 1px solid #c0c0c0;
-                    background-color: $white;
+                    @include flexbox(row, nowrap);
+                    justify-content: center;
+                    //box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+                    height: 200px;
+                    padding: 0 30px;
+                    background-color: rgba(255, 255, 255, .8);
                     margin: 10px;
-                    width: 300px;
+                    width: 100%;
                     position: relative;
-                    //border-radius: 10px;
-                    &.learn-more {
-                        width: 80%;
-                        height: 80%;
-                        position: absolute;
-                        z-index: 999;
-                        @include transition(.7s);
-                    }
+                    border-radius: 20px;
 
-                    .product-header {
-                        @include flexbox(column, nowrap);
+                    .img-wrapper {
+                        width: 150px;
+                        @include flexbox(row, nowrap);
+                        justify-content: center;
                         align-items: center;
-                        background: #ecf0f1;
-                        //border-top-left-radius: 10px;
-                        //border-top-right-radius: 10px;
-                        min-height: 110px;
-                        
-                        h4 {
-                            font-size: 2rem;
-                            font-weight: 100;
-                            color: #0665A2;
-                            text-align: center;
-                            margin: 15px 15px 10px 15px;
+                        img {
+                            
                         }
-                        .img-wrapper {
-                            margin-top: 10px;
-                            margin-right: 10px;
-                            img {
-                                //width: 100%;
-                            }
-                        }
-                    }
-                    button {
-                        border: none;
-                        width: 100%;
-                        position: absolute;
-                        bottom: 0;
-                        //border-bottom-left-radius: 10px;
-                        //border-bottom-right-radius: 10px;
-                        background-color: $white;
-                        cursor: pointer;
                     }
                     .info {
-                        margin: 10px 8%;
-                        max-height: 250px;
+                        flex-grow: 2;
+                        text-align: left;
+                        margin: 15px 0 15px 20px;
                         overflow-y: auto;
-                        color: $black;
-                        font-size: 1.5rem;
-                        font-weight: 300;
-                        text-align: justify;
-                        .more-btn {
-                            font-weight: 200;
-                            font-size: 1.6rem;
-                            color: $darkerBlue;
-                            display: inline;
+                        font-family: latoRegular, sans-serif;
+                        h4 {
+                            font-size: 2.3rem;
+                            font-weight: 100;
+                            color: #0665A2;
+                            margin: 15px 15px 10px 15px;
+                        }
+                        ul {
+                            font-size: 1.4rem;
+                            padding-left: 30px;
+                            list-style-position: 2px;
+                            color: #344c43;
+                            line-height: 1.8rem;
+                        }
+                    }
+                    .buttons-container {
+                        width: 150px;
+                        @include flexbox(column, nowrap);
+                        align-items: center;
+                        justify-content: center;
+                        margin: 30px 0 30px 30px;
+                        padding-left: 30px;
+                        border-left: 1px solid #344c43;
+                        button {
+                            height: 50px;
+                            width: 150px;
+                            background: none;
+                            border: 2px solid #3d81da;
+                            border-radius: 40px;
+                            font-size: 1.4rem;
+                            color: #3d81da;
                             cursor: pointer;
                             &:hover {
-                                text-decoration: underline;
+                                background-color: #3d81da;
+                                color: #ffffff;
                             }
-                        }
-                        .hide {
-                            display: none;
-                        }
-                    }
-                    .show-product {
-                        z-index: 99;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, .8);
-                        visibility: hidden;
-                        opacity: 0;
-                        @include transition(.5s);
-                        h4 {
-                            font-size: 2.4rem;
-                            font-weight: 100;
-                            color: $white;
-                            text-align: center;
-                            margin: 25px 30px 10px 30px;
-                        }
-                        button {
-                            position: absolute;
-                            border-radius: 20px;
-                            padding: 10px 5px;
-                            background-color: transparent;
-                            border: 2px solid $white;
-                            color: $white;
-                            font-weight: 200;
-                            @include transition(.2s);
-                            &:hover {
-                                background-color: $white;
-                                color: $darkBlue;
+                            &.read-more {
+                                margin-bottom: 10px;
                             }
-                        }
-                        .read-more {
-                            bottom: 80px;
-                            width: 50%;
-                            margin: 0 25%;
-                        }
-                        .apply-now {
-                            bottom: 30px;
-                            width: 40%;
-                            margin: 0 30%;
-                        }
-                    }
-                    &:hover {
-                        .show-product,
-                        .show-product.hover {
-                            visibility: visible;
-                            opacity: 1;
+                            &.apply-now {
+                                margin-top: 10px;
+                            }
                         }
                     }
                 }
             }
-        }
-        &:after {
-            content: "";
-            display: block;
-        }
-        @media(min-width: 1024px) {
-            margin-left: 100px;
-            margin-right: 100px;
-        }
-        @media(min-width: 1800px) {
-            margin-left: 200px;
-            margin-right: 200px;
-        }
-    }
-    footer {
-        height: 50px;
-        background-color: $darkBlue;
-        text-align: right;
-        margin-top: 20px;
-        width: 100%;
-        @include flexbox(column, nowrap);
-        justify-content: center;
-        a {
-            font-size: 1.3rem;
-            color: $menuColorText;
-            text-decoration: none;
-            margin-right: 10px;
         }
     }
 }

@@ -3358,7 +3358,7 @@ $.ui.plugin.add("resizable", "ghost", {
 			.css({ opacity: .25, display: 'block', position: 'relative', height: cs.height, width: cs.width, margin: 0, left: 0, top: 0 })
 			.addClass('ui-resizable-ghost')
 			.addClass(typeof o.ghost == 'string' ? o.ghost : '');
-
+		
 		that.ghost.appendTo(that.helper);
 
 	},
@@ -9537,6 +9537,7 @@ $.widget( "ui.menu", {
 	},
 
 	_open: function( submenu ) {
+		
 		var position = $.extend({
 			of: this.active
 		}, this.options.position );

@@ -200,6 +200,8 @@ html {
             html body .wrapper header .search input[type="text"] :-moz-placeholder {
               /* Firefox 18- */
               color: #000000; }
+            html body .wrapper header .search input[type="text"].ui-menu-open {
+              border-bottom-left-radius: 0; }
           html body .wrapper header .search button {
             background-color: #ffffff;
             color: #f0f7fc;
@@ -211,6 +213,8 @@ html {
             border-bottom-right-radius: 8px;
             border-top-right-radius: 8px;
             height: 35px; }
+            html body .wrapper header .search button.ui-menu-open {
+              border-bottom-right-radius: 0; }
             html body .wrapper header .search button svg {
               fill: #4183d7;
               width: 25px;
