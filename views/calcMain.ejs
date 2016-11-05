@@ -24,35 +24,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
 	<header>
-		<nav>
-			<div id="dl-menu" class="dl-menuwrapper">
-				<div class="navbar">
-					<div class="amoney-link"><a href="/">aMoney</a></div>
-				</div>
-			</div>
-		</nav>
+		<div class="amoney-link"><a href="/">aMoney</a></div>
 	</header>
 
 	<div class="wrapper">
-		<h2><a href="/kalkulator-walut">Kalkulator Walut</a></h2>
-		<div class="results">
-			<form id="calc" onsubmit="return false">
-				<div class="value">
-					<% include partials/content/text_input.ejs %>
+		<header>
+		<h1>Kalkulator Walut</h1>
+		<form id="calc">
+			<div class="value">
+				<% include partials/content/text_input.ejs %>
+			</div>
+			<div class="values">
+				<div class ="course">
+					<% include partials/content/course.ejs %>
 				</div>
-				<div class="values">
-					<div class ="course">
-						<% include partials/content/course.ejs %>
-					</div>
-					<div class="date">
-						<% include partials/content/date.ejs %>
-					</div>
+				<div class="date">
+					<% include partials/content/date.ejs %>
 				</div>
-			</form>		
-			<% include partials/content/result.ejs %>
-		</div>
+			</div>
+		</form>	
+		</header>
+		<% include partials/content/result.ejs %>
 	</div>
-	<footer><% include partials/templemate/footer.ejs %></footer>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="/javascripts/red.js"></script>
 </body>
