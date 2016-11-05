@@ -146,6 +146,7 @@ html {
                         border-radius: 7px;
                         height: 100%;
                         padding-left: 20px;
+                        margin: 0 4px;
                         &:focus {
                             outline: none;
                         }
@@ -162,6 +163,7 @@ html {
                                 border-radius: 7px;
                                 height: 100%;
                                 background-color: #3d81da;
+                                margin: 0 4px;
                             }
                             select {
                                 width: 70px;
