@@ -1,16 +1,27 @@
+@font-face {
+  font-family: latoRegular;
+  src: url(/fonts/Lato-Regulat.ttf); }
 html {
   height: 100%; }
   html body {
     -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
-    height: 100%; }
+    height: 100%;
+    background: #2ca9ed;
+    background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
+    background: -webkit-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
     html body .wrapper {
       position: absolute;
       top: 25%;
       width: 100%; }
       @media (min-width: 1024px) {
         html body .wrapper {
-          top: 25%; } }
+          top: 15%; } }
       html body .wrapper header {
         display: -webkit-box;
         display: -moz-box;
@@ -22,10 +33,10 @@ html {
         align-items: center;
         margin: 0 30px; }
         html body .wrapper header h1 {
-          color: #0665a2;
+          font-family: latoRegular, sans-serif;
+          color: #ffffff;
           font-size: 4.5rem;
           text-align: center;
-          font-weight: 100;
           margin: 0;
           letter-spacing: -3px; }
           @media (min-width: 425px) {
@@ -34,10 +45,11 @@ html {
           @media (min-width: 768px) {
             html body .wrapper header h1 {
               font-size: 8rem;
-              margin-bottom: 10px; } }
+              margin-bottom: 20px; } }
           @media (min-width: 1024px) {
             html body .wrapper header h1 {
-              font-size: 10rem; } }
+              font-size: 10rem;
+              margin-bottom: 100px; } }
         html body .wrapper header #calc {
           margin-bottom: 50px; }
           html body .wrapper header #calc .value {
@@ -49,7 +61,6 @@ html {
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: space-between;
-            border: 1px solid #0665a2;
             margin-top: 15px;
             width: 250px; }
             @media (min-width: 425px) {
@@ -58,6 +69,9 @@ html {
             @media (min-width: 768px) {
               html body .wrapper header #calc .value {
                 width: 450px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header #calc .value {
+                width: 550px; } }
             html body .wrapper header #calc .value input,
             html body .wrapper header #calc .value button {
               border: none;
@@ -70,18 +84,21 @@ html {
               margin: 0 5px;
               padding-left: 10px;
               font-size: 1.4rem;
-              -webkit-box-shadow: 0 0 0px 1000px #ffffff inset; }
+              -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+              border-bottom-left-radius: 8px;
+              border-top-left-radius: 8px; }
             html body .wrapper header #calc .value button {
-              background-color: #3498db;
-              color: #f0f7fc;
+              background-color: #3d81da;
+              color: #ffffff;
               padding: 5px 10px;
-              border-left: 1px solid #0665a2;
               cursor: pointer;
+              border-bottom-right-radius: 8px;
+              border-top-right-radius: 8px;
               -webkit-transition: 0.2s ease-in-out;
               -moz-transition: 0.2s ease-in-out;
               transition: 0.2s ease-in-out; }
               html body .wrapper header #calc .value button svg {
-                fill: #f0f7fc;
+                fill: #ffffff;
                 width: 25px;
                 -webkit-transition: 0.2s ease-in-out;
                 -moz-transition: 0.2s ease-in-out;
@@ -90,10 +107,13 @@ html {
                 html body .wrapper header #calc .value button {
                   padding: 10px 15px; } }
               html body .wrapper header #calc .value button:hover {
-                background-color: #f0f7fc; }
+                background-color: #ffffff; }
                 html body .wrapper header #calc .value button:hover svg {
-                  fill: #3498db; }
+                  fill: #3d81da; }
           html body .wrapper header #calc select {
+            font-family: latoRegular, sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
             border: 0 !important;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -103,12 +123,11 @@ html {
             width: 100px;
             text-indent: 0.01px;
             text-overflow: "";
-            color: #0665a2;
-            border-radius: 15px;
+            color: #3d81da;
             padding: 5px;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            border-radius: 0;
-            height: 100%; }
+            border-radius: 7px;
+            height: 100%;
+            padding-left: 20px; }
             html body .wrapper header #calc select:focus {
               outline: none; }
           html body .wrapper header #calc .values {
@@ -121,48 +140,21 @@ html {
             flex-wrap: nowrap;
             justify-content: space-between;
             align-items: center;
-            margin-top: 30px; }
+            margin-top: 50px; }
             html body .wrapper header #calc .values .course {
               height: 30px; }
               html body .wrapper header #calc .values .course button {
                 border: none;
-                border-radius: 0;
+                border-radius: 7px;
                 height: 100%;
-                background-color: #ffffff; }
+                background-color: #3d81da; }
               html body .wrapper header #calc .values .course select {
-                width: 60px; }
+                width: 70px; }
             html body .wrapper header #calc .values .date {
               height: 30px;
-              margin-top: 10px; }
+              margin-top: 20px; }
               html body .wrapper header #calc .values .date #year,
               html body .wrapper header #calc .values .date #day {
-                width: 50px; }
-              @media (min-width: 768px) {
-                html body .wrapper header #calc .values .date {
-                  margin-top: 0; } }
-            @media (min-width: 768px) {
-              html body .wrapper header #calc .values {
-                flex-direction: row;
-                justify-content: space-around; } }
-    html body footer {
-      width: 100%;
-      height: 50px;
-      background-color: #0665a2;
-      text-align: right;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: center; }
-      html body footer a {
-        font-size: 1.3rem;
-        color: #f0f7fc;
-        text-decoration: none; }
+                width: 70px; }
 
 /*# sourceMappingURL=calcStartPage.css.map */
