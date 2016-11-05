@@ -45,7 +45,7 @@ router.get('/', function (req, res) {
         subcategories.forEach( subcategory => {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
-        
+
         res.render('search', {
             product: products,
             categoriesDictionary: categories,
@@ -221,11 +221,10 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
 
-        console.log(req.params.productValue);
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
         let query = `${selectedProduct[0].name}`.replace(/ /g,"-");
         query = escape(query);
-
+        console.log(query);
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
         suggestions = suggestions.response.docs.slice(1,10);

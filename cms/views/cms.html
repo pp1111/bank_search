@@ -30,7 +30,7 @@
                 <tr>
                     <td>
                     <select class="form-control" ng-model="products.model">
-                    <option ng-repeat="product in products | orderBy:'+updated'" value="{{product._id}}">{{product.name}} {{product.provider}} {{product.updated? '&#10004' : ''}}</option>
+                    <option ng-repeat="product in products | orderBy:'-updated'" value="{{product._id}}">{{product.name}} {{product.provider}} {{product.updated? '&#10004' : ''}}</option>
                     </select>
                     </td>
                     <td> <label><button class="btn btn-danger" ng-click="remove(products.model)">Usuń</button></label></td>
