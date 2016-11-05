@@ -28,6 +28,7 @@ $white: #ffffff;
 }
 
 html {
+    font-size: 62.5%;
     height: 100%;
     body {
         -webkit-font-smoothing: subpixel-antialiased;
@@ -41,6 +42,18 @@ html {
         background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
         background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+        .logo-container {
+            @include flexbox(row, nowrap);
+            justify-content: center;
+            margin-top: 15px;
+            a {
+                text-align: center;
+                .logo {
+                    width: 70%;
+                    text-align: center;
+                }
+            }
+        }
         .wrapper {
             position: absolute;
             top: 25%;
@@ -67,8 +80,8 @@ html {
                         margin-bottom: 20px;
                     }
                     @media (min-width: 1024px) {
-                        font-size: 10rem;
-                        margin-bottom: 100px;
+                        font-size: 9rem;
+                        margin-bottom: 70px;
                     }
                 }
                 #calc {
@@ -106,6 +119,7 @@ html {
                             border-top-left-radius: 8px;
                         }
                         button {
+                            font-size: 1.6rem;
                             background-color: #3d81da;
                             color: $white;
                             padding: 5px 10px;
@@ -113,19 +127,12 @@ html {
                             border-bottom-right-radius: 8px;
                             border-top-right-radius: 8px;
                             @include transition(.2s);
-                            svg {
-                                fill: $white;
-                                width: 25px;
-                                @include transition(.2s);
-                            }
                             @media(min-width: 768px) {
-                                padding: 10px 15px;
+                                padding: 10px 30px;
                             }
                             &:hover {
                                 background-color: $white;
-                                svg {
-                                    fill: #3d81da;
-                                }
+                                color: #3d81da;
                             }
                         }
                     }

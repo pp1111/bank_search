@@ -32,8 +32,20 @@ body {
     background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+    .logo-container {
+        @include flexbox(row, nowrap);
+        justify-content: center;
+        margin-top: 15px;
+        a {
+            text-align: center;
+            .logo {
+                width: 70%;
+                text-align: center;
+            }
+        }
+    }
     .wrapper {
-        margin-top: 130px; 
+        margin-top: 40px; 
         height: 100%;
         .search-result {
             height: 100%;

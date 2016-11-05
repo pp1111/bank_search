@@ -53,10 +53,20 @@ body {
     background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+    .logo-container {
+        @include flexbox(row, nowrap);
+        justify-content: center;
+        margin-top: 15px;
+        a {
+            text-align: center;
+            .logo {
+                width: 70%;
+                text-align: center;
+            }
+        }
+    }
     .wrapper {
         font-family: latoRegular, sans-serif;
-        position: absolute;
-        top: 25%;
         width: 100%;
         @media (min-width: 1024px) {
             top: 15%;
@@ -186,114 +196,114 @@ body {
                 }
             }
         }
-    .result {
-        @include flexbox(row, wrap);
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(255, 255, 255, .8);
-        margin: 20px auto;
-        text-align: left;
-        border-radius: 10px;
-        padding: 20px;
-        @media(min-width: 768px) {
-            width: 75%;
-            //margin: 0 auto;
-        }
-        @media(min-width: 1200px) {
-            justify-content: space-between;
-        }
-        .rand-btn {
-            min-width: 150px;
-            @include flexbox(row, nowrap);
+        .result {
+            @include flexbox(row, wrap);
             justify-content: center;
             align-items: center;
-            a {
-                text-align: center;
-                font-size: 1.5rem;
+            background-color: rgba(255, 255, 255, .8);
+            margin: 20px auto;
+            text-align: left;
+            border-radius: 10px;
+            padding: 20px;
+            @media(min-width: 768px) {
+                width: 75%;
+                //margin: 0 auto;
+            }
+            @media(min-width: 1200px) {
+                justify-content: space-between;
+            }
+            .rand-btn {
+                min-width: 150px;
                 @include flexbox(row, nowrap);
                 justify-content: center;
                 align-items: center;
-                border: 2px solid #3d81da;
-                background-color: #3d81da;
-                border-radius: 100%;
-                width: 75px;
-                height: 75px;
-                color: $white;
-                text-decoration: none;
-                font-family: somaticRounded, sans-serif;
-                @include transition(.3s);
-                cursor: pointer;
-                &:hover {
-                    background-color: $white;
-                    color: #3d81da;
-                }
-            }
-        }
-        h3 {
-            font-size: 1.9rem;
-            font-weight: 300;
-            color: #3d81da;
-        }
-        .courses {
-            background-color: $white;
-            flex-grow: 1;
-            max-width: 250px;
-            border-radius: 10px;
-            h3 {
-                margin-left: 10px;
-            }
-            @media(min-width: 1440px) {
-                max-width: 400px;
-            }
-        }
-        .single-course {
-            flex-grow: 2;
-            max-width: 40%;
-            min-width: 450px;
-            @media(min-width: 1440px) {
-                min-width: 600px;
-            }
-        }
-        #show {
-            align-self: flex-start;
-            #resultarea {
-                font-size: 1.3rem;
-                padding-bottom: 10px;
-                font-weight: 400;
-                box-shadow: 0 4px 10px -2px rgba(0,0,0,0.5);
-                @media(min-width: 768px) {
-                    box-shadow: none;
-                }
-                @media(min-width: 1024px) {
-                    margin-left: 30px;
-                    margin-right: 20px;
-                }
-                ul {
-                    list-style-type: none;
-                    padding: 0;
-                    li {
-                        color: $black;
+                a {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    @include flexbox(row, nowrap);
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid #3d81da;
+                    background-color: #3d81da;
+                    border-radius: 100%;
+                    width: 75px;
+                    height: 75px;
+                    color: $white;
+                    text-decoration: none;
+                    font-family: somaticRounded, sans-serif;
+                    @include transition(.3s);
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $white;
+                        color: #3d81da;
                     }
                 }
             }
-            #courseTable {
-                max-height: 150px;
-                overflow-y: auto;
+            h3 {
+                font-size: 1.9rem;
+                font-weight: 300;
+                color: #3d81da;
+            }
+            .courses {
                 background-color: $white;
-                width: 70%;
-                margin: 0 auto 16px auto;
-                font-size: 1.15rem;
-                font-weight: 400;
-                @media(min-width: 768px) {
-                    font-size: 1.3rem;
+                flex-grow: 1;
+                max-width: 250px;
+                border-radius: 10px;
+                h3 {
+                    margin-left: 10px;
                 }
-                ul {
-                    margin-top: 0;
-                    list-style-type: none;
-                    padding: 0;
+                @media(min-width: 1440px) {
+                    max-width: 400px;
+                }
+            }
+            .single-course {
+                flex-grow: 2;
+                max-width: 40%;
+                min-width: 450px;
+                @media(min-width: 1440px) {
+                    min-width: 600px;
+                }
+            }
+            #show {
+                align-self: flex-start;
+                #resultarea {
+                    font-size: 1.3rem;
+                    padding-bottom: 10px;
+                    font-weight: 400;
+                    box-shadow: 0 4px 10px -2px rgba(0,0,0,0.5);
+                    @media(min-width: 768px) {
+                        box-shadow: none;
+                    }
+                    @media(min-width: 1024px) {
+                        margin-left: 30px;
+                        margin-right: 20px;
+                    }
+                    ul {
+                        list-style-type: none;
+                        padding: 0;
+                        li {
+                            color: $black;
+                        }
+                    }
+                }
+                #courseTable {
+                    max-height: 150px;
+                    overflow-y: auto;
+                    background-color: $white;
+                    width: 70%;
+                    margin: 0 auto 16px auto;
+                    font-size: 1.15rem;
+                    font-weight: 400;
+                    @media(min-width: 768px) {
+                        font-size: 1.3rem;
+                    }
+                    ul {
+                        margin-top: 0;
+                        list-style-type: none;
+                        padding: 0;
+                    }
                 }
             }
         }
     }
-}
 }
