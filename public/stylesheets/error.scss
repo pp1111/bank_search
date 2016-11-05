@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+    body {
+        width: 100%;
+        height: 100%;
+        background: url('../images/404/room.png') no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        .board {
+            height: 35%;
+            width: 60%;
+            background: url('../images/404/table.png') no-repeat;
+            background-size: 100% 100%;
+            margin-left: 15%;
+        }
+        .link-board {
+            position: absolute;
+            height: 15%;
+            width: 12%;
+            background: url('../images/404/link.png') no-repeat;
+            background-size: 100% 100%;
+            margin-top: -8%;
+            margin-left: 86%;
+        }
+        .stand {
+            background: url('../images/404/stand.png') no-repeat;
+            width: 6%;
+            height: 18%;
+            background-size: 100% 100%;
+            margin-left: 56%;
+            margin-top: 10%;
+        }
+        .safe {
+            width: 8%;
+            height: 14%;
+            margin-left: 46%;
+            margin-top: -16%;
+            background: url('../images/404/safe.png') no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+}
