@@ -108,7 +108,8 @@ html {
         top: 0;
         margin: 0;
         background-color: rgba(244, 251, 254, 0.9);
-        border-radius: 40px; }
+        border-radius: 40px;
+        overflow-y: auto; }
         html body nav .dl-menu-container.category-open {
           width: 100%; }
         html body nav .dl-menu-container .dl-menu {

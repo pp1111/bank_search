@@ -144,6 +144,7 @@ html {
                 margin: 0;
                 background-color: rgba(244, 251, 254, .90);
                 border-radius: 40px;
+                overflow-y: auto;
                 &.category-open {
                     width: 100%;
                 }
