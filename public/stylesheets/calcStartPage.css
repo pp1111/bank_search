@@ -62,7 +62,8 @@ html {
             flex-wrap: nowrap;
             justify-content: space-between;
             margin-top: 15px;
-            width: 250px; }
+            width: 250px;
+            height: 43px; }
             @media (min-width: 425px) {
               html body .wrapper header #calc .value {
                 width: 380px; } }
