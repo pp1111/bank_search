@@ -1,26 +1,27 @@
 $(document).ready(function () {
     $('#searcharea').autocomplete({
-        source: function (req, res) {
+        source: (req, res) => {
             $.ajax({
-                url: "http://localhost:4000/autocomplete/" + req.term,
+                url: "http://localhost:4000/search/suggestions?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {
                     term: req.term
-                }   
-            }).done(function (data) {
-                res($.map(data, function (item) {
+                }
+            }).done((data) =>{
+                res($.map(data, (item) =>{
+                    item.term = item.term.replace(/<b>/g, "");
+                    item.term = item.term.replace(/<\/b>/g, "")
                     return {
-                        value: item.name
+                        value: item.term.replace(/-/g," ")
                     };
                 }));
-            }).fail(function () {
-                alert('Error');
+            }).fail(function (data) {
+                alert('error');
             });
         },
-        select: function (event, ui) {
-
+        select: (event, ui) => {
+            window.location.href = "/finanse/produkt/" + decodeURIComponent(ui.item.label.replace(/ /g,"-"));
         }
-    });
-
+    }); 
 });

@@ -2,8 +2,8 @@ var menuBtn = $('.menu-btn');
 var topBar = $('.top-bar');
 var middleBar = $('.middle-bar');
 var bottomBar = $('.bottom-bar');
-var menu = $('.dl-menu');
-var menuCategory = $('.dl-menu>.category');
+var menu = $('.dl-menu-container');
+var menuCategory = $('.dl-menu .category-link');
 var submenu = $('.dl-submenu');
 var searchIconBtn = $('nav .search .svg-btn');
 var search = $('nav .search');
@@ -23,43 +23,73 @@ $(document).ready(function(){
     toggleMoreProductInfo();
     disableCalcButton();
     productHover();
+    ifUiMenuOpen();
 });
 
 function productHover() {
     $('.single-product').on('touchend', function (e) {
-    'use strict'; //satisfy code inspectors
-    var link = $('.show-product');
-    if (link.hasClass('hover')) {
-        link.removeClass('hover');
-    } else {
-        link.addClass('hover');
-        $('.single-product').not(this).removeClass('hover');
-        e.preventDefault();
-        return false; //extra, and to make sure the function has consistent return points
-    }
-});
+        var link = $('.show-product');
+        if (link.hasClass('hover')) {
+            link.removeClass('hover');
+        } else {
+            link.addClass('hover');
+            $('.single-product').not(this).removeClass('hover');
+            e.preventDefault();
+            return false;
+        }
+    });
 }
 
-function menuBtnChange() {
-    topBar.toggleClass('top-bar-close');
-    middleBar.toggleClass('middle-bar-close');
-    bottomBar.toggleClass('bottom-bar-close');
+function ifUiMenuOpen() {
+    if($('.ui-menu').is(':visible')) {
+        console.log('works!');
+        //$('.search input').addClass('ui-menu-open');
+        //$('.search button').addClass('ui-menu-open');
+    }
+    else {
+        console.log('doesnt work :(');
+        $('.search').removeClass('ui-menu-open');
+    }
+}
+
+function setMenuBtn(topBarClass, middleBarClass, bottomBarClass) {
+    topBar.addClass(topBarClass);
+    middleBar.addClass(middleBarClass);
+    bottomBar.addClass(bottomBarClass);
+}
+function unsetMenuBtn(topBarClass, middleBarClass, bottomBarClass) {
+    topBar.removeClass(topBarClass);
+    middleBar.removeClass(middleBarClass);
+    bottomBar.removeClass(bottomBarClass);
 }
 
 function openMenu() {
     menuBtn.click(function(){
         if(!topBar.hasClass('top-bar-arrow')) {
             if(!topBar.hasClass('top-bar-close')) {
-                menuBtnChange();
-                menu.slideDown();
-                $('nav').addClass('nav-open');
-                dimness.addClass('dimness-visible');
+                menu.animate({
+                    left: 0
+                }, 300);
+                $('.bar').addClass('bar-open');
+                setTimeout(function() { setMenuBtn('top-bar-close', 'middle-bar-close', 'bottom-bar-close');}, 400);
+                setTimeout(function() {
+                    menuBtn.addClass('menu-btn-open')
+                }, 300);
+                setTimeout(function() {
+                    $('.dl-menu-header h3').show();
+                }, 300);
+                
             }
             else {
-                menuBtnChange();
-                menu.slideUp();
-                $('nav').removeClass('nav-open');
-                dimness.removeClass('dimness-visible');
+                $('.bar').removeClass('bar-open');
+                setTimeout(function() {
+                    $('.dl-menu-header h3').hide();
+                }, 0);
+                setTimeout(function() { unsetMenuBtn('top-bar-close', 'middle-bar-close', 'bottom-bar-close'); }, 100);
+                menu.animate({
+                    left: '-50%'
+                }, 300);
+                menuBtn.removeClass('menu-btn-open');
             }
             if( $(window).width() < 425) {
                 search.removeClass('search-clicked');
@@ -73,18 +103,31 @@ function openMenu() {
 }
 function openSubMenu() {
     menuCategory.click(function(){
-        $(this).find(submenu).addClass('it-must-be-open');
-        if($(this).find(submenu).is(':visible')) {
-            $(this).find(submenu).slideUp();
-            topBar.removeClass('top-bar-arrow');
-            middleBar.removeClass('middle-bar-arrow');
-            bottomBar.removeClass('bottom-bar-arrow');
+        if($(this).parent().find(submenu).is(':visible')) {
+            $(this).parent().find(submenu).slideUp();
+            unsetMenuBtn('top-bar-arrow', 'middle-bar-arrow', 'bottom-bar-arrow')
+            setTimeout(function(){
+                $('.dl-menu-container .line').removeClass('open');
+            }, 200);
+            setTimeout(function(){
+                $('.dl-menu-container').animate({
+                    width: '50%'
+                });
+            }, 600);
         }
         else {
-            $(this).find(submenu).slideDown();
-            topBar.addClass('top-bar-arrow');
-            middleBar.addClass('middle-bar-arrow');
-            bottomBar.addClass('bottom-bar-arrow');
+            $('.dl-menu-container').animate({
+                width: '100%'
+            });
+            var thatSubmenu = $(this).parent().find(submenu);
+            submenu.not(thatSubmenu).fadeOut();
+            setTimeout(function(){
+                thatSubmenu.fadeIn(500);
+            }, 850);
+            setTimeout(function(){
+                $('.dl-menu-container .line').addClass('open');
+            }, 500);
+            setMenuBtn('top-bar-arrow', 'middle-bar-arrow', 'bottom-bar-arrow')
         }
     });
 }
@@ -95,12 +138,21 @@ function closeSubMenu() {
             topBar.removeClass('top-bar-arrow');
             middleBar.removeClass('middle-bar-arrow');
             bottomBar.removeClass('bottom-bar-arrow');
+            setTimeout(function(){
+                $('.dl-menu-container .line').removeClass('open');
+            }, 200);
+            setTimeout(function(){
+                $('.dl-menu-container').animate({
+                    width: '50%'
+                });
+            }, 600);
         }
     });
 }
 
 function clickSearch() {
     searchIconNotBtn.click(function() {
+        $(window).attr('location','http://www.example.com')
         search.addClass('search-clicked');
         dimness.addClass('dimness-visible');
         //$('nav .search form').show();

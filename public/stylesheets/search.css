@@ -3,7 +3,15 @@ html {
   html body {
     -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
-    height: 100%; }
+    height: 100%;
+    background: #2ca9ed;
+    background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
+    background: -webkit-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
     html body .wrapper {
       position: absolute;
       top: 35%;
@@ -39,19 +47,111 @@ html {
         flex-wrap: nowrap;
         align-items: center;
         margin: 0 30px; }
-        html body .wrapper header h1 {
-          color: #0665a2;
-          font-size: 4.5rem;
-          font-weight: 100;
-          margin: 0;
-          letter-spacing: -3px; }
+        html body .wrapper header .logo {
+          position: relative;
+          width: 300px;
+          text-align: center; }
           @media (min-width: 768px) {
-            html body .wrapper header h1 {
-              font-size: 8rem;
-              margin-bottom: 10px; } }
+            html body .wrapper header .logo {
+              margin-bottom: 50px; } }
           @media (min-width: 1024px) {
-            html body .wrapper header h1 {
-              font-size: 10rem; } }
+            html body .wrapper header .logo {
+              width: 450px; } }
+          html body .wrapper header .logo h1, html body .wrapper header .logo p {
+            color: #fefefe;
+            font-weight: 100;
+            font-family: somaticRounded, sans-serif; }
+          html body .wrapper header .logo h1 {
+            margin-top: 0;
+            font-size: 7rem; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo h1 {
+                font-size: 8rem;
+                margin-bottom: 10px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo h1 {
+                font-size: 12rem; } }
+          html body .wrapper header .logo p {
+            font-size: 1.17rem;
+            position: absolute;
+            bottom: 30px;
+            left: 85px;
+            letter-spacing: 1.2px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo p {
+                bottom: 5px;
+                left: 85px;
+                margin-bottom: 0;
+                font-size: 1.3rem; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo p {
+                left: 130px;
+                font-size: 2rem; } }
+          html body .wrapper header .logo img {
+            position: absolute; }
+          html body .wrapper header .logo .left-dot {
+            left: 10px;
+            bottom: 52px;
+            width: 9px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-dot {
+                bottom: 20px;
+                left: -5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .left-dot {
+                width: 15px; } }
+          html body .wrapper header .logo .left-bottom-dot {
+            left: 75px;
+            bottom: 20px;
+            width: 13.5px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-bottom-dot {
+                left: 75px;
+                bottom: -15px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .left-bottom-dot {
+                left: 110px;
+                bottom: -29px;
+                width: 23px; } }
+          html body .wrapper header .logo .right-dot {
+            right: 12px;
+            top: 15px;
+            width: 10.5px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-dot {
+                top: 20px;
+                right: -5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .right-dot {
+                top: 40px;
+                width: 18px; } }
+          html body .wrapper header .logo .right-bottom-dot {
+            right: 12px;
+            bottom: 50px;
+            width: 8px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-bottom-dot {
+                bottom: 15px;
+                right: -2.5px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .logo .right-bottom-dot {
+                width: 14px; } }
+          html body .wrapper header .logo .left-arrow {
+            left: 18px;
+            bottom: 8px;
+            width: 25px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .left-arrow {
+                left: 0px;
+                bottom: -25px; } }
+          html body .wrapper header .logo .right-arrow {
+            right: -5px;
+            bottom: 35px;
+            width: 17px; }
+            @media (min-width: 768px) {
+              html body .wrapper header .logo .right-arrow {
+                right: -30px;
+                bottom: 0; } }
         html body .wrapper header .search {
           display: -webkit-box;
           display: -moz-box;
@@ -61,15 +161,18 @@ html {
           flex-direction: row;
           flex-wrap: nowrap;
           justify-content: space-between;
-          border: 1px solid #0665a2;
           margin-top: 15px;
-          width: 100%; }
+          width: 100%;
+          border-radius: 20px; }
           @media (min-width: 425px) {
             html body .wrapper header .search {
               width: 380px; } }
           @media (min-width: 768px) {
             html body .wrapper header .search {
-              width: 450px; } }
+              width: 470px; } }
+          @media (min-width: 1024px) {
+            html body .wrapper header .search {
+              width: 660px; } }
           html body .wrapper header .search input,
           html body .wrapper header .search button {
             border: none;
@@ -81,7 +184,10 @@ html {
             width: 100%;
             margin: 0 5px;
             padding-left: 10px;
-            font-size: 1.4rem; }
+            font-size: 1.4rem;
+            -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+            border-bottom-left-radius: 8px;
+            border-top-left-radius: 8px; }
             html body .wrapper header .search input[type="text"] ::-webkit-input-placeholder {
               /* Chrome/Opera/Safari */
               color: #000000; }
@@ -94,28 +200,39 @@ html {
             html body .wrapper header .search input[type="text"] :-moz-placeholder {
               /* Firefox 18- */
               color: #000000; }
+            html body .wrapper header .search input[type="text"].ui-menu-open {
+              border-bottom-left-radius: 0; }
           html body .wrapper header .search button {
-            background-color: #3498db;
+            background-color: #ffffff;
             color: #f0f7fc;
-            padding: 5px 10px;
-            border-left: 1px solid #0665a2;
+            padding: 0px 10px;
             cursor: pointer;
             -webkit-transition: 0.2s ease-in-out;
             -moz-transition: 0.2s ease-in-out;
-            transition: 0.2s ease-in-out; }
+            transition: 0.2s ease-in-out;
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+            height: 35px; }
+            html body .wrapper header .search button.ui-menu-open {
+              border-bottom-right-radius: 0; }
             html body .wrapper header .search button svg {
-              fill: #f0f7fc;
+              fill: #4183d7;
               width: 25px;
+              transform: rotateY(180deg);
               -webkit-transition: 0.2s ease-in-out;
               -moz-transition: 0.2s ease-in-out;
               transition: 0.2s ease-in-out; }
+              @media (min-width: 768px) {
+                html body .wrapper header .search button svg {
+                  padding: 2px;
+                  height: 35px;
+                  width: 35px; } }
             @media (min-width: 768px) {
               html body .wrapper header .search button {
-                padding: 10px 15px; } }
-            html body .wrapper header .search button:hover {
-              background-color: #f0f7fc; }
-              html body .wrapper header .search button:hover svg {
-                fill: #3498db; }
+                height: 40px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header .search button {
+                height: 45px; } }
     html body footer {
       width: 100%;
       height: 50px;

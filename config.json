@@ -1,0 +1,12 @@
+{
+	"email": {
+	    "enabled": true,
+	    "to": "piatekpatryk2@gmail.com",
+	    "from": "piatekpatryk2@gmail.com",
+	    "host": "smtp.gmail.com",
+	    "port": 587,
+	    "username": "piatekpatryk2@gmail.com",
+	    "password": "9984149a",
+	    "timeout": 30000
+	}
+}

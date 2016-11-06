@@ -3,9 +3,10 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var http = require('http');
 var routes = require('./routes/index');
-var parseString = require('xml2js').parseString;
+var calcRoute = require('./routes/calcRoute');
+
+const arf = require('./lib/arf');
 
 // var users = require('./routes/users');
 
@@ -24,9 +25,22 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-// app.use('/users', users);
+app.use(function(req, res, next){
 
+    var oldRender = res.render;
+    res.render = function(){
+        res.header('Content-Type', 'text/html');
+        oldRender.apply(this, arguments);
+    };
+
+    next();
+});
+
+app.use('/', routes);
+app.use('/kalkulator-walut', calcRoute);
+app.use('/przelicznik', calcRoute);
+
+app.get('/ping', function (req, res) { return arf.response(res, { pong: {} }); });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -58,8 +72,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 
 module.exports = app;

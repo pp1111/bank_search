@@ -1,0 +1,26 @@
+{
+    "email": {
+        "enabled": false,
+        "to": "piatekpatryk2@gmail.com",
+        "from": "piatekpatryk2@gmail.com",
+        "host": "smtp.gmail.com",
+        "port": 587,
+        "username": "piatekpatryk2@gmail.com",
+        "password": "9984149a",
+        "timeout": 30000
+    },
+    "logs": {
+        "dir": "./logs/",
+        "daily": "report.log",
+        "watchdog": "watchdog.log"
+    },
+    "interval": 60,
+    "dailyReportTime": "00 00 24 * * *",
+    "retryLimit": 5,
+    "server": {
+        "port": 5006
+    },
+    "pingEndpoints": [
+        "http://localhost:3000/ping"
+    ]
+}

@@ -1,14 +1,14 @@
-var express = require('express');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var autocomplete = require('../lib/autocomplete');
+const express = require('express');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
+const app = express();
+const controllers = require('./controllers/search');
 
-var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.get('/autocomplete/:search',autocomplete.find);
+app.get('/search/:result', controllers());
 
-app.listen(4000, cb => {
+app.listen(4000, cb => {	
 	console.log('app listen on port: 4000')
 });

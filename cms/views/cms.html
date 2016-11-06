@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
 
@@ -14,49 +14,98 @@
             <table class="table">
               <thead>
                 <tr>
-                    <th>products list</th>
+                    <th>Lista produktów</th>
                     <th></th>
                     <th></th>
-                    <th>cateogory</th>         
-                    <th>subcategory</th>
-                    <th>name</th>
-                    <th>provider</th>
+                    <th>kategoria</th>         
+                    <th>subkategoria</th>
+                    <th>nazwa</th>
+                    <th>brand</th>
+                    <th>logo</th>
                     <th>prez</th>         
-                    <th>application</th>
-                    <th>alive</th>
+                    <th>wniosek</th>
                     <th>&nbsp;</th>
                 </tr>
               </thead>
                 <tr>
                     <td>
                     <select class="form-control" ng-model="products.model">
-                    <option ng-repeat="product in products" value="{{product._id}}">{{product.name}} {{product.provider}}</option>
+                    <option ng-repeat="product in products | orderBy:'+updated'" value="{{product._id}}">{{product.name}} {{product.provider}} {{product.updated? '&#10004' : ''}}</option>
                     </select>
                     </td>
-                    <td> <label><button class="btn btn-danger" ng-click="remove(products.model)">Remove</button></label></td>
-                    <td><label><button class="btn btn-warning" ng-click="edit(products.model)">Edit</button></label></td>
+                    <td> <label><button class="btn btn-danger" ng-click="remove(products.model)">Usuń</button></label></td>
+                    <td><label><button class="btn btn-warning" ng-click="edit(products.model)">Edytuj</button></label></td>
                     <td><input class="form-control" ng-model="product.category"></td>
                     <td><input class="form-control" ng-model="product.subcategory"></td>
                     <td><input class="form-control" ng-model="product.name"></td>
                     <td><input class="form-control" ng-model="product.provider"></td>
+                    <td><input class="form-control" ng-model="product.logo"></td>
                     <td><input class="form-control" ng-model="product.prez"></td>
                     <td><input class="form-control" ng-model="product.application"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="product.alive"></td>
-                    <td><button class="btn btn-primary" ng-click="addproduct()">Add product</button></td>
-                    <td><button class="btn btn-info" ng-click="update()">Update</button></td>
+                    <td><button class="btn btn-primary" ng-click="addproduct()">Dodaj</button></td>
+                    <td><button class="btn btn-info" ng-click="update()">Zatwierdź</button></td>
                 </tr>
             </table>
         </div>
         <div class="row">
+                <hr/>
+                <h3 style="text-align: center"> Opisy produktów</h3> 
+                <hr/>
                 <div class="col-md-6">
-                    <label>Short description</label>
+                    <label>krótki opis</label>
                     <textarea ck-editor class="form-control" rows="10 " ng-model="product.description"></textarea>
                 </div>
                 <div class="col-md-6">
-                    <label>Long description</label> 
+                    <label>długi opis</label> 
                     <textarea ck-editor  class="form-control" type="textarea" ng-model="product.longDescription" ckeditor> </textarea>
                 </div>
         </div>
+        <br/>
+        <br/>
+        <div class=row>
+            <hr/>
+            <h3 style="text-align: center"> Meta tagi</h3> 
+            <hr/>
+            <div class="col-md-4">
+                <label>meta tytuł</label>
+                <textarea style="resize:none" class="form-control" rows="3" ng-model="product.meta.title"></textarea>
+            </div>
+            <div class="col-md-4">
+                <label>meta opis</label> 
+                <textarea style="resize:none" class="form-control" rows="3" ng-model="product.meta.description"></textarea>
+            </div>
+            <div class="col-md-4">
+                <label>meta img alt</label> 
+                <textarea style="resize:none" class="form-control" rows="3" ng-model="product.meta.alt"></textarea>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <hr/>
+        <div class="row">
+            <table class="table">
+                 <thead>
+                    <tr>
+                        <th>Checkboxy</th>
+                        <th></th>
+                        <th></th>
+                        <th>&nbsp;</th>
+                        <th style="text-align:center">produkt widoczny nastronie</th>
+                        <th style="text-align:center">zaznacz jako wyedytowany</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="checkbox" class="form-control" ng-model="product.alive"></td>
+                        <td><input type="checkbox" class="form-control" ng-model="product.updated"></td>
+                    </tr>
+                  </thead>
+            </table>
+        </div>
+        <br/>
+        <br/>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>

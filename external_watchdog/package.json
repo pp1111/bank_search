@@ -1,0 +1,21 @@
+{
+  "name": "external_watchdog",
+  "version": "1.12.0",
+  "description": "Uptime monitor",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.5.3",
+    "cron": "^1.1.0",
+    "emailjs": "^1.0.8",
+    "express": "^4.13.3",
+    "minimist": "^1.1.0",
+    "os-user": "^2.1.4",
+    "q": "^1.0.1",
+    "request": "~2.12.0",
+    "winston": "^2.2.0"
+  },
+  "engines": {
+    "node": "4.x.x",
+    "npm": "1.1.x"
+  }
+}

@@ -7,6 +7,11 @@ $lightBlue: rgba(133, 196, 237, 1);
 $black: #000000;
 $white: #ffffff;
 
+@font-face {
+    font-family: latoRegular;
+    src: url(/fonts/Lato-Regulat.ttf);
+}
+
 @mixin flexbox($direction, $wrap) {
     display: -webkit-box;
     display: -moz-box;
@@ -21,43 +26,50 @@ $white: #ffffff;
     -moz-transition: $time ease-in-out;
     transition: $time ease-in-out;
 }
-@mixin placeholder($color) {
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        color: $color;
-    }
-    ::-moz-placeholder { /* Firefox 19+ */
-        color: $color;
-    }
-    :-ms-input-placeholder { /* IE 10+ */
-        color: $color;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-        color: $color;
-    }
-}
 
 html {
+    font-size: 62.5%;
     height: 100%;
     body {
         -webkit-font-smoothing: subpixel-antialiased;
         position: relative;
         height: 100%;
+        background: rgba(44,169,237,1);
+        background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
+        background: -webkit-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+        .logo-container {
+            @include flexbox(row, nowrap);
+            justify-content: center;
+            margin-top: 15px;
+            a {
+                text-align: center;
+                .logo {
+                    width: 70%;
+                    text-align: center;
+                }
+            }
+        }
         .wrapper {
             position: absolute;
             top: 25%;
             width: 100%;
             @media (min-width: 1024px) {
-                top: 25%;
+                top: 15%;
             }
             header {
                 @include flexbox(column, nowrap);
                 align-items: center;
                 margin: 0 30px;
                 h1 {
-                    color: $darkBlue;
+                    font-family: latoRegular, sans-serif;
+                    color: $white;
                     font-size: 4.5rem;
                     text-align: center;
-                    font-weight: 100;
                     margin: 0;
                     letter-spacing: -3px;
                     @media (min-width: 425px) {
@@ -65,10 +77,11 @@ html {
                     }
                     @media (min-width: 768px) {
                         font-size: 8rem;
-                        margin-bottom: 10px;
+                        margin-bottom: 20px;
                     }
                     @media (min-width: 1024px) {
-                        font-size: 10rem;
+                        font-size: 9rem;
+                        margin-bottom: 70px;
                     }
                 }
                 #calc {
@@ -76,14 +89,17 @@ html {
                     .value {
                         @include flexbox(row, nowrap);
                         justify-content: space-between;
-                        border: 1px solid $darkBlue;
                         margin-top: 15px;
                         width: 250px;
+                        height: 43px;
                         @media(min-width: 425px) {
                             width: 380px;
                         }
                         @media (min-width: 768px) {
                             width: 450px;
+                        }
+                        @media (min-width: 1024px) {
+                            width: 550px;
                         }
                         input,
                         button {
@@ -98,32 +114,32 @@ html {
                             margin: 0 5px;
                             padding-left: 10px;
                             font-size: 1.4rem;
-                            //@include placeholder($mainBlue); //coś nie działa
+                            -webkit-box-shadow: 0 0 0px 1000px $white inset;
+                            border-bottom-left-radius: 8px;
+                            border-top-left-radius: 8px;
                         }
                         button {
-                            background-color: $mainBlue;
-                            color: $lightestBlue;
+                            font-size: 1.6rem;
+                            background-color: #3d81da;
+                            color: $white;
                             padding: 5px 10px;
-                            border-left: 1px solid $darkBlue;
                             cursor: pointer;
+                            border-bottom-right-radius: 8px;
+                            border-top-right-radius: 8px;
                             @include transition(.2s);
-                            svg {
-                                fill: $menuColorText;
-                                width: 25px;
-                                @include transition(.2s);
-                            }
                             @media(min-width: 768px) {
-                                padding: 10px 15px;
+                                padding: 10px 30px;
                             }
                             &:hover {
-                                background-color: $menuColorText;
-                                svg {
-                                    fill: $mainBlue;
-                                }
+                                background-color: $white;
+                                color: #3d81da;
                             }
                         }
                     }
                     select {
+                        font-family: latoRegular, sans-serif;
+                        text-transform: uppercase;
+                        font-weight: 700;
                         border: 0 !important;
                         -webkit-appearance: none;
                         -moz-appearance: none;
@@ -133,12 +149,12 @@ html {
                         width: 100px;
                         text-indent: 0.01px;
                         text-overflow: "";
-                        color: $darkBlue;
-                        border-radius: 15px;
+                        color: #3d81da;
                         padding: 5px;
-                        box-shadow: 0 0 3px rgba(000,000,000, 0.5);
-                        border-radius: 0;
+                        border-radius: 7px;
                         height: 100%;
+                        padding-left: 20px;
+                        margin: 0 4px;
                         &:focus {
                             outline: none;
                         }
@@ -147,52 +163,30 @@ html {
                         @include flexbox(column, nowrap);
                         justify-content: space-between;
                         align-items: center;
-                        margin-top: 30px;
+                        margin-top: 50px;
                         .course {
                             height: 30px;
                             button {
                                 border: none;
-                                border-radius: 0;
+                                border-radius: 7px;
                                 height: 100%;
-                                background-color: $white;
+                                background-color: #3d81da;
+                                margin: 0 4px;
                             }
                             select {
-                                width: 60px;
+                                width: 70px;
                             }
                         }
                         .date {
                             height: 30px;
-                            margin-top: 10px;
+                            margin-top: 20px;
                             #year,
                             #day{
-                                width: 50px;
+                                width: 70px;
                             }
-                            @media(min-width: 768px) {
-                                margin-top: 0;
-                            }
-                        }
-                        @media(min-width: 768px) {
-                            flex-direction: row;
-                            justify-content: space-around;
                         }
                     }
                 }
-            }
-        }
-        footer {
-            width: 100%;
-            height: 50px;
-            background-color: $darkBlue;
-            text-align: right;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            @include flexbox(column, nowrap);
-            justify-content: center;
-            a {
-                font-size: 1.3rem;
-                color: $menuColorText;
-                text-decoration: none;
             }
         }
     }
