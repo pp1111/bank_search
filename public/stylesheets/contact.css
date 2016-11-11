@@ -1,86 +1,92 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box; }
-
 html {
-  font-size: 62.5%;
-  height: 100%; }
+  font-size: 62.5%; }
 
 body {
   -webkit-font-smoothing: subpixel-antialiased;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  line-height: 1.43;
-  height: 100%;
-  width: 100%; }
+  background: #2ca9ed;
+  background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
+  background: -webkit-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
+  body .logo-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 15px; }
+    body .logo-container a {
+      text-align: center; }
+      body .logo-container a .logo {
+        width: 70%;
+        text-align: center; }
   body .wrapper {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 60px; }
-    @media (min-width: 768px) {
-      body .wrapper {
-        padding: 1px 26px 26px 26px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-        width: 750px;
-        margin-top: 10%; } }
-    @media (min-width: 1024px) {
-      body .wrapper {
-        margin-left: 50px; } }
+    margin: 0 15px; }
     body .wrapper h2 {
+      text-align: center;
+      margin: 0;
+      margin-top: 30px;
+      font-size: 3rem;
       font-weight: 100;
-      font-size: 3rem; }
-    body .wrapper form .input {
+      font-family: latoRegular, sans-serif;
+      font-weight: 800;
+      color: #ffffff; }
+      @media (min-width: 375px) {
+        body .wrapper h2 {
+          font-size: 4rem; } }
+      @media (min-width: 768px) {
+        body .wrapper h2 {
+          font-size: 6rem; } }
+    body .wrapper form {
       display: -webkit-box;
       display: -moz-box;
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: nowrap;
-      justify-content: space-between;
-      border: 1px solid #0665a2;
-      margin-top: 15px;
-      height: 30px; }
-      body .wrapper form .input input {
+      align-items: center;
+      width: 100%; }
+      body .wrapper form input {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        height: 30px;
+        margin-top: 20px;
         width: 100%;
+        border-radius: 7px;
         border: none;
-        padding-left: 5px; }
-      body .wrapper form .input svg {
-        border-left: 1px solid #0665a2;
-        background-color: #3498db;
-        padding: 5px; }
-    body .wrapper form .message-area {
-      border: 1px solid #0665a2;
-      margin-top: 15px; }
-      body .wrapper form .message-area textarea {
-        padding: 5px;
+        padding: 0 15px; }
+      body .wrapper form textarea {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin-top: 30px;
         width: 100%;
+        border-radius: 7px;
         border: none;
-        resize: none;
-        font-family: "Helvetica Neue",'Roboto',Helvetica,Arial,sans-serif; }
-      body .wrapper form .message-area button {
-        width: 100%;
-        background-color: #3498db;
-        border: none;
-        margin: 0;
+        padding: 5px 15px; }
+      body .wrapper form button {
+        height: 40px;
+        width: 120px;
+        border: 2px solid #ffffff;
+        border-radius: 40px;
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 1.3rem;
+        margin-top: 25px;
         cursor: pointer;
-        -webkit-transition: 0.4s ease-in-out;
-        -moz-transition: 0.4s ease-in-out;
-        transition: 0.4s ease-in-out;
-        border-top: 1px solid #0665a2; }
-        body .wrapper form .message-area button svg {
-          padding: 5px;
-          fill: #f0f7fc;
-          -webkit-transition: 0.2s ease-in-out;
-          -moz-transition: 0.2s ease-in-out;
-          transition: 0.2s ease-in-out; }
-        body .wrapper form .message-area button:hover {
-          background-color: #f0f7fc; }
-          body .wrapper form .message-area button:hover svg {
-            fill: #3498db; }
+        -webkit-transition: 0.2s ease-in-out;
+        -moz-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out; }
+        body .wrapper form button:hover {
+          background-color: #ffffff;
+          color: #3d81da; }
 
 /*# sourceMappingURL=contact.css.map */

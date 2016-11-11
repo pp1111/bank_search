@@ -35,91 +35,90 @@ $white: #ffffff;
         color: $color;
     }
 }
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
 
 html {
     font-size: 62.5%;
-    height: 100%;
 }
 
 body {
     -webkit-font-smoothing: subpixel-antialiased;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: $white;
-    line-height: 1.43;
-    height: 100%;
-    width: 100%;
+    background: rgba(44,169,237,1);
+    background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
+    background: -webkit-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+    .logo-container {
+        @include flexbox(row, nowrap);
+        justify-content: center;
+        margin-top: 15px;
+        a {
+            text-align: center;
+            .logo {
+                width: 70%;
+                text-align: center;
+            }
+        }
+    }
     .wrapper {
-        width: 80%;
-        margin: 0 auto;
-        margin-top: 60px;
-        @media(min-width: 768px) {
-            padding: 1px 26px 26px 26px;
-            box-shadow: 0 0 3px rgba(000,000,000, 0.5);
-            width: 750px;
-            margin-top: 10%;
-        }
-        @media(min-width: 1024px) {
-            margin-left: 50px;
-        }
+        margin: 0 15px;
         h2 {
-            font-weight: 100;
+            text-align: center;
+            margin: 0;
+            margin-top: 30px;
             font-size: 3rem;
+            font-weight: 100;
+            font-family: latoRegular, sans-serif;
+            font-weight: 800;
+            color: $white;
+            @media(min-width: 375px) {
+                font-size: 4rem;
+            }
+            @media(min-width: 768px) {
+                font-size: 6rem;
+            }
         }
         form {
-            .input {
-                @include flexbox(row, nowrap);
-                justify-content: space-between;
-                border: 1px solid $darkBlue;
-                margin-top: 15px;
+            @include flexbox(column, nowrap);
+            align-items: center;
+            width: 100%;
+            input {
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
                 height: 30px;
-                input {
-                    width: 100%;
-                    border: none;
-                    padding-left: 5px;
-                }
-                svg {
-                    border-left: 1px solid $darkBlue;
-                    background-color: $mainBlue;
-                    padding: 5px;
-                }
+                margin-top: 20px;
+                width: 100%;
+                border-radius: 7px;
+                border: none;
+                padding: 0 15px;
             }
-            .message-area {
-                border: 1px solid $darkBlue;
-                margin-top: 15px;
-                textarea {
-                    padding: 5px;
-                    width: 100%;
-                    border: none;
-                    resize: none;
-                    font-family: "Helvetica Neue",'Roboto',Helvetica,Arial,sans-serif;
-                }
-                button {
-                    width: 100%;
-                    background-color: $mainBlue;
-                    border: none;
-                    margin: 0;
-                    cursor: pointer;
-                    @include transition(.4s);
-                    border-top: 1px solid $darkBlue;
-                    svg {
-                        padding: 5px;
-                        fill: $menuColorText;
-                        @include transition(.2s);
-                    }
-                    &:hover {
-                        background-color: $menuColorText;
-                        svg {
-                            fill: $mainBlue;
-                        }
-                    }
+            textarea {
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                margin-top: 30px;
+                width: 100%;
+                border-radius: 7px;
+                border: none;
+                padding: 5px 15px;
+            }
+            button {
+                height: 40px;
+                width: 120px;
+                border: 2px solid $white;
+                border-radius: 40px;
+                background-color: transparent;
+                color: $white;
+                font-size: 1.3rem;
+                margin-top: 25px;
+                cursor: pointer;
+                @include transition(.2s);
+                &:hover {
+                    background-color: $white;
+                    color: #3d81da;
                 }
             }
         }
