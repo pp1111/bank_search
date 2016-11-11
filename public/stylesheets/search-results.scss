@@ -90,9 +90,15 @@ body {
                     border-radius: 20px;
                     @media(min-width: 768px) {
                         flex-direction: row;
-                        height: 255px;
-                        max-width: 1470px;
+                        height: 225px;
+                        max-width: 1000px;
                         justify-content: space-between;
+                    }
+                    @media(min-width: 1024px) {
+                        height: 255px;
+                    }
+                    @media(min-width: 1470px) {
+                        max-width: 1470px;
                     }
                     .img-wrapper {
                         width: 150px;
