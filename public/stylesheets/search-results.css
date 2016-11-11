@@ -53,6 +53,7 @@ body {
     margin-top: 30px;
     margin: 0 17px; }
     body .wrapper .search-result .products .single-product {
+      max-width: 400px;
       font-family: latoRegular, sans-serif;
       display: -webkit-box;
       display: -moz-box;
@@ -67,10 +68,12 @@ body {
       width: 100%;
       position: relative;
       border-radius: 20px; }
-      @media (min-width: 425px) {
+      @media (min-width: 768px) {
         body .wrapper .search-result .products .single-product {
           flex-direction: row;
-          height: 200px; } }
+          height: 255px;
+          max-width: 1470px;
+          justify-content: space-between; } }
       body .wrapper .search-result .products .single-product .img-wrapper {
         width: 150px;
         display: -webkit-box;
@@ -82,23 +85,35 @@ body {
         justify-content: center;
         align-items: center;
         margin-top: 15px; }
-      body .wrapper .search-result .products .single-product h4 {
+        @media (min-width: 768px) {
+          body .wrapper .search-result .products .single-product .img-wrapper {
+            margin: 0 40px; } }
+        @media (min-width: 1024px) {
+          body .wrapper .search-result .products .single-product .img-wrapper {
+            margin: 0 50px; } }
+      @media (min-width: 768px) {
+        body .wrapper .search-result .products .single-product .desc {
+          flex-grow: 2; } }
+      body .wrapper .search-result .products .single-product .desc h4 {
         font-family: latoRegular, sans-serif;
         font-size: 2.3rem;
         font-weight: 100;
         color: #0665A2;
         margin: 15px;
         text-align: center; }
-      body .wrapper .search-result .products .single-product .info {
+        @media (min-width: 768px) {
+          body .wrapper .search-result .products .single-product .desc h4 {
+            text-align: left; } }
+      body .wrapper .search-result .products .single-product .desc .info {
         text-align: left;
         overflow-y: hidden;
         position: relative;
         height: 117px; }
         @media (min-width: 425px) {
-          body .wrapper .search-result .products .single-product .info {
+          body .wrapper .search-result .products .single-product .desc .info {
             margin: 15px 0 15px 20px;
             flex-grow: 2; } }
-        body .wrapper .search-result .products .single-product .info ul {
+        body .wrapper .search-result .products .single-product .desc .info ul {
           padding-right: 15px;
           height: 100%;
           margin: 0;
@@ -118,7 +133,7 @@ body {
         flex-flow: row nowrap;
         align-items: center;
         justify-content: center; }
-        @media (min-width: 425px) {
+        @media (min-width: 768px) {
           body .wrapper .search-result .products .single-product .buttons-container {
             display: -webkit-box;
             display: -moz-box;
@@ -127,7 +142,7 @@ body {
             display: flex;
             flex-flow: column nowrap;
             border-left: 1px solid #344c43;
-            padding-left: 30px; } }
+            padding: 0 20px; } }
         body .wrapper .search-result .products .single-product .buttons-container button {
           height: 43px;
           width: 108px;
@@ -152,12 +167,21 @@ body {
             body .wrapper .search-result .products .single-product .buttons-container button.apply-now:hover {
               background-color: transparent;
               color: #3d81da; }
-          @media (min-width: 425px) {
-            body .wrapper .search-result .products .single-product .buttons-container button.read-more {
-              margin-bottom: 10px;
-              margin-left: 0; }
-            body .wrapper .search-result .products .single-product .buttons-container button.apply-now {
-              margin-top: 10px;
-              margin-right: 0; } }
+          @media (min-width: 768px) {
+            body .wrapper .search-result .products .single-product .buttons-container button {
+              width: 160px;
+              height: 53px;
+              font-size: 1.5rem; }
+              body .wrapper .search-result .products .single-product .buttons-container button.read-more {
+                margin-top: 15px;
+                margin-left: 0; }
+              body .wrapper .search-result .products .single-product .buttons-container button.apply-now {
+                margin-bottom: 15px;
+                margin-right: 0; } }
+          @media (min-width: 1024px) {
+            body .wrapper .search-result .products .single-product .buttons-container button {
+              width: 220px;
+              height: 73px;
+              font-size: 1.8rem; } }
 
 /*# sourceMappingURL=search-results.css.map */

@@ -75,10 +75,8 @@ body {
                 @include flexbox(column, nowrap);
                 margin-top: 30px;
                 margin: 0 17px;
-                @media(min-width: 425px) {
-                    
-                }
                 .single-product {
+                    max-width: 400px;
                     font-family: latoRegular, sans-serif;
                     @include flexbox(column, nowrap);
                     align-items: center;
@@ -90,9 +88,11 @@ body {
                     width: 100%;
                     position: relative;
                     border-radius: 20px;
-                    @media(min-width: 425px) {
+                    @media(min-width: 768px) {
                         flex-direction: row;
-                        height: 200px;
+                        height: 255px;
+                        max-width: 1470px;
+                        justify-content: space-between;
                     }
                     .img-wrapper {
                         width: 150px;
@@ -100,33 +100,47 @@ body {
                         justify-content: center;
                         align-items: center;
                         margin-top: 15px;
+                        @media(min-width: 768px) {
+                            margin: 0 40px;
+                        }
+                        @media(min-width: 1024px) {
+                            margin: 0 50px;
+                        }
                     }
-                    h4 {
-                        font-family: latoRegular, sans-serif;
-                        font-size: 2.3rem;
-                        font-weight: 100;
-                        color: #0665A2;
-                        margin: 15px;
-                        text-align: center;
-                    }
-                    .info {
-                        text-align: left;
-                        overflow-y: hidden;
-                        position: relative;
-                        height: 117px;
-                        @media(min-width: 425px) {
-                            margin: 15px 0 15px 20px;
+                    .desc {
+                        @media(min-width: 768px) {
                             flex-grow: 2;
                         }
-                        ul {
-                            padding-right: 15px;
-                            height: 100%;
-                            margin: 0;
-                            font-size: 1.4rem;
-                            padding-left: 30px;
-                            list-style-position: 2px;
-                            color: #344c43;
-                            line-height: 1.8rem;
+                        h4 {
+                            font-family: latoRegular, sans-serif;
+                            font-size: 2.3rem;
+                            font-weight: 100;
+                            color: #0665A2;
+                            margin: 15px;
+                            text-align: center;
+                            @media(min-width: 768px) {
+                                text-align: left;
+                            }
+                        }
+                        .info {
+                            text-align: left;
+                            overflow-y: hidden;
+                            position: relative;
+                            height: 117px;
+                            @media(min-width: 425px) {
+                                margin: 15px 0 15px 20px;
+                                flex-grow: 2;
+                            }
+                            ul {
+                                padding-right: 15px;
+                                height: 100%;
+                                margin: 0;
+                                font-size: 1.4rem;
+                                padding-left: 30px;
+                                list-style-position: 2px;
+                                color: #344c43;
+                                line-height: 1.8rem;
+                            }
                         }
                     }
                     .buttons-container {
@@ -137,10 +151,10 @@ body {
                         align-items: center;
                         justify-content: center;
                         //margin: 30px 0 30px 30px;
-                        @media(min-width: 425px) {
+                        @media(min-width: 768px) {
                             @include flexbox(column, nowrap);
                             border-left: 1px solid #344c43;
-                            padding-left: 30px;
+                            padding: 0 20px;
                         }
                         button {
                             height: 43px;
@@ -168,15 +182,23 @@ body {
                                     color: #3d81da;
                                 }
                             }
-                            @media(min-width: 425px) {
+                            @media(min-width: 768px) {
+                                width: 160px;
+                                height: 53px;
+                                font-size: 1.5rem;
                                 &.read-more {
-                                    margin-bottom: 10px;
+                                    margin-top: 15px;
                                     margin-left: 0;
                                 }
                                 &.apply-now {
-                                    margin-top: 10px;
+                                    margin-bottom: 15px;
                                     margin-right: 0;
                                 }
+                            }
+                            @media(min-width: 1024px) {
+                                width: 220px;
+                                height: 73px;
+                                font-size: 1.8rem;
                             }
                         }
                     }
