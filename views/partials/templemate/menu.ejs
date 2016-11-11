@@ -9,18 +9,22 @@
 <div class="dl-menu-container">
     
     <ul class="dl-menu">
-        <li><a href="kalkulator-walut">Kalkulator walut</a></li>
-        <% categoriesDictionary.forEach( category => { %> 	 	
-            <li class="category">
-            <a href="#" class="category-link"><%=category%></a>
-                <ul class="dl-submenu">
-                    <% categoriesMap[category].forEach( subcategory => { %>
-                    <li>
-                        <a href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
-                    </li>
-                    <% }) %>
-                </ul>
-        <% }) %>
+        <div class="inner-scroll">
+            <li><a class="calc-link" href="kalkulator-walut">Kalkulator walut</a></li>
+            <% categoriesDictionary.forEach( category => { %> 	 	
+                <li class="category">
+                <a href="#" class="category-link"><%=category%></a>
+                    <ul class="dl-submenu">
+                        <div class="inner-scroll">
+                            <% categoriesMap[category].forEach( subcategory => { %>
+                            <li class="subcategory">
+                                <a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
+                            </li>
+                            <% }) %>
+                        </div>
+                    </ul>
+            <% }) %>
+        </div>
     </ul>
     <div class="line"></div>
 </div>

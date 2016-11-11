@@ -46,7 +46,7 @@ body {
     }
     .wrapper {
         margin-top: 40px; 
-        height: 100%;
+        height: 80%;
         .search-result {
             height: 100%;
             @include flexbox(row, nowrap);
@@ -67,7 +67,7 @@ body {
                 background-color: rgba(255, 255, 255, .8);
                 border-radius: 20px;
                 margin-left: 10px;
-                margin-bottom: 30px;
+                //margin-bottom: 30px;
                 padding: 24px;
                 position: relative;
                 font-family: latoRegular, sans-serif;
@@ -89,7 +89,7 @@ body {
                     }
                 }
                 button {
-                    position: fixed;
+                    position: absolute;
                     bottom: 10px;
                     background-color: #3d81da;
                     color: #ffffff;
@@ -164,23 +164,31 @@ body {
                         }
                     }
                     .info {
-                        overflow-y: auto;
                         margin: 0 10px 35px 0;
-                        h4 {
-                            font-size: 2.1rem;
-                            font-weight: 300;
-                            margin-bottom: 20px;
-                            color: #0665A2;
+                        position: relative;
+                        height: 200px;
+                        overflow-y: hidden;
+                        /*.inner-scroll {
+                            width: 100%;
+                            height: 100%;
+                            overflow-y: auto;
+                            padding-right: 15px;*/
+                            h4 {
+                                font-size: 2.1rem;
+                                font-weight: 300;
+                                margin-bottom: 20px;
+                                color: #0665A2;
 
-                        }
-                        ul {
-                            font-size: 1.2rem;
-                            padding-left: 20px;
-                            list-style-position: 2px;
-                            color: #344c43;
-                            line-height: 1.8rem;
-                            color: #344c43;
-                        }
+                            }
+                            ul {
+                                font-size: 1.2rem;
+                                padding-left: 20px;
+                                list-style-position: 2px;
+                                color: #344c43;
+                                line-height: 1.8rem;
+                                color: #344c43;
+                            }
+                        //}
                     }
                 }
             }

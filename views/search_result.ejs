@@ -42,13 +42,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<div class="img-wrapper">
 							<img src ="<%=product.logo%>">
 						</div>
-						<div class="info">
+						<div class="desc">
 							<h4><%=product.name%> <%=product.provider%></h4>
-							<%-product.description%>
+							<div class="info">
+								<div class="inner-scroll">
+									<%-product.description%>
+								</div>
+							</div>
 						</div>
 						<div class="buttons-container">
-							<button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
 							<button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
+							<button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
 						</div>
 					</div>
 				 	<%}%>
