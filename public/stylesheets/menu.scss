@@ -42,12 +42,6 @@ $brighterYellow: #FFD459;
     src: url(/fonts/Somatic-Rounded.otf);
 }
 
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-
 html {
     font-size: 62.5%;
     body {
@@ -148,17 +142,28 @@ html {
                 &.category-open {
                     width: 100%;
                 }
+                @media(max-width: 767px) {
+                    left: -100%;
+                    width: 100%;
+                }
                 .dl-menu {
-                    margin-top: 160px !important;
-                    text-align: left;
+                    margin-top: 100px !important;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
                     @include flexbox(column, nowrap);
                     justify-content: space-around;
-                    margin-left: 60px;
+                    padding: 0 60px;
+                    @media(min-width: 768px) {
+                        margin-top: 160px;
+                        text-align: left;
+                    }
                     @media(min-width: 1024px) {
-                        margin-left: 70px;
+                        padding-left: 70px;
                     }
                     @media(min-width: 1300px) {
-                        margin-left: 80px;
+                        margin-top: 160px;
+                        padding-left: 80px;
                     }
                     li {
                         margin-top: 40px;
@@ -166,7 +171,7 @@ html {
                             margin-top: 0;
                         }
                         a {
-                            font-size: 4rem;
+                            font-size: 3.2rem;
                             color: #77c9f6;
                             text-decoration: none;
                             @media(min-width: 768px) {
@@ -186,16 +191,24 @@ html {
                         }
                     }
                     .dl-submenu {
+                        width: 100%;
                         display: none;
-                        text-align: left;
+                        text-align: center;
                         position: absolute;
-                        left: 50%;
+                        left: 0;
                         top: 0;
                         bottom: 0;
-                        padding-left: 70px;
-                        margin: 105px 0 105px 0;
+                        //padding: 0 60px;
+                        margin: 105px auto;
                         overflow-y: auto !important;
                         height: 70%;
+                        @media(min-width: 425px) {
+                            padding: 0;
+                        }
+                        @media(min-width: 768px) {
+                            left: 50%;
+                            width: 50%;
+                        }
                         li {
                             margin-top: 25px;
                             a {
@@ -229,4 +242,10 @@ html {
             }
         }
     }
+}
+.inner-scroll {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 15px;
 }
