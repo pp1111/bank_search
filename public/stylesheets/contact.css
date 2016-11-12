@@ -1,3 +1,6 @@
+@font-face {
+  font-family: latoRegular;
+  src: url(/fonts/Lato-Regulat.ttf); }
 html {
   font-size: 62.5%; }
 
@@ -27,7 +30,8 @@ body {
         width: 70%;
         text-align: center; }
   body .wrapper {
-    margin: 0 15px; }
+    margin: 0 15px;
+    margin-bottom: 30px; }
     body .wrapper h2 {
       text-align: center;
       margin: 0;
@@ -60,18 +64,33 @@ body {
         height: 30px;
         margin-top: 20px;
         width: 100%;
+        max-width: 660px;
         border-radius: 7px;
         border: none;
         padding: 0 15px; }
+        @media (min-width: 1024px) {
+          body .wrapper form input {
+            height: 37px; } }
+        @media (min-width: 1300px) {
+          body .wrapper form input {
+            height: 43px; } }
       body .wrapper form textarea {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         margin-top: 30px;
         width: 100%;
+        max-width: 660px;
         border-radius: 7px;
         border: none;
-        padding: 5px 15px; }
+        padding: 5px 15px;
+        height: 250px; }
+        @media (min-width: 1024px) {
+          body .wrapper form textarea {
+            height: 300px; } }
+        @media (min-width: 1300px) {
+          body .wrapper form textarea {
+            height: 420px; } }
       body .wrapper form button {
         height: 40px;
         width: 120px;
@@ -85,6 +104,14 @@ body {
         -webkit-transition: 0.2s ease-in-out;
         -moz-transition: 0.2s ease-in-out;
         transition: 0.2s ease-in-out; }
+        @media (min-width: 1024px) {
+          body .wrapper form button {
+            height: 50px;
+            width: 160px; } }
+        @media (min-width: 1300px) {
+          body .wrapper form button {
+            height: 60px;
+            width: 180px; } }
         body .wrapper form button:hover {
           background-color: #ffffff;
           color: #3d81da; }

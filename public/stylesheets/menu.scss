@@ -65,10 +65,13 @@ html {
             .dl-menu-header {
                 position: absolute;
                 top: 4%;
-                left: 40px;
+                left: 15px;
                 @include flexbox(row, nowrap);
                 align-items: center;
                 z-index: 9999;
+                @media(min-width: 768px) {
+                    left: 40px;
+                }
                 .menu-btn {
                     width: 61px;
                     height: 61px;

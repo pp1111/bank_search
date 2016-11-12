@@ -22,7 +22,7 @@ html {
       html body nav .dl-menu-header {
         position: absolute;
         top: 4%;
-        left: 40px;
+        left: 15px;
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -32,6 +32,9 @@ html {
         flex-wrap: nowrap;
         align-items: center;
         z-index: 9999; }
+        @media (min-width: 768px) {
+          html body nav .dl-menu-header {
+            left: 40px; } }
         html body nav .dl-menu-header .menu-btn {
           width: 61px;
           height: 61px;

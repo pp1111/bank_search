@@ -36,6 +36,11 @@ $white: #ffffff;
     }
 }
 
+@font-face {
+    font-family: latoRegular;
+    src: url(/fonts/Lato-Regulat.ttf);
+}
+
 html {
     font-size: 62.5%;
 }
@@ -64,6 +69,7 @@ body {
     }
     .wrapper {
         margin: 0 15px;
+        margin-bottom: 30px;
         h2 {
             text-align: center;
             margin: 0;
@@ -91,9 +97,16 @@ body {
                 height: 30px;
                 margin-top: 20px;
                 width: 100%;
+                max-width: 660px;
                 border-radius: 7px;
                 border: none;
                 padding: 0 15px;
+                @media(min-width: 1024px) {
+                    height: 37px;
+                }
+                @media(min-width: 1300px) {
+                    height: 43px;
+                }
             }
             textarea {
                 box-sizing: border-box;
@@ -101,9 +114,17 @@ body {
                 -webkit-box-sizing: border-box;
                 margin-top: 30px;
                 width: 100%;
+                max-width: 660px;
                 border-radius: 7px;
                 border: none;
                 padding: 5px 15px;
+                height: 250px;
+                @media(min-width: 1024px) {
+                    height: 300px;
+                }
+                @media(min-width: 1300px) {
+                    height: 420px;
+                }
             }
             button {
                 height: 40px;
@@ -116,6 +137,14 @@ body {
                 margin-top: 25px;
                 cursor: pointer;
                 @include transition(.2s);
+                @media(min-width: 1024px) {
+                    height: 50px;
+                    width: 160px;
+                }
+                @media(min-width: 1300px) {
+                    height: 60px;
+                    width: 180px;
+                }
                 &:hover {
                     background-color: $white;
                     color: #3d81da;

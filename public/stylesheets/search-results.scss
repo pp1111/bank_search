@@ -90,12 +90,12 @@ body {
                     border-radius: 20px;
                     @media(min-width: 768px) {
                         flex-direction: row;
-                        height: 225px;
+                        min-height: 225px;
                         max-width: 1000px;
                         justify-content: space-between;
                     }
                     @media(min-width: 1024px) {
-                        height: 255px;
+                        min-height: 255px;
                     }
                     @media(min-width: 1470px) {
                         max-width: 1470px;
@@ -132,7 +132,7 @@ body {
                             text-align: left;
                             overflow-y: hidden;
                             position: relative;
-                            height: 117px;
+                            min-height: 117px;
                             @media(min-width: 425px) {
                                 margin: 15px 0 15px 20px;
                                 flex-grow: 2;
@@ -146,6 +146,9 @@ body {
                                 list-style-position: 2px;
                                 color: #344c43;
                                 line-height: 1.8rem;
+                            }
+                            small {
+                                display: none;
                             }
                         }
                     }
