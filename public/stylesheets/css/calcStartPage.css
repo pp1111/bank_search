@@ -1,0 +1,190 @@
+@font-face {
+  font-family: latoRegular;
+  src: url(/fonts/Lato-Regulat.ttf); }
+@font-face {
+  font-family: somaticRounded;
+  src: url(/fonts/Somatic-Rounded.otf); }
+html {
+  font-size: 62.5%;
+  height: 100%; }
+  html body {
+    -webkit-font-smoothing: subpixel-antialiased;
+    position: relative;
+    height: 100%;
+    background: #2ca9ed;
+    background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
+    background: -webkit-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
+    html body .contact-link {
+      font-family: somaticRounded, sans-serif;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.4rem; }
+      html body .contact-link:hover {
+        border-bottom: 2px solid #ffffff;
+        border-radius: 3px; }
+      @media (min-width: 768px) {
+        html body .contact-link {
+          font-size: 2rem; } }
+    html body .logo-container {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-top: 15px; }
+      html body .logo-container a {
+        text-align: center; }
+        html body .logo-container a .logo {
+          width: 70%;
+          text-align: center; }
+    html body .wrapper {
+      position: absolute;
+      top: 25%;
+      width: 100%; }
+      @media (min-width: 1024px) {
+        html body .wrapper {
+          top: 15%; } }
+      html body .wrapper header {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 0 30px; }
+        html body .wrapper header h1 {
+          font-family: latoRegular, sans-serif;
+          color: #ffffff;
+          font-size: 4.5rem;
+          text-align: center;
+          margin: 0;
+          letter-spacing: -3px; }
+          @media (min-width: 425px) {
+            html body .wrapper header h1 {
+              font-size: 6rem; } }
+          @media (min-width: 768px) {
+            html body .wrapper header h1 {
+              font-size: 8rem;
+              margin-bottom: 20px; } }
+          @media (min-width: 1024px) {
+            html body .wrapper header h1 {
+              font-size: 9rem;
+              margin-bottom: 70px; } }
+        html body .wrapper header #calc {
+          margin-bottom: 50px; }
+          html body .wrapper header #calc .value {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin-top: 15px;
+            width: 250px;
+            height: 43px; }
+            @media (min-width: 425px) {
+              html body .wrapper header #calc .value {
+                width: 380px; } }
+            @media (min-width: 768px) {
+              html body .wrapper header #calc .value {
+                width: 450px; } }
+            @media (min-width: 1024px) {
+              html body .wrapper header #calc .value {
+                width: 550px; } }
+            html body .wrapper header #calc .value input,
+            html body .wrapper header #calc .value button {
+              border: none;
+              margin: 0 !important; }
+              html body .wrapper header #calc .value input:focus,
+              html body .wrapper header #calc .value button:focus {
+                outline: none; }
+            html body .wrapper header #calc .value input[type="number"] {
+              width: 100%;
+              margin: 0 5px;
+              padding-left: 10px;
+              font-size: 1.4rem;
+              -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+              border-bottom-left-radius: 8px;
+              border-top-left-radius: 8px; }
+            html body .wrapper header #calc .value button {
+              font-size: 1.6rem;
+              background-color: #3d81da;
+              color: #ffffff;
+              padding: 5px 10px;
+              cursor: pointer;
+              border-bottom-right-radius: 8px;
+              border-top-right-radius: 8px;
+              -webkit-transition: 0.2s ease-in-out;
+              -moz-transition: 0.2s ease-in-out;
+              transition: 0.2s ease-in-out; }
+              @media (min-width: 768px) {
+                html body .wrapper header #calc .value button {
+                  padding: 10px 30px; } }
+              html body .wrapper header #calc .value button:hover {
+                background-color: #ffffff;
+                color: #3d81da; }
+          html body .wrapper header #calc select {
+            font-family: latoRegular, sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 0 !important;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #ffffff url(../images/arrow-down.png) no-repeat 90% center;
+            background-size: 10px;
+            width: 100px;
+            text-indent: 0.01px;
+            text-overflow: "";
+            color: #3d81da;
+            padding: 5px;
+            border-radius: 7px;
+            height: 100%;
+            padding-left: 20px;
+            margin: 0 4px; }
+            html body .wrapper header #calc select:focus {
+              outline: none; }
+          html body .wrapper header #calc .values {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px; }
+            html body .wrapper header #calc .values .course {
+              height: 30px; }
+              html body .wrapper header #calc .values .course button {
+                border: none;
+                border-radius: 7px;
+                height: 100%;
+                background-color: #3d81da;
+                margin: 0 4px; }
+              html body .wrapper header #calc .values .course select {
+                width: 70px; }
+            html body .wrapper header #calc .values .date {
+              height: 30px;
+              margin-top: 20px; }
+              html body .wrapper header #calc .values .date #year,
+              html body .wrapper header #calc .values .date #day {
+                width: 70px; }
+
+/*# sourceMappingURL=calcStartPage.css.map */

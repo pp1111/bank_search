@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://localhost:4000/search/suggestions?q=" + encodeURIComponent(req.term.replace(/ /g,"-")),
+                url: `http://localhost:4000/search/suggestions?q=${encodeURIComponent(req.term.replace(/ /g,"-"))}`,
                 dataType: "jsonp",
                 type: "GET",
                 data: {
@@ -24,7 +24,6 @@ $(document).ready(function () {
         select: (event, ui) => {
             let redirect = ui.item.label.replace(/ /g,"-");
             redirect = encodeURIComponent(redirect);
-            console.log(redirect);
             window.location.href = `/finanse/produkt/${redirect}`;
         }
     }); 

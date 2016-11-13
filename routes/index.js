@@ -223,7 +223,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
         let query = `${selectedProduct[0].name}`.replace(/ /g,"-");
-        console.log(query);
+        query = encodeURIComponent(query);
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
         suggestions = suggestions.response.docs.slice(1,10);

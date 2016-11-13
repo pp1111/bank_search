@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+
+<html lang="pl">
+
+
+<head> 
+	<title><%=title%></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href='/icons/calc/css/fontello.css' />
+	<link rel="stylesheet" href="stylesheets/calcStartPage.css">
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZD6WP');</script>
+<!-- End Google Tag Manager -->
+
+	<div class="logo-container">
+		<a href="/"><img class="logo" src="/images/logo.png" alt="aMoney"></a>
+	</div>
+	
+
+	<div class="wrapper">
+		<header>
+		<h1>Kalkulator Walut</h1>
+		<form id="calc">
+			<div class="value">
+				<% include partials/content/text_input.ejs %>
+			</div>
+			<div class="values">
+				<div class ="course">
+					<% include partials/content/course.ejs %>
+				</div>
+				<div class="date">
+					<% include partials/content/date.ejs %>
+				</div>
+			</div>
+		</form>	
+		</header>
+	</div>
+	<script src="javascripts/jquery-1.11.3.min.js"></script>
+	<script src="javascripts/red.js"></script>
+</body>
+
+</html>

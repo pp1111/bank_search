@@ -1,0 +1,57 @@
+		<select class="form-control" name="year" id="year">
+			<option value=''>Wybierz</option>
+				<%for(var i=16; i>4; i--){ %>
+					<%if(i>=10) { %>
+					  	<% if(i==year) { %>
+						  	<option selected id="<%=i%>" value="<%=i%>">20<%=i%></option>
+						<% }else { %>
+						  	<option id="<%=i%>" value="<%=i%>">20<%=i%></option>
+						<% } %>
+	 				<%} else { %>
+	 					<% if(i==year) { %>
+						  	<option selected id="0<%=i%>" value="0<%=i%>">200<%=i%></option>
+						<% }else { %>
+						  	<option id="<%=i%>" value="0<%=i%>">200<%=i%></option>
+						<% } %>
+					<%} %>
+				<% } %>
+		</select>
+				
+		<select class="form-control" name="month" id="month">
+			<option value=''>Wybierz</option>
+			<% var months = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień']; %>
+			<%for(var i=1; i<=12; i++) { %>	
+				<%if(i<10) { %>
+					<% if(i==month) { %>
+						<option selected id="month<%=i%>" value="0<%=i%>"><%=months[i-1]%></option>
+					<% }else { %>
+						<option id="month<%=i%>" value="0<%=i%>"><%=months[i-1]%></option>
+					<% } %>
+	 				<%} else { %>
+	 					<% if(i==month) { %>
+						  	<option selected id="month<%=i%>" value="<%=i%>"><%=months[i-1]%></option>
+						<% }else { %>
+							<option  id="month<%=i%>" value="<%=i%>"><%=months[i-1]%></option>
+						<% } %>
+					<%} %>
+			<%} %>					
+		</select>
+
+		<select class="form-control" name="day" id="day">
+			<option value=''>Wybierz</option>
+			<%for(var i=1; i<=31; i++) { %>
+				<%if(i<10){%>
+					<%if(i==day){ %>
+						<option selected id="<%=i%>" value="0<%=i%>"><%=i%></option>
+					<%} else {%>
+						<option id="<%=i%>" value="0<%=i%>"><%=i%></option>
+					<% } %>
+				<%} else { %>
+					<%if(i==day){ %>
+							<option selected id="<%=i%>" value="<%=i%>"><%=i%></option>
+					<% }else { %>
+							<option id="<%=i%>" value="<%=i%>"><%=i%></option>
+					<%} %>
+				<%} %>
+			<%} %>
+		</select>

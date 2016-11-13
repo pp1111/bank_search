@@ -4,6 +4,7 @@ var middleBar = $('.middle-bar');
 var bottomBar = $('.bottom-bar');
 var menu = $('.dl-menu-container');
 var menuCategory = $('.dl-menu .category-link');
+var subMenuCategory = $('.dl-menu .subcategory-link');
 var submenu = $('.dl-submenu');
 var searchIconBtn = $('nav .search .svg-btn');
 var search = $('nav .search');
@@ -24,6 +25,7 @@ $(document).ready(function(){
     disableCalcButton();
     productHover();
     ifUiMenuOpen();
+    stopButtonScroll();
 });
 
 function productHover() {
@@ -86,9 +88,16 @@ function openMenu() {
                     $('.dl-menu-header h3').hide();
                 }, 0);
                 setTimeout(function() { unsetMenuBtn('top-bar-close', 'middle-bar-close', 'bottom-bar-close'); }, 100);
-                menu.animate({
-                    left: '-50%'
-                }, 300);
+                if ($(window).width() > 768) {
+                    menu.animate({
+                        left: '-50%'
+                    }, 300);
+                }
+                else {
+                    menu.animate({
+                        left: '-100%'
+                    }, 300);
+                }
                 menuBtn.removeClass('menu-btn-open');
             }
             if( $(window).width() < 425) {
@@ -109,11 +118,20 @@ function openSubMenu() {
             setTimeout(function(){
                 $('.dl-menu-container .line').removeClass('open');
             }, 200);
-            setTimeout(function(){
-                $('.dl-menu-container').animate({
-                    width: '50%'
-                });
-            }, 600);
+            if ($(window).width() > 768) {
+                setTimeout(function(){
+                    $('.dl-menu-container').animate({
+                        width: '50%'
+                    });
+                }, 600);
+            }
+            else {
+                setTimeout(function(){
+                    $('.dl-menu-container').animate({
+                        width: '100%'
+                    });
+                }, 600);
+            }
         }
         else {
             $('.dl-menu-container').animate({
@@ -121,12 +139,21 @@ function openSubMenu() {
             });
             var thatSubmenu = $(this).parent().find(submenu);
             submenu.not(thatSubmenu).fadeOut();
-            setTimeout(function(){
-                thatSubmenu.fadeIn(500);
-            }, 850);
-            setTimeout(function(){
-                $('.dl-menu-container .line').addClass('open');
-            }, 500);
+            if ($(window).width() >= 768) {
+                setTimeout(function(){
+                    thatSubmenu.fadeIn(500);
+                }, 850);
+                setTimeout(function(){
+                    $('.dl-menu-container .line').addClass('open');
+                }, 500);
+            }
+            else {
+                setTimeout(function(){
+                    thatSubmenu.fadeIn(500);
+                }, 500);
+                menuCategory.fadeOut(300);
+                $('.calc-link').fadeOut(300);
+            }
             setMenuBtn('top-bar-arrow', 'middle-bar-arrow', 'bottom-bar-arrow')
         }
     });
@@ -138,14 +165,22 @@ function closeSubMenu() {
             topBar.removeClass('top-bar-arrow');
             middleBar.removeClass('middle-bar-arrow');
             bottomBar.removeClass('bottom-bar-arrow');
-            setTimeout(function(){
-                $('.dl-menu-container .line').removeClass('open');
-            }, 200);
-            setTimeout(function(){
-                $('.dl-menu-container').animate({
-                    width: '50%'
-                });
-            }, 600);
+            if ($(window).width() >= 768) {
+                setTimeout(function(){
+                    $('.dl-menu-container .line').removeClass('open');
+                }, 200);
+                setTimeout(function(){
+                    $('.dl-menu-container').animate({
+                        width: '50%'
+                    });
+                }, 600);
+            }
+            else {
+                setTimeout(function(){
+                    menuCategory.fadeIn(500);
+                    $('.calc-link').fadeIn(500);
+                }, 500);
+            }
         }
     });
 }
@@ -228,3 +263,15 @@ function disableCalcButton() {
             valueBtn.attr('disabled',true);
     })
 }
+
+/*function stopButtonScroll() {
+     $(window).scroll(function() {   
+        if($(window).scrollTop() + $(window).height() >= $(document).height() - 30) {
+            //alert("bottom!");
+            $('.whole-product .apply-now').css('position', 'absolute');
+        }
+        else {
+            $('.whole-product .apply-now').css('position', 'fixed');
+        }
+    });
+}*/

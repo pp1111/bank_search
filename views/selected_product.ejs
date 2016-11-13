@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href='/icons/search/css/fontello.css' />
     <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/selected_product.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
     <title></title>
  </head>
 
@@ -25,7 +25,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
-
+    <a class="contact-link" href="/kontakt">Kontakt</a>
     <nav><% include partials/templemate/menu.ejs %></nav>
     <div class="logo-container">
 		<a href="/"><img class="logo" src="/images/logo.png" alt="aMoney"></a>
@@ -42,6 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
             </div>
+            <div class="line"></div>
             <div class="products">
                 <% suggestedProducts.forEach(product => { %>
                 <div class="single-product">
@@ -50,13 +51,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<img src ="<%=product.logo%>">
 						</div>
                         <div class="buttons-container">
-                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=encodeURIComponent(product.value)%>"'>Dowiedz się więcej</button>
+                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
                             <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
                         </div>
                     </div>
                     <div class="info">
-                        <h4><%=product.name%> <%=product.provider%></h4>
-                        <%-product.description%>
+                        <div class="inner-scroll">
+                            <h4><%=product.name%> <%=product.provider%></h4>
+                            <%-product.description%>
+                        </div>
                     </div>
                 </div>
                 <% }) %>

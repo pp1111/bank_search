@@ -1,0 +1,26 @@
+<article class="result">	
+	<div class="rand-btn">
+		<a href="/przelicznik/<%=rand_year%>-<%=rand_month%>-<%=rand_day%>/<%=draw1%>-na-<%=draw2%>-<%=rand_amount%>-<%=draw1%>-ile-to-<%=draw2%>">Losuj walute</a>
+	</div>
+	<div id="<%=result1%>" class="form-group single-course">
+		<h3> <%=wynik%> </h3>
+		<div class="form-control" rows="5" id="resultarea">
+			<p><%=result_text %></p>
+			<ul>
+				<li><%=result%></li>
+				<li><%=date%></li>
+			</ul>
+			</div>
+	</div>
+	
+	<div id="<%=result2%>" class="courses">
+		<h3> Tabela kursów </h3>
+		<div class="form-control" id="courseTable">
+				<ul>
+					<%cash.forEach(function(entry){ %> 
+						<li>Kurs <%=entry.kod_waluty[0]%> nbp = <%=entry.kurs_sredni[0]%> z dnia <%=year%>-<%=resultmonth%>-<%=resultday%> %></li>
+					<% }) %>
+				</ul>
+		</div>
+	</div>
+</article>

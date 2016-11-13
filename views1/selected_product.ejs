@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="Description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href='/icons/search/css/fontello.css' />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/selected_product.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css" />
+    <title></title>
+ </head>
+
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZD6WP');</script>
+<!-- End Google Tag Manager -->
+
+    <nav><% include partials/templemate/menu.ejs %></nav>
+    <div class="logo-container">
+		<a href="/"><img class="logo" src="/images/logo.png" alt="aMoney"></a>
+	</div>
+    <div class="wrapper">
+        <article class="search-result">
+            <div class="whole-product">
+                <div class="img-wrapper">
+                    <img src ="<%=product.logo%>">
+                </div>
+                <div class="info">
+                    <!--<h4><%=product.name%> <%=product.provider%></h4>-->
+                    <%-product.longDescription%>
+                </div>
+                <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
+            </div>
+            <div class="products">
+                <% suggestedProducts.forEach(product => { %>
+                <div class="single-product">
+                    <div class="img-and-btns">
+						<div class="img-wrapper">
+							<img src ="<%=product.logo%>">
+						</div>
+                        <div class="buttons-container">
+                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=encodeURIComponent(product.value)%>"'>Dowiedz się więcej</button>
+                            <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h4><%=product.name%> <%=product.provider%></h4>
+                        <%-product.description%>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </article>
+        <aside class="aside aside-1"></aside>
+        <aside class="aside aside-2"></aside>
+    </div>
+
+    <!--<footer> <% include partials/templemate/footer.ejs %> </footer>-->
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script src="/javascripts/typeahead.js"> </script>
+    <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/red.js"></script>
+</body>
+
+</html>
