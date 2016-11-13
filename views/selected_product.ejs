@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<img src ="<%=product.logo%>">
 						</div>
                         <div class="buttons-container">
-                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
+                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=encodeURIComponent(product.value)%>"'>Dowiedz się więcej</button>
                             <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
                         </div>
                     </div>

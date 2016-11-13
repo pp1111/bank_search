@@ -167,7 +167,7 @@ router.get('/finanse', function (req, res) {
         })
         
         query = req.query.q.replace(/ /g,"-");
-        query = decodeURIComponent(query);
+        query = encodeURIComponent(query);
 
         var result = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         result = JSON.parse(result);
@@ -223,7 +223,6 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
         let query = `${selectedProduct[0].name}`.replace(/ /g,"-");
-        query = escape(query);
         console.log(query);
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
