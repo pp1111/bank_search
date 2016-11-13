@@ -165,7 +165,7 @@ function closeSubMenu() {
             topBar.removeClass('top-bar-arrow');
             middleBar.removeClass('middle-bar-arrow');
             bottomBar.removeClass('bottom-bar-arrow');
-            if ($(window).width() > 768) {
+            if ($(window).width() >= 768) {
                 setTimeout(function(){
                     $('.dl-menu-container .line').removeClass('open');
                 }, 200);
