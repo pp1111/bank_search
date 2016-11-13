@@ -14,6 +14,19 @@ body {
   background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
+  body .contact-link {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.4rem; }
+    body .contact-link:hover {
+      border-bottom: 2px solid #ffffff;
+      border-radius: 3px; }
+    @media (min-width: 768px) {
+      body .contact-link {
+        font-size: 2rem; } }
   body .logo-container {
     display: -webkit-box;
     display: -moz-box;

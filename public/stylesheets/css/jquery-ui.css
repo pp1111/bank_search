@@ -156,7 +156,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
-.ui-menu { border-radius: 10px !important; /*border-bottom-left-radius: 20px !important; border-bottom-right-radius: 20px !important;*/ overflow-x: hidden; white-space: nowrap; width: 660px !important; list-style:none; padding: 0; margin: 0; display:block; outline: none; }
+.ui-menu { border-radius: 10px !important; /*border-bottom-left-radius: 20px !important; border-bottom-right-radius: 20px !important;*/ overflow-x: hidden; white-space: nowrap; margin: 0 30px !important; width: 75% !important; max-width: 660px !important; list-style:none; padding: 0; margin: 0; display:block; outline: none; }
 .ui-menu .ui-menu { margin-top: -3px; position: absolute; }
 .ui-menu .ui-menu-item { margin: 0; padding: 0; zoom: 1; width: 100%; }
 .ui-menu .ui-menu-divider { margin: 5px -2px 5px -2px; height: 0; font-size: 0; line-height: 0; border-width: 0px 0 0 0; }

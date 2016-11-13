@@ -1,6 +1,9 @@
 @font-face {
   font-family: latoRegular;
   src: url(/fonts/Lato-Regulat.ttf); }
+@font-face {
+  font-family: somaticRounded;
+  src: url(/fonts/Somatic-Rounded.otf); }
 html {
   font-size: 62.5%;
   height: 100%; }
@@ -16,6 +19,20 @@ html {
     background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
     background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
+    html body .contact-link {
+      font-family: somaticRounded, sans-serif;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.4rem; }
+      html body .contact-link:hover {
+        border-bottom: 2px solid #ffffff;
+        border-radius: 3px; }
+      @media (min-width: 768px) {
+        html body .contact-link {
+          font-size: 2rem; } }
     html body .logo-container {
       display: -webkit-box;
       display: -moz-box;

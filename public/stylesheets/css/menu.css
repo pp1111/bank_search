@@ -149,7 +149,7 @@ html {
               text-decoration: none; }
               @media (min-width: 768px) {
                 html body nav .dl-menu-container .dl-menu li a {
-                  font-size: 3.7rem; } }
+                  font-size: 3.3rem; } }
               @media (min-width: 1024px) {
                 html body nav .dl-menu-container .dl-menu li a {
                   font-size: 5rem; } }

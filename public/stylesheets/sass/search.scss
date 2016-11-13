@@ -50,6 +50,21 @@ html {
         background: -ms-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
         background: linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+        .contact-link {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            text-decoration: none;
+            color: $white;
+            font-size: 1.4rem;
+            &:hover {
+                border-bottom: 2px solid $white;
+                border-radius: 3px;
+            }
+            @media(min-width: 768px) {
+                font-size: 2rem;
+            }
+        }
         .wrapper {
             .dimness {
                 opacity: 0;
