@@ -58,8 +58,10 @@ body {
           flex-direction: row;
           height: 100%;
           justify-content: space-around; } }
-      body .wrapper .search-result button {
-        height: 50px;
+      body .wrapper .search-result .button {
+        text-decoration: none;
+        padding: 20px 0;
+        text-align: center;
         width: 150px;
         background: none;
         border: 2px solid #3d81da;
@@ -95,7 +97,7 @@ body {
             margin: 0; }
           body .wrapper .search-result .whole-product .info p {
             font-size: 1.6rem; }
-        body .wrapper .search-result .whole-product button {
+        body .wrapper .search-result .whole-product .button {
           position: absolute;
           bottom: 10px;
           background-color: #3d81da;
@@ -103,7 +105,7 @@ body {
           -webkit-box-shadow: 0px 10px 1px 1px rgba(0, 0, 0, 0.28);
           -moz-box-shadow: 0px 10px 1px 1px rgba(0, 0, 0, 0.28);
           box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.28); }
-          body .wrapper .search-result .whole-product button:hover {
+          body .wrapper .search-result .whole-product .button:hover {
             background-color: #cee9fb;
             color: #3d81da; }
       body .wrapper .search-result .line {
@@ -247,7 +249,8 @@ body {
               list-style-position: 2px;
               color: #344c43;
               line-height: 1.8rem;
-              color: #344c43; }
+              color: #344c43;
+              overflow-x: hidden; }
             body .wrapper .search-result .products .single-product .info small {
               display: none; }
 

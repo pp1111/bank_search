@@ -96,13 +96,14 @@ html {
             justify-content: space-between;
             margin-top: 15px;
             width: 250px;
-            height: 43px; }
+            height: 35px; }
             @media (min-width: 425px) {
               html body .wrapper header #calc .value {
                 width: 380px; } }
             @media (min-width: 768px) {
               html body .wrapper header #calc .value {
-                width: 450px; } }
+                width: 450px;
+                height: 43px; } }
             @media (min-width: 1024px) {
               html body .wrapper header #calc .value {
                 width: 550px; } }
@@ -122,7 +123,7 @@ html {
               border-bottom-left-radius: 8px;
               border-top-left-radius: 8px; }
             html body .wrapper header #calc .value button {
-              font-size: 1.6rem;
+              font-size: 1.1rem;
               background-color: #3d81da;
               color: #ffffff;
               padding: 5px 10px;
@@ -134,7 +135,8 @@ html {
               transition: 0.2s ease-in-out; }
               @media (min-width: 768px) {
                 html body .wrapper header #calc .value button {
-                  padding: 10px 30px; } }
+                  padding: 10px 30px;
+                  font-size: 1.6rem; } }
               html body .wrapper header #calc .value button:hover {
                 background-color: #ffffff;
                 color: #3d81da; }
@@ -157,6 +159,9 @@ html {
             height: 100%;
             padding-left: 20px;
             margin: 0 4px; }
+            @media (max-width: 400px) {
+              html body .wrapper header #calc select {
+                margin: 0; } }
             html body .wrapper header #calc select:focus {
               outline: none; }
           html body .wrapper header #calc .values {
@@ -178,6 +183,11 @@ html {
                 height: 100%;
                 background-color: #3d81da;
                 margin: 0 4px; }
+                @media (max-width: 400px) {
+                  html body .wrapper header #calc .values .course button {
+                    margin: 0; } }
+                html body .wrapper header #calc .values .course button .icon-exchange:before {
+                  color: #ffffff; }
               html body .wrapper header #calc .values .course select {
                 width: 70px; }
             html body .wrapper header #calc .values .date {

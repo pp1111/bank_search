@@ -148,6 +148,7 @@ body {
                             overflow-y: hidden;
                             position: relative;
                             min-height: 117px;
+                            overflow-x: hidden;
                             @media(min-width: 425px) {
                                 margin: 15px 0 15px 20px;
                                 flex-grow: 2;
@@ -161,6 +162,7 @@ body {
                                 list-style-position: 2px;
                                 color: #344c43;
                                 line-height: 1.8rem;
+                                overflow-x: hidden;
                             }
                             small {
                                 display: none;
@@ -180,25 +182,28 @@ body {
                             border-left: 1px solid #344c43;
                             padding: 0 20px;
                         }
-                        button {
-                            height: 43px;
-                            width: 108px;
+                        .button {
+                            //height: 43px;
+                            width: 128px;
                             background: none;
                             border: 2px solid #3d81da;
                             border-radius: 40px;
                             font-size: 1.4rem;
                             color: #3d81da;
                             cursor: pointer;
+                            text-align: center;
+                            text-decoration: none;
+                            padding: 15px 0;
                             @include transition(.3s);
                             &.read-more {
-                                margin-left: 10px;
+                                margin-left: 5px;
                                 &:hover {
                                     background-color: #3d81da;
                                     color: $white;
                                 }
                             }
                             &.apply-now {
-                                margin-right: 10px;
+                                margin-right: 5px;
                                 color: $white;
                                 background-color: #3d81da;
                                 &:hover {
@@ -208,8 +213,9 @@ body {
                             }
                             @media(min-width: 768px) {
                                 width: 160px;
-                                height: 53px;
+                                //height: 53px;
                                 font-size: 1.5rem;
+                                padding: 20px 0;
                                 &.read-more {
                                     margin-top: 15px;
                                     margin-left: 0;
@@ -221,8 +227,9 @@ body {
                             }
                             @media(min-width: 1024px) {
                                 width: 220px;
-                                height: 73px;
+                                //height: 73px;
                                 font-size: 1.8rem;
+                                padding: 30px 0;
                             }
                         }
                     }

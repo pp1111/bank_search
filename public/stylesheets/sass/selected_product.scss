@@ -70,8 +70,11 @@ body {
                 height: 100%;
                 justify-content: space-around;
             }
-            button {
-                height: 50px;
+            .button {
+                text-decoration: none;
+                //height: 50px;
+                padding: 20px 0;
+                text-align: center;
                 width: 150px;
                 background: none;
                 border: 2px solid #3d81da;
@@ -110,7 +113,7 @@ body {
                         font-size: 1.6rem;
                     }
                 }
-                button {
+                .button {
                     position: absolute;
                     bottom: 10px;
                     background-color: #3d81da;
@@ -262,6 +265,7 @@ body {
                                 color: #344c43;
                                 line-height: 1.8rem;
                                 color: #344c43;
+                                overflow-x: hidden;
                             }
                             small {
                                 display: none;

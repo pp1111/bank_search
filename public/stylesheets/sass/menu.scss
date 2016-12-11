@@ -142,6 +142,7 @@ html {
                 background-color: rgba(244, 251, 254, .90);
                 border-radius: 40px;
                 overflow-y: auto;
+                overflow-x: hidden;
                 &.category-open {
                     width: 100%;
                 }
@@ -157,6 +158,7 @@ html {
                     @include flexbox(column, nowrap);
                     justify-content: space-around;
                     padding: 0 60px;
+                    overflow-x: hidden;
                     @media(min-width: 768px) {
                         margin-top: 160px;
                         text-align: left;
@@ -170,6 +172,7 @@ html {
                     }
                     li {
                         margin-top: 40px;
+                        overflow-x: hidden;
                         &:first-child {
                             margin-top: 0;
                         }
@@ -205,6 +208,7 @@ html {
                         margin: 105px auto;
                         overflow-y: auto !important;
                         height: 70%;
+                        overflow-x: hidden;
                         @media(min-width: 425px) {
                             padding: 0;
                         }
@@ -214,6 +218,7 @@ html {
                         }
                         li {
                             margin-top: 25px;
+                            overflow-x: hidden;
                             a {
                                 font-size: 2rem;
                                 color: #77c9f6;
@@ -253,5 +258,6 @@ html {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     padding-right: 15px;
 }

@@ -127,7 +127,8 @@ body {
         text-align: left;
         overflow-y: hidden;
         position: relative;
-        min-height: 117px; }
+        min-height: 117px;
+        overflow-x: hidden; }
         @media (min-width: 425px) {
           body .wrapper .search-result .products .single-product .desc .info {
             margin: 15px 0 15px 20px;
@@ -140,7 +141,8 @@ body {
           padding-left: 30px;
           list-style-position: 2px;
           color: #344c43;
-          line-height: 1.8rem; }
+          line-height: 1.8rem;
+          overflow-x: hidden; }
         body .wrapper .search-result .products .single-product .desc .info small {
           display: none; }
       body .wrapper .search-result .products .single-product .buttons-container {
@@ -164,45 +166,47 @@ body {
             flex-flow: column nowrap;
             border-left: 1px solid #344c43;
             padding: 0 20px; } }
-        body .wrapper .search-result .products .single-product .buttons-container button {
-          height: 43px;
-          width: 108px;
+        body .wrapper .search-result .products .single-product .buttons-container .button {
+          width: 128px;
           background: none;
           border: 2px solid #3d81da;
           border-radius: 40px;
           font-size: 1.4rem;
           color: #3d81da;
           cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          padding: 15px 0;
           -webkit-transition: 0.3s ease-in-out;
           -moz-transition: 0.3s ease-in-out;
           transition: 0.3s ease-in-out; }
-          body .wrapper .search-result .products .single-product .buttons-container button.read-more {
-            margin-left: 10px; }
-            body .wrapper .search-result .products .single-product .buttons-container button.read-more:hover {
+          body .wrapper .search-result .products .single-product .buttons-container .button.read-more {
+            margin-left: 5px; }
+            body .wrapper .search-result .products .single-product .buttons-container .button.read-more:hover {
               background-color: #3d81da;
               color: #ffffff; }
-          body .wrapper .search-result .products .single-product .buttons-container button.apply-now {
-            margin-right: 10px;
+          body .wrapper .search-result .products .single-product .buttons-container .button.apply-now {
+            margin-right: 5px;
             color: #ffffff;
             background-color: #3d81da; }
-            body .wrapper .search-result .products .single-product .buttons-container button.apply-now:hover {
+            body .wrapper .search-result .products .single-product .buttons-container .button.apply-now:hover {
               background-color: transparent;
               color: #3d81da; }
           @media (min-width: 768px) {
-            body .wrapper .search-result .products .single-product .buttons-container button {
+            body .wrapper .search-result .products .single-product .buttons-container .button {
               width: 160px;
-              height: 53px;
-              font-size: 1.5rem; }
-              body .wrapper .search-result .products .single-product .buttons-container button.read-more {
+              font-size: 1.5rem;
+              padding: 20px 0; }
+              body .wrapper .search-result .products .single-product .buttons-container .button.read-more {
                 margin-top: 15px;
                 margin-left: 0; }
-              body .wrapper .search-result .products .single-product .buttons-container button.apply-now {
+              body .wrapper .search-result .products .single-product .buttons-container .button.apply-now {
                 margin-bottom: 15px;
                 margin-right: 0; } }
           @media (min-width: 1024px) {
-            body .wrapper .search-result .products .single-product .buttons-container button {
+            body .wrapper .search-result .products .single-product .buttons-container .button {
               width: 220px;
-              height: 73px;
-              font-size: 1.8rem; } }
+              font-size: 1.8rem;
+              padding: 30px 0; } }
 
 /*# sourceMappingURL=search-results.css.map */

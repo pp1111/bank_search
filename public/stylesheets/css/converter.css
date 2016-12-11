@@ -68,27 +68,31 @@ body {
       flex-direction: column;
       flex-wrap: nowrap;
       align-items: center;
-      margin: 0 30px; }
+      margin: 0 30px;
+      margin-top: 20px; }
       body .wrapper header h1 {
+        line-height: 1;
         color: #ffffff;
         font-size: 4.5rem;
         text-align: center;
         margin: 0;
-        letter-spacing: -3px; }
+        letter-spacing: -3px;
+        margin-bottom: 10px; }
         @media (min-width: 425px) {
           body .wrapper header h1 {
             font-size: 6rem; } }
         @media (min-width: 768px) {
           body .wrapper header h1 {
-            font-size: 8rem;
-            margin-bottom: 20px; } }
+            font-size: 7rem;
+            margin-bottom: 20px;
+            margin-top: 10px; } }
         @media (min-width: 1024px) {
           body .wrapper header h1 {
-            font-size: 10rem; } }
+            font-size: 8rem; } }
       body .wrapper header #calc {
         margin-bottom: 50px; }
         body .wrapper header #calc .value {
-          height: 43px;
+          height: 35px;
           display: -webkit-box;
           display: -moz-box;
           display: -ms-flexbox;
@@ -101,10 +105,12 @@ body {
           width: 250px; }
           @media (min-width: 425px) {
             body .wrapper header #calc .value {
-              width: 380px; } }
+              width: 380px;
+              margin-top: 35px; } }
           @media (min-width: 768px) {
             body .wrapper header #calc .value {
-              width: 450px; } }
+              width: 450px;
+              height: 43px; } }
           @media (min-width: 1024px) {
             body .wrapper header #calc .value {
               width: 550px; } }
@@ -130,14 +136,15 @@ body {
             cursor: pointer;
             border-bottom-right-radius: 8px;
             border-top-right-radius: 8px;
-            font-size: 1.6rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             -webkit-transition: 0.2s ease-in-out;
             -moz-transition: 0.2s ease-in-out;
             transition: 0.2s ease-in-out; }
             @media (min-width: 768px) {
               body .wrapper header #calc .value button {
-                padding: 10px 30px; } }
+                padding: 10px 30px;
+                font-size: 1.6rem; } }
             body .wrapper header #calc .value button:hover {
               background-color: #ffffff;
               color: #3d81da; }
@@ -159,6 +166,9 @@ body {
           height: 100%;
           padding-left: 20px;
           margin: 0 4px; }
+          @media (max-width: 400px) {
+            body .wrapper header #calc select {
+              margin: 0; } }
           body .wrapper header #calc select:focus {
             outline: none; }
         body .wrapper header #calc .values {
@@ -180,11 +190,19 @@ body {
               height: 100%;
               background-color: #3d81da;
               margin: 0 4px; }
+              @media (max-width: 400px) {
+                body .wrapper header #calc .values .course button {
+                  margin: 0; } }
+              body .wrapper header #calc .values .course button .icon-exchange:before {
+                color: #ffffff; }
             body .wrapper header #calc .values .course select {
               width: 70px; }
           body .wrapper header #calc .values .date {
             height: 30px;
-            margin-top: 20px; }
+            margin-top: 10px; }
+            @media (min-width: 768px) {
+              body .wrapper header #calc .values .date {
+                margin-top: 20px; } }
             body .wrapper header #calc .values .date #year,
             body .wrapper header #calc .values .date #day {
               width: 70px; }
@@ -200,15 +218,12 @@ body {
       align-items: center;
       background-color: rgba(255, 255, 255, 0.8);
       margin: 20px auto;
-      text-align: left;
       border-radius: 10px;
-      padding: 20px; }
+      padding: 20px;
+      max-width: 1400px; }
       @media (min-width: 768px) {
         body .wrapper .result {
           width: 75%; } }
-      @media (min-width: 1200px) {
-        body .wrapper .result {
-          justify-content: space-between; } }
       body .wrapper .result .rand-btn {
         min-width: 150px;
         display: -webkit-box;
@@ -220,6 +235,9 @@ body {
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center; }
+        @media (min-width: 768px) {
+          body .wrapper .result .rand-btn {
+            width: 20%; } }
         body .wrapper .result .rand-btn a {
           text-align: center;
           font-size: 1.5rem;
@@ -254,17 +272,18 @@ body {
       body .wrapper .result .courses {
         background-color: #ffffff;
         flex-grow: 1;
-        max-width: 250px;
         border-radius: 10px; }
         body .wrapper .result .courses h3 {
-          margin-left: 10px; }
-        @media (min-width: 1440px) {
-          body .wrapper .result .courses {
-            max-width: 400px; } }
+          margin-left: 10px;
+          text-align: center; }
       body .wrapper .result .single-course {
         flex-grow: 2;
-        max-width: 40%;
-        min-width: 450px; }
+        max-width: 35%;
+        min-width: 450px;
+        text-align: center; }
+        @media (min-width: 854px) {
+          body .wrapper .result .single-course {
+            text-align: left; } }
         @media (min-width: 1440px) {
           body .wrapper .result .single-course {
             min-width: 600px; } }
@@ -273,14 +292,13 @@ body {
         body .wrapper .result #show #resultarea {
           font-size: 1.3rem;
           padding-bottom: 10px;
-          font-weight: 400;
-          box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5); }
+          font-weight: 400; }
           @media (min-width: 768px) {
             body .wrapper .result #show #resultarea {
               box-shadow: none; } }
           @media (min-width: 1024px) {
             body .wrapper .result #show #resultarea {
-              margin-left: 30px;
+              margin-left: 15px;
               margin-right: 20px; } }
           body .wrapper .result #show #resultarea ul {
             list-style-type: none;
@@ -291,7 +309,6 @@ body {
           max-height: 150px;
           overflow-y: auto;
           background-color: #ffffff;
-          width: 70%;
           margin: 0 auto 16px auto;
           font-size: 1.15rem;
           font-weight: 400; }
@@ -301,6 +318,7 @@ body {
           body .wrapper .result #show #courseTable ul {
             margin-top: 0;
             list-style-type: none;
-            padding: 0; }
+            padding: 0;
+            text-align: center; }
 
 /*# sourceMappingURL=converter.css.map */
