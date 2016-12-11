@@ -37,11 +37,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <img src ="<%=product.logo%>">
                 </div>
                 <div class="info">
-                    <!--<h4><%=product.name%> <%=product.provider%></h4>-->
+                    <h4><%=product.name%> <%=product.provider%></h4>
                     <%-product.longDescription%>
                 </div>
-                <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
+                <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
             </div>
+            
             <div class="line"></div>
             <div class="products">
                 <% suggestedProducts.forEach(product => { %>
@@ -51,8 +52,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<img src ="<%=product.logo%>">
 						</div>
                         <div class="buttons-container">
-                            <button class="read-more" onclick='window.location="/finanse/produkt/<%=product.value%>"'>Dowiedz się więcej</button>
-                            <button class="apply-now" onclick='window.location="<%=product.application%>"'>Zloż wniosek</button>
+                            <a class="button read-more" href="/finanse/produkt/<%=product.value%>">Dowiedz się więcej</a>
+                            <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
                         </div>
                     </div>
                     <div class="info">
