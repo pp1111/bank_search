@@ -10,6 +10,7 @@ var currentYear = now.getFullYear();
 var currentMonth = now.getMonth() +1;
 var currentDay = now.getDate();
 var currentHour = now.getHours();
+var ascii = require('../lib/ascii');
 
 function rand( min, max ){
     min = parseInt( min, 10 );
@@ -30,7 +31,7 @@ router.get('/', function (req, res) {
       var xml = ''; 
 
         response.on('data', function(chunk) { 
-           xml += chunk; 
+           xml += ascii.toUTF8(chunk); 
          });
 
         response.on('end', function() {
@@ -86,7 +87,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
       var xml = ''
     
       response.on('data', function(chunk) {
-          xml += chunk;
+          xml += ascii.toUTF8(chunk);
       });
 
       response.on('end', function(){
@@ -163,7 +164,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
                 var xml = ''; 
 
                   response.on('data', function(chunk) { 
-                     xml += chunk; 
+                     xml += ascii.toUTF8(chunk); 
                    });
 
                   response.on('end', function() {
@@ -215,7 +216,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
                 var xml = ''; 
 
                   response.on('data', function(chunk) { 
-                      xml += chunk; 
+                      xml += ascii.toUTF8(chunk); 
                   });
 
                   response.on('end', function() {
@@ -358,7 +359,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
       var xml = ''
     
       response.on('data', function(chunk) {
-          xml += chunk;
+          xml += ascii.toUTF8(chunk);
       });
 
       response.on('end', function(){
@@ -436,7 +437,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
                 var xml = ''; 
 
                   response.on('data', function(chunk) { 
-                     xml += chunk; 
+                     xml += ascii.toUTF8(chunk); 
                    });
 
                   response.on('end', function() {
@@ -488,7 +489,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
                 var xml = ''; 
 
                   response.on('data', function(chunk) { 
-                      xml += chunk; 
+                      xml += ascii.toUTF8(chunk); 
                   });
 
                   response.on('end', function() {
@@ -627,7 +628,7 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
       var xml = ''
     
       response.on('data', function(chunk) {
-          xml += chunk;
+          xml += ascii.toUTF8(chunk);
       });
 
       response.on('end', function(){
@@ -701,7 +702,7 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
                 var xml = ''; 
 
                   response.on('data', function(chunk) { 
-                      xml += chunk; 
+                      xml += ascii.toUTF8(chunk); 
                   });
 
                   response.on('end', function() {
