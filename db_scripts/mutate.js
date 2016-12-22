@@ -54,17 +54,29 @@ co(function *() {
 		})
 	})
 
-	console.log(productList);
-
+	
 	let actualDb = yield collection.find().toArray();
-	actualDb = actualDb.map(product => product.id);
 
-	let newProducts = productList.filter(product => {
-		return actualDb.indexOf(product.id) < 0;
-	});
+	for (var i = 0; i < actualDb.length; i++) {
+		let value = `${productList[i].name} ${productList[i].provider}`
+		value = value.replace(/ /g,"-")
+	    value = value.replace(/---/g,"-")
 
-	if(newProducts.length) {
-		yield collection.insert(newProducts);
+		yield collection.update(
+			{ id: productList[i].id },
+			{
+				$set: 
+				{
+					category: productList[i].category,
+					subcategory: productList[i].subcategory,
+					name: productList[i].name,
+					provider: productList[i].provider,
+					description: productList[i].description,
+					value: value,
+				}
+
+			}
+		)
 	}
 
 	yield db.close( () => console.log('Db updated at: ', new Date()));
