@@ -12,23 +12,7 @@ const getContent = require('../lib/getContent');
 
 const ascii = require('../lib/ascii');
 
-function product (i,c,s,n,p,v,l,pr,a,d,al,m) {
-	this.id = i;
-	this.category = c;
-	this.subcategory = s;
-	this.name = n;
-	this.provider = p;
-	this.value = v;
-	this.logo = l;
-	this.prez = pr;
-	this.application = a;
-	this.description = d;
-	this.alive = al;
-	this.meta = m;
-}
-
 co(function *() {
-
 	let productList = [];
 
 	let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
@@ -42,67 +26,44 @@ co(function *() {
 				let value = `${produkt.$.nazwa} ${produkt.dostawca[0].$.nazwa}`
 				value = value.replace(/ /g,"-")
 			    value = value.replace(/---/g,"-")
-				let p = new product(
-					produkt.$.id,
-					kategoria.$.nazwa,
-					podkategoria.$.nazwa,
-					produkt.$.nazwa,
-					produkt.dostawca[0].$.nazwa,
-					value,
-					produkt.dostawca[0].$['logo-male'],
-					produkt.linki[0].$.prezentacja,
-					`http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
-					produkt.opis[0],	
-					true,
-					{
+
+				let product = {
+					id: produkt.$.id,
+					category: kategoria.$.nazwa,
+					subcategory: podkategoria.$.nazwa,
+					name: produkt.$.nazwa,
+					provider: produkt.dostawca[0].$.nazwa,
+					value: value,
+					logo: produkt.dostawca[0].$['logo-male'],
+					prez: produkt.linki[0].$.prezentacja,
+					application: `http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
+					description: produkt.opis[0],
+					longDescription: `long desc`,
+					alive: true,
+					meta: {
 						title: "",
 						description: "",
-						alt: ""
-					}
-				)
-				productList.push(p)
+						alt: "",
+					},
+
+				}
+
+				productList.push(product)
 			})
 		})
 	})
-	
-	for (var i=0; i<productList.length; i++) {
-		yield collection.update(
-			{ id: productList[i].id },
-			{
-				$set: {
-					category: productList[i].category,
-					subcategory: productList[i].subcategory,
-					name: productList[i].name,
-					provider: productList[i].provider,
-					value: productList[i].value,
-					logo: productList[i].logo,
-					prez: productList[i].prez,
-					application: productList[i].application,
-					description: productList[i].description,
-					alive: productList[i].alive,
-					updated: productList[i].updated,
-					meta: productList[i].meta
-				}
-			},
-			{
-				upsert: true
-			}
-		)
-	}
 
-	let updatedProductList = yield collection.find().toArray();
-	for (var i=0; i<updatedProductList.length; i++) {
-		if (!updatedProductList[i].longDescription) {
-			yield collection.update(
-				{ id: updatedProductList[i].id },
-				{
-					$set: {
-						longDescription: 'long desc',
-						updated: false,
-					}	
-				}
-			)
-		}
+	console.log(productList);
+	
+	let actualDb = yield collection.find().toArray();
+	actualDb = actualDb.map(product => product.id);
+
+	let newProducts = productList.filter(product => {
+		return actualDb.indexOf(product.id) < 0;
+	});
+
+	if(newProducts.length) {
+		yield collection.insert(newProducts);
 	}
 
 	yield db.close( () => console.log('Db updated at: ', new Date()));
