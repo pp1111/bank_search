@@ -9,7 +9,8 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 	let collection = db.collection("productsList");
 
 	collection.find({}).toArray( (err,items) => {
-		items.forEach(item => {	
+		items.forEach(item => {
+			item.alt = item.meta.alt;
 			delete item.meta;
 			solrClient.update([item]);
 		})
