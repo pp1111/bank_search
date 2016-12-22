@@ -71,18 +71,12 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
   var date = new Date(20+req.params[0],req.params[1]-1,req.params[2],0,0,0);
   var entryTab = [];
 
-  console.log("\nWybrana data: ", date);
-  
-  console.log("Pobrane parametry: \n", req.params);
-
   if(req.params[0] == 16){
     url = "http://www.nbp.pl/kursy/xml/dir.txt";
   } else {
     url = "http://www.nbp.pl/kursy/xml/dir20" + req.params[0] + ".txt";
   }
   
-  console.log("\nSzukamy daty w pliku: ", url);
-
   var getUrl = http.get(url, function(response){
       var xml = ''
     
@@ -105,19 +99,11 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
 
           newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
 
-          if(newUrl.length != 11){
-            console.log("\nUrl o podanej dacie nie istnieje, szukamy najblizszej: ");
-          }
-          else{
-            console.log("\nWyszukana data: ", newUrl);
-          }
-          
           if(req.params[1] == 1 && (req.params[2] == 1 || req.params[2] == 2 || req.params[2] == 3)){
               while(newUrl.length !=11 && licznik < 100){
                     search++;
                     temp2++;   
                     licznik++;
-                    console.log("szukamy...",search);     
                     newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
               }
           } else {
@@ -125,14 +111,12 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
                     search--;
                     temp2--;   
                     licznik++;
-                    console.log("szukamy...",search);     
                     newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
               }
           }
 
             if(!rx.test(newUrl)){ 
                   newUrl = "a" + newUrl.substring(0,10); 
-                  console.log(newUrl); 
             }
 
          if(temp2>=100){
@@ -154,10 +138,8 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
           }
 
   
-          console.log("\nWyszukana data: ",newUrl);
 
           url = "http://www.nbp.pl/kursy/xml/" + newUrl + ".xml";
-          console.log("\nCaly Url : ", url);
 
           if(licznik===100){         
               var request = http.get("http://www.nbp.pl/kursy/xml/a025z100205.xml", function(response) { 
@@ -233,20 +215,17 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
 
                             if(step1 == "PLN"){
                                  step1 = step3 * pln;
-                                 console.log("\nKrok1 = ilosc * waluta: ", step1, step3, pln);
                             } 
                             else { 
                                result.tabela_kursow.pozycja.forEach(function(entry) {
                                     if(step1 == entry.kod_waluty[0]){
                                     step1 = step3 * entry.kurs_sredni[0].replace(",",".");
-                                    console.log("\nKrok1 = ilosc * waluta: ", step1, step3, entry.kod_waluty[0]);
                                     }   
                                 });
                             }
 
                             if(step2 == "PLN"){
                                   step2 = step1 / pln;
-                                  console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, pln);
                                   kurs = step2.toFixed(2);
 
                                    res.render('calcMain', { 
@@ -280,7 +259,6 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
                                   result.tabela_kursow.pozycja.forEach(function(entry) {
                                       if(step2 == entry.kod_waluty[0]){
                                         step2 = step1 / entry.kurs_sredni[0].replace(",",".");
-                                        console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, entry.kurs_sredni[0]);
                                         kurs = step2.toFixed(2);
 
                                             res.render('calcMain', { 
@@ -343,18 +321,12 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
   var entryTab = [];
   var date = new Date(20+req.params[0],req.params[1]-1,req.params[2],0,0,0);
 
-  console.log("\nPobrana data: ", date);
-
-  console.log("Pobrane parametry: \n", req.params);
-
   if(req.params[0] == 16){
     url = "http://www.nbp.pl/kursy/xml/dir.txt";
   } else {
     url = "http://www.nbp.pl/kursy/xml/dir20" + req.params[0] + ".txt";
   }
   
-  console.log("\nSzukamy daty w pliku: ", url);
-
   var getUrl = http.get(url, function(response){
       var xml = ''
     
@@ -377,19 +349,11 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
 
           newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
 
-          if(newUrl.length != 11){
-            console.log("\nUrl o podanej dacie nie istnieje, szukamy najblizszej: ");
-          }
-          else{
-            console.log("\nWyszukana data: ", newUrl);
-          }
-
          if(req.params[1] == 1 && (req.params[2] == 1 || req.params[2] == 2 || req.params[2] == 3)){
               while(newUrl.length !=11 && licznik < 100){
                     search++;
                     temp2++;   
                     licznik++;
-                    console.log("szukamy...",search);     
                     newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
               }
           } else {
@@ -397,14 +361,12 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
                     search--;
                     temp2--;   
                     licznik++;
-                    console.log("szukamy...",search);     
                     newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
               }
           }
 
             if(!rx.test(newUrl)){ 
                   newUrl = "a" + newUrl.substring(0,10); 
-                  console.log(newUrl); 
             }
 
           if(temp2>=100){
@@ -427,10 +389,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
   
 
   
-          console.log("\nWyszukana data: ",newUrl);
-
           url = "http://www.nbp.pl/kursy/xml/" + newUrl + ".xml";
-          console.log("\nCaly Url : ", url);
 
           if(licznik===100){         
               var request = http.get("http://www.nbp.pl/kursy/xml/a025z100205.xml", function(response) { 
@@ -506,20 +465,17 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
 
                             if(step1 == "PLN"){
                                  step1 = step3 * pln;
-                                 console.log("\nKrok1 = ilosc * waluta: ", step1, step3, pln);
                             } 
                             else { 
                                result.tabela_kursow.pozycja.forEach(function(entry) {
                                     if(step1 == entry.kod_waluty[0]){
                                     step1 = step3 * entry.kurs_sredni[0].replace(",",".");
-                                    console.log("\nKrok1 = ilosc * waluta: ", step1, step3, entry.kod_waluty[0]);
                                     }   
                                 }) 
                             }
 
                             if(step2 == "PLN"){
                                   step2 = step1 / pln;
-                                  console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, pln);
                                   kurs = step2.toFixed(2);
 
                                    res.render('calcMain', { 
@@ -553,7 +509,6 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
                                   result.tabela_kursow.pozycja.forEach(function(entry) {
                                       if(step2 == entry.kod_waluty[0]){
                                         step2 = step1 / entry.kurs_sredni[0].replace(",",".");
-                                        console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, entry.kurs_sredni[0]);
                                         kurs = step2.toFixed(2);
 
                                             res.render('calcMain', { 
@@ -618,11 +573,9 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
                   "Nie zapomnij również o wyborze odpowiedniej daty. \n";                  
   }
 
-  console.log("Pobrane parametry: \n", req.params);
 
   url = "http://www.nbp.pl/kursy/xml/dir.txt";
   
-  console.log("\nSzukamy daty w pliku: ", url);
 
   var getUrl = http.get(url, function(response){
       var xml = ''
@@ -654,25 +607,16 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
          
           newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
 
-          if(newUrl.length != 11){
-            console.log("\nUrl o podanej dacie nie istnieje, szukamy najblizszej: ");
-          }
-          else{
-            console.log("\nWyszukana data: ", newUrl);
-          }
-
             while(newUrl.length !=11 && licznik < 100){
                   search--;
                   temp2--;   
                   licznik++;
-                  console.log("szukamy...",search);     
                   newUrl = sub.substring(sub.indexOf(search)-5,sub.indexOf(search)+6);
             }
           
           
             if(!rx.test(newUrl)){ 
                   newUrl = "a" + newUrl.substring(0,10); 
-                  console.log(newUrl); 
             }
 
           if(temp1.toString().length < 2){
@@ -693,10 +637,8 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
           }
   
   
-          console.log("\nWyszukana data: ",newUrl);
 
           url = "http://www.nbp.pl/kursy/xml/" + newUrl + ".xml";
-          console.log("\nCaly Url : ", url);
 
             var request = http.get(url, function(response) { 
                 var xml = ''; 
@@ -719,20 +661,17 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
 
                             if(step1 == "PLN"){
                                  step1 = step3 * pln;
-                                 console.log("\nKrok1 = ilosc * waluta: ", step1, step3, pln);
                             } 
                             else { 
                                result.tabela_kursow.pozycja.forEach(function(entry) {
                                     if(step1 == entry.kod_waluty[0]){
                                     step1 = step3 * entry.kurs_sredni[0].replace(",",".");
-                                    console.log("\nKrok1 = ilosc * waluta: ", step1, step3, entry.kod_waluty[0]);
                                     }   
                                 }) 
                             }
 
                             if(step2 == "PLN"){
                                   step2 = step1 / pln;
-                                  console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, pln);
                                   kurs = step2.toFixed(2);
 
                                    res.render('calcMain', { 
@@ -766,7 +705,6 @@ router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , func
                                   result.tabela_kursow.pozycja.forEach(function(entry) {
                                       if(step2 == entry.kod_waluty[0]){
                                         step2 = step1 / entry.kurs_sredni[0].replace(",",".");
-                                        console.log("\nKrok2 = Krok1 / waluta: ", step2.toFixed(2), step1, entry.kurs_sredni[0]);
                                         kurs = step2.toFixed(2);
 
                                             res.render('calcMain', { 
