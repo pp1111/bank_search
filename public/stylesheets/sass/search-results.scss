@@ -197,19 +197,19 @@ body {
                             @include transition(.3s);
                             &.read-more {
                                 margin-left: 5px;
-                                /*&:hover {
+                                &:hover {
                                     background-color: #3d81da;
                                     color: $white;
-                                }*/
+                                }
                             }
                             &.apply-now {
                                 margin-right: 5px;
                                 color: $white;
                                 background-color: #3d81da;
-                                /*&:hover {
+                                &:hover {
                                     background-color: transparent;
                                     color: #3d81da;
-                                }*/
+                                }
                             }
                             @media(min-width: 768px) {
                                 width: 160px;
