@@ -1,12 +1,8 @@
 @font-face {
   font-family: latoRegular;
-  src: url(/fonts/Lato-Regulat.ttf); }
-html {
-  height: 100%; }
-
+  src: url(/fonts/Lato/Lato-Regular.ttf); }
 body {
   position: relative;
-  height: 100%;
   background: #2ca9ed;
   background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
@@ -44,8 +40,10 @@ body {
         text-align: center; }
   body .wrapper {
     margin: 0 10px;
-    margin-top: 40px;
-    height: 80%; }
+    margin-top: 40px; }
+    @media (min-width: 768px) {
+      body .wrapper {
+        height: 80vh; } }
     body .wrapper h4 {
       font-size: 2.1rem;
       font-weight: 300;

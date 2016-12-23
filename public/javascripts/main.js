@@ -23,9 +23,9 @@ $(document).ready(function(){
     //hideProductInfoText();
     toggleMoreProductInfo();
     disableCalcButton();
-    productHover();
+    //productHover();
     ifUiMenuOpen();
-    stopButtonScroll();
+    //stopButtonScroll();
 });
 
 function productHover() {

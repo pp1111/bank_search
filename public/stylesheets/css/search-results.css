@@ -1,6 +1,6 @@
 @font-face {
   font-family: latoRegular;
-  src: url(/fonts/Lato-Regulat.ttf); }
+  src: url(/fonts/Lato/Lato-Regular.ttf); }
 html {
   font-size: 62.5%; }
 
@@ -181,17 +181,19 @@ body {
           -moz-transition: 0.3s ease-in-out;
           transition: 0.3s ease-in-out; }
           body .wrapper .search-result .products .single-product .buttons-container .button.read-more {
-            margin-left: 5px; }
-            body .wrapper .search-result .products .single-product .buttons-container .button.read-more:hover {
-              background-color: #3d81da;
-              color: #ffffff; }
+            margin-left: 5px;
+            /*&:hover {
+                background-color: #3d81da;
+                color: $white;
+            }*/ }
           body .wrapper .search-result .products .single-product .buttons-container .button.apply-now {
             margin-right: 5px;
             color: #ffffff;
-            background-color: #3d81da; }
-            body .wrapper .search-result .products .single-product .buttons-container .button.apply-now:hover {
-              background-color: transparent;
-              color: #3d81da; }
+            background-color: #3d81da;
+            /*&:hover {
+                background-color: transparent;
+                color: #3d81da;
+            }*/ }
           @media (min-width: 768px) {
             body .wrapper .search-result .products .single-product .buttons-container .button {
               width: 160px;

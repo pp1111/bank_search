@@ -2,7 +2,7 @@ $white: #ffffff;
 
 @font-face {
     font-family: latoRegular;
-    src: url(/fonts/Lato-Regulat.ttf);
+    src: url(/fonts/Lato/Lato-Regular.ttf);
 }
 
 @mixin flexbox ($direction, $wrap) {
@@ -20,12 +20,12 @@ $white: #ffffff;
 }
 
 html {
-    height: 100%;
+    //height: 100%;
 }
 
 body {
     position: relative;
-    height: 100%;
+    //height: 100%;
     background: rgba(44,169,237,1);
     background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
@@ -64,7 +64,9 @@ body {
     .wrapper {
         margin: 0 10px;
         margin-top: 40px; 
-        height: 80%;
+        @media(min-width: 768px) {
+            height: 80vh;
+        }
         h4 {
             font-size: 2.1rem;
             font-weight: 300;
