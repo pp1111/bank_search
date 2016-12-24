@@ -1,6 +1,7 @@
 var m,
 MAIN = {
     settings: {
+        window: $(window),
         menuBtn: $('.menu-btn'),
         topBar: $('.top-bar'),
         middleBar: $('.middle-bar'),
@@ -24,7 +25,10 @@ MAIN = {
         this.openMenu();
         this.openSubMenu();
         this.closeSubMenu();
-        //this.applyNowBtnScroll();
+        //if (m.window.width() >= 768) {
+            //this.slickInit();
+        //}
+        this.applyNowBtnStopScroll();
     },
 
     setMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
@@ -62,7 +66,7 @@ MAIN = {
                         $('.dl-menu-header h3').hide();
                     }, 0);
                     setTimeout(function() { MAIN.unsetMenuBtn('top-bar-close', 'middle-bar-close', 'bottom-bar-close'); }, 100);
-                    if ($(window).width() > 768) {
+                    if (m.window.width() > 768) {
                         m.menu.animate({
                             left: '-50%'
                         }, 300);
@@ -74,7 +78,7 @@ MAIN = {
                     }
                     m.menuBtn.removeClass('menu-btn-open');
                 }
-                if( $(window).width() < 425) {
+                if( m.window.width() < 425) {
                     m.search.removeClass('search-clicked');
                     $('nav .search form').removeClass('form-active');
                     m.searchIconBtn.hide();
@@ -92,7 +96,7 @@ MAIN = {
                 setTimeout(function(){
                     $('.dl-menu-container .line').removeClass('open');
                 }, 200);
-                if ($(window).width() > 768) {
+                if (m.window.width() > 768) {
                     setTimeout(function(){
                         $('.dl-menu-container').animate({
                             width: '50%'
@@ -113,7 +117,7 @@ MAIN = {
                 });
                 let thatSubmenu = $(this).parent().find(m.submenu);
                 m.submenu.not(thatSubmenu).fadeOut();
-                if ($(window).width() >= 768) {
+                if (m.window.width() >= 768) {
                     setTimeout(function(){
                         thatSubmenu.fadeIn(500);
                     }, 850);
@@ -140,7 +144,7 @@ MAIN = {
                 m.topBar.removeClass('top-bar-arrow');
                 m.middleBar.removeClass('middle-bar-arrow');
                 m.bottomBar.removeClass('bottom-bar-arrow');
-                if ($(window).width() >= 768) {
+                if (m.window.width() >= 768) {
                     setTimeout(function(){
                         $('.dl-menu-container .line').removeClass('open');
                     }, 200);
@@ -157,6 +161,27 @@ MAIN = {
                     }, 500);
                 }
             }
+        });
+    },
+    applyNowBtnStopScroll: function() {
+        $(window).scroll(function() {
+            if($(this).scrollTop() > 50) {
+                $('.whole-product .button').addClass('stop');
+            }
+            else {
+                $('.whole-product .button').removeClass('stop');
+            }
+        });
+    },
+    slickInit: function() {
+        $('.products').slick({
+            infinite: false,
+            slidesToShow: 1,
+            //slidesToScroll: 1,
+            verticalSwiping: true,
+            arrows: true,
+            //adaptiveHeight: true,
+            vertical: true
         });
     }
     /*applyNowBtnScroll: function() {

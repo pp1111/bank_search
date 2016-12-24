@@ -24,6 +24,8 @@ body {
   background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background-repeat: no-repeat;
+  background-color: #2ca9ed;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
   body .contact-link {
     position: absolute;
@@ -155,7 +157,7 @@ body {
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
-          background: #ffffff url(../images/arrow-down.png) no-repeat 90% center;
+          background: #ffffff url(/images/arrow-down.png) no-repeat 90% center;
           background-size: 10px;
           width: 100px;
           text-indent: 0.01px;

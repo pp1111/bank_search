@@ -13,6 +13,8 @@ body {
   background: -o-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: -ms-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
+  background-repeat: no-repeat;
+  background-color: #2ca9ed;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 ); }
   body .contact-link {
     position: absolute;
