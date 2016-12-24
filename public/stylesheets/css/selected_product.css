@@ -156,7 +156,6 @@ body {
           @media (min-width: 1024px) {
             body .wrapper .search-result .products .single-product {
               flex-direction: row;
-              height: 230px;
               margin: 0 0 30px 0;
               max-width: 475px; } }
           body .wrapper .search-result .products .single-product:first-child {

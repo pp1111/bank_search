@@ -14,7 +14,9 @@ MAIN = {
         dimness: $('.dimness'),
         searchIconNotBtn: $('nav .search .svg-not-btn'),
         valueBtn: $('.value button'),
-        valueInput: $('.value input')
+        valueInput: $('.value input'),
+        isCloseBtn: 0,
+        isArrowBtn: 0,
     },
 
     init: function() {
@@ -22,22 +24,25 @@ MAIN = {
         this.openMenu();
         this.openSubMenu();
         this.closeSubMenu();
+        //this.applyNowBtnScroll();
     },
 
     setMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
         m.topBar.addClass(topBarClass);
         m.middleBar.addClass(middleBarClass);
         m.bottomBar.addClass(bottomBarClass);
+        m.isCloseBtn = 1;
     },
     unsetMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
-        topBar.removeClass(topBarClass);
-        middleBar.removeClass(middleBarClass);
-        bottomBar.removeClass(bottomBarClass);
+        m.topBar.removeClass(topBarClass);
+        m.middleBar.removeClass(middleBarClass);
+        m.bottomBar.removeClass(bottomBarClass);
+        m.isCloseBtn = 0;
     },
     openMenu: function() {
         m.menuBtn.click(function(){
-            if(!m.topBar.hasClass('top-bar-arrow')) {
-                if(!m.topBar.hasClass('top-bar-close')) {
+            if(!m.isArrowBtn) {
+                if(!m.isCloseBtn) {
                     m.menu.animate({
                         left: 0
                     }, 300);
@@ -123,7 +128,7 @@ MAIN = {
                     m.menuCategory.fadeOut(300);
                     $('.calc-link').fadeOut(300);
                 }
-                MAIN.setMenuBtn('top-bar-arrow', 'middle-bar-arrow', 'bottom-bar-arrow')
+                MAIN.setMenuBtn('top-bar-arrow', 'middle-bar-arrow', 'bottom-bar-arrow');
             }
         });
     },
@@ -153,7 +158,17 @@ MAIN = {
                 }
             }
         });
-    },
+    }
+    /*applyNowBtnScroll: function() {
+        $(window).scroll(function(){
+            let scroll_top = $(this).scrollTop(); // get scroll position top
+            let height_element_parent =  $('.whole-product .apply-now').parent().outerHeight(); //get high parent element
+            let height_element = $('.whole-product .apply-now').height(); //get high of elemeneto
+            let position_fixed_max = height_element_parent - height_element; // get the maximum position of the elemen
+            let position_fixed = scroll_top < 250 ? 250 - scroll_top : position_fixed_max > scroll_top ? 0 : position_fixed_max - scroll_top ;
+            $('.whole-product .apply-now').css('top',position_fixed);
+        });
+    }*/
 
     /*clickSearch: function() {
         m.searchIconNotBtn.click(function() {
