@@ -171,7 +171,6 @@ html {
                         appearance:none;
                         background: $white url(/images/arrow-down.png) no-repeat 90% center;
                         background-size: 10px;
-                        width: 100px;
                         text-indent: 0.01px;
                         text-overflow: "";
                         color: #3d81da;
@@ -193,27 +192,37 @@ html {
                         align-items: center;
                         margin-top: 50px;
                         .course {
-                            height: 30px;
+                            //height: 30px;
+                            @include flexbox(column, nowrap);
+                            justify-content: space-between;
+                            align-items: center;
                             button {
                                 border: none;
                                 border-radius: 7px;
-                                height: 100%;
+                                height: 30px;
                                 background-color: #3d81da;
                                 margin: 0 4px;
+                                margin-top: 10px;
                                 @media (max-width: 400px) {
                                     margin: 0;
+                                    margin-top: 10px;
                                 }
                                 .icon-exchange:before {
                                     color: $white;
                                 }
                             }
                             select {
-                                width: 70px;
+                                height: 30px;
+                                margin-top: 10px;
+                                //width: 70px;
                             }
                         }
                         .date {
                             height: 30px;
                             margin-top: 20px;
+                            select {
+                                width: 100px;
+                            }
                             #year,
                             #day{
                                 width: 70px;

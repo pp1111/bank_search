@@ -120,6 +120,9 @@ body {
           @media (min-width: 768px) {
             body .wrapper .search-result .whole-product .button {
               top: 85%; } }
+          @media (min-height: 900px) {
+            body .wrapper .search-result .whole-product .button {
+              top: 75%; } }
           body .wrapper .search-result .whole-product .button:hover {
             background-color: #cee9fb;
             color: #3d81da; }
@@ -145,7 +148,6 @@ body {
           body .wrapper .search-result .products {
             height: 95%;
             overflow-y: auto;
-            margin-top: 20px;
             margin-left: 10px;
             width: 40%; } }
         body .wrapper .search-result .products .single-product {

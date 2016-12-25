@@ -164,12 +164,22 @@ MAIN = {
         });
     },
     applyNowBtnStopScroll: function() {
-        $(window).scroll(function() {
-            if($(this).scrollTop() > 50) {
-                $('.whole-product .button').addClass('stop');
+        m.window.scroll(function() {
+            if(m.window.height > 425) {
+                if($(this).scrollTop() > 150) {
+                    $('.whole-product .button').addClass('stop');
+                }
+                else {
+                    $('.whole-product .button').removeClass('stop');
+                }
             }
             else {
-                $('.whole-product .button').removeClass('stop');
+                if($(this).scrollTop() > 250) {
+                    $('.whole-product .button').addClass('stop');
+                }
+                else {
+                    $('.whole-product .button').removeClass('stop');
+                }
             }
         });
     },

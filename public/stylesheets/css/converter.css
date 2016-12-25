@@ -104,7 +104,9 @@ body {
           flex-wrap: nowrap;
           justify-content: space-between;
           margin-top: 15px;
-          width: 250px; }
+          width: 250px;
+          margin-left: auto;
+          margin-right: auto; }
           @media (min-width: 425px) {
             body .wrapper header #calc .value {
               width: 380px;
@@ -159,7 +161,6 @@ body {
           appearance: none;
           background: #ffffff url(/images/arrow-down.png) no-repeat 90% center;
           background-size: 10px;
-          width: 100px;
           text-indent: 0.01px;
           text-overflow: "";
           color: #3d81da;
@@ -185,26 +186,39 @@ body {
           align-items: center;
           margin-top: 50px; }
           body .wrapper header #calc .values .course {
-            height: 30px; }
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center; }
             body .wrapper header #calc .values .course button {
+              height: 30px;
               border: none;
               border-radius: 7px;
-              height: 100%;
               background-color: #3d81da;
-              margin: 0 4px; }
+              margin: 0 4px;
+              margin-top: 10px; }
               @media (max-width: 400px) {
                 body .wrapper header #calc .values .course button {
-                  margin: 0; } }
+                  margin: 0;
+                  margin-top: 10px; } }
               body .wrapper header #calc .values .course button .icon-exchange:before {
                 color: #ffffff; }
             body .wrapper header #calc .values .course select {
-              width: 70px; }
+              height: 30px;
+              margin-top: 10px; }
           body .wrapper header #calc .values .date {
             height: 30px;
             margin-top: 10px; }
             @media (min-width: 768px) {
               body .wrapper header #calc .values .date {
                 margin-top: 20px; } }
+            body .wrapper header #calc .values .date select {
+              width: 100px; }
             body .wrapper header #calc .values .date #year,
             body .wrapper header #calc .values .date #day {
               width: 70px; }

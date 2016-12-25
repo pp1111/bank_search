@@ -143,6 +143,9 @@ body {
                     @media(min-width: 768px) {
                         top: 85%;
                     }
+                    @media(min-height: 900px) {
+                        top: 75%
+                    }
                     &:hover {
                         background-color: #cee9fb;
                         color: #3d81da;
@@ -174,7 +177,7 @@ body {
                 @media(min-width: 768px) {
                     height: 95%;
                     overflow-y: auto;
-                    margin-top: 20px;
+                    //margin-top: 20px;
                     margin-left: 10px;
                     width: 40%;
                 }
