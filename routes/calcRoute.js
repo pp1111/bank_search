@@ -59,7 +59,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
  
 
   var title = "Przelicznik" + " " + req.params[3] + " na " + req.params[4] + "." + req.params[5] + " " + req.params[3] + " ile to " + req.params[4];
-  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora EMoney. Obliczenia oparte o kursy NBP. Sprawdź";
+  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora Amoney. Obliczenia oparte o kursy NBP. Sprawdź";
 
   var step1 = req.params[3];
   var step2 = req.params[4];
@@ -306,7 +306,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-(\-*(\w+)\.*(\w*))\-(\w+)\-
 router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , function(req,res) {
 
   var title = "Przelicznik" + " " + req.params[3] + " na " + req.params[4] + "." +  " " + req.params[3] + " ile to " + req.params[4];
-  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora EMoney. Obliczenia oparte o kursy NBP. Sprawdź";
+  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora Amoney. Obliczenia oparte o kursy NBP. Sprawdź";
   var result_text = "Drogi użytkowniku, próbujesz przeliczyć walutę z " + req.params[3] + " na " + 
                     req.params[4]+"."+" Niestety nie podałeś żadnej kwoty do przeliczenia:( Jeśli chcesz przeliczć inną wartość, niż 1 " + 
                     req.params[3]+", na "+req.params[4] + ",wpisz ją proszę w pole wyszukiwania, obok pola oblicz. ";                    
@@ -553,7 +553,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
 router.get(/^\/(\w+)\-na-(\w+)\-(\-*(\w*)\.*(\w*))\-(\w+)\-ile-to-(\w+)$/ , function(req,res) {
 
   var title = "Przelicznik" + " " + req.params[0] + " na " + req.params[1] + "." +  " " + req.params[0] + " ile to " + req.params[1];
-  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora EMoney. Obliczenia oparte o kursy NBP. Sprawdź";
+  var description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora Amoney. Obliczenia oparte o kursy NBP. Sprawdź";
   var result_text = "Drogi użytkowniku, nie wybrałeś daty. Jeśli nie chodziło ci o aktualny kurs proszę wybierz datę.";                    
 
   var step1 = req.params[0];

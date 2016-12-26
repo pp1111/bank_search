@@ -37,7 +37,6 @@ app.use(function(req, res, next){
 });
 
 app.use('/', routes);
-app.use('/kalkulator-walut', calcRoute);
 app.use('/przelicznik', calcRoute);
 
 app.get('/ping', function (req, res) { return arf.response(res, { pong: {} }); });
