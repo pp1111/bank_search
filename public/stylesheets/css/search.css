@@ -90,17 +90,17 @@ html {
             font-size: 1.17rem;
             position: absolute;
             bottom: 30px;
-            left: 85px;
+            left: 70px;
             letter-spacing: 1.2px; }
             @media (min-width: 768px) {
               html body .wrapper header .logo p {
                 bottom: 5px;
-                left: 85px;
+                left: 70px;
                 margin-bottom: 0;
                 font-size: 1.3rem; } }
             @media (min-width: 1024px) {
               html body .wrapper header .logo p {
-                left: 130px;
+                left: 115px;
                 font-size: 2rem; } }
           html body .wrapper header .logo img {
             position: absolute; }

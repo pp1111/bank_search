@@ -1,3 +1,10 @@
+$darkerBlue: rgba(15, 133, 209, 1);
+$darkBlue: rgba(6, 101, 162, 1);
+$menuColorText: #f0f7fc;
+$mainBlue: rgba(52, 152, 219, 1);
+$lightestBlue: #f0f7fc;
+$lightBlue: rgba(133, 196, 237, 1);
+$black: #000000;
 $white: #ffffff;
 
 @font-face {
@@ -51,15 +58,132 @@ body {
             font-size: 2rem;
         }
     }
-    .logo-container {
+    header {
         @include flexbox(row, nowrap);
-        justify-content: center;
-        margin-top: 15px;
-        a {
-            text-align: center;
-            .logo {
-                width: 70%;
-                text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99999999;
+        padding: 10px 20px;
+        //background-color: #2ca9ed;
+        //box-shadow: 0 0px 4px 1px rgba(255, 255, 255, 0.8);
+    }
+    #logoAndSearch {
+        @include flexbox(column, nowrap);
+        margin-top: 10px;
+        width: 100%;
+        align-items: center;
+        @media(min-width: 600px) {
+            flex-direction: row;
+            align-items: center;
+            margin-top: 0;
+        }
+        .logo-container {
+            @include flexbox(row, nowrap);
+            justify-content: center;
+            //margin-top: 10px;
+            //width: 100%;
+            //margin: 10px auto;
+            width: 50%;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            a {
+                text-align: left;
+                .logo {
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+            @media(min-width: 600px) {
+                width: 20%;
+            }
+            @media(min-width: 768px) {
+                //float: left;
+                //width: 25%;
+                //max-width: 700px;
+            }
+        }
+        .search {
+            @include flexbox(row, nowrap);
+            justify-content: space-between;
+            flex-grow: 2;
+            width: 100%;
+            border-radius: 20px;
+            //margin: 0 auto;
+            //margin-top: 15px;
+            margin-top: 25px;
+            max-height: 35px;
+            @media(min-width: 600px) {
+                margin-right: 40px;
+                margin-top: 0;
+                //margin-left: 0; 
+                //width: 45%;
+                max-width: 500px;
+                //max-height: 35px;
+                input,button {
+                    max-height: 35px;
+                }
+            }
+            @media(min-width: 768px) {
+                max-height: 40px;
+                input,button {
+                    max-height: 40px;
+                }
+            }
+            input,
+            button {
+                border: none;
+                margin: 0 !important;
+                &:focus {
+                    outline: none;
+                }
+                
+            }
+            input[type="text"] {
+                width: 100%;
+                margin: 0 5px;
+                padding-left: 10px;
+                font-size: 1.4rem;
+                -webkit-box-shadow: 0 0 0px 1000px $white inset;
+                //@include placeholder(#000000); //coś nie działa
+                border-bottom-left-radius: 8px;
+                border-top-left-radius: 8px;
+                &.ui-menu-open {
+                    border-bottom-left-radius: 0;
+                }
+            }
+            button {
+                background-color: $white;
+                color: $lightestBlue;
+                padding: 0px 10px;
+                cursor: pointer;
+                @include transition(.2s);
+                border-bottom-right-radius: 8px;
+                border-top-right-radius: 8px;
+                height: 35px;
+                &.ui-menu-open {
+                    border-bottom-right-radius: 0;
+                }
+                svg {
+                    fill: #4183d7;
+                    width: 25px;
+                    transform: rotateY(180deg);
+                    @include transition(.2s);
+                    @media(min-width: 768px) {
+                        padding: 2px;
+                        height: 35px;
+                        width: 35px;
+                    }
+                }
+                @media(min-width: 768px) {
+                    height: 40px;
+                }
+                @media(min-width: 1024px) {
+                    height: 45px;
+                }
             }
         }
     }

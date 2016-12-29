@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" href="../favicon.ico"> 
 	<link rel="stylesheet" type="text/css" href="stylesheets/css/menu.css">
 	<link rel='stylesheet' href='/stylesheets/css/search.css' />
-    <link rel="stylesheet" type="text/css" href="stylesheets/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
 	<title></title>
  </head>
 
@@ -26,19 +26,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
 	<a class="contact-link" href="/kontakt">Kontakt</a>
-	<nav><% include partials/templemate/menu.ejs %></nav>
+	<nav class="main-page">
+		<div class="dl-menu-header main-page">
+    <!--<h3>menu</h3>-->
+    <div class="menu-btn">
+        <div class="bar top-bar"></div>
+        <div class="bar middle-bar"></div>
+        <div class="bar bottom-bar"></div>
+    </div>
+</div>
+<div class="dl-menu-container">
+    <div class="inner-scroll">
+    <ul class="dl-menu">
+        <div class="inner-scroll">
+            <li><a class="calc-link" href="/kalkulator-walut">Kalkulator walut</a></li>
+            <% categoriesDictionary.forEach( category => { %> 	 	
+                <li class="category">
+                <a href="#" class="category-link"><%=category%></a>
+                    <ul class="dl-submenu">
+                        <div class="inner-scroll">
+                            <% categoriesMap[category].forEach( subcategory => { %>
+                            <li class="subcategory">
+                                <a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
+                            </li>
+                            <% }) %>
+                        </div>
+                    </ul>
+            <% }) %>
+        </div>
+    </ul>
+    <div class="line"></div>
+    </div>
+</div>
+	</nav>
 	<div class="wrapper">
 		<div class="dimness"></div>
 		<header>
 			<div class="logo">
 				<h1>aMoney</h1>
-				<p>Giving more possibility</p>
+				<p>Wyszukiwarka finansowa</p>
 				<img class="left-bottom-dot" src="/images/left-bottom-dot.png" alt="dot">
 				<img class="left-dot" src="/images/left-dot.png" alt="dot">
 				<img class="right-dot" src="/images/right-dot.png" alt="dot">
 				<img class="right-bottom-dot" src="/images/right-top-dot.png" alt="dot">
-				<img class="left-arrow" src="images/left-arrow.png" alt="arrow">
-				<img class="right-arrow" src="images/right-arrow.png" alt="arrow">
+				<!--<img class="left-arrow" src="images/left-arrow.png" alt="arrow">
+				<img class="right-arrow" src="images/right-arrow.png" alt="arrow">-->
 			</div>
 			<form class="search" action="/finanse">
 				<input id="searcharea" type="text" name ="q" class="form-control"/>

@@ -11,20 +11,23 @@ html {
     margin: 0;
     padding: 0; }
     html body nav {
-      height: 100vh;
+      /*height: 100vh;
       position: fixed;
       z-index: 9999;
-      top: 0; }
+      top: 0;
+      right: 120px;*/
+      position: relative;
+      z-index: 999; }
       html body nav.nav-open {
         overflow-y: auto; }
+      html body nav.main-page {
+        position: fixed;
+        top: 60px; }
       html body nav ul {
         list-style-type: none;
         padding: 0;
         text-align: center; }
       html body nav .dl-menu-header {
-        position: absolute;
-        top: 4%;
-        left: 15px;
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -33,10 +36,14 @@ html {
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+        position: absolute;
+        right: 0;
+        top: -60px;
         z-index: 9999; }
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
           html body nav .dl-menu-header {
-            left: 40px; } }
+            top: 0px;
+            position: relative; } }
         html body nav .dl-menu-header .menu-btn {
           width: 61px;
           height: 61px;
@@ -100,6 +107,13 @@ html {
           font-weight: 100;
           color: #3d81da;
           display: none; }
+        html body nav .dl-menu-header.main-page .menu-btn {
+          position: absolute;
+          top: 20px;
+          left: 20px; }
+          @media (min-width: 600px) {
+            html body nav .dl-menu-header.main-page .menu-btn {
+              top: -40px; } }
       html body nav .dl-menu-container {
         width: 50%;
         height: 100vh;
@@ -117,6 +131,16 @@ html {
           html body nav .dl-menu-container {
             left: -100%;
             width: 100%; } }
+        html body nav .dl-menu-container > a {
+          position: absolute;
+          top: 30px;
+          left: 40px;
+          font-size: 2rem;
+          color: #0665a2;
+          text-decoration: none; }
+          html body nav .dl-menu-container > a:hover {
+            color: #3498db;
+            text-decoration: underline; }
         html body nav .dl-menu-container .dl-menu {
           margin-top: 120px !important;
           margin-left: auto;
