@@ -23,5 +23,7 @@ $(document).ready(function () {
         select: (event, ui) => {
             window.location.href = "/finanse/produkt/" + decodeURIComponent(ui.item.label.replace(/ /g,"-"));
         }
-    }); 
+    });
+
+    $("#searcharea").autocomplete("search");
 });

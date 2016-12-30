@@ -52,6 +52,7 @@ router.get('/', function (req, res) {
             subcategoriesDictionary: subcategories,
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
+            suggestions: req.query.suggestions
         })
     }).catch(err => console.log(err))
 });
@@ -159,7 +160,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
         suggestions = suggestions.response.docs.slice(1,10);
-        console.log(suggestions);
+
         res.render('selected_product', {
             product: selectedProduct[0],
             suggestedProducts: suggestions,
