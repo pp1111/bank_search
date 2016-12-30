@@ -26,20 +26,128 @@ body {
     @media (min-width: 768px) {
       body .contact-link {
         font-size: 2rem; } }
-  body .logo-container {
+  body header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
-    margin-top: 15px; }
-    body .logo-container a {
-      text-align: center; }
-      body .logo-container a .logo {
-        width: 70%;
-        text-align: center; }
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999999;
+    padding: 10px 20px; }
+  body #logoAndSearch {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    width: 100%;
+    align-items: center; }
+    @media (min-width: 600px) {
+      body #logoAndSearch {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0; } }
+    body #logoAndSearch .logo-container {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      width: 50%;
+      margin-right: 20px;
+      margin-bottom: 10px; }
+      body #logoAndSearch .logo-container a {
+        text-align: left; }
+        body #logoAndSearch .logo-container a .logo {
+          width: 100%;
+          text-align: left; }
+      @media (min-width: 600px) {
+        body #logoAndSearch .logo-container {
+          width: 20%; } }
+    body #logoAndSearch .search {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      flex-grow: 2;
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 25px;
+      max-height: 35px; }
+      @media (min-width: 600px) {
+        body #logoAndSearch .search {
+          margin-right: 40px;
+          margin-top: 0;
+          max-width: 500px; }
+          body #logoAndSearch .search input, body #logoAndSearch .search button {
+            max-height: 35px; } }
+      @media (min-width: 768px) {
+        body #logoAndSearch .search {
+          max-height: 40px; }
+          body #logoAndSearch .search input, body #logoAndSearch .search button {
+            max-height: 40px; } }
+      body #logoAndSearch .search input,
+      body #logoAndSearch .search button {
+        border: none;
+        margin: 0 !important; }
+        body #logoAndSearch .search input:focus,
+        body #logoAndSearch .search button:focus {
+          outline: none; }
+      body #logoAndSearch .search input[type="text"] {
+        width: 100%;
+        margin: 0 5px;
+        padding-left: 10px;
+        font-size: 1.4rem;
+        -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+        border-bottom-left-radius: 8px;
+        border-top-left-radius: 8px; }
+        body #logoAndSearch .search input[type="text"].ui-menu-open {
+          border-bottom-left-radius: 0; }
+      body #logoAndSearch .search button {
+        background-color: #ffffff;
+        color: #f0f7fc;
+        padding: 0px 10px;
+        cursor: pointer;
+        -webkit-transition: 0.2s ease-in-out;
+        -moz-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+        height: 35px; }
+        body #logoAndSearch .search button.ui-menu-open {
+          border-bottom-right-radius: 0; }
+        body #logoAndSearch .search button svg {
+          fill: #4183d7;
+          width: 25px;
+          transform: rotateY(180deg);
+          -webkit-transition: 0.2s ease-in-out;
+          -moz-transition: 0.2s ease-in-out;
+          transition: 0.2s ease-in-out; }
+          @media (min-width: 768px) {
+            body #logoAndSearch .search button svg {
+              padding: 2px;
+              height: 35px;
+              width: 35px; } }
+        @media (min-width: 768px) {
+          body #logoAndSearch .search button {
+            height: 40px; } }
+        @media (min-width: 1024px) {
+          body #logoAndSearch .search button {
+            height: 45px; } }
   body .wrapper {
     margin: 0 10px;
     margin-top: 40px; }

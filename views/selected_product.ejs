@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href='/icons/search/css/fontello.css' />
     <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/slick.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
@@ -26,25 +28,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
-    <a class="contact-link" href="/kontakt">Kontakt</a>
-    <nav><% include partials/templemate/menu.ejs %></nav>
-    <div class="logo-container">
-		<a href="/"><img class="logo" src="/images/logo.png" alt="aMoney"></a>
-	</div>
-    <div class="wrapper">
-        <article class="search-result">
-            <div class="whole-product">
+    <!--<a class="contact-link" href="/kontakt">Kontakt</a>-->
+    <header><% include partials/templemate/header.ejs %></header>
+    <div class="wrapper container">
+        <article class="search-result row">
+            <div class="whole-product col-md-6 col-lg-7">
                 <div class="img-wrapper">
                     <img src ="<%=product.logo%>" alt="<%=product.meta.alt%>">
                 </div>
                 <div class="info">
                     <h4><%=product.name%> <%=product.provider%></h4>
                     <%-product.longDescription%>
+                    <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
                 </div>
-                <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
             </div>
             <div class="line"></div>
-            <div class="products">
+            <div class="products col-md-6 col-lg-5">
                 <% suggestedProducts.forEach(product => { %>
                 <div class="single-product">
                     <div class="img-and-btns">
@@ -73,6 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--<footer> <% include partials/templemate/footer.ejs %> </footer>-->
     <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/slick.js"></script>
     <script src="/javascripts/typeahead.js"> </script>
     <script src="/javascripts/main.js"></script>
     <script src="/javascripts/red.js"></script>
