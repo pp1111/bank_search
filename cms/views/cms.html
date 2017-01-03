@@ -104,6 +104,61 @@
                   </thead>
             </table>
         </div>
+        <hr/>
+        <h3> Pożyczki </h3>
+        <hr/>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Pożyczam</label>
+                <input class="form-control" ng-model="product.loan.borrow"></input>
+            </div>
+            <div class="col-md-3">
+                <label>Oddaje</label>
+                <input class="form-control" ng-model="product.loan.back"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Ubezpieczenie</label>
+                <input class="form-control" ng-model="product.loan.insurance"></input>
+            </div>
+
+            <div class="col-md-3">
+                <label>Odsetki</label>
+                <input class="form-control" ng-model="product.loan.interest"></input>
+            </div>
+            <div class="col-md-3">
+                <label>Prowizja</label>
+                <input class="form-control" ng-model="product.loan.percentage"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Min. okres spłaty</label>
+                <input class="form-control" ng-model="product.loan.minPeriod"></input>
+            </div>
+            <div class="col-md-3">
+                <label>Max. okres spłaty</label>
+                <input class="form-control" ng-model="product.loan.maxPeriod"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Inne opłaty 1</label>
+                <input class="form-control" placeholder="nazwa" ng-model="product.loan.otherPayment1.name"></input>
+                <input class="form-control" placeholder="wartość" ng-model="product.loan.otherPayment1.value"></input>
+            </div>
+            <div class="col-md-3">
+                <label>Inne opłaty 2</label>
+                <input class="form-control" placeholder="nazwa" ng-model="product.loan.otherPayment2.name"></input>
+                <input class="form-control" placeholder="wartość" ng-model="product.loan.otherPayment2.value"></input>
+            </div>
+            <div class="col-md-3">
+                <label>Inne opłaty 3</label>
+                <input class="form-control" placeholder="nazwa" ng-model="product.loan.otherPayment3.name"></input>
+                <input class="form-control" placeholder="wartość" ng-model="product.loan.otherPayment3.value"></input>
+            </div>
+        </div>
         <br/>
         <br/>
     </div>
