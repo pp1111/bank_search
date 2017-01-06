@@ -192,14 +192,14 @@ MAIN = {
     stickyHeader: function() {
          m.window.scroll(function() {
              if($(this).scrollTop() > 100) {
-                $('header').css('position', 'fixed');
-                $('header').css('background-color', '#2ca9ed');
-                $('body').css('margin-top', '200px');
+                $('header').not('.page-start header').css('position', 'fixed');
+                $('header').not('.page-start header').css('background-color', '#2ca9ed');
+                $('body').not('.page-start').css('margin-top', '200px');
              }
              else {
-                 $('header').css('position', 'relative');
-                 $('body').css('margin-top', '0');
-                 $('header').css('background-color', 'transparent');
+                 $('header').not('.page-start header').css('position', 'relative');
+                 $('body').not('.page-start').css('margin-top', '0');
+                 $('header').not('.page-start header').css('background-color', 'transparent');
              }
          });
     },
