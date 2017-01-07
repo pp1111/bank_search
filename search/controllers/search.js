@@ -36,3 +36,4 @@ let search = {
         res.jsonp(suggestions);
     })().catch(next).done(),
 }
+    

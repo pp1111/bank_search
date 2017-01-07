@@ -43,6 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="line"></div>
             <div class="products col-md-6 col-lg-5">
                 <% suggestedProducts.forEach(product => { %>
+                <% if (product.alive) { %>
                 <div class="single-product">
                     <div class="img-and-btns">
 						<div class="img-wrapper">
@@ -60,6 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                     </div>
                 </div>
+                <% } %>
                 <% }) %>
             </div>
         </article>

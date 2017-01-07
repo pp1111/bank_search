@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	  		<h2><%=check%></h2>
 		  	<div class="products">
 			 	<% products.forEach(product => { %> 
-			 		<% if(product.subcategory===check.replace(/-/g, ' ')){ %>
+			 		<% if(product.alive && product.subcategory===check.replace(/-/g, ' ')){ %>
 					<div class="single-product">
 						<div class="img-wrapper">
 							<img src ="<%=product.logo%>">

@@ -12,9 +12,11 @@ $(document).ready(function () {
                 res($.map(data, (item) =>{
                     item.term = item.term.replace(/<b>/g, "");
                     item.term = item.term.replace(/<\/b>/g, "")
-                    return {
-                        value: item.term.replace(/-/g," ")
-                    };
+                    if (JSON.parse(item.payload)) {
+                        return {
+                            value: item.term.replace(/-/g," ")
+                        };
+                    }
                 }));
             }).fail(function (data) {
                 alert('error');
