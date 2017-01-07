@@ -192,7 +192,7 @@ body {
         @media (min-width: 768px) {
           body .wrapper .search-result .whole-product {
             width: 60%;
-            height: 90%;
+            height: 89%;
             margin-left: 10px; } }
         body .wrapper .search-result .whole-product .img-wrapper {
           position: absolute;
@@ -251,8 +251,8 @@ body {
         margin-top: 30px; }
         @media (min-width: 768px) {
           body .wrapper .search-result .products {
-            height: 95%;
             overflow-y: auto;
+            margin-top: 0;
             margin-left: 10px;
             width: 40%; } }
         body .wrapper .search-result .products .single-product {
