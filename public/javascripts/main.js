@@ -215,7 +215,6 @@ MAIN = {
             $('.footer-about').animate({
                 bottom: '49px'
             }, 500);
-            //$('.footer-about').slideDown();
         });
         $('footer').mouseleave(function() {
             if(m.window.width() < 567) {
@@ -228,65 +227,24 @@ MAIN = {
                     bottom: '-250px'
                 }, 500);
             }
-            //$('.footer-about').slideDown();
         });
-    },
-    /*slickInit: function() {
-        $('.products').slick({
-            infinite: false,
-            slidesToShow: 1,
-            //slidesToScroll: 1,
-            verticalSwiping: true,
-            arrows: true,
-            //adaptiveHeight: true,
-            vertical: true
+        $('footer').click(function(e) {
+            e.stopPropagation();
         });
-    }*/
-    /*applyNowBtnScroll: function() {
-        $(window).scroll(function(){
-            let scroll_top = $(this).scrollTop(); // get scroll position top
-            let height_element_parent =  $('.whole-product .apply-now').parent().outerHeight(); //get high parent element
-            let height_element = $('.whole-product .apply-now').height(); //get high of elemeneto
-            let position_fixed_max = height_element_parent - height_element; // get the maximum position of the elemen
-            let position_fixed = scroll_top < 250 ? 250 - scroll_top : position_fixed_max > scroll_top ? 0 : position_fixed_max - scroll_top ;
-            $('.whole-product .apply-now').css('top',position_fixed);
+        $('body').click(function(){
+            if(m.window.width() < 567) {
+                $('.footer-about').animate({
+                    bottom: '-450px'
+                }, 500);
+            }
+            else {
+                $('.footer-about').animate({
+                    bottom: '-250px'
+                }, 500);
+            }
         });
-    }*/
-
-    /*clickSearch: function() {
-        m.searchIconNotBtn.click(function() {
-            $(window).attr('location','http://www.example.com')
-            m.search.addClass('search-clicked');
-            m.dimness.addClass('dimness-visible');
-            $('nav .search form').addClass('form-active');
-            $('input[name="search"]').focus();
-            m.menu.hide();
-            m.topBar.addClass('top-bar-close');
-            m.middleBar.addClass('middle-bar-close');
-            m.bottomBar.addClass('bottom-bar-close');
-            m.topBar.removeClass('top-bar-arrow');
-            m.middleBar.removeClass('middle-bar-arrow');
-            m.bottomBar.removeClass('bottom-bar-arrow');
-            m.searchIconNotBtn.hide();
-            m.searchIconBtn.show();
-        });
-        $('nav form').click(function(){
-            m.dimness.addClass('dimness-visible');
-        });
-    }*/
+    }
 };
 $(function(){
     MAIN.init();
 });
-
-/*function stopButtonScroll() {
-     $(window).scroll(function() {   
-        if($(window).scrollTop() + $(window).height() >= $(document).height() - 30) {
-            //alert("bottom!");
-            $('.whole-product .apply-now').css('position', 'absolute');
-        }
-        else {
-            $('.whole-product .apply-now').css('position', 'fixed');
-        }
-    });
-}*/

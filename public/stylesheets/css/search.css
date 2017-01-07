@@ -307,10 +307,15 @@ html {
         justify-content: flex-end; }
         html body footer ul.footer-nav li {
           max-width: 50px;
-          max-width: 50px;
+          margin-right: 10px;
           font-size: 1.8rem;
           color: #77c9f6; }
           html body footer ul.footer-nav li:hover {
             color: #23a7f0; }
+          html body footer ul.footer-nav li a {
+            color: #77c9f6;
+            text-decoration: none; }
+            html body footer ul.footer-nav li a:hover {
+              color: #23a7f0; }
 
 /*# sourceMappingURL=search.css.map */
