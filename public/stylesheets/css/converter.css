@@ -218,7 +218,7 @@ body {
               body .wrapper header #calc .values .date {
                 margin-top: 20px; } }
             body .wrapper header #calc .values .date select {
-              width: 100px; }
+              width: 125px; }
             body .wrapper header #calc .values .date #year,
             body .wrapper header #calc .values .date #day {
               width: 70px; }

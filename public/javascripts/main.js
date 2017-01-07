@@ -88,6 +88,25 @@ MAIN = {
                 }
             }
         });
+        $('nav').click(function(e){
+            e.stopPropagation();
+        });
+        $('body').click(function() {
+            if (m.window.width() > 768) {
+                m.menu.animate({
+                    left: '-50%'
+                }, 300);
+            }
+            else {
+                m.menu.animate({
+                    left: '-100%'
+                }, 300);
+            }
+            $('.bar').removeClass('bar-open');
+            setTimeout(function() { MAIN.unsetMenuBtn('top-bar-close', 'middle-bar-close', 'bottom-bar-close'); }, 100);
+            m.menuBtn.removeClass('menu-btn-open');
+            m.isCloseBtn = 0;
+        });
     },
 
     openSubMenu: function() {
