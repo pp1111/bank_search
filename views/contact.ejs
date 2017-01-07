@@ -14,7 +14,7 @@
 	<title></title>
  </head>
 
-<body>
+<body class="calcMain">
 
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
@@ -39,7 +39,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<button name='submit' type='submit' value='Wyslij' id='submit'>Wyślij</button>
 		</form>
 	</div>
-
+<footer><% include partials/templemate/footer.ejs %></footer>
+	<script src="javascripts/jquery-1.11.3.min.js"></script>
+	<script src="javascripts/main.js"></script>
+	<script>
+      function initMap() {
+        var uluru = {lat: 52.235765, lng: 21.0177286};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: uluru,
+          disableDefaultUI: true,
+          zoomControl: true
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
+    </script>
 </body>
 
 </html>

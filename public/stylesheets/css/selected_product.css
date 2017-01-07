@@ -2,7 +2,6 @@
   font-family: latoRegular;
   src: url(/fonts/Lato/Lato-Regular.ttf); }
 body {
-  position: relative;
   background: #2ca9ed;
   background: -moz-linear-gradient(45deg, #2ca9ed 0%, #2ca9ed 64%, #84caef 100%);
   background: -webkit-gradient(left bottom, right top, color-stop(0%, #2ca9ed), color-stop(64%, #2ca9ed), color-stop(100%, #84caef));
@@ -65,8 +64,7 @@ body {
       flex-flow: row nowrap;
       justify-content: center;
       width: 50%;
-      margin-right: 20px;
-      margin-bottom: 10px; }
+      margin-right: 20px; }
       body #logoAndSearch .logo-container a {
         text-align: left; }
         body #logoAndSearch .logo-container a .logo {
@@ -113,8 +111,7 @@ body {
         padding-left: 10px;
         font-size: 1.4rem;
         -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
-        border-bottom-left-radius: 8px;
-        border-top-left-radius: 8px; }
+        border-radius: 8px 0 0 8px; }
         body #logoAndSearch .search input[type="text"].ui-menu-open {
           border-bottom-left-radius: 0; }
       body #logoAndSearch .search button {
@@ -153,7 +150,7 @@ body {
     margin-top: 40px; }
     @media (min-width: 768px) {
       body .wrapper {
-        height: 80vh; } }
+        height: 65vh; } }
     body .wrapper h4 {
       font-size: 2.1rem;
       font-weight: 300;
@@ -221,16 +218,16 @@ body {
           box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.28); }
           @media (max-height: 540px) {
             body .wrapper .search-result .whole-product .button {
-              top: 80%; } }
+              top: 70%; } }
           @media (min-height: 768px) {
             body .wrapper .search-result .whole-product .button {
-              top: 80%; } }
+              top: 70%; } }
           @media (min-width: 768px) {
             body .wrapper .search-result .whole-product .button {
-              top: 85%; } }
+              top: 75%; } }
           @media (min-height: 900px) {
             body .wrapper .search-result .whole-product .button {
-              top: 75%; } }
+              top: 65%; } }
           body .wrapper .search-result .whole-product .button:hover {
             background-color: #cee9fb;
             color: #3d81da; }
@@ -250,8 +247,8 @@ body {
             display: none; } }
       body .wrapper .search-result .products {
         font-family: latoRegular, sans-serif;
-        /*display: block; 
-        margin-top: 30px;*/ }
+        /*display: block;*/
+        margin-top: 30px; }
         @media (min-width: 768px) {
           body .wrapper .search-result .products {
             height: 95%;
@@ -389,5 +386,64 @@ body {
               overflow-x: hidden; }
             body .wrapper .search-result .products .single-product .info small {
               display: none; }
+  body footer {
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(244, 251, 254, 0.9);
+    text-align: right;
+    padding: 5px; }
+    body footer.bottom {
+      position: fixed;
+      bottom: 0; }
+    body footer ul {
+      list-style: none;
+      padding: 0; }
+    body footer .footer-about {
+      font-family: latoRegular, sans-serif;
+      font-size: 1.4rem;
+      position: fixed;
+      right: 0;
+      text-align: left;
+      padding: 10px 30px;
+      background-color: rgba(244, 251, 254, 0.9);
+      border-radius: 8px 8px 0 0;
+      border-bottom: 1px solid #3498db;
+      bottom: -450px;
+      z-index: 99999999; }
+      @media (min-width: 567px) {
+        body footer .footer-about {
+          bottom: -250px; } }
+      body footer .footer-about .info {
+        float: left;
+        margin-right: 20px; }
+        body footer .footer-about .info ul li {
+          margin-bottom: 10px; }
+          body footer .footer-about .info ul li:last-child {
+            margin-bottom: 0; }
+          body footer .footer-about .info ul li span {
+            text-transform: uppercase; }
+      body footer .footer-about #map {
+        width: 200px;
+        height: 200px;
+        background-color: grey; }
+        @media (max-height: 410px) {
+          body footer .footer-about #map {
+            display: none; } }
+    body footer ul.footer-nav {
+      margin-right: 30px;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end; }
+      body footer ul.footer-nav li {
+        max-width: 50px;
+        font-size: 1.8rem;
+        color: #77c9f6; }
+        body footer ul.footer-nav li:hover {
+          color: #23a7f0; }
 
 /*# sourceMappingURL=selected_product.css.map */

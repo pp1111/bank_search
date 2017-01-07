@@ -148,8 +148,7 @@ body {
                 font-size: 1.4rem;
                 -webkit-box-shadow: 0 0 0px 1000px $white inset;
                 //@include placeholder(#000000); //coś nie działa
-                border-bottom-left-radius: 8px;
-                border-top-left-radius: 8px;
+                border-radius: 8px 0 0 8px;
                 &.ui-menu-open {
                     border-bottom-left-radius: 0;
                 }
@@ -187,6 +186,7 @@ body {
         }
     }
     .wrapper {
+        margin-bottom: 60px;
         .search-result {
             h2 {
                 text-align: center;
@@ -355,4 +355,74 @@ body {
             }
         }
     }
+    footer {
+            box-sizing: border-box;
+            //position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(244, 251, 254, 0.9);
+            text-align: right;
+            padding: 5px;
+                &.bottom {
+                position: fixed;
+                bottom: 0;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            .footer-about {
+                font-family: latoRegular, sans-serif;
+                font-size: 1.4rem;
+                position: fixed;
+                right: 0;
+                //bottom: 100%;
+                text-align: left;
+                padding: 10px 30px;
+                background-color: rgba(244, 251, 254, 0.9);
+                border-radius: 8px 8px 0 0;
+                border-bottom: 1px solid $mainBlue;
+                bottom: -450px;
+                z-index: 99999999;
+                @media(min-width: 567px) {
+                    bottom: -250px;
+                }
+                .info {
+                    float: left;
+                    margin-right: 20px;
+                    ul {
+                        li {
+                            margin-bottom: 10px;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                            span {
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+                #map {
+                    width: 200px;
+                    height: 200px;
+                    background-color: grey;
+                    @media(max-height: 410px) {
+                        display: none;
+                    }
+                }
+            }
+            ul.footer-nav {
+                margin-right: 30px;
+                @include flexbox(row, nowrap);
+                justify-content: flex-end;
+                li {
+                    max-width: 50px;
+                    &:hover {
+                        color: #23a7f0;
+                    }
+                        font-size: 1.8rem;
+                        color: #77c9f6;
+                }
+            }
+        }
 }

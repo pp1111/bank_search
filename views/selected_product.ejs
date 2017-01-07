@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href='/icons/search/css/fontello.css' />
     <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/slick.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
@@ -69,13 +67,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <aside class="aside aside-2"></aside>
     </div>
 
-    <!--<footer> <% include partials/templemate/footer.ejs %> </footer>-->
+    <footer> <% include partials/templemate/footer.ejs %> </footer>
     <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
-    <script type="text/javascript" src="/javascripts/slick.js"></script>
     <script src="/javascripts/typeahead.js"> </script>
     <script src="/javascripts/main.js"></script>
     <script src="/javascripts/red.js"></script>
+    <script>
+      function initMap() {
+        var uluru = {lat: 52.235765, lng: 21.0177286};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: uluru,
+          disableDefaultUI: true,
+          zoomControl: true
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
+    </script>
 </body>
 
 </html>

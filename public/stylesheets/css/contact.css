@@ -33,7 +33,7 @@ body {
         text-align: center; }
   body .wrapper {
     margin: 0 15px;
-    margin-bottom: 30px; }
+    margin-bottom: 60px; }
     body .wrapper h2 {
       text-align: center;
       margin: 0;
@@ -117,5 +117,66 @@ body {
         body .wrapper form button:hover {
           background-color: #ffffff;
           color: #3d81da; }
+  body footer {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(244, 251, 254, 0.9);
+    text-align: right;
+    padding: 5px; }
+    body footer.bottom {
+      position: fixed;
+      bottom: 0; }
+    body footer ul {
+      list-style: none;
+      padding: 0; }
+    body footer .footer-about {
+      font-family: latoRegular, sans-serif;
+      font-size: 1.4rem;
+      position: absolute;
+      right: 0;
+      text-align: left;
+      padding: 10px 30px;
+      background-color: rgba(244, 251, 254, 0.9);
+      border-radius: 8px 8px 0 0;
+      border-bottom: 1px solid #3498db;
+      bottom: -450px; }
+      @media (min-width: 567px) {
+        body footer .footer-about {
+          bottom: -250px; } }
+      body footer .footer-about .info {
+        float: left;
+        margin-right: 20px; }
+        body footer .footer-about .info ul li {
+          margin-bottom: 10px; }
+          body footer .footer-about .info ul li:last-child {
+            margin-bottom: 0; }
+          body footer .footer-about .info ul li span {
+            text-transform: uppercase; }
+      body footer .footer-about #map {
+        width: 200px;
+        height: 200px;
+        background-color: grey; }
+        @media (max-height: 410px) {
+          body footer .footer-about #map {
+            display: none; } }
+    body footer ul.footer-nav {
+      margin-right: 30px;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end; }
+      body footer ul.footer-nav li {
+        max-width: 50px;
+        max-width: 50px;
+        font-size: 1.8rem;
+        color: #77c9f6; }
+        body footer ul.footer-nav li:hover {
+          color: #23a7f0; }
 
 /*# sourceMappingURL=contact.css.map */

@@ -8,6 +8,7 @@ html {
   font-size: 62.5%;
   height: 100%; }
   html body {
+    margin: 0;
     -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
     height: 100%;
@@ -122,8 +123,7 @@ html {
               padding-left: 10px;
               font-size: 1.4rem;
               -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
-              border-bottom-left-radius: 8px;
-              border-top-left-radius: 8px; }
+              border-radius: 8px 0 0 8px; }
             html body .wrapper header #calc .value button {
               font-size: 1.1rem;
               background-color: #3d81da;
@@ -210,5 +210,65 @@ html {
               html body .wrapper header #calc .values .date #year,
               html body .wrapper header #calc .values .date #day {
                 width: 70px; }
+    html body footer {
+      font-family: latoRegular, sans-serif;
+      box-sizing: border-box;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(244, 251, 254, 0.9);
+      text-align: right;
+      padding: 5px; }
+      html body footer.bottom {
+        position: fixed;
+        bottom: 0; }
+      html body footer ul {
+        list-style: none;
+        padding: 0; }
+      html body footer .footer-about {
+        font-size: 1.4rem;
+        position: absolute;
+        right: 0;
+        text-align: left;
+        padding: 10px 30px;
+        background-color: rgba(244, 251, 254, 0.9);
+        border-radius: 8px 8px 0 0;
+        border-bottom: 1px solid #3498db;
+        bottom: -450px; }
+        @media (min-width: 567px) {
+          html body footer .footer-about {
+            bottom: -250px; } }
+        html body footer .footer-about .info {
+          float: left;
+          margin-right: 20px; }
+          html body footer .footer-about .info ul li {
+            margin-bottom: 10px; }
+            html body footer .footer-about .info ul li:last-child {
+              margin-bottom: 0; }
+            html body footer .footer-about .info ul li span {
+              text-transform: uppercase; }
+        html body footer .footer-about #map {
+          width: 200px;
+          height: 200px;
+          background-color: grey; }
+          @media (max-height: 410px) {
+            html body footer .footer-about #map {
+              display: none; } }
+      html body footer ul.footer-nav {
+        margin-right: 30px;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end; }
+        html body footer ul.footer-nav li {
+          max-width: 50px;
+          font-size: 1.8rem;
+          color: #77c9f6; }
+          html body footer ul.footer-nav li:hover {
+            color: #23a7f0; }
 
 /*# sourceMappingURL=calcStartPage.css.map */

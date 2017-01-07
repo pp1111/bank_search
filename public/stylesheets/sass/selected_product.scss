@@ -26,13 +26,7 @@ $white: #ffffff;
     transition: $time ease-in-out;
 }
 
-html {
-    //height: 100%;
-}
-
 body {
-    position: relative;
-    //height: 100%;
     background: rgba(44,169,237,1);
     background: -moz-linear-gradient(45deg, rgba(44,169,237,1) 0%, rgba(44,169,237,1) 64%, rgba(132,202,239,1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(44,169,237,1)), color-stop(64%, rgba(44,169,237,1)), color-stop(100%, rgba(132,202,239,1)));
@@ -149,8 +143,7 @@ body {
                 font-size: 1.4rem;
                 -webkit-box-shadow: 0 0 0px 1000px $white inset;
                 //@include placeholder(#000000); //coś nie działa
-                border-bottom-left-radius: 8px;
-                border-top-left-radius: 8px;
+                border-radius: 8px 0 0 8px;
                 &.ui-menu-open {
                     border-bottom-left-radius: 0;
                 }
@@ -191,7 +184,7 @@ body {
         margin: 0 10px;
         margin-top: 40px; 
         @media(min-width: 768px) {
-            height: 80vh;
+            height: 65vh;
         }
         h4 {
             font-size: 2.1rem;
@@ -259,16 +252,16 @@ body {
                     -moz-box-shadow: 0px 10px 1px 1px rgba(0,0,0,0.28);
                     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.28);
                     @media (max-height: 540px) {
-                        top: 80%;
+                        top: 70%;
                     }
                     @media(min-height: 768px) {
-                        top: 80%
+                        top: 70%
                     }
                     @media(min-width: 768px) {
-                        top: 85%;
+                        top: 75%;
                     }
                     @media(min-height: 900px) {
-                        top: 75%
+                        top: 65%
                     }
                     &:hover {
                         background-color: #cee9fb;
@@ -296,8 +289,8 @@ body {
             }
             .products {
                 font-family: latoRegular, sans-serif;
-                /*display: block; 
-                margin-top: 30px;*/
+                /*display: block;*/
+                margin-top: 30px;
                 @media(min-width: 768px) {
                     height: 95%;
                     overflow-y: auto;
@@ -436,4 +429,74 @@ body {
             }
         }
     }
+    footer {
+            box-sizing: border-box;
+            //position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(244, 251, 254, 0.9);
+            text-align: right;
+            padding: 5px;
+                &.bottom {
+                position: fixed;
+                bottom: 0;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            .footer-about {
+                font-family: latoRegular, sans-serif;
+                font-size: 1.4rem;
+                position: fixed;
+                right: 0;
+                //bottom: 100%;
+                text-align: left;
+                padding: 10px 30px;
+                background-color: rgba(244, 251, 254, 0.9);
+                border-radius: 8px 8px 0 0;
+                border-bottom: 1px solid $mainBlue;
+                bottom: -450px;
+                z-index: 99999999;
+                @media(min-width: 567px) {
+                    bottom: -250px;
+                }
+                .info {
+                    float: left;
+                    margin-right: 20px;
+                    ul {
+                        li {
+                            margin-bottom: 10px;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                            span {
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+                #map {
+                    width: 200px;
+                    height: 200px;
+                    background-color: grey;
+                    @media(max-height: 410px) {
+                        display: none;
+                    }
+                }
+            }
+            ul.footer-nav {
+                margin-right: 30px;
+                @include flexbox(row, nowrap);
+                justify-content: flex-end;
+                li {
+                    max-width: 50px;
+                    &:hover {
+                        color: #23a7f0;
+                    }
+                        font-size: 1.8rem;
+                        color: #77c9f6;
+                }
+            }
+        }
 }
