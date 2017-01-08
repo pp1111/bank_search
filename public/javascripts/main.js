@@ -230,38 +230,47 @@ MAIN = {
         }
     },
     slideToggleAbout: function() {
-        $('footer .about').mouseenter(function() {
-            $('.footer-about').animate({
-                bottom: '49px'
-            }, 500);
-        });
-        $('footer').mouseleave(function() {
-            if(m.window.width() < 567) {
+        if(m.window.width() > 768) {
+            $('footer .about').mouseenter(function() {
                 $('.footer-about').animate({
-                    bottom: '-450px'
+                    bottom: '49px'
                 }, 500);
-            }
-            else {
+            });
+            $('footer').mouseleave(function() {
+                if(m.window.width() < 567) {
+                    $('.footer-about').animate({
+                        bottom: '-450px'
+                    }, 500);
+                }
+                else {
+                    $('.footer-about').animate({
+                        bottom: '-250px'
+                    }, 500);
+                }
+            });
+        }
+        else {
+            $('footer .about').click(function() {
                 $('.footer-about').animate({
-                    bottom: '-250px'
+                    bottom: '49px'
                 }, 500);
-            }
-        });
-        $('footer').click(function(e) {
-            e.stopPropagation();
-        });
-        $('body').click(function(){
-            if(m.window.width() < 567) {
-                $('.footer-about').animate({
-                    bottom: '-450px'
-                }, 500);
-            }
-            else {
-                $('.footer-about').animate({
-                    bottom: '-250px'
-                }, 500);
-            }
-        });
+            });
+            $('footer').click(function(e) {
+                e.stopPropagation();
+            });
+            $('body').click(function(){
+                if(m.window.width() < 567) {
+                    $('.footer-about').animate({
+                        bottom: '-450px'
+                    }, 500);
+                }
+                else {
+                    $('.footer-about').animate({
+                        bottom: '-250px'
+                    }, 500);
+                }
+            });
+        }
     }
 };
 $(function(){

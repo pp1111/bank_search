@@ -170,7 +170,7 @@
 	font-family: Arial,Helvetica,sans-serif;
 	font-size: 1em;
 }
-.ui-widget.ui-widget-content {
+.ui-widget.ui-widget-content:not('.page-start .ui-widget.ui-widget-content') {
 	border: 1px solid #c5c5c5;
 	margin-right: 10px;
 	position: fixed;
