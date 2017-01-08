@@ -50,6 +50,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<script src="/javascripts/main.js"></script>
 	<script src="/javascripts/red.js"></script>
 	<script>
+		$(document).on("ready", function(){
+			$('html,body').animate({ scrollTop: 9999 }, 'slow');
+		});
+    </script>
+	<script>
       function initMap() {
         var uluru = {lat: 52.235765, lng: 21.0177286};
         var map = new google.maps.Map(document.getElementById('map'), {
