@@ -109,6 +109,7 @@ router.get('/finanse', function (req, res) {
             product.name = product.name.replace(/_/g, ' ');
         })
 
+        result.response.docs = result.response.docs.filter(product => JSON.parse(product.alive));
         let searchedSubcategories = [...new Set(result.response.docs.map(product => product.subcategory))];
 
         searchedSubcategories.forEach( subcategory => {
@@ -159,6 +160,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         query = escape(query);
         let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
         suggestions = JSON.parse(suggestions);
+        suggestions.response.docs = suggestions.response.docs.filter(suggestion => JSON.parse(suggestion.alive));
         suggestions = suggestions.response.docs.slice(1,10);
 
         res.render('selected_product', {
