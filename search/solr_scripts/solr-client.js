@@ -28,8 +28,7 @@ module.exports = class SolrClient {
     }
 
     update (documents) {
-        return q.ninvoke(this.client, 'update', documents)
-            .catch(err => console.log(err))
+        return q.ninvoke(this.client, 'update', documents).then(() => q.ninvoke(this.client, 'commit'));
     }
  
     delete () {
