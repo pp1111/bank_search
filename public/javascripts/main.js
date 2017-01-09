@@ -230,11 +230,12 @@ MAIN = {
         }
     },
     slideToggleAbout: function() {
-        if(m.window.width() > 768) {
-            $('footer .about').mouseenter(function() {
+        //if(m.window.width() > 768) {
+            $('footer .about').on('mouseenter touchstart', function(e){ 
                 $('.footer-about').animate({
                     bottom: '49px'
                 }, 500);
+                e.stopPropagation();
             });
             $('footer').mouseleave(function() {
                 if(m.window.width() < 567) {
@@ -248,16 +249,29 @@ MAIN = {
                     }, 500);
                 }
             });
-        }
-        else {
+            $('.footer-about').on('touchstart', function(e){ 
+                e.stopPropagation()
+            });
+            $('body').on('touchstart', function(e){ 
+                if(m.window.width() < 567) {
+                    $('.footer-about').animate({
+                        bottom: '-450px'
+                    }, 500);
+                }
+                else {
+                    $('.footer-about').animate({
+                        bottom: '-250px'
+                    }, 500);
+                }        
+            });
+        //}
+        /*else {
             $('footer .about').click(function() {
                 $('.footer-about').animate({
                     bottom: '49px'
                 }, 500);
             });
-            $('footer').click(function(e) {
-                e.stopPropagation();
-            });
+            
             $('body').click(function(){
                 if(m.window.width() < 567) {
                     $('.footer-about').animate({
@@ -270,7 +284,10 @@ MAIN = {
                     }, 500);
                 }
             });
-        }
+            $('footer').click(function(e) {
+                e.stopPropagation();
+            });
+        }*/
     }
 };
 $(function(){
