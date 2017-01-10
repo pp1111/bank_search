@@ -156,13 +156,8 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         })
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
-        let query = `${selectedProduct[0].name}`.replace(/ /g,"-");
-        query = escape(query);
-        let suggestions = yield getContent('http://localhost:4000/search/data?q=' + query, false);
-        suggestions = JSON.parse(suggestions);
-        suggestions.response.docs = suggestions.response.docs.filter(suggestion => JSON.parse(suggestion.alive));
-        suggestions = suggestions.response.docs.slice(1,10);
-
+        let suggestions = yield collection.find({subcategory: selectedProduct[0].subcategory}).toArray();
+    
         res.render('selected_product', {
             product: selectedProduct[0],
             suggestedProducts: suggestions,
