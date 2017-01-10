@@ -30,12 +30,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<header><% include partials/templemate/header.ejs %></header>
 	<div class="wrapper">
 		<div class="dimness"></div>
-	  	<article class="search-result">
-	  		<% check.forEach( check => { %>
-	  		<h2><%=check%></h2>
-		  	<div class="products">
-			 	<% products.forEach(product => { %> 
-			 		<% if(product.alive && product.subcategory===check.replace(/-/g, ' ')){ %>
+		<article class="search-result">
+			<% check.forEach( check => { %>
+			<h2><%=check%></h2>
+			<div class="products">
+				<% products.forEach(product => { %>
+					<% if(product.alive && (product.subcategory===check.replace(/-/g, ' ')) || product.subcategory == 'e-Sklepy') { %>
 					<div class="single-product">
 						<div class="img-wrapper">
 							<img src ="<%=product.logo%>">
@@ -53,36 +53,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<a class="button read-more" href="/finanse/produkt/<%=product.value%>">Dowiedz się więcej</a>
 						</div>
 					</div>
-				 	<%}%>
-			 	<%})%>
-		 	</div>
-		 	<%})%>
-	  	</article>
+					<%}%>
+				<%})%>
+			</div>
+			<%})%>
+		</article>
 	</div>
 	<footer><% include partials/templemate/footer.ejs %></footer>
 	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
-    <script src="/javascripts/typeahead.js"> </script>
+	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+	<script src="/javascripts/typeahead.js"> </script>
 	<script src="/javascripts/main.js"></script>
 	<script src="/javascripts/red.js"></script>
 	<script>
-      function initMap() {
-        var uluru = {lat: 52.235765, lng: 21.0177286};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: uluru,
-          disableDefaultUI: true,
-          zoomControl: true
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
-    </script>
+	  function initMap() {
+		var uluru = {lat: 52.235765, lng: 21.0177286};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 13,
+		  center: uluru,
+		  disableDefaultUI: true,
+		  zoomControl: true
+		});
+		var marker = new google.maps.Marker({
+		  position: uluru,
+		  map: map
+		});
+	  }
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
+	</script>
 </body>
 
 </html>
