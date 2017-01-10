@@ -95,8 +95,6 @@
 	top: 0;
 	left: 0;
 	cursor: default;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
 }
 .ui-menu {
 	list-style: none;
@@ -109,7 +107,6 @@
 	position: absolute;
 }
 .ui-menu .ui-menu-item {
-	font-size: 1.3rem;
 	margin: 0;
 	cursor: pointer;
 	/* support: IE10, see #8844 */
@@ -170,11 +167,14 @@
 	font-family: Arial,Helvetica,sans-serif;
 	font-size: 1em;
 }
-.ui-widget.ui-widget-content:not('.page-start .ui-widget.ui-widget-content') {
+.ui-widget.ui-widget-content {
 	border: 1px solid #c5c5c5;
 	margin-right: 10px;
 	position: fixed;
 	z-index: 99999999;
+}
+.page-start .ui-widget.ui-widget-content {
+	position: relative;
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
@@ -263,7 +263,7 @@ a.ui-button:active,
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
-	border: none;
+	border: #003eff;
 	background-color: #ffffff;
 }
 .ui-state-active a,

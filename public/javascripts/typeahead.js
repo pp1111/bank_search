@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://localhost:4000/search/suggestions?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
+                url: "http://amoney.pl:4000/search/suggestions?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {
@@ -11,7 +11,7 @@ $(document).ready(function () {
             }).done((data) =>{
                 res($.map(data, (item) =>{
                     item.term = item.term.replace(/<b>/g, "");
-                    item.term = item.term.replace(/<\/b>/g, "")
+                    item.term = item.term.replace(/<\/b>/g, "");
                     if (JSON.parse(item.payload)) {
                         return {
                             value: item.term.replace(/-/g," ")
@@ -23,7 +23,8 @@ $(document).ready(function () {
             });
         },
         select: (event, ui) => {
-            window.location.href = "/finanse/produkt/" + decodeURIComponent(ui.item.label.replace(/ /g,"-"));
+            let redirect = ui.item.label.replace(/ /g,"-");
+            window.location.href = `/finanse/produkt/${encodeURIComponent(redirect)}`;
         }
     });
 

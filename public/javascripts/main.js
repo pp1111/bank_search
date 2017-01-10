@@ -214,11 +214,13 @@ MAIN = {
          m.window.scroll(function() {
              if($(this).scrollTop() > 100) {
                 $('header').not('.page-start header, .calcMain header').css('position', 'fixed');
+                $('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'fixed');
                 $('header').not('.page-start header, .calcMain header').css('background-color', '#2ca9ed');
                 $('body').not('.page-start, .calcMain').css('margin-top', '200px');
              }
              else {
                  $('header').not('.page-start header, .calcMain header').css('position', 'relative');
+                 $('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'relative');
                  $('body').not('.page-start, .calcMain').css('margin-top', '0');
                  $('header').not('.page-start header, .calcMain header').css('background-color', 'transparent');
              }
