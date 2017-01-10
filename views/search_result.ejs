@@ -32,7 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="dimness"></div>
 		<article class="search-result">
 			<% check.forEach( check => { %>
-			<h2><%=check%></h2>
+			<h2><%=check.replace(/-/g, ' ')%></h2>
 			<div class="products">
 				<% products.forEach(product => { %>
 					<% if(product.alive && (product.subcategory===check.replace(/-/g, ' ')) || product.subcategory == 'e-Sklepy') { %>

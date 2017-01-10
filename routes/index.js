@@ -116,6 +116,11 @@ router.get('/finanse', function (req, res) {
             check.push(subcategory);
         })
 
+        result.response.docs = result.response.docs.map(product => {
+            product.value = product.value.replace(/%/g, '%25');
+            return product;
+        })
+
         res.render('search_result', {
             products: result.response.docs,
             categoriesDictionary: categories,
@@ -157,7 +162,12 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
         let suggestions = yield collection.find({subcategory: selectedProduct[0].subcategory}).toArray();
-    
+
+        suggestions = suggestions.map(suggestion => {
+            suggestion.value = suggestion.value.replace(/%/g, '%25');
+            return suggestion;
+        })
+
         res.render('selected_product', {
             product: selectedProduct[0],
             suggestedProducts: suggestions,
@@ -197,9 +207,8 @@ router.get('/finanse/:category', function (req, res){
         subcategories.forEach( subcategory => {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
-        
-        check.push(req.params.category);
 
+        check.push(req.params.category);
         res.render('search_result', {
             products: products,
             categoriesDictionary: categories,
