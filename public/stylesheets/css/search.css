@@ -182,6 +182,7 @@ html {
           justify-content: space-between;
           margin-top: 15px;
           width: 100%;
+          max-width: 660px;
           border-radius: 20px; }
           @media (min-width: 425px) {
             html body .wrapper header .search {

@@ -170,11 +170,29 @@
 .ui-widget.ui-widget-content {
 	border: 1px solid #c5c5c5;
 	margin-right: 10px;
+	border-radius: 0 0 7px 7px;
 	/*position: fixed;*/
-	z-index: 99999999;
+	/*z-index: 99999999;*/
 }
 .page-start .ui-widget.ui-widget-content {
 	position: relative;
+	max-width: 250px;
+}
+@media(min-width: 425px) {
+	.page-start .ui-widget.ui-widget-content {
+		max-width: 324px;
+}
+	}
+}
+@media(min-width: 1024px) {
+	.page-start .ui-widget.ui-widget-content {
+		max-width: 400px;
+	}
+}
+@media(min-width: 1024px) {
+	.page-start .ui-widget.ui-widget-content {
+		max-width: 600px;
+	}
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
