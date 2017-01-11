@@ -170,7 +170,7 @@
 .ui-widget.ui-widget-content {
 	border: 1px solid #c5c5c5;
 	margin-right: 10px;
-	position: fixed;
+	/*position: fixed;*/
 	z-index: 99999999;
 }
 .page-start .ui-widget.ui-widget-content {

@@ -16,6 +16,7 @@ MAIN = {
         searchIconNotBtn: $('nav .search .svg-not-btn'),
         valueBtn: $('.value button'),
         valueInput: $('.value input'),
+        uiWidget: $('ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front'),
         isCloseBtn: 0,
         isArrowBtn: 0,
     },
@@ -32,6 +33,7 @@ MAIN = {
         this.stickyHeader();
         this.footerPosition();
         this.slideToggleAbout();
+        //this.stopPageScroll();
     },
 
     setMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
@@ -43,6 +45,18 @@ MAIN = {
         m.topBar.removeClass(topBarClass);
         m.middleBar.removeClass(middleBarClass);
         m.bottomBar.removeClass(bottomBarClass);
+    },
+    stopPageScroll: function() {
+        if(m.uiWidget.length != 0) {
+            console.log('elo!');
+            $('body').on({
+                'mousewheel': function(e) {
+                    if (e.target.id == 'el') return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            })
+        }
     },
     openMenu: function() {
         m.menuBtn.click(function(){
@@ -214,13 +228,13 @@ MAIN = {
          m.window.scroll(function() {
              if($(this).scrollTop() > 100) {
                 $('header').not('.page-start header, .calcMain header').css('position', 'fixed');
-                $('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'fixed');
+                //$('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'fixed');
                 $('header').not('.page-start header, .calcMain header').css('background-color', '#2ca9ed');
                 $('body').not('.page-start, .calcMain').css('margin-top', '200px');
              }
              else {
                  $('header').not('.page-start header, .calcMain header').css('position', 'relative');
-                 $('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'relative');
+                 //$('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'relative');
                  $('body').not('.page-start, .calcMain').css('margin-top', '0');
                  $('header').not('.page-start header, .calcMain header').css('background-color', 'transparent');
              }
