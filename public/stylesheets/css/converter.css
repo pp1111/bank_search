@@ -336,6 +336,12 @@ body {
             list-style-type: none;
             padding: 0;
             text-align: center; }
+    body .wrapper .banner {
+      max-width: 435px;
+      margin: 0 auto;
+      margin-top: 20px; }
+      body .wrapper .banner a img {
+        width: 100%; }
   body footer {
     font-family: latoRegular, sans-serif;
     box-sizing: border-box;

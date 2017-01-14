@@ -105,11 +105,11 @@ html {
                     }
                     @media (min-width: 1024px) {
                         font-size: 9rem;
-                        margin-bottom: 70px;
+                        //margin-bottom: 70px;
                     }
                 }
                 #calc {
-                    margin-bottom: 50px;
+                    margin-bottom: 20px;
                     .value {
                         @include flexbox(row, nowrap);
                         justify-content: space-between;
@@ -190,7 +190,7 @@ html {
                         @include flexbox(column, nowrap);
                         justify-content: space-between;
                         align-items: center;
-                        margin-top: 50px;
+                        margin-top: 20px;
                         .course {
                             //height: 30px;
                             @include flexbox(column, nowrap);
@@ -225,9 +225,20 @@ html {
                             }
                             #year,
                             #day{
-                                width: 70px;
+                                width: 60px;
+                                padding-left: 15px;
                             }
                         }
+                    }
+                }
+            }
+            .banner {
+                max-width: 435px;
+                margin: 0 auto;
+                margin-bottom: 60px;
+                a {
+                    img {
+                        width: 100%;
                     }
                 }
             }

@@ -362,7 +362,17 @@ body {
                 }
             }
         }
-        
+        .banner {
+            max-width: 435px;
+            margin: 0 auto;
+            margin-top: 20px;
+            //margin-bottom: 60px;
+            a {
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
     footer {
             font-family: latoRegular, sans-serif;
