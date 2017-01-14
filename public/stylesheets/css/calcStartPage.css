@@ -6,7 +6,7 @@
   src: url(/fonts/Somatic-Rounded.otf); }
 html {
   font-size: 62.5%;
-  height: 100%; }
+  height: 110%; }
   html body {
     margin: 0;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -57,7 +57,7 @@ html {
       width: 100%; }
       @media (min-width: 1024px) {
         html body .wrapper {
-          top: 15%; } }
+          top: 10%; } }
       html body .wrapper header {
         display: -webkit-box;
         display: -moz-box;
@@ -75,6 +75,7 @@ html {
           text-align: center;
           margin: 0;
           letter-spacing: -3px; }
+
           @media (min-width: 425px) {
             html body .wrapper header h1 {
               font-size: 6rem; } }
@@ -85,7 +86,7 @@ html {
           @media (min-width: 1024px) {
             html body .wrapper header h1 {
               font-size: 9rem;
-              margin-bottom: 70px; } }
+              margin-bottom: 40px; } }
         html body .wrapper header #calc {
           margin-bottom: 50px; }
           html body .wrapper header #calc .value {
@@ -97,7 +98,6 @@ html {
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: space-between;
-            margin-top: 15px;
             width: 250px;
             height: 35px; }
             @media (min-width: 425px) {
@@ -175,7 +175,7 @@ html {
             flex-wrap: nowrap;
             justify-content: space-between;
             align-items: center;
-            margin-top: 50px; }
+            margin-top: 20px; }
             html body .wrapper header #calc .values .course {
               display: -webkit-box;
               display: -moz-box;

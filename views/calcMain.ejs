@@ -44,7 +44,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		</form>	
 		</header>
 		<% include partials/content/result.ejs %>
+			<div style="text-align: center">
+			<object type="application/x-shockwave-flash" data="https://fx.cinkciarz.pl/baner/	cinkciarz_billboard_750x100.swf?click=https://fx.cinkciarz.pl/baners/baner/314843939428/413107207892"
+			height="100" width="750">
+			<param name="movie" value="https://fx.cinkciarz.pl/baner/cinkciarz_billboard_750x100.swf" />
+			<param name="allowscriptaccess" value="always" />
+			</object>
+		</div>
 	</div>
+
 	<footer><% include partials/templemate/footer.ejs %></footer>
 	<script src="/javascripts/jquery-1.11.3.min.js"></script>
 	<script src="/javascripts/main.js"></script>
@@ -68,6 +76,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           map: map
         });
       }
+    </script>
+    <script>
+    $(document).on("ready", function(){
+    	$('html,body').animate({ scrollTop: 9999 }, 'slow');
+	});
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
