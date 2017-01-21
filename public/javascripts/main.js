@@ -17,6 +17,8 @@ MAIN = {
         valueBtn: $('.value button'),
         valueInput: $('.value input'),
         uiWidget: $('ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front'),
+        searchInput: $('#searcharea'),
+        dimness: $('.dimness'),
         isCloseBtn: 0,
         isArrowBtn: 0,
     },
@@ -26,14 +28,16 @@ MAIN = {
         this.openMenu();
         this.openSubMenu();
         this.closeSubMenu();
-        //if (m.window.width() >= 768) {
-            //this.slickInit();
-        //}
         this.applyNowBtnStopScroll();
         this.stickyHeader();
         this.footerPosition();
         this.slideToggleAbout();
-        //this.stopPageScroll();
+        this.searchFocus();
+        m.dimness.click(function() {
+            $(this).fadeOut();
+            $('body').removeClass('noscroll');
+        })
+        this.stopPageScroll();
     },
 
     setMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
@@ -45,18 +49,6 @@ MAIN = {
         m.topBar.removeClass(topBarClass);
         m.middleBar.removeClass(middleBarClass);
         m.bottomBar.removeClass(bottomBarClass);
-    },
-    stopPageScroll: function() {
-        if(m.uiWidget.length != 0) {
-            console.log('elo!');
-            $('body').on({
-                'mousewheel': function(e) {
-                    if (e.target.id == 'el') return;
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            })
-        }
     },
     openMenu: function() {
         m.menuBtn.click(function(){
@@ -74,6 +66,8 @@ MAIN = {
                         $('.dl-menu-header h3').show();
                     }, 300);
                     m.isCloseBtn = 1;
+                    m.dimness.fadeIn();
+                    $('body').addClass('noscroll');
                 }
                 else {
                     $('.bar').removeClass('bar-open');
@@ -93,6 +87,8 @@ MAIN = {
                     }
                     m.menuBtn.removeClass('menu-btn-open');
                     m.isCloseBtn = 0;
+                    m.dimness.fadeOut();
+                    $('body').removeClass('noscroll');
                 }
                 if( m.window.width() < 425) {
                     m.search.removeClass('search-clicked');
@@ -230,12 +226,12 @@ MAIN = {
                 $('header').not('.page-start header, .calcMain header').css('position', 'fixed');
                 //$('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'fixed');
                 $('header').not('.page-start header, .calcMain header').css('background-color', '#2ca9ed');
-                $('body').not('.page-start, .calcMain').css('margin-top', '200px');
+                $('.wrapper').not('.page-start, .calcMain').css('margin-top', '200px');
              }
              else {
                  $('header').not('.page-start header, .calcMain header').css('position', 'relative');
                  //$('.ui-widget-content').not('.page-start .ui-widget-content').css('position', 'relative');
-                 $('body').not('.page-start, .calcMain').css('margin-top', '0');
+                 $('.wrapper').not('.page-start, .calcMain').css('margin-top', '0');
                  $('header').not('.page-start header, .calcMain header').css('background-color', 'transparent');
              }
          });
@@ -244,6 +240,16 @@ MAIN = {
         if ($("body").height() < m.window.height() ) {
             $("footer").addClass('bottom');
         }
+    },
+    searchFocus: function() {
+        m.searchInput.focus(function() {
+            m.dimness.fadeIn();
+            $('body').addClass('noscroll');
+        });
+        m.searchInput.focusout(function() {
+            m.dimness.fadeOut();
+            $('body').removeClass('noscroll');
+        });
     },
     slideToggleAbout: function() {
         //if(m.window.width() > 768) {

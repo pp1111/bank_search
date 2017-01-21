@@ -175,6 +175,12 @@
 	margin-right: 10px;
 	/*position: fixed;*/
 	z-index: 99999999;
+	overflow: scroll;
+}
+@media(max-height: 200px) {
+	.ui-widget.ui-widget-content {
+		max-height: 70px;
+	}
 }
 .page-start .ui-widget.ui-widget-content {
 	position: relative;

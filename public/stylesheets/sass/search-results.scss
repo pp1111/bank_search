@@ -42,6 +42,18 @@ body {
     background-repeat: no-repeat;
     background-color: #2ca9ed;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca9ed', endColorstr='#84caef', GradientType=1 );
+    &.noscroll {
+        overflow: hidden;
+    }
+    .dimness {
+        background: rgba(0, 0, 0, .6);
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        top: 0;
+        position: fixed;
+        display: none;
+    }
     .contact-link {
         position: absolute;
         right: 10px;
