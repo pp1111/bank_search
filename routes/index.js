@@ -208,7 +208,7 @@ router.get('/finanse/:category', function (req, res){
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
 
-        check.push(req.params.category);
+        req.params.category == 'e-Sklepy' ? check.push(req.params.category) : check.push(req.params.category.replace(/-/g, ' '));
         res.render('search_result', {
             products: products,
             categoriesDictionary: categories,

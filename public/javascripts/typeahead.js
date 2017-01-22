@@ -24,7 +24,7 @@ $(document).ready(function () {
         },
         select: (event, ui) => {
             let redirect = ui.item.label.replace(/ /g,"-");
-            window.location.href = `/finanse/produkt/${encodeURIComponent(redirect)}`;
+            window.location.href = `/finanse/produkt/${decodeURIComponent(redirect)}`;
         }
     });
 

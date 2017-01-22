@@ -10,7 +10,7 @@ var xmldoc = require('xmldoc');
 module.exports = class SolrClient {
     constructor (opts) {
         this.client = solr.createClient('localhost', '8983', 'core0', http.agent);
-        this.schema = readSchema(`/home/patryk/projects/solr-5.0.0/server/solr/core0/conf/schema.xml`);
+        this.schema = readSchema(`/opt/solr-5.0.0/server/solr/core0/conf/schema.xml`);
     }
  
     query () {

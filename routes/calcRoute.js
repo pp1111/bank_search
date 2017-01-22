@@ -321,7 +321,7 @@ router.get(/^\/(\w+)\-(\w+)\-(\w+)\/(\w+)\-na-(\w+)\-\-(\w+)\-ile-to-(\w+)$/ , f
   var entryTab = [];
   var date = new Date(20+req.params[0],req.params[1]-1,req.params[2],0,0,0);
 
-  if(req.params[0] == 16){
+  if(req.params[0] == 17){
     url = "http://www.nbp.pl/kursy/xml/dir.txt";
   } else {
     url = "http://www.nbp.pl/kursy/xml/dir20" + req.params[0] + ".txt";

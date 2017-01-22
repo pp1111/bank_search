@@ -39,7 +39,7 @@ co(function *() {
 					application: `http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
 					description: produkt.opis[0],
 					longDescription: `long desc`,
-					alive: true,
+					alive: false,
 					updated: false,
 					meta: {
 						title: "",
@@ -53,8 +53,6 @@ co(function *() {
 			})
 		})
 	})
-
-	console.log(productList);
 
 	let actualDb = yield collection.find().toArray();
 	actualDb = actualDb.map(product => product.id);
