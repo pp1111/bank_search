@@ -1,26 +1,23 @@
 {
   "dependencies": {
-    "async": "^2.0.1",
-    "body-parser": "^1.15.2",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.16.0",
     "co": "^4.6.0",
     "co-mongo": "0.0.2",
     "cookie-parser": "^1.4.3",
-    "ejs": "^2.5.2",
-    "emailjs": "^0.3.16",
+    "ejs": "^2.5.5",
+    "emailjs": "^1.0.8",
     "express": "^4.14.0",
     "generator-foreach": "^0.1.0",
     "iconv": "^2.2.1",
     "less-middleware": "^2.2.0",
-    "lodash": "^4.16.4",
     "mongodb": "^2.2.10",
     "morgan": "^1.7.0",
-    "nodemailer": "^2.6.0",
-    "promised-mongo": "^1.2.0",
     "q": "^1.4.1",
-    "request": "^2.74.0",
+    "request": "^2.79.0",
     "solr-client": "^0.6.0",
     "xml-to-json-promise": "0.0.3",
     "xml2js": "^0.4.17",
-    "xmldoc": "^0.5.1"
+    "xmldoc": "^1.0.0"
   }
 }

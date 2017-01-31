@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const url = require('url');
 
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
@@ -12,7 +11,6 @@ const Promise = require("bluebird");
 
 const getContent = require('../lib/getContent');
 
-const array = require('lodash/array');
 const ascii = require('../lib/ascii');
 
 const Mailer = require('./../lib/mailer')
@@ -23,7 +21,7 @@ router.get('/', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
-        let products =  yield collection.find().toArray();
+        let products =  yield collection.find({ alive: true }).toArray();
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
@@ -75,7 +73,7 @@ router.get('/finanse', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
-        let products =  yield collection.find().toArray();
+        let products =  yield collection.find({alive: true}).toArray();
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
@@ -109,7 +107,6 @@ router.get('/finanse', function (req, res) {
             product.name = product.name.replace(/_/g, ' ');
         })
 
-        result.response.docs = result.response.docs.filter(product => JSON.parse(product.alive));
         let searchedSubcategories = [...new Set(result.response.docs.map(product => product.subcategory))];
 
         searchedSubcategories.forEach( subcategory => {
@@ -136,7 +133,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');
-        let products =  yield collection.find().toArray();
+        let products =  yield collection.find({ alive: true }).toArray();
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
@@ -161,6 +158,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         })
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
+        console.log(selectedProduct);
         let suggestions = yield collection.find({subcategory: selectedProduct[0].subcategory}).toArray();
 
         suggestions = suggestions.map(suggestion => {
@@ -184,7 +182,7 @@ router.get('/finanse/:category', function (req, res){
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
         let collection = yield db.collection('productsList');   
-        let products =  yield collection.find().toArray();
+        let products =  yield collection.find({ alive: true }).toArray();
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];

@@ -31,6 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="wrapper container">
         <article class="search-result row">
             <div class="whole-product col-md-6 col-lg-7">
+                <% if (product.alive)  { %>
                 <div class="img-wrapper">
                     <img src ="<%=product.logo%>" alt="<%=product.meta.alt%>">
                 </div>
@@ -39,6 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <%-product.longDescription%>
                     <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
                 </div>
+                <% } %>
             </div>
             <div class="line"></div>
             <div class="products col-md-6 col-lg-5">

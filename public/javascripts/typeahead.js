@@ -2,21 +2,18 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://amoney.pl:4000/search/suggestions?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
+                url: "http://localhost:4000/search/data?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {
                     term: req.term
                 }
             }).done((data) =>{
+                data = data.response.docs;
                 res($.map(data, (item) =>{
-                    item.term = item.term.replace(/<b>/g, "");
-                    item.term = item.term.replace(/<\/b>/g, "");
-                    if (JSON.parse(item.payload)) {
-                        return {
-                            value: item.term.replace(/-/g," ")
-                        };
-                    }
+                    return {
+                        value: item.value.replace(/-/g," ")
+                    };
                 }));
             }).fail(function (data) {
                 alert('error');
