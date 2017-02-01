@@ -37,13 +37,13 @@ router.get('/', function (req, res) {
         }));
 
         categories.forEach( category => {
-            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+            categoriesMap[category] = [...new Set (categoriesMap[category].filter(product => product.alive).map(product => product.subcategory))];
         })
 
         subcategories.forEach( subcategory => {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
-        
+
         res.render('search', {
             product: products,
             categoriesDictionary: categories,
@@ -90,7 +90,7 @@ router.get('/finanse', function (req, res) {
         }));
 
         categories.forEach( category => {
-            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+            categoriesMap[category] = [...new Set (categoriesMap[category].filter(product => product.alive).map(product => product.subcategory))];
         })
 
         subcategories.forEach( subcategory => {
@@ -150,7 +150,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         }));
 
         categories.forEach( category => {
-            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+            categoriesMap[category] = [...new Set (categoriesMap[category].filter(product => product.alive).map(product => product.subcategory))];
         })
 
         subcategories.forEach( subcategory => {
@@ -158,7 +158,6 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         })
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
-        console.log(selectedProduct);
         let suggestions = yield collection.find({subcategory: selectedProduct[0].subcategory}).toArray();
 
         suggestions = suggestions.map(suggestion => {
@@ -199,7 +198,7 @@ router.get('/finanse/:category', function (req, res){
         }));
 
         categories.forEach( category => {
-            categoriesMap[category] = [...new Set (categoriesMap[category].map(product => product.subcategory))];
+            categoriesMap[category] = [...new Set (categoriesMap[category].filter(product => product.alive).map(product => product.subcategory))];
         })
 
         subcategories.forEach( subcategory => {
