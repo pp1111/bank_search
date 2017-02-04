@@ -19,6 +19,7 @@ MAIN = {
         uiWidget: $('ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front'),
         searchInput: $('#searcharea'),
         dimness: $('.dimness'),
+        bannersWrapper: $('.banners'),
         isCloseBtn: 0,
         isArrowBtn: 0,
     },
@@ -33,11 +34,11 @@ MAIN = {
         this.footerPosition();
         this.slideToggleAbout();
         this.searchFocus();
+        this.randomBanner();
         m.dimness.click(function() {
             $(this).fadeOut();
             $('body').removeClass('noscroll');
         })
-        this.stopPageScroll();
     },
 
     setMenuBtn: function(topBarClass, middleBarClass, bottomBarClass) {
@@ -251,6 +252,11 @@ MAIN = {
             $('body').removeClass('noscroll');
         });
     },
+    randomBanner: function() {
+        var bannerNumber = Math.floor((Math.random()*2)+1);
+        console.log('banner number:', bannerNumber);
+        m.bannersWrapper.find("[data-banner-number='" + bannerNumber + "']").show();
+    },
     slideToggleAbout: function() {
         //if(m.window.width() > 768) {
             $('footer .about').on('mouseenter touchstart', function(e){ 
@@ -286,7 +292,7 @@ MAIN = {
                     }, 500);
                 }        
             });
-        //}
+        }
         /*else {
             $('footer .about').click(function() {
                 $('.footer-about').animate({
@@ -310,7 +316,7 @@ MAIN = {
                 e.stopPropagation();
             });
         }*/
-    }
+    //}
 };
 $(function(){
     MAIN.init();

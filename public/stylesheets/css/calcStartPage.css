@@ -203,19 +203,14 @@ html {
                 margin-top: 10px; }
             html body .wrapper header #calc .values .date {
               height: 30px;
-              margin-top: 20px; }
+              margin-top: 20px;
+              margin-bottom: 50px; }
               html body .wrapper header #calc .values .date select {
                 width: 125px; }
               html body .wrapper header #calc .values .date #year,
               html body .wrapper header #calc .values .date #day {
                 width: 60px;
                 padding-left: 15px; }
-      html body .wrapper .banner {
-        max-width: 435px;
-        margin: 0 auto;
-        margin-bottom: 60px; }
-        html body .wrapper .banner a img {
-          width: 100%; }
     html body footer {
       font-family: latoRegular, sans-serif;
       box-sizing: border-box;
