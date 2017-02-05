@@ -253,7 +253,7 @@ body {
             //text-align: left;
             border-radius: 10px;
             padding: 20px;
-            max-width: 1400px;
+            max-width: 850px;
             @media(min-width: 768px) {
                 width: 75%;
                 //margin: 0 auto;
@@ -262,42 +262,72 @@ body {
             //    justify-content: space-between;
             }
             .result-banner {
-                @include flexbox(row, wrap);
+                @include flexbox(column, wrap);
                 justify-content: center;
                 align-items: flex-start;
-                .rand-btn {
-                    min-width: 150px;
+                .result-btn {
                     @include flexbox(row, nowrap);
-                    justify-content: center;
-                    align-items: center;
-                    @media (min-width: 768px) {
-                        width: 20%;
-                    }
-                    a {
-                        text-align: center;
-                        font-size: 1.5rem;
+                    justify-content: space-between;
+                    width: 100%;
+                    .rand-btn {
+                        min-width: 150px;
+                        position: relative;
                         @include flexbox(row, nowrap);
                         justify-content: center;
                         align-items: center;
-                        border: 2px solid #3d81da;
-                        background-color: #3d81da;
-                        border-radius: 100%;
-                        width: 75px;
-                        height: 75px;
-                        color: $white;
-                        text-decoration: none;
-                        font-family: somaticRounded, sans-serif;
-                        @include transition(.3s);
-                        cursor: pointer;
-                        &:hover {
-                            background-color: $white;
-                            color: #3d81da;
+                        @media (min-width: 768px) {
+                            width: 20%;
+                        }
+                        .single-course {
+                            //flex-grow: 2;
+                            //max-width: 70%;
+                            //min-width: 300px;
+                            //text-align: center;
+                            @media(min-width: 854px) {
+                            //    text-align: left;
+                            }
+                            @media(min-width: 1440px) {
+                                //min-width: 600px;
+                            }
+                            .banner {
+                                display: none;
+                            }
+                            object {
+                                max-width: 435px;
+                                //width: 100%;
+                                margin-right: 10px;
+                                height: 40px;
+                            }
+                        }
+                        a {
+                            text-align: center;
+                            position: absolute;
+                            left: 0;
+                            font-size: 1.5rem;
+                            @include flexbox(row, nowrap);
+                            justify-content: center;
+                            align-items: center;
+                            border: 2px solid #3d81da;
+                            background-color: #3d81da;
+                            border-radius: 100%;
+                            width: 75px;
+                            height: 75px;
+                            color: $white;
+                            text-decoration: none;
+                            font-family: somaticRounded, sans-serif;
+                            @include transition(.3s);
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $white;
+                                color: #3d81da;
+                            }
                         }
                     }
                 }
                 .banner {
                     max-width: 435px;
-                    margin: 20px 0;
+                    margin-top: 20px;
+                    display: none;
                     //margin-bottom: 60px;
                     a {
                         img {
@@ -321,31 +351,14 @@ body {
                     margin-left: 10px;
                     text-align: center;
                 }
-                @media(min-width: 1440px) {
-                    //max-width: 400px;
+                @media(min-width: 952px) {
+                    margin-left: 10px;
+                }
+                @media(max-width: 939px) {
+                    margin-top: 10px;
                 }
             }
-            .single-course {
-                flex-grow: 2;
-                max-width: 70%;
-                min-width: 300px;
-                text-align: center;
-                @media(min-width: 854px) {
-                    text-align: left;
-                }
-                @media(min-width: 1440px) {
-                    min-width: 600px;
-                }
-                .banner {
-                    display: none;
-                }
-                object {
-                    max-width: 435px;
-                    //width: 100%;
-                    margin-right: 10px;
-                    height: 40px;
-                }
-            }
+            
             #show {
                 align-self: flex-start;
                 #resultarea {
@@ -369,7 +382,7 @@ body {
                     }
                 }
                 #courseTable {
-                    max-height: 245px;
+                    max-height: 260px;
                     overflow-y: auto;
                     background-color: $white;
                     //width: 70%;
