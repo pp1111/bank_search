@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="info">
                     <h4><%=product.name%> <%=product.provider%></h4>
                     <%-product.longDescription%>
-                    <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
+                    <a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
                 </div>
                 <% } %>
             </div>
@@ -52,8 +52,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<img src ="<%=product.logo%>" alt="<%=product.alt%>">
 						</div>
                         <div class="buttons-container">
-                            <a class="button read-more" href="/finanse/produkt/<%=product.value%>">Dowiedz się więcej</a>
-                            <a class="button apply-now" href="<%=product.application%>">Zloż wniosek</a>
+                            <a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
+                            <a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
                         </div>
                     </div>
                     <div class="info">
@@ -91,6 +91,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           map: map
         });
       }
+    </script>
+    <script>
+        dataLayer.push(<%- dataLayerObject %>);
+        dataLayer.push({
+            google_tag_params: {
+                dynx_itemid: <%- product.id %>,
+                dynx_pagetype: 'offerdetail',
+                dynx_totalvalue: 0
+            }
+        });
+
+        function applyNowClick (product) {
+
+            dataLayer.push({
+            event: 'checkout',
+                ecommerce: {
+                    checkout: {
+                        actionField: { step: 1, option: '' },
+                        products: [{
+                            name: `${product.name} ${product.provider}`,
+                            id: product.id,
+                            price: 0,
+                            brand: product.provider,
+                            category: `${product.category}/${product.subcategory}`,
+                            variant: '',
+                            quantity: 1
+                        }]
+                    }
+                }
+            });
+        }
+        function readMoreClick (product) {
+            dataLayer.push({
+            event: 'productClick',
+            ecommerce: {
+                click: {
+                    actionField: { list: 'Search Results' },
+                    products: [{
+                        name: `${product.name} ${product.provider}`,
+                        id: product.id,
+                        price: 0,
+                        brand: product.provider,
+                        category: `${product.category}/${product.subcategory}`,
+                        variant: '',
+                        position: 1
+                     }]
+                    }
+                },
+                eventCallback: function() {
+                   document.location = `/finanse/produkt/${product.value}`
+                }()
+            });
+        }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">

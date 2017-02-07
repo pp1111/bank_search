@@ -254,8 +254,20 @@ MAIN = {
     },
     randomBanner: function() {
         var bannerNumber = Math.floor((Math.random()*2)+1);
-        console.log('banner number:', bannerNumber);
         m.bannersWrapper.find("[data-banner-number='" + bannerNumber + "']").show();
+        var bannerName = bannerNumber === 1 ? 'Walutomat' : 'Cinkciarz';
+        dataLayer.push({
+            ecommerce: {
+                promoView: {
+                    promotions: [
+                        {
+                             name: bannerName,
+                             creative: 'banner',
+                             position: 'slot1'
+                        }]
+                }
+            }
+        });
     },
     slideToggleAbout: function() {
         //if(m.window.width() > 768) {

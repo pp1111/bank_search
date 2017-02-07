@@ -77,7 +77,7 @@ router.get('/finanse', function (req, res) {
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
-        let check = [];
+        let productList;
 
         let categoriesMap = {}; 
         let subCategoriesMap = {};
@@ -107,24 +107,36 @@ router.get('/finanse', function (req, res) {
             product.name = product.name.replace(/_/g, ' ');
         })
 
-        let searchedSubcategories = [...new Set(result.response.docs.map(product => product.subcategory))];
-
-        searchedSubcategories.forEach( subcategory => {
-            check.push(subcategory);
-        })
-
-        result.response.docs = result.response.docs.map(product => {
+        productList = result.response.docs = result.response.docs.map(product => {
             product.value = product.value.replace(/%/g, '%25');
             return product;
         })
 
+        const dataLayerObject = {
+            ecommerce: {
+                currencyCode: 'PLN',
+                impressions: productList.map((product, acc) => {
+                    return {
+                        name: `${product.name} ${product.provider}`,
+                        id: product.id,
+                        price: 0,
+                        brand: product.provider,
+                        category: `${product.category}/${product.subcategory}`,
+                        variant: ``,
+                        list: `Search results`,
+                        position: acc + 1,
+                    }
+                }),
+            },
+        }
+
         res.render('search_result', {
-            products: result.response.docs,
+            productList: productList,
             categoriesDictionary: categories,
             subcategoriesDictionary: subcategories,
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
-            check: check,
+            dataLayerObject: JSON.stringify(dataLayerObject),
         })
     }).catch(err => console.log(err))
 });
@@ -158,12 +170,59 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         })
 
         let selectedProduct = yield collection.find({value: req.params.productValue}).toArray();
-        let suggestions = yield collection.find({subcategory: selectedProduct[0].subcategory}).toArray();
+        let suggestions = yield collection.find({ id: { $ne: selectedProduct[0].id }, subcategory: selectedProduct[0].subcategory }).toArray();
 
         suggestions = suggestions.map(suggestion => {
             suggestion.value = suggestion.value.replace(/%/g, '%25');
             return suggestion;
-        })
+        }).filter(suggestion => suggestion.alive)
+
+        const details = {
+            name: `${selectedProduct[0].name} ${selectedProduct[0].provider}`,
+            id: selectedProduct[0].id,
+            price: 0,
+            brand: selectedProduct[0].provider,
+            category: `${selectedProduct[0].category}/${selectedProduct[0].subcategory}`,
+            variant: '',
+        };
+
+        const dataLayerObject = {
+            ecommerce: {
+                details: {
+                    actionField: {
+                        list: 'Szczegóły produktu',
+                    },
+                    products: details,
+                },
+                impressions: [],
+            },
+        }
+
+        if (req.query.selectFromSuggestions) {
+            dataLayerObject.ecommerce.impressions.push({
+                name: `${selectedProduct[0].name} ${selectedProduct[0].provider}`,
+                id: selectedProduct[0].id,
+                price: 0,
+                brand: selectedProduct[0].provider,
+                category: `${selectedProduct[0].category}/${selectedProduct[0].subcategory}`,
+                variant: '',
+                position: 1,
+                list: `Search - product direct`
+            });
+        }
+
+        dataLayerObject.ecommerce.impressions = dataLayerObject.ecommerce.impressions.concat(suggestions.map((product, acc) => {
+            return {
+                name: `${product.name} ${product.provider}`,
+                id: product.id,
+                price: 0,
+                brand: product.provider,
+                category: `${product.category}/${product.subcategory}`,
+                variant: ``,
+                list: `Product details`,
+                position: acc + 1,
+            }
+        }));
 
         res.render('selected_product', {
             product: selectedProduct[0],
@@ -172,6 +231,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
             subcategoriesDictionary: subcategories,
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
+            dataLayerObject: JSON.stringify(dataLayerObject),
         })
 
     }).catch(err => console.log(err))
@@ -185,7 +245,7 @@ router.get('/finanse/:category', function (req, res){
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
-        let check = [];
+        let productList = [];
 
         let categoriesMap = {};
         let subCategoriesMap = {};
@@ -205,14 +265,39 @@ router.get('/finanse/:category', function (req, res){
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
 
-        req.params.category == 'e-Sklepy' ? check.push(req.params.category) : check.push(req.params.category.replace(/-/g, ' '));
+        productList = products.filter(product => product.subcategory == req.params.subcategory);
+
+        if (req.params.category == 'e-Sklepy') {
+              productList = products.filter(product => product.subcategory == req.params.category);
+        } else {
+            productList = products.filter(product => product.subcategory == req.params.category.replace(/-/g, ' '));
+        }
+
+        const dataLayerObject = {
+            ecommerce: {
+                currencyCode: 'PLN',
+                impressions: productList.map((product, acc) => {
+                    return {
+                        name: `${product.name} ${product.provider}`,
+                        id: product.id,
+                        price: 0,
+                        brand: product.provider,
+                        category: `${product.category}/${product.subcategory}`,
+                        variant: ``,
+                        list: `Menu`,
+                        position: acc + 1,
+                    }
+                }),
+            },
+        }
+
         res.render('search_result', {
-            products: products,
             categoriesDictionary: categories,
             subcategoriesDictionary: subcategories,
             categoriesMap: categoriesMap,
             subcategoriesMap: subCategoriesMap,
-            check: check,
+            productList: productList,
+            dataLayerObject: JSON.stringify(dataLayerObject),
         })
     }).catch(err => console.log(err))
 });
