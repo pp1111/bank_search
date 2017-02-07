@@ -253,6 +253,9 @@ MAIN = {
         });
     },
     randomBanner: function() {
+        if (window.location.href.split('/')[3] != 'przelicznik') {
+            return;
+        }
         var bannerNumber = Math.floor((Math.random()*2)+1);
         m.bannersWrapper.find("[data-banner-number='" + bannerNumber + "']").show();
         var bannerName = bannerNumber === 1 ? 'Walutomat' : 'Cinkciarz';
