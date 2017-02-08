@@ -103,7 +103,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
 
         function applyNowClick (product) {
-
             dataLayer.push({
             event: 'checkout',
                 ecommerce: {
@@ -127,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             event: 'productClick',
             ecommerce: {
                 click: {
-                    actionField: { list: 'Search Results' },
+                    actionField: { list: getJsonFromUrl().from },
                     products: [{
                         name: `${product.name} ${product.provider}`,
                         id: product.id,
@@ -140,9 +139,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     }
                 },
                 eventCallback: function() {
-                   document.location = `/finanse/produkt/${product.value}`
-                }()
+                   document.location = `/finanse/produkt/${product.value}?from=Product_details`
+                }
             });
+        }
+    </script>
+    <script>
+        function getJsonFromUrl() {
+            var query = location.search.substr(1);
+            var result = {};
+            query.split("&").forEach(function(part) {
+                var item = part.split("=");
+                result[item[0]] = decodeURIComponent(item[1]);
+            });
+            return result;
         }
     </script>
     <script async defer

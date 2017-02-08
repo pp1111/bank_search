@@ -123,7 +123,7 @@ router.get('/finanse', function (req, res) {
                         brand: product.provider,
                         category: `${product.category}/${product.subcategory}`,
                         variant: ``,
-                        list: `Search results`,
+                        list: `Search_results`,
                         position: acc + 1,
                     }
                 }),
@@ -207,7 +207,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
                 category: `${selectedProduct[0].category}/${selectedProduct[0].subcategory}`,
                 variant: '',
                 position: 1,
-                list: `Search - product direct`
+                list: `Search_product_direct`
             });
         }
 

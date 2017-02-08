@@ -17,7 +17,7 @@
                         <div class="inner-scroll">
                             <% categoriesMap[category].forEach( subcategory => { %>
                             <li class="subcategory">
-                                <a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
+                                <a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>?from=Menu"><%=subcategory%></a>
                             </li>
                             <% }) %>
                         </div>

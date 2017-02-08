@@ -47,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<div class="inner-scroll">
 							<% categoriesMap[category].forEach( subcategory => { %>
 							<li class="subcategory">
-								<a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>"><%=subcategory%></a>
+								<a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>?from=Menu"><%=subcategory%></a>
 							</li>
 							<% }) %>
 						</div>
@@ -75,6 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 			<form class="search" action="/finanse">
 				<input id="searcharea" value="<%=suggestions%>" type="text" name ="q" class="form-control"/>
+				<input type="hidden" name="from" value="Search_results"/>
 				<button  type="submit" id="search" class="btn btn-default">
 					 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
 					 viewBox="0 0 64.738 64.738" style="enable-background:new 0 0 64.738 64.738;" 
