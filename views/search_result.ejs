@@ -110,11 +110,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			});
 		}
 		function readMoreClick (product) {
+			var url = getJsonFromUrl();
+			var list;
+
+			if (url.from) {
+				list = url.from;
+			} else if (url.gclid) {
+				list = 'Menu'
+			} else {
+				list = 'Product_details'
+			}
+
 			dataLayer.push({
 			event: 'productClick',
 			ecommerce: {
 				click: {
-					actionField: { list: getJsonFromUrl().from },
+					actionField: { list: list },
 					products: [{
 						name: `${product.name} ${product.provider}`,
 						id: product.id,

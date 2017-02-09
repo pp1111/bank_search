@@ -3,16 +3,16 @@
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="Description" content="<%=product.meta.description%>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href='/icons/search/css/fontello.css' />
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
-    <link rel="icon" type="image/png" href="/icons/favicon.png">
-    <title><%=product.meta.title%></title>
+	<meta charset="utf-8"/>
+	<meta name="Description" content="<%=product.meta.description%>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href='/icons/search/css/fontello.css' />
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
+	<link rel="icon" type="image/png" href="/icons/favicon.png">
+	<title><%=product.meta.title%></title>
  </head>
 
 <body>
@@ -26,138 +26,149 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
-    <!--<a class="contact-link" href="/kontakt">Kontakt</a>-->
-    <header><% include partials/templemate/header.ejs %></header>
-    <div class="wrapper container">
-        <article class="search-result row">
-            <div class="whole-product col-md-6 col-lg-7">
-                <% if (product.alive)  { %>
-                <div class="img-wrapper">
-                    <img src ="<%=product.logo%>" alt="<%=product.meta.alt%>">
-                </div>
-                <div class="info">
-                    <h4><%=product.name%> <%=product.provider%></h4>
-                    <%-product.longDescription%>
-                    <a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
-                </div>
-                <% } %>
-            </div>
-            <div class="line"></div>
-            <div class="products col-md-6 col-lg-5">
-                <% suggestedProducts.forEach(product => { %>
-                <% if (product.alive) { %>
-                <div class="single-product">
-                    <div class="img-and-btns">
+	<!--<a class="contact-link" href="/kontakt">Kontakt</a>-->
+	<header><% include partials/templemate/header.ejs %></header>
+	<div class="wrapper container">
+		<article class="search-result row">
+			<div class="whole-product col-md-6 col-lg-7">
+				<% if (product.alive)  { %>
+				<div class="img-wrapper">
+					<img src ="<%=product.logo%>" alt="<%=product.meta.alt%>">
+				</div>
+				<div class="info">
+					<h4><%=product.name%> <%=product.provider%></h4>
+					<%-product.longDescription%>
+					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
+				</div>
+				<% } %>
+			</div>
+			<div class="line"></div>
+			<div class="products col-md-6 col-lg-5">
+				<% suggestedProducts.forEach(product => { %>
+				<% if (product.alive) { %>
+				<div class="single-product">
+					<div class="img-and-btns">
 						<div class="img-wrapper">
 							<img src ="<%=product.logo%>" alt="<%=product.alt%>">
 						</div>
-                        <div class="buttons-container">
-                            <a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
-                            <a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="inner-scroll">
-                            <h4><%=product.name%> <%=product.provider%></h4>
-                            <%-product.description%>
-                        </div>
-                    </div>
-                </div>
-                <% } %>
-                <% }) %>
-            </div>
-        </article>
-        <aside class="aside aside-1"></aside>
-        <aside class="aside aside-2"></aside>
-    </div>
+						<div class="buttons-container">
+							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
+							<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
+						</div>
+					</div>
+					<div class="info">
+						<div class="inner-scroll">
+							<h4><%=product.name%> <%=product.provider%></h4>
+							<%-product.description%>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% }) %>
+			</div>
+		</article>
+		<aside class="aside aside-1"></aside>
+		<aside class="aside aside-2"></aside>
+	</div>
 
-    <footer> <% include partials/templemate/footer.ejs %> </footer>
-    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
-    <script src="/javascripts/typeahead.js"> </script>
-    <script src="/javascripts/main.js"></script>
-    <script src="/javascripts/red.js"></script>
-    <script>
-      function initMap() {
-        var uluru = {lat: 52.235765, lng: 21.0177286};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: uluru,
-          disableDefaultUI: true,
-          zoomControl: true
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script>
-        dataLayer.push(<%- dataLayerObject %>);
-        dataLayer.push({
-            google_tag_params: {
-                dynx_itemid: <%- product.id %>,
-                dynx_pagetype: 'offerdetail',
-                dynx_totalvalue: 0
-            }
-        });
+	<footer> <% include partials/templemate/footer.ejs %> </footer>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+	<script src="/javascripts/typeahead.js"> </script>
+	<script src="/javascripts/main.js"></script>
+	<script src="/javascripts/red.js"></script>
+	<script>
+	  function initMap() {
+		var uluru = {lat: 52.235765, lng: 21.0177286};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 13,
+		  center: uluru,
+		  disableDefaultUI: true,
+		  zoomControl: true
+		});
+		var marker = new google.maps.Marker({
+		  position: uluru,
+		  map: map
+		});
+	  }
+	</script>
+	<script>
+		dataLayer.push(<%- dataLayerObject %>);
+		dataLayer.push({
+			google_tag_params: {
+				dynx_itemid: <%- product.id %>,
+				dynx_pagetype: 'offerdetail',
+				dynx_totalvalue: 0
+			}
+		});
 
-        function applyNowClick (product) {
-            dataLayer.push({
-            event: 'checkout',
-                ecommerce: {
-                    checkout: {
-                        actionField: { step: 1, option: '' },
-                        products: [{
-                            name: `${product.name} ${product.provider}`,
-                            id: product.id,
-                            price: 0,
-                            brand: product.provider,
-                            category: `${product.category}/${product.subcategory}`,
-                            variant: '',
-                            quantity: 1
-                        }]
-                    }
-                }
-            });
-        }
-        function readMoreClick (product) {
-            dataLayer.push({
-            event: 'productClick',
-            ecommerce: {
-                click: {
-                    actionField: { list: getJsonFromUrl().from },
-                    products: [{
-                        name: `${product.name} ${product.provider}`,
-                        id: product.id,
-                        price: 0,
-                        brand: product.provider,
-                        category: `${product.category}/${product.subcategory}`,
-                        variant: '',
-                        position: 1
-                     }]
-                    }
-                },
-                eventCallback: function() {
-                   document.location = `/finanse/produkt/${product.value}?from=Product_details`
-                }
-            });
-        }
-    </script>
-    <script>
-        function getJsonFromUrl() {
-            var query = location.search.substr(1);
-            var result = {};
-            query.split("&").forEach(function(part) {
-                var item = part.split("=");
-                result[item[0]] = decodeURIComponent(item[1]);
-            });
-            return result;
-        }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
-    </script>
+		function applyNowClick (product) {
+			dataLayer.push({
+			event: 'checkout',
+				ecommerce: {
+					checkout: {
+						actionField: { step: 1, option: '' },
+						products: [{
+							name: `${product.name} ${product.provider}`,
+							id: product.id,
+							price: 0,
+							brand: product.provider,
+							category: `${product.category}/${product.subcategory}`,
+							variant: '',
+							quantity: 1
+						}]
+					}
+				}
+			});
+		}
+		function readMoreClick (product) {
+			var url = getJsonFromUrl();
+			var list;
+
+			if (url.from) {
+				list = url.from;
+			} else if (url.gclid) {
+				list = 'Menu'
+			} else {
+				list = 'Product_details'
+			}
+
+			dataLayer.push({
+			event: 'productClick',
+			ecommerce: {
+				click: {
+					actionField: { list: list },
+					products: [{
+						name: `${product.name} ${product.provider}`,
+						id: product.id,
+						price: 0,
+						brand: product.provider,
+						category: `${product.category}/${product.subcategory}`,
+						variant: '',
+						position: 1
+					 }]
+					}
+				},
+				eventCallback: function() {
+					document.location = `/finanse/produkt/${product.value}?from=Product_details`
+				}
+			});
+		}
+	</script>
+	<script>
+		function getJsonFromUrl() {
+			var query = location.search.substr(1);
+			var result = {};
+			query.split("&").forEach(function(part) {
+				var item = part.split("=");
+				result[item[0]] = decodeURIComponent(item[1]);
+			});
+			return result;
+		}
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
+	</script>
 </body>
 
 </html>
