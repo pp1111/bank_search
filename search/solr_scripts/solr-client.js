@@ -10,7 +10,7 @@ var xmldoc = require('xmldoc');
 module.exports = class SolrClient {
     constructor (opts) {
         this.client = solr.createClient('localhost', '8983', 'core0', http.agent);
-        this.schema = readSchema(`/opt/solr-5.0.0/server/solr/core0/conf/schema.xml`);
+        this.schema = readSchema(`/Users/pepe/solr-5.0.0/server/solr/core0/conf/schema.xml`);
     }
  
     query () {
@@ -28,7 +28,7 @@ module.exports = class SolrClient {
     }
 
     update (documents) {
-        return q.ninvoke(this.client, 'update', documents).then(() => q.ninvoke(this.client, 'commit'));
+        return q.ninvoke(this.client, 'update', documents);
     }
  
     delete () {
@@ -38,7 +38,7 @@ module.exports = class SolrClient {
             },
         };
  
-        return q.ninvoke(this.client, 'update', solrCommand).then(() => q.ninvoke(this.client, 'commit'));
+        return q.ninvoke(this.client, 'update', solrCommand);
     }
  
     deleteProduct (id) {
@@ -48,7 +48,7 @@ module.exports = class SolrClient {
             },
         };
  
-        return q.ninvoke(this.client, 'update', solrCommand).then(() => q.ninvoke(this.client, 'commit'));
+        return q.ninvoke(this.client, 'update', solrCommand);
     }
  
 

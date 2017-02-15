@@ -42,14 +42,14 @@
       <str name="dir">${solr.ulog.dir:}</str>
     </updateLog>
 
-    <autoCommit>
-      <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
-      <openSearcher>false</openSearcher>
-    </autoCommit>
-
-    <autoSoftCommit>
-      <maxTime>${solr.autoSoftCommit.maxTime:-1}</maxTime>
-    </autoSoftCommit>
+     <autoCommit>
+       <maxTime>300000</maxTime>
+       <openSearcher>false</openSearcher>
+     </autoCommit>
+ 
+     <autoSoftCommit>
+       <maxTime>50</maxTime>
+     </autoSoftCommit>
   </updateHandler>
 
   <query>
