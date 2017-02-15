@@ -4,6 +4,7 @@
     "body-parser": "^1.16.0",
     "co": "^4.6.0",
     "co-mongo": "0.0.2",
+    "co-request": "^1.0.0",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.5",
     "emailjs": "^1.0.8",

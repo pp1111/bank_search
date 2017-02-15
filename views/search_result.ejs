@@ -46,7 +46,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</div>
 						</div>
 						<div class="buttons-container">
-							<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application%>" target="_blank">Zloż wniosek</a>
+							<% if (product.application.isActive) { %>
+							<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
+							<% } %>
 							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
 						</div>
 					</div>
