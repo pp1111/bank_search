@@ -78,19 +78,19 @@ $scope.deselect = function() {
   };
 }).filter('myfilter', function() {
    return function( items, types) {
-    var itemsList = [];
+    var itemsList = items;
     var filterBy = [];
     if (types) {
-      if (types.alive) itemsList = itemsList.concat(items.filter(item => item.alive))
-      if (types.updated) itemsList = itemsList.concat(items.filter(item => item.updated))
-      if (types.notUpdated) itemsList = itemsList.concat(items.filter(item => !item.updated))
-      if (types.activeRedirect) itemsList = itemsList.concat(items.filter(item => item.application.isActive))
-      if (types.notActiveRedirect) itemsList = itemsList.concat(items.filter(item => !item.application.isActive))
+      if (types.alive) itemsList = itemsList.filter(item => item.alive)
+      if (types.updated) itemsList = itemsList.filter(item => item.updated)
+      if (types.notUpdated) itemsList = itemsList.filter(item => !item.updated)
+      if (types.activeRedirect) itemsList = itemsList.filter(item => item.application.isActive)
+      if (types.notActiveRedirect) itemsList = itemsList.filter(item => !item.application.isActive)
 
       itemsList = itemsList.filter(function(elem, index, self) {
           return index == self.indexOf(elem);
       })
-      return itemsList.length ? itemsList : items;
+      return itemsList;
     } else {
       return items;
     }
