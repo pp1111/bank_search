@@ -82,6 +82,7 @@ $scope.deselect = function() {
     var filterBy = [];
     if (types) {
       if (types.alive) itemsList = itemsList.filter(item => item.alive)
+      if (types.notAlive) itemsList = itemsList.filter(item => !item.alive)
       if (types.updated) itemsList = itemsList.filter(item => item.updated)
       if (types.notUpdated) itemsList = itemsList.filter(item => !item.updated)
       if (types.activeRedirect) itemsList = itemsList.filter(item => item.application.isActive)
