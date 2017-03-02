@@ -61,11 +61,13 @@
             <hr/>
             <div class="col-md-4">
                 <label>meta tytuł</label>
-                <textarea style="resize:none" class="form-control" rows="3" ng-model="product.meta.title"></textarea>
+                <textarea style="resize:none" ng-class="(product.meta.title.length > 60) ? 'danger' : ''"class="form-control" rows="3" ng-model="product.meta.title"></textarea>
+                {{product.meta.title.length}} | 60
             </div>
             <div class="col-md-4">
                 <label>meta opis</label> 
-                <textarea style="resize:none" class="form-control" rows="3" ng-model="product.meta.description"></textarea>
+                <textarea style="resize:none" ng-class="(product.meta.description.length > 160) ? 'danger' : ''" class="form-control" rows="3" ng-model="product.meta.description"></textarea>
+                {{product.meta.description.length}} | 160
             </div>
             <div class="col-md-4">
                 <label>meta img alt</label> 
@@ -152,3 +154,9 @@
 <script src="/core.js"></script>
 </body>
 </html>
+
+<style>
+    .danger {
+        background-color: red
+    }
+</style>
