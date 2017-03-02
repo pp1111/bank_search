@@ -30,6 +30,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res) {
+    res.sendfile('./views/main.html');
+});
+
+app.get('/selected/:id', (req,res) => {
     res.sendfile('./views/cms.html');
 });
 

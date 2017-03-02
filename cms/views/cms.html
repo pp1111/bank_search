@@ -4,19 +4,17 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<script src="ckeditorfull/ckeditor.js"></script>
+<script src="/ckeditorfull/ckeditor.js"></script>
   <title>Amoney CMS</title>
 </head>
 <body>
     <div class="container" ng-controller="AppCtrl">
-        <h1>Amoney CMS, {{products.length}}</h1>
+        <h1>Amoney CMS <button style="" class="btn btn-info" onClick="window.location.href='/'">Powrót</button></h1>
+        <br />
+        <br />
         <div class="row">
             <table class="table">
-              <thead>
                 <tr>
-                    <th>Lista produktów</th>
-                    <th></th>
-                    <th></th>
                     <th>kategoria</th>         
                     <th>subkategoria</th>
                     <th>nazwa</th>
@@ -26,26 +24,21 @@
                     <th>wniosek</th>
                     <th>&nbsp;</th>
                 </tr>
-              </thead>
                 <tr>
-                    <td>
-                    <select class="form-control" ng-model="products.model">
-                    <option ng-repeat="product in products | orderBy:'+name'" value="{{product._id}}">{{product.name}} {{product.provider}} {{product.updated? '&#10004' : ''}}</option>
-                    </select>
-                    </td>
-                    <td> <label><button class="btn btn-danger" ng-click="remove(products.model)">Usuń</button></label></td>
-                    <td><label><button class="btn btn-warning" ng-click="edit(products.model)">Edytuj</button></label></td>
-                    <td><input class="form-control" ng-model="product.category"></td>
-                    <td><input class="form-control" ng-model="product.subcategory"></td>
-                    <td><input class="form-control" ng-model="product.name"></td>
+                    <td><input style="width:150px" class="form-control" ng-model="product.category"></td>
+                    <td><input style="width:150px" class="form-control" ng-model="product.subcategory"></td>
+                    <td><input style="width:100px" class="form-control" ng-model="product.name"></td>
                     <td><input class="form-control" ng-model="product.provider"></td>
                     <td><input class="form-control" ng-model="product.logo"></td>
                     <td><input class="form-control" ng-model="product.prez"></td>
-                    <td><input class="form-control" ng-model="product.application"></td>
-                    <td><button class="btn btn-primary" ng-click="addproduct()">Dodaj</button></td>
-                    <td><button class="btn btn-info" ng-click="update()">Zatwierdź</button></td>
+                    <td><input class="form-control" ng-model="product.application.redirect"></td>
+                    <td><button class="btn btn-danger" ng-click="addproduct()">Dodaj</button></td>
+                    <td><button class="btn btn-success" ng-click="update()">Zatwierdź</button></td>
                 </tr>
             </table>
+        </div>
+        <div class="row">
+            <a href="http://amoney.pl/finanse/produkt/{{product.value}}" target="_blank">Link do produktu</a>
         </div>
         <div class="row">
                 <hr/>
@@ -81,27 +74,20 @@
         </div>
         <br/>
         <br/>
-        <hr/>
         <div class="row">
             <table class="table">
-                 <thead>
-                    <tr>
-                        <th>Checkboxy</th>
-                        <th></th>
-                        <th></th>
-                        <th>&nbsp;</th>
-                        <th style="text-align:center">produkt widoczny nastronie</th>
-                        <th style="text-align:center">zaznacz jako wyedytowany</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="checkbox" class="form-control" ng-model="product.alive"></td>
-                        <td><input type="checkbox" class="form-control" ng-model="product.updated"></td>
-                    </tr>
-                  </thead>
+                <tr>
+                    <th>Checkboxy:</th>
+                    <th>&nbsp;</th>
+                    <th style="text-align:center">
+                        produkt widoczny nastronie
+                        <input type="checkbox" ng-model="product.alive">
+                    </th>
+                    <th style="text-align:center">
+                    zaznacz jako wyedytowany
+                    <input type="checkbox" ng-model="product.updated">
+                    </th>
+                </tr>
             </table>
         </div>
         <hr/>
@@ -162,8 +148,7 @@
         <br/>
         <br/>
     </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-<script src="core.js"></script>
+<script src="/core.js"></script>
 </body>
 </html>

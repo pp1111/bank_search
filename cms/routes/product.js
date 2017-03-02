@@ -9,7 +9,7 @@ db = new Db('products', server);
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'productdb' database");
+        console.log("Connected to 'products database");
         db.collection('productsList', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'products' collection doesn't exist. Creating it with sample data...");
