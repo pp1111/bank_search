@@ -99,13 +99,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				dynx_totalvalue: 0
 			}
 		})
+		$.getJSON('//ipinfo.io/json', function(data) {
+		  window.ip = data.ip;
+		});
+
 		function applyNowClick (product) {
 			var dt = new Date();
 			var url = getJsonFromUrl();
 			dataLayer.push({
 			event: 'checkout',
 				ecommerce: {
-					checkout: {
+					purchase: {
 						actionField: { 
 							step: 1, 
 							id: `${window.ip}_${dt.toISOString()}`,
@@ -126,12 +130,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		}
 		function readMoreClick (product) {
 			var url = getJsonFromUrl();
-			var list = url.from;
 			dataLayer.push({
 			event: 'productClick',
 			ecommerce: {
 				click: {
-					actionField: { list: list },
+					actionField: { list: url.from },
 					products: [{
 						name: `${product.name} ${product.provider}`,
 						id: product.id,

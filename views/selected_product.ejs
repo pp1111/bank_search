@@ -46,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<h4><%=product.name%> <%=product.provider%></h4>
 					<%-product.longDescription%>
 					<% if (product.application.isActive) { %>
-					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)">Zloż wniosek</a>
+					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
 					<% } %>
 				</div>
 				<% } %>
@@ -123,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			dataLayer.push({
 			event: 'checkout',
 				ecommerce: {
-					checkout: {
+					purchase: {
 						actionField: { 
 							step: 1, 
 							id: `${window.ip}_${dt.toISOString()}`,
