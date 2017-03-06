@@ -46,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<h4><%=product.name%> <%=product.provider%></h4>
 					<%-product.longDescription%>
 					<% if (product.application.isActive) { %>
-					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
+					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)">Zloż wniosek</a>
 					<% } %>
 				</div>
 				<% } %>
@@ -104,6 +104,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	  }
 	</script>
 	<script>
+		$.getJSON('//ipinfo.io/json', function(data) {
+		  window.ip = data.ip;
+		});
+
 		dataLayer.push(<%- dataLayerObject %>);
 		dataLayer.push({
 			google_tag_params: {
@@ -114,11 +118,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		});
 
 		function applyNowClick (product) {
+			var dt = new Date();
+			var url = getJsonFromUrl();
 			dataLayer.push({
 			event: 'checkout',
 				ecommerce: {
 					checkout: {
-						actionField: { step: 1, option: '' },
+						actionField: { 
+							step: 1, 
+							id: `${window.ip}_${dt.toISOString()}`,
+							list: url.from,
+						},
 						products: [{
 							name: `${product.name} ${product.provider}`,
 							id: product.id,
@@ -134,21 +144,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		}
 		function readMoreClick (product) {
 			var url = getJsonFromUrl();
-			var list;
-
-			if (url.from) {
-				list = url.from;
-			} else if (url.gclid) {
-				list = 'Menu'
-			} else {
-				list = 'Product_details'
-			}
-
 			dataLayer.push({
 			event: 'productClick',
 			ecommerce: {
 				click: {
-					actionField: { list: list },
+					actionField: { list: url.from },
 					products: [{
 						name: `${product.name} ${product.provider}`,
 						id: product.id,
