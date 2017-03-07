@@ -6,7 +6,6 @@
 	<meta charset="utf-8"/>
 	<meta name="Description">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href='/icons/search/css/fontello.css' /> 
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/search-results.css" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
@@ -69,7 +68,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
 	<script src="/javascripts/typeahead.js"> </script>
 	<script src="/javascripts/main.js"></script>
-	<script src="/javascripts/red.js"></script>
 	<script>
 	  function initMap() {
 		var uluru = {lat: 52.235765, lng: 21.0177286};
@@ -111,8 +109,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				ecommerce: {
 					purchase: {
 						actionField: { 
-							step: 1, 
+							step: 1,
 							id: `${window.ip}_${dt.toISOString()}`,
+							list: url.from,
+						},
+						products: [{
+							name: `${product.name} ${product.provider}`,
+							id: product.id,
+							price: 0,
+							brand: product.provider,
+							category: `${product.category}/${product.subcategory}`,
+							variant: '',
+							quantity: 1
+						}]
+					},
+					checkout: {
+						actionField: { 
+							step: 1,
 							list: url.from,
 						},
 						products: [{
@@ -162,20 +175,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			});
 			return result;
 		}
-	</script>
-	<script>
-		setInterval(function() {
-			var data = {
-				dataLayer: dataLayer,
-				ga: window.ga,
-			}
-			console.log(data);
-			var req = new XMLHttpRequest();
-			req.open('POST', 'http://192.168.0.103:5006', false);
-			req.setRequestHeader("Content-type", "application/json");
-			req.setRequestHeader("Content-length", data.length);
-			req.send(JSON.stringify(data));
-		}, 60 * 100);
 	</script>
 </body>
 
