@@ -21,6 +21,72 @@
  </head>
 
 <body>
+<script>
+
+	function applyNowClick (product) {
+		var dt = new Date();
+		var url = 'a'
+		dataLayer.push({
+		event: 'checkout',
+			ecommerce: {
+				purchase: {
+					actionField: { 
+						step: 1, 
+						id: window.ip + '_' + dt.toISOString(),
+						list: url.from,
+					},
+					products: [{
+						name: product.name + ' ' + product.provider,
+						id: product.id,
+						price: 0,
+						brand: product.provider,
+						category: product.category + '/' + product.subcategory,
+						variant: '',
+						quantity: 1
+					}]
+				},
+				checkout: {
+					actionField: { 
+						step: 1, 
+						list: url.from,
+					},
+					products: [{
+						name: product.name + ' '  + product.provider,
+						id: product.id,
+						price: 0,
+						brand: product.provider,
+						category: product.category + '/' + product.subcategory,
+						variant: '',
+						quantity: 1
+					}]
+				}
+			}
+		});
+	}
+	function readMoreClick (product) {
+		var url = 'a'
+		dataLayer.push({
+		event: 'productClick',
+		ecommerce: {
+			click: {
+				actionField: { list: url.from },
+				products: [{
+					name: product.name + ' ' + product.provider,
+					id: product.id,
+					price: 0,
+					brand: product.provider,
+					category: product.category + '/' + product.subcategory,
+					variant: '',
+					position: 1
+				 }]
+				}
+			},
+			eventCallback: function() {
+				document.location = '/finanse/produkt/' + product.value + '?from=Product_details'
+			}
+		});
+	}
+</script>
 <div class="dimness"></div>
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
@@ -97,84 +163,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				dynx_totalvalue: 0
 			}
 		})
-		$.getJSON('//ipinfo.io/json', function(data) {
-		  window.ip = data.ip;
-		});
-
-		function applyNowClick (product) {
-			var dt = new Date();
-			var url = getJsonFromUrl();
-			dataLayer.push({
-			event: 'checkout',
-				ecommerce: {
-					purchase: {
-						actionField: { 
-							step: 1,
-							id: `${window.ip}_${dt.toISOString()}`,
-							list: url.from,
-						},
-						products: [{
-							name: `${product.name} ${product.provider}`,
-							id: product.id,
-							price: 0,
-							brand: product.provider,
-							category: `${product.category}/${product.subcategory}`,
-							variant: '',
-							quantity: 1
-						}]
-					},
-					checkout: {
-						actionField: { 
-							step: 1,
-							list: url.from,
-						},
-						products: [{
-							name: `${product.name} ${product.provider}`,
-							id: product.id,
-							price: 0,
-							brand: product.provider,
-							category: `${product.category}/${product.subcategory}`,
-							variant: '',
-							quantity: 1
-						}]
-					}
-				}
-			});
-		}
-		function readMoreClick (product) {
-			var url = getJsonFromUrl();
-			dataLayer.push({
-			event: 'productClick',
-			ecommerce: {
-				click: {
-					actionField: { list: url.from },
-					products: [{
-						name: `${product.name} ${product.provider}`,
-						id: product.id,
-						price: 0,
-						brand: product.provider,
-						category: `${product.category}/${product.subcategory}`,
-						variant: '',
-						position: 1
-					 }]
-					}
-				},
-				eventCallback: function() {
-					document.location = `/finanse/produkt/${product.value}?from=Product_details`
-				}
-			});
-		}
-	</script>
-	<script>
-		function getJsonFromUrl() {
-			var query = location.search.substr(1);
-			var result = {};
-			query.split("&").forEach(function(part) {
-				var item = part.split("=");
-				result[item[0]] = decodeURIComponent(item[1]);
-			});
-			return result;
-		}
 	</script>
 </body>
 
