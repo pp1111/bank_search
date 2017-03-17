@@ -39,7 +39,8 @@ $.getJSON('//ipinfo.io/json', function(data) {
 	}
 
 	function applyNowClick (product) {
-		var dt = new Date();
+		var localeFullYear = (new Date()).toLocaleString().split(",")[0].split(".");
+		var dt = localeFullYear[2] + "-" + localeFullYear[1] + "-" + localeFullYear[0] + "T" + (new Date().toLocaleString().split(",")[1]).replace(" ", "");
 		var url = getJsonFromUrl();
 		dataLayer.push({
 		event: 'checkout',
@@ -47,7 +48,7 @@ $.getJSON('//ipinfo.io/json', function(data) {
 				purchase: {
 					actionField: { 
 						step: 1, 
-						id: window.ip + '_' + dt.toISOString(),
+						id: window.ip + '_' + dt,
 						list: url.from,
 					},
 					products: [{
