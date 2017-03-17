@@ -22,6 +22,8 @@
  </head>
 
 <body>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
 <script type="text/javascript">
 	$.getJSON('//ipinfo.io/json', function(data) {
 	  window.ip = data.ip;
@@ -170,8 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</div>
 
 	<footer> <% include partials/templemate/footer.ejs %> </footer>
-	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
 	<script src="/javascripts/typeahead.js"> </script>
 	<script src="/javascripts/main.js"></script>
 	<script>

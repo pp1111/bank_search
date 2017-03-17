@@ -21,11 +21,26 @@
  </head>
 
 <body>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
 <script>
+$.getJSON('//ipinfo.io/json', function(data) {
+	  window.ip = data.ip;
+	});
+
+	function getJsonFromUrl() {
+		var query = location.search.substr(1);
+		var result = {};
+		query.split("&").forEach(function(part) {
+			var item = part.split("=");
+			result[item[0]] = decodeURIComponent(item[1]);
+		});
+		return result;
+	}
 
 	function applyNowClick (product) {
 		var dt = new Date();
-		var url = 'a'
+		var url = getJsonFromUrl();
 		dataLayer.push({
 		event: 'checkout',
 			ecommerce: {
@@ -51,7 +66,7 @@
 						list: url.from,
 					},
 					products: [{
-						name: product.name + ' '  + product.provider,
+						name: product.name + ' ' + product.provider,
 						id: product.id,
 						price: 0,
 						brand: product.provider,
@@ -64,7 +79,7 @@
 		});
 	}
 	function readMoreClick (product) {
-		var url = 'a'
+		var url = getJsonFromUrl();
 		dataLayer.push({
 		event: 'productClick',
 		ecommerce: {
@@ -130,8 +145,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		</article>
 	</div>
 	<footer><% include partials/templemate/footer.ejs %></footer>
-	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
 	<script src="/javascripts/typeahead.js"> </script>
 	<script src="/javascripts/main.js"></script>
 	<script>
