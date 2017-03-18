@@ -55,25 +55,10 @@ $.getJSON('//ipinfo.io/json', function(data) {
 		dataLayer.push({
 		event: 'checkout',
 			ecommerce: {
-				purchase: {
-					actionField: { 
-						step: 1, 
-						id: window.ip + '_' + dt,
-						list: url.from,
-					},
-					products: [{
-						name: product.name + ' ' + product.provider,
-						id: product.id,
-						price: 0,
-						brand: product.provider,
-						category: product.category + '/' + product.subcategory,
-						variant: '',
-						quantity: 1
-					}]
-				},
 				checkout: {
 					actionField: { 
 						step: 1, 
+						id: window.ip + '_' + dt,
 						list: url.from,
 					},
 					products: [{
