@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://localhost:4000/search/data?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
+                url: "http://localhost:4000/search/cms?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {
