@@ -59,8 +59,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	});
 
 	function applyNowClick (product) {
-		var localeFullYear = (new Date()).toLocaleString().split(",")[0].split(".");
-		var dt = localeFullYear[2] + "-" + localeFullYear[1] + "-" + localeFullYear[0] + "T" + (new Date().toLocaleString().split(",")[1]).replace(" ", "")
+		var dt;
+		if ((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+			dt = (new Date()).toLocaleString().replace(" ", "T")
+		} else {
+			dt = (new Date).toLocaleDateString().split(".").reverse().toString().replace(/,/g, "-") + "T" + (new Date).toLocaleTimeString()
+		}
 		var url = getJsonFromUrl();
 		dataLayer.push({
 		event: 'checkout',
