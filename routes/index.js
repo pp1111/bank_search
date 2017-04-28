@@ -265,12 +265,33 @@ router.get('/finanse/:category', function (req, res){
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
 
-        productList = products.filter(product => product.subcategory == req.params.subcategory);
-
         if (req.params.category == 'e-Sklepy') {
-              productList = products.filter(product => product.subcategory == req.params.category);
+            productList = products.filter(product => product.subcategory == req.params.category);
         } else {
             productList = products.filter(product => product.subcategory == req.params.category.replace(/-/g, ' '));
+        }
+
+        if (req.params.category === 'Karty-kredytowe') {
+            productList.forEach((product, acc) => {
+                let temp;
+                if (product.value === 'Karta-Kredytowa-Citibank-MasterCard-World-Citi-Handlowy') {
+                    temp = productList[0];
+                    productList[0] = productList[acc];
+                    productList[acc] = temp;
+                }
+
+                if (product.value === 'TurboKARTA-Idealne-wsparcie-dla-Kierowcy-Santander-Consumer-Bank') {
+                    temp = productList[1];
+                    productList[1] = productList[acc];
+                    productList[acc] = temp;
+                }
+
+                if (product.value === 'World-MasterCard-Class&Club-Raiffeisen-Bank-Polska-S.A.') {
+                    temp = productList[2];
+                    productList[2] = productList[acc];
+                    productList[acc] = temp;
+                }
+            })
         }
 
         const dataLayerObject = {
