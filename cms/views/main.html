@@ -62,25 +62,55 @@
         <br>
         <br>
         <div class="row">
-        	<div class="col-md-2">
-        		<label>Checboxy:</label>
-        	</div>
-        	<div class="col-md-2">
-        		<label>alive</label>
-        		<input type="checkbox" ng-model="product.alive"/>
-        	</div>
-        	<div class="col-md-2">
-        		<label>updated</label>
-        		<input type="checkbox" ng-model="product.updated"/>
-        	</div>
-        	<div class="col-md-4">
-				<!-- <a class="button" class="btn btn-danger" ng-click="remove(products.model)">Usuń</a> -->
-				<button class="btn btn-success" ng-click="update()">Zmień</button>
-				<a class="button" class="btn btn-warning" ng-href="/selected/{{products.model}}">Strona edycji</a>
-			</div>
+            	<div class="col-md-2">
+            		<label>Checboxy:</label>
+            	</div>
+            	<div class="col-md-2">
+            		<label>alive</label>
+            		<input type="checkbox" ng-model="product.alive"/>
+            	</div>
+            	<div class="col-md-2">
+            		<label>updated</label>
+            		<input type="checkbox" ng-model="product.updated"/>
+            	</div>
+            	<div class="col-md-4">
+    				<!-- <a class="button" class="btn btn-danger" ng-click="remove(products.model)">Usuń</a> -->
+    				<button class="btn btn-success" ng-click="update()">Zmień</button>
+    				<a class="button" class="btn btn-warning" ng-href="/selected/{{products.model}}">Strona edycji</a>
+    			</div>
         </div>
+          <hr/>
+          <h3 style="text-align: center"> Meta tagi subkategorii</h3> 
+          <hr/>
+        <div class="row">
+      <div class="col-md-3">
+        Lista subkategorii
+        <select style="width:200px" class="form-control" ng-model="subcategories.model" ng-change="editSubcategory(subcategories.model)">
+        <option ng-repeat="(k, subcategory) in subcategories | orderBy: 'name' | myfilter: types" value="{{subcategory._id}}">
+          {{k + 1}}. {{subcategory.name}}
+        </option>
+        </select>        
+      </div>
+      <div class="col-md-3">
+        <br>
+        <button class="btn btn-success" ng-click="updateSubcategories()">Zatwierdź</button>
+      </div>
+    </div>
+    <br>
+      <div class=row>
+
+      <div class="col-md-4">
+          <label>meta tytuł</label> 
+          <textarea style="resize:none" ng-class="(subcategory.meta.title.length > 60) ? 'danger' : ''" class="form-control" rows="3" ng-model="subcategory.meta.title"></textarea>
+          {{subcategory.meta.title.length}} | 60
+      </div>
+      <div class="col-md-4">
+          <label>meta opis</label> 
+          <textarea style="resize:none" ng-class="(subcategory.meta.description.length > 160) ? 'danger' : ''" class="form-control" rows="3" ng-model="subcategory.meta.description"></textarea>
+          {{subcategory.meta.description.length}} | 160
+      </div>
+    </div>
 	</div>
- 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="core.js"></script>
 <script type="text/javascript" src="jquery.min.js"></script>

@@ -83,3 +83,54 @@ exports.deleteproduct = function(req, res) {
         });
     });
 }
+
+exports.findSubcategory = function(req, res) {
+    var id = new ObjectId(req.params.id);
+    console.log('Retrieving product: ' + id);
+    db.collection('subcategories', function(err, collection) {
+        collection.findOne({'_id':id}, function(err, item) {
+            res.send(JSON.stringify(item,false,4));
+        });
+    });
+};
+
+exports.findAllSubcategories = function(req, res) {
+    db.collection('subcategories', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+            res.send(JSON.stringify(items,false,4));
+        });
+    });
+};
+
+exports.addSubcategory = function(req, res) {
+    var subcategory = req.body;
+    console.log('Adding subcategory: ' + JSON.stringify(subcategory));
+    db.collection('subcategories', function(err, collection) {
+        collection.insert(subcategory, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(result[0]));
+                res.send(result[0]);
+            }
+        });
+    });
+}
+
+exports.updateSubcategory = function(req, res) {
+    var id = new ObjectId(req.params.id);
+    var subcategory = req.body;
+    delete subcategory._id;
+    console.log('Updating subcategory: ' + id);
+    db.collection('subcategories', function(err, collection) {
+        collection.update({'_id':id}, subcategory , function(err, result) {
+            if (err) {
+                console.log('Error updating subcategory: ' + err);
+                res.send(500,{'error':'An error has occurred'});
+            } else {
+                console.log('' + result + ' document(s) updated');
+                res.send(subcategory);
+            }
+        });
+    });
+}

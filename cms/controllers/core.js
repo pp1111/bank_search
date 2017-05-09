@@ -57,6 +57,46 @@ $scope.deselect = function() {
   $scope.product = "";
 }
 
+var refreshS = function() {
+  if (url.length == 3) return; 
+  $http.get('/subcategories').success(function(response) {
+    $scope.subcategories = response;
+    $scope.subcategory = "";
+  });
+};
+
+refreshS();
+
+var init = function () {
+    if (window.location.pathname.split('/')[1] == 'selected') {
+      $http.get('/subcategories/' + window.location.pathname.split('/')[2]).success(function(response) {
+        $scope.subcategory = response;
+      });
+    } 
+};
+
+init();
+
+$scope.addSubcategory = function() {
+  console.log($scope.subcategory);
+  $http.post('/subcategories', $scope.subcategory).success(function(response) {
+    refresh();
+  });
+};
+
+
+$scope.editSubcategory = function(id) {
+  $http.get('/subcategories/' + id).success(function(response) {
+    $scope.subcategory = response;
+  });
+};  
+
+$scope.updateSubcategories = function() {
+  $http.put('/subcategories/' + $scope.subcategory._id, $scope.subcategory).success(function(response) {
+    refresh();
+  })
+};
+
 }]).directive('ckEditor', function() {
   return {
     require: '?ngModel',

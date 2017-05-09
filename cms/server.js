@@ -43,5 +43,10 @@ app.post('/products', product.addproduct);
 app.put('/products/:id', product.updateproduct);
 app.delete('/products/:id', product.deleteproduct);
 
+app.get('/subcategories', product.findAllSubcategories);
+app.get('/subcategories/:id', product.findSubcategory);
+app.post('/subcategories', product.addSubcategory);
+app.put('/subcategories/:id', product.updateSubcategory);
+
 app.listen(5000);
 console.log('Listening on port 5000...');
