@@ -175,7 +175,18 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
         suggestions = suggestions.map(suggestion => {
             suggestion.value = suggestion.value.replace(/%/g, '%25');
             return suggestion;
-        }).filter(suggestion => suggestion.alive)
+        }).filter(suggestion => {
+            return suggestion.alive
+        })
+
+        suggestions.map((suggestion, acc)=> {
+            let temp;
+            if (suggestion.value === 'Pożyczka-pozabankowa-inCredit') {
+                temp = suggestions[0];
+                suggestions[0] = suggestions[acc];
+                suggestions[acc] = temp;
+            }
+        })
 
         const details = {
             name: `${selectedProduct[0].name} ${selectedProduct[0].provider}`,
@@ -289,6 +300,17 @@ router.get('/finanse/:category', function (req, res){
                 if (product.value === 'World-MasterCard-Class&Club-Raiffeisen-Bank-Polska-S.A.') {
                     temp = productList[2];
                     productList[2] = productList[acc];
+                    productList[acc] = temp;
+                }
+            })
+        }
+
+        if (req.params.category === 'Pożyczki-pozabankowe') {
+            productList.forEach((product, acc) => {
+                let temp;
+                if (product.value === 'Pożyczka-pozabankowa-inCredit') {
+                    temp = productList[0];
+                    productList[0] = productList[acc];
                     productList[acc] = temp;
                 }
             })
