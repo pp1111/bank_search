@@ -68,7 +68,6 @@ router.post('/kontakt', function (req, res) {
     res.render('contact');
 });
 
-
 router.get('/finanse', function (req, res) {
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
@@ -251,12 +250,18 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
 router.get('/finanse/:category', function (req, res){
     co(function *() {
         let db = yield comongo.connect('mongodb://127.0.0.1:27017/products');
-        let collection = yield db.collection('productsList');   
+        let collection = yield db.collection('productsList');
+
         let products =  yield collection.find({ alive: true }).toArray();
         let categories = [...new Set(products.map(product => product.category))];
         let subcategories = [...new Set(products.map(product => product.subcategory))];
         let names = [...new Set(products.map(product => product.name))];
         let productList = [];
+
+        let subcategoriesColl = yield db.collection('subcategories');
+        let mongoSubcategories = yield subcategoriesColl.find().toArray();
+
+        let sub = mongoSubcategories.filter(subcategory => subcategory.name.replace(/-/g, " ") == req.params.category.replace(/-/g, " "));
 
         let categoriesMap = {};
         let subCategoriesMap = {};
@@ -341,6 +346,8 @@ router.get('/finanse/:category', function (req, res){
             subcategoriesMap: subCategoriesMap,
             productList: productList,
             dataLayerObject: JSON.stringify(dataLayerObject),
+            mongoSubcategories: mongoSubcategories,
+            subcategory: sub[0]
         })
     }).catch(err => console.log(err))
 });

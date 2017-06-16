@@ -161,7 +161,7 @@ body {
             height: 45px; } }
   body .wrapper {
     margin-bottom: 60px; }
-    body .wrapper .search-result h2 {
+    body .wrapper .search-result h1 {
       text-align: center;
       margin: 0;
       margin-top: 40px;
@@ -171,10 +171,10 @@ body {
       font-weight: 800;
       color: #ffffff; }
       @media (min-width: 375px) {
-        body .wrapper .search-result h2 {
+        body .wrapper .search-result h1 {
           font-size: 4rem; } }
       @media (min-width: 768px) {
-        body .wrapper .search-result h2 {
+        body .wrapper .search-result h1 {
           font-size: 6rem; } }
     body .wrapper .search-result .products {
       display: -webkit-box;

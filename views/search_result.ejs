@@ -4,13 +4,13 @@
 
 <head> 
 	<meta charset="utf-8"/>
-	<meta name="Description">
+	<meta name="Description" content="<%=subcategory.meta.description%>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/menu.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/search-results.css" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/css/jquery-ui.css" />
 	<link rel="icon" type="image/png" href="/icons/favicon.png">
-	<title></title>
+	<title><%=subcategory.meta.title%></title>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
 	  (adsbygoogle = window.adsbygoogle || []).push({
@@ -121,7 +121,7 @@ $.getJSON('//ipinfo.io/json', function(data) {
 	<header><% include partials/templemate/header.ejs %></header>
 	<div class="wrapper">
 		<article class="search-result">
-			<h2> <%= productList[0].subcategory %></h2>
+			<h1> <%= productList[0].subcategory %></h1>
 			<div class="products">
 				<% productList.forEach(product => { %>
 					<% if (product.alive) { %>
