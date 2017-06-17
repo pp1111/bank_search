@@ -124,7 +124,8 @@ $.getJSON('//ipinfo.io/json', function(data) {
 					<% if (product.alive) { %>
 					<div class="single-product">
 						<div class="img-wrapper">
-							<img src ="<%=product.logo%>">
+							<% var alt = product.value.replace(/-/g, ' ')%>
+							<img src ="/images/products/<%=product.value%>.png" alt="<%=alt%>">
 						</div>
 						<div class="desc">
 							<h2><%=product.name%> <%=product.provider%></h2>
