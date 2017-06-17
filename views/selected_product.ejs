@@ -120,9 +120,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					position: 1
 				 }]
 				}
-			},
-			eventCallback: function() {
-				document.location = '/finanse/produkt/' + product.value + '?from=Product_details'
 			}
 		});
 	}
@@ -155,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<img src ="<%=product.logo%>" alt="<%=product.alt%>">
 						</div>
 						<div class="buttons-container">
-							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
+							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)" href="/finanse/produkt/<%=product.value%>?from=Product_details">Dowiedz się więcej</a>
 							<% if (product.application.isActive) { %>
 							<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
 							<% } %>

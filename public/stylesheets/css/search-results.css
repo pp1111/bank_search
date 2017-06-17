@@ -233,7 +233,7 @@ body {
         @media (min-width: 768px) {
           body .wrapper .search-result .products .single-product .desc {
             flex-grow: 2; } }
-        body .wrapper .search-result .products .single-product .desc h4 {
+        body .wrapper .search-result .products .single-product .desc h2 {
           font-family: latoRegular, sans-serif;
           font-size: 2.3rem;
           font-weight: 100;
@@ -241,7 +241,7 @@ body {
           margin: 15px;
           text-align: center; }
           @media (min-width: 768px) {
-            body .wrapper .search-result .products .single-product .desc h4 {
+            body .wrapper .search-result .products .single-product .desc h2 {
               text-align: left; } }
         body .wrapper .search-result .products .single-product .desc .info {
           text-align: left;

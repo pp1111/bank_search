@@ -110,9 +110,6 @@ $.getJSON('//ipinfo.io/json', function(data) {
 					position: 1
 				 }]
 				}
-			},
-			eventCallback: function() {
-				document.location = '/finanse/produkt/' + product.value + '?from=Product_details'
 			}
 		});
 	}
@@ -130,7 +127,7 @@ $.getJSON('//ipinfo.io/json', function(data) {
 							<img src ="<%=product.logo%>">
 						</div>
 						<div class="desc">
-							<h4><%=product.name%> <%=product.provider%></h4>
+							<h2><%=product.name%> <%=product.provider%></h2>
 							<div class="info">
 								<div class="inner-scroll">
 									<%-product.description%>
@@ -141,7 +138,7 @@ $.getJSON('//ipinfo.io/json', function(data) {
 							<% if (product.application.isActive) { %>
 							<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
 							<% } %>
-							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)">Dowiedz się więcej</a>
+							<a class="button read-more" onclick="readMoreClick(<%=JSON.stringify(product)%>)" href="/finanse/produkt/<%=product.value%>?from=Product_details">Dowiedz się więcej</a>
 						</div>
 					</div>
 					<%}%>
