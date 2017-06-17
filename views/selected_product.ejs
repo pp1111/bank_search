@@ -137,7 +137,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<h1><%=product.name%> <%=product.provider%></h1>
 					<%-product.longDescription%>
 					<% if (product.application.isActive) { %>
-					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
+					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" rel="nofollow" target="_blank">Zloż wniosek</a>
 					<% } %>
 				</div>
 				<% } %>
