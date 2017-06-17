@@ -161,7 +161,7 @@ body {
     @media (min-width: 768px) {
       body .wrapper {
         height: 65vh; } }
-    body .wrapper h4 {
+    body .wrapper h2 {
       font-size: 2.1rem;
       font-weight: 300;
       color: #0665A2; }
@@ -384,11 +384,11 @@ body {
             @media (min-width: 1024px) {
               body .wrapper .search-result .products .single-product .info {
                 margin: 0 10px 35px 0; } }
-            body .wrapper .search-result .products .single-product .info h4 {
+            body .wrapper .search-result .products .single-product .info h2 {
               margin-bottom: 20px;
               margin-top: 0; }
               @media (min-width: 1024px) {
-                body .wrapper .search-result .products .single-product .info h4 {
+                body .wrapper .search-result .products .single-product .info h2 {
                   margin-top: 28px; } }
             body .wrapper .search-result .products .single-product .info ul {
               font-size: 1.2rem;

@@ -134,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<img src ="<%=product.logo%>" alt="<%=product.meta.alt%>">
 				</div>
 				<div class="info">
-					<h4><%=product.name%> <%=product.provider%></h4>
+					<h1><%=product.name%> <%=product.provider%></h1>
 					<%-product.longDescription%>
 					<% if (product.application.isActive) { %>
 					<a class="button apply-now" onclick="applyNowClick(<%=JSON.stringify(product)%>)" href="<%=product.application.redirect%>" target="_blank">Zloż wniosek</a>
@@ -160,7 +160,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					</div>
 					<div class="info">
 						<div class="inner-scroll">
-							<h4><%=product.name%> <%=product.provider%></h4>
+							<h2><%=product.name%> <%=product.provider%></h2>
 							<%-product.description%>
 						</div>
 					</div>
