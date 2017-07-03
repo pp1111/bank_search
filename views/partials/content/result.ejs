@@ -1,13 +1,13 @@
 <article class="result">
 	<div class="result-banner">	
 		<div class="result-btn">
-			<div id="<%=result1%>" class="form-group single-course">
-				<h3> <%=wynik%> </h3>
+			<div id="show" class="form-group single-course">
+				<h3 id="calculateTitle"></h3>
 				<div class="form-control" rows="5" id="resultarea">
-					<p><%=result_text %></p>
+					<p id="text_info"></p>
 					<ul>
-						<li><%=result%></li>
-						<li><%=date%></li>
+						<li id="calculated"></li>
+						<li id="date"></li>
 					</ul>
 				</div>
 			</div>
@@ -21,12 +21,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="<%=result2%>" class="courses">
+	<div id="show" class="courses">
 		<h3> Tabela kursów </h3>
 		<div class="form-control" id="courseTable">
 				<ul>
-					<%cash.forEach(function(entry){ %> 
-						<li>Kurs <%=entry.kod_waluty[0]%> nbp = <%=entry.kurs_sredni[0]%> z dnia <%=year%>-<%=resultmonth%>-<%=resultday%> %></li>
+					<%nbpTable.forEach(function(entry){ %> 
+						<li>Kurs <%=entry.code%> nbp = <%=entry.mid.toFixed(2)%> z dnia <%=date%></li>
 					<% }) %>
 				</ul>
 		</div>

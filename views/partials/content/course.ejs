@@ -1,10 +1,10 @@
 <select name ="from" class="form-control" id="sel1">
 	<option value="PLN">PLN - polski złoty</option>
-	<%cash.forEach(function(entry){ %>
-		<%if(selected1 === entry.kod_waluty[0]){%>
-			<option selected value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> - <%=entry.nazwa_waluty[0]%></option>
+	<%nbpTable.forEach(function(entry){ %>
+		<%if(selected1 === entry.code){%>
+			<option selected value="<%=entry.code%>"><%=entry.code%> - <%=entry.currency%></option>
 		<%} else{ %>
-			<option value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> - <%=entry.nazwa_waluty[0]%></option>
+			<option value="<%=entry.code%>"><%=entry.code%> - <%=entry.currency%></option>
 		<%} %>
 	<% }) %>
 </select>
@@ -13,11 +13,11 @@
 
 <select name ="on" class="form-control" id="sel2">
 	<option value="PLN">PLN - polski złoty</option>
-	<%cash.forEach(function(entry){ %>
-		<%if(selected2 === entry.kod_waluty[0]){%>
-			<option selected value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> - <%=entry.nazwa_waluty[0]%></option>
+	<%nbpTable.forEach(function(entry){ %>
+		<%if(selected2 === entry.code){%>
+			<option selected value="<%=entry.code%>"><%=entry.code%> - <%=entry.currency%></option>
 		<%} else{ %>
-			<option value="<%=entry.kod_waluty[0]%>"><%=entry.kod_waluty[0]%> - <%=entry.nazwa_waluty[0]%></option>
+			<option value="<%=entry.code%>"><%=entry.code%> - <%=entry.currency%></option>
 		<%} %>
 	<% }) %>
 </select>

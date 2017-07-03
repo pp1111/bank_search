@@ -39,7 +39,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<h1>Kalkulator Walut</h1>
 		<form id="calc">
 			<div class="value">
-				<% include partials/content/text_input.ejs %>
+				<input class="form-control text-input" id="focusedInput" type="number" step="0.01" value="<%=amount%>" placeholder="Wartość">	
+				<button type="button" id="calculateStartPage" class="btn btn-default">Oblicz</button>
 			</div>
 			<div class="values">
 				<div class ="course">
