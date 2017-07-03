@@ -9,7 +9,9 @@
 	<link rel='stylesheet' href='/stylesheets/css/converter.css' />
 	<link rel="stylesheet" href='/icons/calc/css/fontello.css' />
 	<link rel="icon" type="image/png" href="/icons/favicon.png">
-	<link rel="canonical" href="<%=canonical%>"></link>
+	<% if (canonical) { %>
+		<link rel="canonical" href="<%=canonical%>"></link>
+	<% } %>
 	<title><%=title%></title>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>

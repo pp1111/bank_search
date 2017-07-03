@@ -99,6 +99,7 @@ router.get('/:from-na-:on--:from-ile-to-:on', (req, res) => q.async(function * (
         nbpTable = yield getContent(`http://api.nbp.pl/api/exchangerates/tables/a/${selectedDate}`);
     }
 
+    const canonical = Object.keys(req.query).length ? `http://amoney.pl/przelicznik/${req.params.from}-na-${req.params.on}--${req.params.from}-ile-to-${req.params.on}` : '';
     res.render('calcMain', {
         nbpTable: JSON.parse(nbpTable)[0].rates,
         title: title, 
@@ -110,7 +111,7 @@ router.get('/:from-na-:on--:from-ile-to-:on', (req, res) => q.async(function * (
         selected1: req.params.from,
         selected2: req.params.on,
         amount: req.query.amount,
-        canonical: `http://amoney.pl/przelicznik/${req.params.from}-na-${req.params.on}--${req.params.from}-ile-to-${req.params.on}`
+        canonical: canonical,
     });
 })());
 
