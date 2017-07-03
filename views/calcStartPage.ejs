@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href='/icons/calc/css/fontello.css' />
 	<link rel="icon" type="image/png" href="icons/favicon.png">
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/menu.css">
 	<link rel="stylesheet" href="stylesheets/css/calcStartPage.css">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
@@ -29,11 +30,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KZD6WP');</script>
 <!-- End Google Tag Manager -->
-	<div class="logo-container">
+	<nav class="main-page">
+		<div class="dl-menu-header main-page">
+		<!--<h3>menu</h3>-->
+		<div class="menu-btn">
+			<div class="bar top-bar"></div>
+			<div class="bar middle-bar"></div>
+			<div class="bar bottom-bar"></div>
+		</div>
+	</div>
+
+	<div class="dl-menu-container">
+		<div class="inner-scroll">
+		<ul class="dl-menu">
+			<div class="inner-scroll">
+				<% categoriesDictionary.forEach( category => { %> 	 	
+					<li class="category">
+					<a href="#" class="category-link"><%=category%></a>
+						<ul class="dl-submenu">
+							<div class="inner-scroll">
+								<% categoriesMap[category].forEach( subcategory => { %>
+								<li class="subcategory">
+									<a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>?from=Menu"><%=subcategory%></a>
+								</li>
+								<% }) %>
+							</div>
+						</ul>
+				<% }) %>
+				<li><a class="calc-link" href="/przelicznik">Kalkulator walut</a></li>
+			</div>
+		</ul>
+		<div class="line"></div>
+		</div>
+	</div>
+	</nav>
+<div class="logo-container">
 		<a href="/"><img class="logo" src="/images/logo.png" alt="aMoney"></a>
 	</div>
-	
-
 	<div class="wrapper">
 		<header>
 		<h1>Kalkulator Walut</h1>
