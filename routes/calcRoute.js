@@ -51,7 +51,7 @@ router.post('/:from-na-:on--:from-ile-to-:on', (req, res) => q.async(function * 
     const description = title + " ? Sprawnie obliczysz to za pomocą kalkulatora Amoney. Obliczenia oparte o kursy NBP. Sprawdź";
 
     let selectedDate = `20${req.body.date}`;
-    if (!moment(req.body.date, 'YYYY-MM-DD', true).isValid()) {
+    if (!moment(selectedDate, 'YYYY-MM-DD', true).isValid()) {
         selectedDate = moment().format('YYYY-MM-DD');
     }
 
@@ -88,9 +88,9 @@ router.get('/:from-na-:on--:from-ile-to-:on', (req, res) => q.async(function * (
 
     let selectedDate = moment().format('YYYY-MM-DD');
 
-    const day = selectedDate.split('-')[2];
-    const month = selectedDate.split('-')[1];
-    const year = selectedDate.split('-')[0];
+    const day = req.query.day;
+    const month = req.query.month;
+    const year = '20' + req.query.year;
 
     let nbpTable = yield getContent(`http://api.nbp.pl/api/exchangerates/tables/a/${selectedDate}`);
     
@@ -109,7 +109,8 @@ router.get('/:from-na-:on--:from-ile-to-:on', (req, res) => q.async(function * (
         date: selectedDate,
         selected1: req.params.from,
         selected2: req.params.on,
-        amount: req.query.amount
+        amount: req.query.amount,
+        canonical: `http://amoney.pl/przelicznik/${req.params.from}-na-${req.params.on}--${req.params.from}-ile-to-${req.params.on}`
     });
 })());
 

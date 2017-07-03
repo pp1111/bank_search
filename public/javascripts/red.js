@@ -9,19 +9,19 @@ $(document).ready(function(){
     var tmp = $('#sel1').val();
     $('#sel1').val($('#sel2').val());
     $('#sel2').val(tmp);
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value;
+    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();
   });
 
   $('#calculateStartPage').click(function () {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value;
+    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#sel1').on('change', function() {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value;
+    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#sel2').on('change', function() {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value;
+    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#calculate').click(function () {
@@ -36,7 +36,7 @@ $(document).ready(function(){
     else {
       $('#text_info').html('');
     }
-    var date = calc.year.value + "-" + calc.month.value + "-" + calc.day.value;
+    var date = $('#year').val() + "-" + $('#month').val() + "-" + $('#day').val();
     $.ajax({
       type: "POST",
       url: '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value,
@@ -47,6 +47,8 @@ $(document).ready(function(){
         $('meta[name=description]').attr('content', data.description);
         document.title = data.title;
         $('#calculateTitle').html(' Przelicznik ' + calc.from.value + ' na ' + calc.on.value);
+        $('link[rel="canonical"]').attr('href', 'bar');
+        //$('link[rel="canonical"]').attr('href', 'http://amoney.pl/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value);
       }
     });
   })
