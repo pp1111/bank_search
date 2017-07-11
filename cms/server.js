@@ -33,8 +33,12 @@ app.get('/', function(req, res) {
     res.sendfile('./views/main.html');
 });
 
-app.get('/selected/:id', (req,res) => {
+app.get('/selected/:id', (req, res) => {
     res.sendfile('./views/cms.html');
+});
+
+app.get('/subcategory/:id', (req, res) => {
+    res.sendfile('./views/subcategory.html');
 });
 
 app.get('/products', product.findAll);

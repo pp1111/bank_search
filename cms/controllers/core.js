@@ -67,15 +67,15 @@ var refreshS = function() {
 
 refreshS();
 
-var init = function () {
-    if (window.location.pathname.split('/')[1] == 'selected') {
+var initS = function () {
+    if (window.location.pathname.split('/')[1] == 'subcategory') {
       $http.get('/subcategories/' + window.location.pathname.split('/')[2]).success(function(response) {
         $scope.subcategory = response;
       });
     } 
 };
 
-init();
+initS();
 
 $scope.addSubcategory = function() {
   console.log($scope.subcategory);
