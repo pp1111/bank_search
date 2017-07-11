@@ -50,6 +50,7 @@ $scope.edit = function(id) {
 $scope.update = function() {
   $http.put('/products/' + $scope.product._id, $scope.product).success(function(response) {
     refresh();
+    location.reload();
   })
 };
 
@@ -94,6 +95,7 @@ $scope.editSubcategory = function(id) {
 $scope.updateSubcategories = function() {
   $http.put('/subcategories/' + $scope.subcategory._id, $scope.subcategory).success(function(response) {
     refresh();
+    location.reload();
   })
 };
 
