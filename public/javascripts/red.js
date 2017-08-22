@@ -9,19 +9,19 @@ $(document).ready(function(){
     var tmp = $('#sel1').val();
     $('#sel1').val($('#sel2').val());
     $('#sel2').val(tmp);
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();
+    window.location.href = '/przelicznik-walut/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();
   });
 
   $('#calculateStartPage').click(function () {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
+    window.location.href = '/przelicznik-walut/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#sel1').on('change', function() {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
+    window.location.href = '/przelicznik-walut/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#sel2').on('change', function() {
-    window.location.href = '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
+    window.location.href = '/przelicznik-walut/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value + '?amount=' + calc.focusedInput.value + '&year=' + $('#year').val() + '&month=' + $('#month').val() + '&day=' + $('#day').val();;
   });
 
   $('#calculate').click(function () {
@@ -39,7 +39,7 @@ $(document).ready(function(){
     var date = $('#year').val() + "-" + $('#month').val() + "-" + $('#day').val();
     $.ajax({
       type: "POST",
-      url: '/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value,
+      url: '/przelicznik-walut/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value,
       data: { date: date, amount: calc.focusedInput.value },
       success: function(data) {
         $('#calculated').html( (calc.focusedInput.value || 1) + ' ' + calc.from.value + ' to ' + data.course + ' ' + calc.on.value);
