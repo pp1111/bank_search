@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta name="Description" content="Blog">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href='/icons/search/css/fontello.css' />
+	<link rel="icon" type="image/png" href="icons/favicon.png">
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/menu.css">
+	<link rel='stylesheet' href='/stylesheets/css/search.css' />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/selected_product.css" />
+	<title>Amoney blog</title>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-8388218201561397",
+		enable_page_level_ads: true
+	  });
+	</script>
+ </head>
+
+<body class="page-start">
+
+<!-- Google Tag Manager -->	
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KZD6WP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZD6WP');</script>
+<!-- End Google Tag Manager -->
+	<nav class="main-page">
+		<div class="dl-menu-header main-page">
+	<!--<h3>menu</h3>-->
+	<div class="menu-btn">
+		<div class="bar top-bar"></div>
+		<div class="bar middle-bar"></div>
+		<div class="bar bottom-bar"></div>
+	</div>
+</div>
+
+<div class="dl-menu-container">
+	<div class="inner-scroll">
+	<ul class="dl-menu">
+		<div class="inner-scroll">
+			<% categoriesDictionary.forEach( category => { %> 	 	
+				<li class="category">
+				<a href="#" class="category-link"><%=category%></a>
+					<ul class="dl-submenu">
+						<div class="inner-scroll">
+							<% categoriesMap[category].forEach( subcategory => { %>
+							<li class="subcategory">
+								<a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>?from=Menu"><%=subcategory%></a>
+							</li>
+							<% }) %>
+						</div>
+					</ul>
+			<% }) %>
+			<li><a class="calc-link" href="/przelicznik">Kalkulator walut</a></li>
+		</div>
+	</ul>
+	<div class="line"></div>
+	</div>
+</div>
+	</nav>
+	<div style="display: block; top:5%" class="wrapper">
+		<div class="dimness"></div>
+            <header >
+                <div class="logo">
+                    <h1>aMoney</h1>
+                    <p style="padding-left: 60px">Blog finansowy</p>
+                    <img class="left-bottom-dot" src="/images/left-bottom-dot.png" alt="dot">
+                    <img class="left-dot" src="/images/left-dot.png" alt="dot">
+                    <img class="right-dot" src="/images/right-dot.png" alt="dot">
+                    <img class="right-bottom-dot" src="/images/right-top-dot.png" alt="dot">
+                    <!--<img class="left-arrow" src="images/left-arrow.png" alt="arrow">
+                    <img class="right-arrow" src="images/right-arrow.png" alt="arrow">-->
+                </div>
+            </header>
+            <div class="wrapper container">
+                <article class="search-result row">
+                    <div class="whole-product col-md-6 col-lg-7">
+
+                    </div>
+                </article>
+            </div>
+	    </div>
+        
+	</div>
+    
+	<footer><% include partials/templemate/footer.ejs %></footer>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script src="/javascripts/main.js"></script>
+
+	<script>
+	  function initMap() {
+		var uluru = {lat: 52.235765, lng: 21.0177286};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 13,
+		  center: uluru,
+		  disableDefaultUI: true,
+		  zoomControl: true
+		});
+		var marker = new google.maps.Marker({
+		  position: uluru,
+		  map: map
+		});
+	  }
+	</script>
+
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMfnryrSqfNlO6vbG6RgbyZDobT7K7Ips&callback=initMap">
+	</script>
+</body>
+
+</html
