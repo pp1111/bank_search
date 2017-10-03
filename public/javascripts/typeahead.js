@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#searcharea').autocomplete({
         source: (req, res) => {
             $.ajax({
-                url: "http://amoney.pl:4000/search/data?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
+                url: "/search/data?q=" + decodeURIComponent(req.term.replace(/ /g,"-")),
                 dataType: "jsonp",
                 type: "GET",
                 data: {

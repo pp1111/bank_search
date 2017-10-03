@@ -15,11 +15,13 @@
                 <a href="#" class="category-link"><%=category%></a>
                     <ul class="dl-submenu">
                         <div class="inner-scroll">
+			<% if (categoriesMap[category].length) { %>
                             <% categoriesMap[category].forEach( subcategory => { %>
                             <li class="subcategory">
                                 <a class="subcategory-link" href="/finanse/<%=subcategory.replace(/ /g, '-')%>?from=Menu"><%=subcategory%></a>
                             </li>
                             <% }) %>
+			<% } %>
                         </div>
                     </ul>
             <% }) %>

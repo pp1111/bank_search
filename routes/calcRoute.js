@@ -151,7 +151,7 @@ router.get('/:from-na-:on--:from-ile-to-:on', (req, res) => {
             nbpTable = yield getContent(`http://api.nbp.pl/api/exchangerates/tables/a/${selectedDate}`);
         }
 
-        const canonical = Object.keys(req.query).length ? `http://amoney.pl/przelicznik-walut/${req.params.from}-na-${req.params.on}--${req.params.from}-ile-to-${req.params.on}` : '';
+        const canonical = Object.keys(req.query).length ? `https://amoney.pl/przelicznik-walut/${req.params.from}-na-${req.params.on}--${req.params.from}-ile-to-${req.params.on}` : '';
 
         res.render('calcMain', {
             nbpTable: JSON.parse(nbpTable)[0].rates,

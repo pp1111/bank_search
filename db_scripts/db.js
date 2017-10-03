@@ -36,7 +36,10 @@ co(function *() {
 					value: value,
 					logo: produkt.dostawca[0].$['logo-male'],
 					prez: produkt.linki[0].$.prezentacja,
-					application: `http://uki222.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
+					application: { 
+						redirect: `http://witbee.systempartnerski.pl${produkt.linki[0].$.wniosek}`,
+						isActive: true
+					},
 					description: produkt.opis[0],
 					longDescription: `long desc`,
 					alive: false,

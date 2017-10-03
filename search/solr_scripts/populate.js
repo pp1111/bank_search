@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://localhost:27017/products').then( db => {
 			item.alt = item.meta.alt;
 			delete item.loan;
 			delete item.meta;
-			delete item.application;
+			item.application = item.application.redirect;
 			solrClient.update([item]);
 		})
 

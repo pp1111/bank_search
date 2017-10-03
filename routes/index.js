@@ -43,7 +43,7 @@ router.get('/', function (req, res) {
         subcategories.forEach( subcategory => {
             subCategoriesMap[subcategory] = [...new Set (subCategoriesMap[subcategory].map(product => product.name))];
         })
-
+	yield db.close();
         res.render('search', {
             product: products,
             categoriesDictionary: categories,
@@ -128,7 +128,7 @@ router.get('/finanse', function (req, res) {
                 }),
             },
         }
-
+	yield db.close();
         res.render('search_result', {
             productList: productList,
             categoriesDictionary: categories,
@@ -198,7 +198,7 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
 
         const dataLayerObject = {
             ecommerce: {
-                details: {
+                detail: {
                     actionField: {
                         list: 'Szczegóły produktu',
                     },
@@ -229,11 +229,11 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
                 brand: product.provider,
                 category: `${product.category}/${product.subcategory}`,
                 variant: ``,
-                list: `Product details`,
+                list: `Product_details`,
                 position: acc + 1,
             }
         }));
-
+	yield db.close();
         res.render('selected_product', {
             product: selectedProduct[0],
             suggestedProducts: suggestions,
@@ -338,7 +338,7 @@ router.get('/finanse/:category', function (req, res){
                 }),
             },
         }
-
+	yield db.close();
         res.render('search_result', {
             categoriesDictionary: categories,
             subcategoriesDictionary: subcategories,

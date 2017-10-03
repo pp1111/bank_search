@@ -47,8 +47,8 @@ $(document).ready(function(){
         $('meta[name=description]').attr('content', data.description);
         document.title = data.title;
         $('#calculateTitle').html(' Przelicznik ' + calc.from.value + ' na ' + calc.on.value);
-        $('link[rel="canonical"]').attr('href', 'bar');
-        //$('link[rel="canonical"]').attr('href', 'http://amoney.pl/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value);
+        //$('link[rel="canonical"]').attr('href', 'bar');
+        $('link[rel="canonical"]').attr('href', 'http://amoney.pl/przelicznik/' + calc.from.value + '-na-' + calc.on.value + '--' + calc.from.value + '-ile-to-' + calc.on.value);
       }
     });
   })
