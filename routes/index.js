@@ -203,12 +203,12 @@ router.get('/finanse/produkt/:productValue', function (req, res) {
                         list: 'Szczegóły produktu',
                     },
                     products: [details],
-                }
+                },
+                impressions: []
             },
         }
 
         if (req.query.selectFromSuggestions) {
-            dataLayerObject.ecommerce.impressions = [];
             dataLayerObject.ecommerce.impressions.push({
                 name: `${selectedProduct[0].name} ${selectedProduct[0].provider}`,
                 id: selectedProduct[0].id,
